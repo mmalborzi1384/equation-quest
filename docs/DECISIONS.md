@@ -87,3 +87,7 @@ The owner reiterated **do not implement Phase 8 until explicitly told** and aske
 ## D30 — Explicit Phase 8 authorization and storage boundary (2026-11-03)
 
 The owner now explicitly authorized **Phase 8** after previously prohibiting its start. Implement durable local-only progression with versioned/validated recovery, stage/workshop/fraction-practice records and a truthful dashboard; include the existing reduced-motion preference in a complete app-owned storage inventory. Per D28, each saved category gets a contextual reset/delete action and `/progress` gets confirmed global delete-all of app-owned keys only. Clear live state and storage together, prove no reappearance after reload, and do not erase unrelated origin data. Phase 9 scroll narrative/game-image/liquid-glass optimization and Phase 10 deployment remain **unauthorized**. This supersedes the old D28 hold on starting Phase 8, not its reset requirements.
+
+## D31 — Phase 8 acceptance (2026-11-03)
+
+The owner confirmed that **Phase 8 is approved** after implementation and local verification (90 Vitest, 29 Chromium E2E). PR #8 remains open: approval of the phase was not an explicit instruction to merge the PR. This acceptance does not authorize Phase 9 optimization or Phase 10 deployment; await separate direction for those actions.

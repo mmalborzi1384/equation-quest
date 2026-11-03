@@ -1,6 +1,6 @@
 # Persistent progress dashboard
 
-**Status:** Phase 8 authorized (D30), implemented and locally verified on open PR #8. Owner review pending.
+**Status:** Phase 8 authorized (D30), implemented and locally verified on open PR #8. Owner accepted (D31); PR #8 remains open/unmerged.
 
 ## User story
 As a seventh-grade learner, I can use this feature to understand and practice equations without creating an account.

@@ -1,6 +1,6 @@
 # Development status — 2026-11-03
 
-**Authorization:** Phases 1–7 accepted and merged. D30 explicitly authorized Phase 8, now implemented and locally verified on open PR #8; owner review is pending. Phase 9 and deployment remain unauthorized. Earlier planning-only D28/D29 notes below are historical.
+**Authorization:** Phases 1–7 accepted and merged. D30 explicitly authorized Phase 8, implemented, locally verified and accepted by the owner (D31) on open PR #8; PR merge has not been requested. Phase 9 and deployment remain unauthorized. Earlier planning-only D28/D29 notes below are historical.
 
 | Workstream | State | Evidence / next gate |
 |---|---|---|
@@ -14,7 +14,7 @@
 | 05 3D engine | Merged and accepted | Procedural R3F island on `/game`, orthographic follow camera, four inspectable landmarks, WASD/arrows/E/Escape, held mobile pad/tap, pause, quality low/balanced/high and no-WebGL text map. **Not** a playable level or puzzle. 61 Vitest + 15 Chromium E2E; [report](PHASE_05_COMPLETION_REPORT.md). |
 | 06 Game mechanics | Merged and accepted | Three ordered exact-rational workshop trials on `/game` with hints, original-equation verification and in-memory one-time points; **not** eight authored stages or durable progress. |
 | 07 Eight playable levels | Merged and accepted | Eight playable concept gates and exact-puzzle sequences, ordered unlocks and one-time in-memory rewards; 06–08 require fractions. [Report](PHASE_07_COMPLETION_REPORT.md). |
-| 08 Real progression | Implemented on open PR #8, awaiting owner review | Four versioned validated local stores, truthful `/progress`, contextual reset and confirmed scoped delete-all; **90 Vitest / 29 Chromium E2E PASS**. [Report](PHASE_08_IMPLEMENTATION_REPORT.md). |
+| 08 Real progression | Accepted (D31); PR #8 open/unmerged | Four versioned validated local stores, truthful `/progress`, contextual reset and confirmed scoped delete-all; **90 Vitest / 29 Chromium E2E PASS**. [Report](PHASE_08_IMPLEMENTATION_REPORT.md). |
 | 09 QA/optimization | Not authorized | Phase 2 tests below do not replace future cross-browser, accessibility and performance audits. |
 | 10 Deployment | Not authorized | Build is local only; GitHub Pages is not deployed or activated. |
 
@@ -80,3 +80,5 @@ Owner approved and merged PR #7 at `dccd87c`, **explicitly prohibited starting P
 ## Phase 8 implementation (D30, 2026-11-03)
 
 D30 superseded the earlier D28/D29 implementation hold, not the deletion criteria. Four app-owned storage categories now have confirmed contextual resets and an app-scoped global deletion; validated version 1 stores derive XP from verified ordered outcomes and persist canonical rational strings. Empty and saved `/progress` states, mobile/keyboard confirmation and reload/deletion behavior are documented in [the Phase 8 report](PHASE_08_IMPLEMENTATION_REPORT.md). `verify-environment.sh --full` PASS (90 Vitest, lint, format, typecheck, build); 29/29 headless Chromium E2E PASS using a temporary npm-packaged browser outside the repo. No Phase 9 imagery/glass/scroll/typing, PR merge or deployment. Hardware/screen reader, alternate browser, independent WCAG/curriculum review and FPS measurements remain open.
+
+**D31 acceptance (2026-11-03):** The owner approved Phase 8. PR #8 remains open/unmerged; the owner did not separately request a merge, Phase 9 or deployment.

@@ -1,6 +1,6 @@
 # Phase 8: local progress and data controls (2026-11-03)
 
-**Status:** implementation and local automated verification passed on `arena/260614e7-equation-quest`, PR #8 open. Owner review is pending. No PR merge, Phase 9 work, deployment, cloud backup, user account or server save.
+**Status:** implementation and local automated verification passed on `arena/260614e7-equation-quest`, PR #8 open. Owner accepted Phase 8 (D31); PR merge was not requested. No PR merge, Phase 9 work, deployment, cloud backup, user account or server save.
 
 ## What persists
 

@@ -71,3 +71,5 @@ Owner approved/merged Phase 7 PR #7 at `dccd87c`, explicitly said **do not start
 ## Phase 8 implementation handoff (D30, 2026-11-03)
 
 Owner explicitly reversed the previous Phase 8 hold. On `arena/260614e7-equation-quest` (open PR #8) four validated versioned local stores and a truthful `/progress` dashboard now save only verified stage/workshop/fraction-practice outcomes and the existing reduced-motion setting. Contextual reset and confirmed global app-data deletion update live state and storage, preserving unrelated keys. Canonical rational answers are string pairs, not BigInt in JSON. Full local toolchain: 90 Vitest PASS, lint/format/typecheck/build PASS; 29/29 Chromium E2E PASS with temporary browser outside repo. Details and limits: [Phase 8 report](docs/PHASE_08_IMPLEMENTATION_REPORT.md). Await owner review; no PR merge, Phase 9 visual/animation optimization or deployment authorized. Earlier D28/D29 planning-only notes are historical.
+
+**D31:** Owner approved Phase 8 after the report. PR #8 is still open and unmerged; approval did not request a merge or authorize Phase 9/deployment.
