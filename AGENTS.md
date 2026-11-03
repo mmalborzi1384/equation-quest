@@ -1,5 +1,7 @@
 # Equation Quest — permanent agent instructions
 
+Before starting any task in a new sandbox, read the environment setup documentation, verify the canonical development environment, and initialize the sandbox using the repository's setup scripts. See `docs/ENVIRONMENT_SETUP.md` and `docs/DEVELOPMENT_WORKFLOW.md`; run `bash scripts/setup.sh` and inspect its verification report. Never assume tools or `node_modules` persisted.
+
 At session start read `PROJECT_MEMORY.md`, `docs/DEVELOPMENT_STATUS.md`, `docs/DECISIONS.md`, relevant `specs/*` and `docs/ARCHITECTURE.md`. The user specification in the initial project brief is authoritative; record clarifications in the repo before changing course.
 
 ## Rules

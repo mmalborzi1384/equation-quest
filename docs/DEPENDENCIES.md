@@ -1,5 +1,8 @@
 # Tooling and dependency register (2026-11-03)
 
+## Canonical cross-sandbox contract
+Exact Node 22.22.3/npm 10.9.8 in `.nvmrc`, `package.json` engines/packageManager and `.npmrc` engine-strict/save-exact; existing exact package pins and lockfile. `scripts/setup.sh` installs missing Python CLI tools at pinned versions and `npm ci`; `scripts/verify-environment.sh` checks versions, direct package consistency, lint/format. See `docs/ENVIRONMENT_SETUP.md`. App build/tests remain skipped until implemented.
+
 ## Verified environment
 Python 3.11.2, git 2.39.5, Node 22.22.3, npm 10.9.8, gh authenticated; no uv/Blender initially. Installed uv 0.13.7 via pip --user; `uv tool install specify-cli==1.2.6` and `graphifyy==0.9.101`. Use `~/.local/bin/specify` and `~/.local/bin/graphify` (PATH lacks ~/.local/bin). Tool installs in user home may not persist in future Arena checkout; reinstall commands above. CLI version/status/help verified. Graphify MCP connector reported unsupported, and outbound access restricted to GitHub/npm/PyPI, so remote API endpoint not tested; local CLI is available.
 
