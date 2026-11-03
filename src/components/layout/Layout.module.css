@@ -4,6 +4,7 @@
   flex-direction: column;
 }
 .skip {
+  border-radius: var(--control-radius);
   position: absolute;
   z-index: 100;
   top: -80px;

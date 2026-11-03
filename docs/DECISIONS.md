@@ -69,3 +69,5 @@ Reward eligibility is emitted only after exact answer and explicit original-equa
 ## D26 — Persian graphical name and gently rounded controls (owner direction)
 
 The owner requested that all graphical product-name instances use the Persian equivalent instead of the transliteration «اکویشن کوئست», and that buttons consistently have mildly rounded corners for a modern, minimal feel. UI name: «ماجراجویی معادله‌ها». Use shared `--control-radius: 9px` for interactive buttons and button-like calls to action; deliberately circular markers remain circular. Technical repository/URL/package slugs are not UI copy. This rule applies to subsequent work as well as the current Phase 6 interface; it does not authorize Phase 7, merging or deployment.
+
+**D26 implementation correction:** the initial 9px token covered native `<button>` controls but missed several links styled as buttons. Rounded corners now also apply to boxed Home, carousel, game pause, level navigator, page-intro and header actions, plus clickable learning/journey rows and the skip action. Plain inline text links remain text links. A browser audit checks computed radii across seven routes at 320px and 1280px.

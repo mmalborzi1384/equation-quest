@@ -123,6 +123,7 @@
 }
 .cardBottom a,
 .cardBottom button {
+  border-radius: var(--control-radius);
   color: var(--navy);
   background: var(--gold);
   border: 0;
