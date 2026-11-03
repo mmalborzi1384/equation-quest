@@ -1,6 +1,6 @@
 # 3D exploration and controls
 
-**Status:** Draft / awaiting owner approval. **Branch:** arena/5b2fda5d-equation-quest.
+**Status:** Draft / awaiting owner approval. Portable specification; implementation branch is assigned per Arena session.
 
 ## User story
 As a seventh-grade learner, I can use this feature to understand and practice equations without creating an account.
@@ -13,3 +13,6 @@ R3F scene, orthographic follow camera, game-engine input state, HUD and mobile c
 
 ## Acceptance evidence required
 keyboard arrows/WASD E Esc, mobile joystick/tap/pause, fallback and presets. Do not mark completed without implementation, tests and anti-slop delivery gate.
+
+## Phase 1 approved scope (A1–A5, including strengthened A2)
+HUD/puzzle panel must display signed and fractional expressions legibly in isolated LTR maths, while keyboard/touch controllers and non-WebGL alternative keep all required puzzles reachable. This is a planning contract, not implemented behavior.

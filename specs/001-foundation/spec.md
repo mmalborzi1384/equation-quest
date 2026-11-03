@@ -1,6 +1,6 @@
 # App foundation and shared navigation
 
-**Status:** Draft / awaiting owner approval. **Branch:** arena/5b2fda5d-equation-quest.
+**Status:** Draft / awaiting owner approval. Portable specification; implementation branch is assigned per Arena session.
 
 ## User story
 As a seventh-grade learner, I can use this feature to understand and practice equations without creating an account.
@@ -13,3 +13,6 @@ Vite React TypeScript strict, CSS Modules tokens, Vazirmatn; route-level lazy lo
 
 ## Acceptance evidence required
 route smoke for / and all required paths; keyboard and mobile menu; hash refresh. Do not mark completed without implementation, tests and anti-slop delivery gate.
+
+## Phase 1 approved scope (A1–A5, including strengthened A2)
+Router must reserve eight core deep-linkable lesson paths plus `/learning/fractions` with RTL shell, working back/related navigation and route-level lazy loading. Route presence is not a claim that lesson content is implemented in Phase 02. This is a planning contract, not implemented behavior.

@@ -1,0 +1,109 @@
+.map {
+  max-width: 1320px;
+  margin: 0 auto 110px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.island {
+  min-height: 360px;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(24px, 4vw, 50px);
+  background: #e6e9df;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.island h2 {
+  position: relative;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  margin: auto 0 6px;
+}
+.island p {
+  position: relative;
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+}
+.island a {
+  position: relative;
+  color: #51370d;
+  border-bottom: 1px solid currentColor;
+  font-weight: 700;
+  padding-bottom: 5px;
+}
+.index {
+  position: relative;
+  z-index: 1;
+  color: #494f54;
+  font-size: 0.82rem;
+}
+.landmark {
+  position: absolute;
+  left: -35px;
+  top: -25px;
+  width: 235px;
+  height: 235px;
+  border: 2px solid #436b6750;
+  border-radius: 50%;
+}
+.landmark::before,
+.landmark::after {
+  content: '';
+  position: absolute;
+  border-radius: 40% 55% 42% 50%;
+  transform: rotate(-25deg);
+}
+.landmark::before {
+  width: 120px;
+  height: 65px;
+  left: 54px;
+  top: 82px;
+  background: #5e967b;
+  box-shadow: 8px 13px 0 #365b5e;
+}
+.landmark::after {
+  width: 35px;
+  height: 60px;
+  left: 90px;
+  top: 25px;
+  background: #e9b968;
+}
+.landmark i {
+  position: absolute;
+  inset: 16px;
+  border: 1px dashed #597d7066;
+  border-radius: 50%;
+}
+.violet {
+  background: #e9e4ee;
+}
+.violet .landmark::before {
+  background: #927dbb;
+}
+.ocean {
+  background: #dbe7e8;
+}
+.ocean .landmark::before {
+  background: #426d83;
+}
+.gold {
+  background: #eee7d6;
+}
+.gold .landmark::before {
+  background: #bd9456;
+}
+@media (max-width: 700px) {
+  .map {
+    grid-template-columns: 1fr;
+  }
+  .island {
+    min-height: 310px;
+  }
+}
+.island a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}

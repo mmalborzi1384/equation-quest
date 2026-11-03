@@ -1,16 +1,18 @@
-# Game design — Algebra Kingdom
+# Game design — Algebra Kingdom (Phase 1 planning baseline)
 
-The kingdom's bridges and gates lost balance. The player restores them by observing a mechanism, trying equivalent operations and explaining the result. Loop: explore → encounter → learn → manipulate → get feedback → verify → reward → unlock. Fixed isometric camera with smooth player follow. No combat/timer or loss state.
+The kingdom's bridges and gates lost balance. The player restores them by observing a mechanism, trying equivalent operations and explaining the result. Loop: explore → encounter → learn → manipulate → get feedback → verify → reward → unlock. Fixed isometric camera with smooth follow. No combat/timer or loss state. Grade-7 progression is deliberate: **small integers → signed coefficients/constants → inverse operations and simplification → exact fractions → two-step equations and verification**. Fractions are core v1 material, not a token final quiz.
 
-| Island | Level | Mechanic / learning objective | Environment response |
+| Island | Level | Independent mechanic / learning objective | Equation band and environmental response |
 |---|---|---|---|
-| Balance Island | 01 راز ترازو | Make two pans equal; identify equation | balance bridge settles |
-| Balance Island | 02 قانون تعادل | Apply same add/remove to both sides | counterweight gate opens |
-| Unknown Forest | 03 جعبه اسرارآمیز | Infer x from boxes and objects | boxes reveal value |
-| Unknown Forest | 04 دروازه مجهول | Match an algebraic expression to a count | symbol gate unlocks |
-| Inverse Cave | 05 تونل جمع و تفریق | Undo addition/subtraction on both sides | tunnel lights connect |
-| Inverse Cave | 06 اتاق ضرب و تقسیم | Undo multiplication/division without zero divide | lift powers up |
-| Equation Castle | 07 برج معادلات | Guided two-step `ax+b=c` and substitution | tower stair rises |
-| Equation Castle | 08 آزمون نهایی | Independently solve and verify mixed equation | kingdom balance restored |
+| Balance Island | 01 راز ترازو | Make two pans equal; read `=` as a relationship | Small positive integer weights; balance bridge settles |
+| Balance Island | 02 قانون تعادل | Apply the same integer add/remove to both sides | Small integers; counterweight gate opens |
+| Unknown Forest | 03 جعبه اسرارآمیز | Infer `x` from repeated boxes/objects | Positive integer variable examples; boxes reveal value |
+| Unknown Forest | 04 دروازه مجهول | Identify coefficient/constant; introduce **positive and negative** values with a sign-aware expression | Signed integer expression; symbol gate unlocks |
+| Inverse Cave | 05 تونل جمع و تفریق | Undo signed integer addition/subtraction on both sides and simplify | Signed integers, no fractions before the visual introduction; tunnel lights connect |
+| Inverse Cave | 06 اتاق ضرب و تقسیم | Undo multiplication/division and **introduce simple equal-part fractions and reciprocals**; check both sides | Include a fractional coefficient or fractional solution in guided puzzles, with explicit hints; lift powers up |
+| Equation Castle | 07 برج معادلات | Guided two-step `ax+b=c`: solve, simplify and substitute, including **rational coefficients/constants and exact rational solutions** | Multiple worked fractional practice problems in the stage, not one bonus question; tower stair rises |
+| Equation Castle | 08 آزمون نهایی | Independently solve and verify a mix of integer, signed and fractional equations | Include a fractional equation as a required assessed objective, not just optional extra credit; kingdom balance restored |
 
-Each level owns data and a goal, not a copied generic question. Rewards: one-time XP/crystals; achievements tied to real completed events, not fake badges. Progress unlocks next stage. On-screen action prompt E/tap; keyboard/mouse and joystick/touch parity; Esc/pause button opens resume, restart current puzzle, map. Accessibility fallback for 3D interaction: labelled interaction list/clickable nearby objects; no information conveyed only by color or animation. Mechanics are planned, not coded.
+Each stage owns typed objective, explanation, manipulable action, misconceptions, staged hints, verification expression and success gate; level 06 scaffolds before level 07 increases complexity. The independent `/learning/fractions` lesson and repeatable supplemental fraction practice remain available **outside levels 06–08** so learners can prepare/retry without redoing the whole game. For fraction exercises cover a rational coefficient with integer answer, integer coefficient with fractional answer and rational coefficient with exact fractional answer; use `ax+b=c`, `a≠0`, with rational parameters. No fractional unit is removed merely because it is advanced.
+
+Rewards: one-time XP/crystals; achievements tied to real completed events, not fake badges. Progress unlocks next stage only after demonstrated operation/verification where required. On-screen action prompt E/tap; keyboard/mouse and joystick/touch parity; Esc/pause button opens resume, restart current puzzle, map. Accessibility fallback for 3D interaction: labelled interaction list/clickable nearby objects and DOM math controls; no information conveyed only by color or animation. Art plan A3: genuine procedural stylized 3D first, optionally optimized licensed GLBs later. Mechanics are planned, **not coded**.

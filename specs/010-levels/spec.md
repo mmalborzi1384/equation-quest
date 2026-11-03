@@ -1,6 +1,6 @@
 # Eight authored levels and unlocks
 
-**Status:** Draft / awaiting owner approval. **Branch:** arena/5b2fda5d-equation-quest.
+**Status:** Draft / awaiting owner approval. Portable specification; implementation branch is assigned per Arena session.
 
 ## User story
 As a seventh-grade learner, I can use this feature to understand and practice equations without creating an account.
@@ -13,3 +13,6 @@ Authored typed data per level, level manager, puzzle goals and scene mechanisms 
 
 ## Acceptance evidence required
 one E2E solve/verify per level; locked order and reward idempotence. Do not mark completed without implementation, tests and anti-slop delivery gate.
+
+## Phase 1 approved scope (A1–A5, including strengthened A2)
+Eight stages retain independent objectives: small integers 01–03, signed terms 04–05, explicit fraction instruction 06, multiple guided rational two-step puzzles 07 and required fractional verification 08. Fraction mastery is not confined to a final bonus. This is a planning contract, not implemented behavior.

@@ -1,6 +1,6 @@
 # Home narrative and glass carousel
 
-**Status:** Draft / awaiting owner approval. **Branch:** arena/5b2fda5d-equation-quest.
+**Status:** Draft / awaiting owner approval. Portable specification; implementation branch is assigned per Arena session.
 
 ## User story
 As a seventh-grade learner, I can use this feature to understand and practice equations without creating an account.
@@ -13,3 +13,6 @@ GSAP/ScrollTrigger only for scroll narration; web DOM/CSS/SVG glass lens with po
 
 ## Acceptance evidence required
 desktop/mobile carousel links, focus controls, reduced motion, no-WebGL reading path. Do not mark completed without implementation, tests and anti-slop delivery gate.
+
+## Phase 1 approved scope (A1–A5, including strengthened A2)
+Learning carousel must link to real routed lessons including the independent fraction lesson; preview copy explains the staged integer → signed → fractional journey without promising shipped exercises before implementation. This is a planning contract, not implemented behavior.

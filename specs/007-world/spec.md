@@ -1,6 +1,6 @@
 # World map and four islands
 
-**Status:** Draft / awaiting owner approval. **Branch:** arena/5b2fda5d-equation-quest.
+**Status:** Draft / awaiting owner approval. Portable specification; implementation branch is assigned per Arena session.
 
 ## User story
 As a seventh-grade learner, I can use this feature to understand and practice equations without creating an account.
@@ -13,3 +13,6 @@ World page map and semantic region list; derived unlock selectors from progressi
 
 ## Acceptance evidence required
 island links 01/03/05/07, locked prerequisite and empty save. Do not mark completed without implementation, tests and anti-slop delivery gate.
+
+## Phase 1 approved scope (A1–A5, including strengthened A2)
+Preserve four islands/two levels each; clearly show fractional objectives in Inverse Cave 06 and Castle 07–08, with accessible prerequisite link to `/learning/fractions` and no locked dead controls. This is a planning contract, not implemented behavior.

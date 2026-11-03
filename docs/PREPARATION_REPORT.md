@@ -1,5 +1,7 @@
 # Preparation report — 2026-11-03
 
+**Historical Phase 0 snapshot.** Later owner decisions D12–D16 and `docs/PHASE_01_COMPLETION_REPORT.md` supersede its then-open options, three-lesson sketch and feature count; do not use this archived snapshot as the current Phase 1 scope.
+
 ## 1. Repository
 `mmalborzi1384/equation-quest` public, default branch `main`, initial commit `c0af5a3` with only MIT LICENSE. Working branch `arena/5b2fda5d-equation-quest`; initially clean, no app, source tree, CI or Pages site. All preparation files were created on the Arena working branch; commit/push state must be checked with Git at session end. Specification lives in user's message; its requirements have been transferred into repo docs and specs, not copied verbatim.
 

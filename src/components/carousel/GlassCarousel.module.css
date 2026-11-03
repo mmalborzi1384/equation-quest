@@ -1,0 +1,214 @@
+.carousel {
+  width: min(100%, 970px);
+  margin: auto;
+}
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #ece7db;
+  padding: 0 12px;
+}
+.top p {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.top p span {
+  color: var(--gold);
+  font-size: 0.85rem;
+}
+.controls {
+  display: flex;
+  gap: 9px;
+}
+.controls button {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #a6b7bb;
+  background: transparent;
+  color: white;
+  font-size: 1.35rem;
+}
+.controls button:hover {
+  background: #ffffff24;
+}
+.stage {
+  height: 395px;
+  position: relative;
+  perspective: 900px;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+.card {
+  position: absolute;
+  width: min(52%, 440px);
+  height: 338px;
+  top: 24px;
+  right: 50%;
+  border: 1px solid #ffffff78;
+  border-radius: 18px;
+  color: #f7f5f0;
+  background: linear-gradient(145deg, #315a68ee, #1d3e55e8 76%);
+  box-shadow: 0 20px 36px #06192848;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 26px;
+  overflow: hidden;
+  transition:
+    transform 0.45s ease,
+    opacity 0.45s ease;
+  backdrop-filter: blur(15px);
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(130deg, #ffffff30, transparent 35%, #ffffff0c 80%);
+  pointer-events: none;
+}
+.glassEdge {
+  position: absolute;
+  inset: 6px;
+  border: 1px solid #ffffff32;
+  border-radius: 13px;
+  pointer-events: none;
+}
+.current {
+  z-index: 3;
+  transform: translateX(50%) scale(1);
+}
+.next {
+  z-index: 2;
+  transform: translateX(-37%) scale(0.83) rotateY(-10deg);
+  opacity: 0.72;
+}
+.previous {
+  z-index: 1;
+  transform: translateX(136%) scale(0.83) rotateY(10deg);
+  opacity: 0.72;
+}
+.hidden {
+  z-index: 0;
+  transform: translateX(-135%) scale(0.68);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+.cardTop,
+.cardBottom {
+  position: relative;
+  z-index: 1;
+}
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #e4e9e6;
+  font-size: 0.85rem;
+}
+.cardTop .math {
+  color: var(--gold);
+  font-size: 1.15rem;
+}
+.symbol {
+  position: absolute;
+  inset: 55px 0 auto;
+  margin: auto;
+  width: 120px;
+  height: 120px;
+  transform: rotate(45deg);
+  border: 1px solid #d5e7dc7d;
+  border-radius: 28px;
+}
+.symbol i {
+  display: block;
+  position: absolute;
+  top: 58px;
+  right: -15px;
+  width: 150px;
+  border-top: 2px solid var(--gold);
+}
+.symbol b {
+  position: absolute;
+  inset: 20px;
+  border: 1px solid #ffffff52;
+  border-radius: 20px;
+}
+.cardBottom h3 {
+  font-size: 1.7rem;
+  margin: 0 0 5px;
+}
+.cardBottom p {
+  margin: 0 0 15px;
+  line-height: 1.75;
+  color: #e4ece8;
+}
+.cardBottom a,
+.cardBottom button {
+  color: var(--navy);
+  background: var(--gold);
+  border: 0;
+  padding: 9px 15px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.cardBottom a:hover,
+.cardBottom button:hover {
+  background: var(--ivory);
+}
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  padding: 5px;
+}
+.dots button {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  position: relative;
+}
+.dots button::before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: auto;
+  border-radius: 50%;
+  background: #b4c4c3;
+}
+.dots button[aria-current='true']::before {
+  background: var(--gold);
+  width: 30px;
+  border-radius: 12px;
+}
+@media (max-width: 680px) {
+  .stage {
+    height: 380px;
+  }
+  .card {
+    width: 78%;
+    height: 330px;
+    padding: 20px;
+  }
+  .next {
+    transform: translateX(-42%) scale(0.78);
+  }
+  .previous {
+    transform: translateX(142%) scale(0.78);
+  }
+  .cardBottom h3 {
+    font-size: 1.45rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
