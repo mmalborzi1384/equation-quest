@@ -17,3 +17,5 @@ All feature tasks/acceptance criteria are in `specs/NNN-*/tasks.md` (12 original
 | 10 | CI and Pages deploy only after documented grade-7 curriculum/Persian content review | CI green; deployed hash deep link/assets and curriculum review verified |
 
 **Current authorization (D30):** the earlier D28 hold on Phase 08 was reversed; Phase 08 is implemented on open PR #8 and awaiting owner review. Phase 09 and deployment remain unauthorized.
+
+**D32 (current):** Phase 9 implementation explicitly authorized after PR #8 merged; locally tested and awaiting owner review. Phase 10 remains unauthorized. The prior D28 hold recorded above is historical.

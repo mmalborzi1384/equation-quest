@@ -21,21 +21,6 @@ export function useHomeMotion() {
       if (!element || reduceMotion || preference.matches) return;
       gsap.registerPlugin(ScrollTrigger);
       context = gsap.context(() => {
-        element.querySelectorAll<HTMLElement>('[data-narrative]').forEach((chapter) => {
-          const details = chapter.querySelectorAll<HTMLElement>('[data-reveal]');
-          if (!details.length) return;
-          gsap.fromTo(
-            details,
-            { y: 22 },
-            {
-              y: 0,
-              duration: 0.65,
-              stagger: 0.09,
-              ease: 'power2.out',
-              scrollTrigger: { trigger: chapter, start: 'top 85%', once: true },
-            },
-          );
-        });
         const scene = element.querySelector<HTMLElement>('[data-scene]');
         const hero = element.querySelector<HTMLElement>('[data-hero]');
         if (scene && hero && window.innerWidth > 900) {

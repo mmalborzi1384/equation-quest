@@ -91,3 +91,7 @@ The owner now explicitly authorized **Phase 8** after previously prohibiting its
 ## D31 — Phase 8 acceptance (2026-11-03)
 
 The owner confirmed that **Phase 8 is approved** after implementation and local verification (90 Vitest, 29 Chromium E2E). PR #8 remains open: approval of the phase was not an explicit instruction to merge the PR. This acceptance does not authorize Phase 9 optimization or Phase 10 deployment; await separate direction for those actions.
+
+## D32 — Phase 9 authorization after Phase 8 merge (2026-11-03)
+
+The owner asked to implement **Phase 9** after explicitly requesting merge of Phase 8 PR #8, which is confirmed merged. This authorizes the D28/D29 optimization and visual work: actual game-world imagery, restrained liquid-glass action treatment, lower-section scroll and Persian typing-style reveals, anti-slop skills during implementation and evidence-based accessibility/performance checks. Phase 10 CI/public deployment and a merge of any Phase 9 PR remain separate decisions. Retain D26's graphical Persian name and mildly rounded controls.

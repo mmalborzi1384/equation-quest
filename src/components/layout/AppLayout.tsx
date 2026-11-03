@@ -4,11 +4,13 @@ import { SiteHeader } from '../navigation/SiteHeader';
 import { SiteFooter } from './SiteFooter';
 import { usePreferences } from '../../store/usePreferences';
 import styles from './Layout.module.css';
+import { useStoryReveal } from '../../features/story/useStoryReveal';
 
 export function AppLayout() {
   const location = useLocation();
   const reduceMotion = usePreferences((state) => state.reduceMotion);
   const firstRender = useRef(true);
+  useStoryReveal(location.pathname, reduceMotion);
   useEffect(() => {
     window.scrollTo?.({ top: 0, behavior: 'instant' });
     if (firstRender.current) firstRender.current = false;

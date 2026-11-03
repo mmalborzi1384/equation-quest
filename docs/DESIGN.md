@@ -28,3 +28,7 @@ Use an image captured from the *actual* game world as an art-directed background
 ## Future Phase 9 scroll narrative (D29; not implemented)
 
 Below-the-fold sections/panels should reveal as they enter the viewport, with selected short Persian headings/lines given a clearly noticeable, tasteful typing-style appearance. Current Home only shifts chapter headings on scroll; it does not implement the requested full sequence. Preserve visible semantic text, RTL graphemes/ZWNJ, LTR maths, keyboard focus, reduced-motion/no-JS fallbacks and fast mobile scrolling. Use anti-slop skills to decide *where* the effect adds meaning rather than typing every paragraph. See [Phase 9 plan](PHASE_09_DESIGN_AND_OPTIMIZATION_PLAN.md).
+
+## Phase 9 application (D32)
+
+The previously planned authentic game-scene background and selective liquid-glass **actions**, plus lower-section/short RTL heading reveals, are now implemented. The WebGL canvas itself provided the optimized WebP image; the old symbolic CSS scene was removed from Home. See the [Phase 9 report](PHASE_09_COMPLETION_REPORT.md) for reasons, measured contrast, fallback and limits. Older "future" sections above record prior planning state, not the current implementation.

@@ -198,7 +198,7 @@ export default function Game() {
         aria-label="کارگاه کاوش"
         data-quality={quality}
       >
-        <header className={styles.heading}>
+        <header data-story className={styles.heading}>
           <div>
             <span>کشف / ۰۱</span>
             <h2>جزیرهٔ تعادل</h2>
@@ -389,7 +389,7 @@ export default function Game() {
           </aside>
         </div>
       </section>
-      <div id="mechanics-lab">
+      <div data-story id="mechanics-lab">
         <MechanicsLab />
       </div>
     </>

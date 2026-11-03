@@ -73,3 +73,128 @@ a:hover {
   }
 }
 /* Text links retain comfortable touch targets without turning paragraphs into buttons. */
+
+/* A shallow optical edge marks actions, while reading surfaces stay opaque. */
+:where(
+  button:not([class*='dot']):not([class*='indicator']),
+  [class*='_actions_'] a,
+  [class*='heroActions'] a,
+  [class*='cardBottom'] a,
+  [class*='pauseOverlay'] a,
+  [class*='journeyList'] a,
+  [class*='_end_'] a,
+  [class*='_next_'] a,
+  a[class*='gameLink']
+) {
+  box-shadow:
+    inset 0 1px 0 #ffffff8a,
+    inset 0 -2px 5px #0b233135,
+    0 4px 11px #0b233120;
+  transition:
+    box-shadow 180ms ease,
+    filter 180ms ease,
+    background-color 180ms ease;
+}
+@supports ((backdrop-filter: blur(6px)) or (-webkit-backdrop-filter: blur(6px))) {
+  @media (min-width: 601px) and (prefers-reduced-motion: no-preference) {
+    [data-motion='system']
+      :where(
+        button:not([class*='dot']):not([class*='indicator']),
+        [class*='_actions_'] a,
+        [class*='heroActions'] a,
+        [class*='cardBottom'] a,
+        [class*='pauseOverlay'] a,
+        [class*='journeyList'] a,
+        [class*='_end_'] a,
+        [class*='_next_'] a,
+        a[class*='gameLink']
+      ) {
+      -webkit-backdrop-filter: blur(6px) saturate(1.12);
+      backdrop-filter: blur(6px) saturate(1.12);
+    }
+  }
+}
+:where(
+  button:not([class*='dot']):not([class*='indicator']),
+  [class*='_actions_'] a,
+  [class*='heroActions'] a,
+  [class*='cardBottom'] a,
+  [class*='pauseOverlay'] a,
+  [class*='journeyList'] a,
+  [class*='_end_'] a,
+  [class*='_next_'] a,
+  a[class*='gameLink']
+):hover {
+  box-shadow:
+    inset 0 1px 0 #ffffffad,
+    inset 0 -2px 5px #0b23314d,
+    0 7px 16px #0b233133;
+}
+:where(
+  button:not([class*='dot']):not([class*='indicator']),
+  [class*='_actions_'] a,
+  [class*='heroActions'] a,
+  [class*='cardBottom'] a,
+  [class*='pauseOverlay'] a,
+  [class*='journeyList'] a,
+  [class*='_end_'] a,
+  [class*='_next_'] a,
+  a[class*='gameLink']
+):active {
+  filter: brightness(0.9);
+  box-shadow: inset 0 2px 5px #0b23314d;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+  box-shadow: none;
+}
+@media (forced-colors: active) {
+  button,
+  a {
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+/* No pre-hidden state: without JS, observer, or motion permission the page is complete. */
+@keyframes story-enter {
+  from {
+    opacity: 0.68;
+    translate: 0 20px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes story-type {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+[data-motion='system'] [data-story-entered='true'] {
+  animation: story-enter 570ms ease-out both;
+}
+[data-motion='system'] [data-story-type='true'] {
+  animation: story-type 1.15s steps(var(--story-steps, 18), end) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-story-entered],
+  [data-story-type] {
+    animation: none !important;
+    clip-path: none !important;
+    translate: none !important;
+    opacity: 1 !important;
+  }
+}
+[data-motion='reduce'] [data-story-entered],
+[data-motion='reduce'] [data-story-type] {
+  animation: none !important;
+  clip-path: none !important;
+  translate: none !important;
+  opacity: 1 !important;
+}

@@ -17,6 +17,7 @@ export default function Learning() {
       <section className={styles.list} aria-label="موضوع‌های یادگیری">
         {topics.map((topic, i) => (
           <Link
+            data-story
             key={topic.id}
             to={topicPath(topic.id)}
             className={`${styles.item} ${topic.id === 'fractions' ? styles.fraction : ''}`}

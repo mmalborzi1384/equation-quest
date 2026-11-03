@@ -13,3 +13,7 @@ Budget an authentic game-scene background by measured image bytes, viewport-spec
 ## Future Phase 9 scroll-motion budget (D29; planned)
 
 Measure the combined paint/CPU cost of scroll-entry panels, paced Persian text reveals, game-derived background and liquid-glass controls on mobile. Prefer one-time viewport triggers and compositor-friendly transforms/opacity, with no layout-shifting per-character writes; do not multiply scroll listeners across routes. Full semantic text and focus targets must remain available when motion is reduced, JavaScript/observer support fails, or the user scrolls quickly. No timings/FPS for this future effect have been measured.
+
+## Phase 9 measured local sample (D32)
+
+The game-canvas screenshot is encoded as 32,900-byte desktop and 17,570-byte mobile WebP. `npm run check:phase9` enforces 45/25 kB image and 260,000-byte gzip lazy scene budgets; scene remains 242,737 gzip bytes, with a Vite large-chunk warning. Mobile <=600px and reduced-motion use non-blurred solid action surfaces. A 390px headless Chromium ×4 CPU-throttled Home scroll (135 rAF intervals) measured 16.6ms median, 18.4ms p95 and 36.9ms max; not real-device FPS or a before/after improvement claim. Full details and caveats: [report](PHASE_09_COMPLETION_REPORT.md).

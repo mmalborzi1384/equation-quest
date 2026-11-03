@@ -102,7 +102,7 @@ export function MechanicsLab() {
         : [];
   return (
     <section className={styles.lab} data-puzzle-panel aria-label="کارگاه سازوکار معادله">
-      <header className={styles.heading}>
+      <header data-story className={styles.heading}>
         <div>
           <span>آزمایش سازوکار / نه مرحلهٔ بازی</span>
           <h2>برابری را به حرکت درآور</h2>

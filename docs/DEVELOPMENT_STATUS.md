@@ -1,12 +1,12 @@
 # Development status — 2026-11-03
 
-**Authorization:** Phases 1–7 accepted and merged. D30 explicitly authorized Phase 8, implemented, locally verified and accepted by the owner (D31) on open PR #8; PR merge has not been requested. Phase 9 and deployment remain unauthorized. Earlier planning-only D28/D29 notes below are historical.
+**Authorization:** Phases 1–8 accepted and merged; PR #8 is confirmed merged. D32 explicitly authorized Phase 9, now implemented and locally verified on the current branch, pending owner review. Phase 10 deployment remains unauthorized. Earlier planning-only notes below are historical.
 
 | Workstream | State | Evidence / next gate |
 |---|---|---|
 | 00 Environment | Completed for this sandbox | `bash scripts/setup.sh` passed before app work; pinned Node/npm, exact lockfile and toolchain checked. |
 | 00 Spec Kit / Graphify / anti-slop / Expo research | Completed | Spec Kit CLI (no Arena integration), local Graphify, manually used anti-slop skills; Expo is a visual reference only. |
-| 00 Knowledge graph | Updated for Phase 8 | `graphify extract . --code-only`, `graphify cluster-only . --no-label --no-viz`, `graphify update .`: 1260 nodes, 2086 edges, 140 communities; existing incremental filter-change warning remains. |
+| 00 Knowledge graph | Updated for Phase 9 | `graphify extract . --code-only`, `graphify cluster-only . --no-label --no-viz`, `graphify update .`: 1273 nodes, 2100 edges, 139 communities; existing incremental filter-change warning remains. |
 | 01 Product specification | Completed (owner accepted 2026-11-03) | A1–A5 and D12–D16, 13 feature sets and Persian completion report accepted. Pre-release grade-7/Persian review remains required. |
 | 02 Core Website Structure | Merged / preserved | Vite/React/TS shell; HashRouter and base; RTL shared responsive navigation/back; route-level lazy modules, 404/error/empty/loading fallbacks; Home section structure and interactive web carousel; Learning/World/Game/Level/Progress route previews. PR #2 merged; shell preserved. |
 | 03 Home narrative / carousel / web glass | Merged and accepted | GSAP ScrollTrigger reveals/parallax only for decorative storytelling; DOM/CSS/SVG lens, pointer/keyboard/focus navigation, reduced-motion and no-WebGL path. 31 Vitest + 5 Chromium E2E; see Phase 3 report. No game 3D claim. |
@@ -15,7 +15,7 @@
 | 06 Game mechanics | Merged and accepted | Three ordered exact-rational workshop trials on `/game` with hints, original-equation verification and in-memory one-time points; **not** eight authored stages or durable progress. |
 | 07 Eight playable levels | Merged and accepted | Eight playable concept gates and exact-puzzle sequences, ordered unlocks and one-time in-memory rewards; 06–08 require fractions. [Report](PHASE_07_COMPLETION_REPORT.md). |
 | 08 Real progression | Accepted (D31); PR #8 open/unmerged | Four versioned validated local stores, truthful `/progress`, contextual reset and confirmed scoped delete-all; **90 Vitest / 29 Chromium E2E PASS**. [Report](PHASE_08_IMPLEMENTATION_REPORT.md). |
-| 09 QA/optimization | Not authorized | Phase 2 tests below do not replace future cross-browser, accessibility and performance audits. |
+| 09 QA/optimization | Implemented locally, awaiting owner review | Authentic captured game image, restrained action-only liquid glass and scroll/RTL heading reveals; **90 Vitest / 35 Chromium E2E PASS**, measured image/contrast/mobile sample and scoped anti-slop gate. [Report](PHASE_09_COMPLETION_REPORT.md). |
 | 10 Deployment | Not authorized | Build is local only; GitHub Pages is not deployed or activated. |
 
 ## Phase 2 verification
@@ -82,3 +82,7 @@ Owner approved and merged PR #7 at `dccd87c`, **explicitly prohibited starting P
 D30 superseded the earlier D28/D29 implementation hold, not the deletion criteria. Four app-owned storage categories now have confirmed contextual resets and an app-scoped global deletion; validated version 1 stores derive XP from verified ordered outcomes and persist canonical rational strings. Empty and saved `/progress` states, mobile/keyboard confirmation and reload/deletion behavior are documented in [the Phase 8 report](PHASE_08_IMPLEMENTATION_REPORT.md). `verify-environment.sh --full` PASS (90 Vitest, lint, format, typecheck, build); 29/29 headless Chromium E2E PASS using a temporary npm-packaged browser outside the repo. No Phase 9 imagery/glass/scroll/typing, PR merge or deployment. Hardware/screen reader, alternate browser, independent WCAG/curriculum review and FPS measurements remain open.
 
 **D31 acceptance (2026-11-03):** The owner approved Phase 8. PR #8 remains open/unmerged; the owner did not separately request a merge, Phase 9 or deployment.
+
+## Phase 9 implementation (D32, 2026-11-03)
+
+Owner authorized Phase 9 following confirmed Phase 8 PR #8 merge. The product now uses an optimized static capture of the real WebGL game scene, responsive image crops, action-surface glass/fallback and accessible scroll-led lower sections with short Persian heading reveals. Full local verification and scoped delivery gate: [Phase 9 report](PHASE_09_COMPLETION_REPORT.md). This is not a PR merge or Phase 10/deployment authorization.

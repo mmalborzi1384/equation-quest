@@ -1,6 +1,6 @@
 # Phase 9 visual and optimization acceptance plan (D28)
 
-**Status: proposed scope only.** Phase 8 must not start under the current owner instruction; this document does not authorize Phase 9 or implementation. Phase 9 remains the roadmap's integration, accessibility, mobile, quality and performance phase. Phase 10 alone owns CI/public deployment after its separate gates.
+**Status: Phase 9 authorized (D32), implemented and locally tested; owner review pending.** Earlier D28/D29 wording below describes the planning boundary at that time. Phase 10 still owns CI/public deployment after separate gates. See [Phase 9 completion report](PHASE_09_COMPLETION_REPORT.md) for measured outcomes and limitations.
 
 ## Direction specified by the owner
 

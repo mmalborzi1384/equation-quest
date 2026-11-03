@@ -83,60 +83,32 @@
   overflow: hidden;
   background: linear-gradient(160deg, #244259, #3f6973 62%, #325059);
 }
-.sceneSky {
+.heroScene picture,
+.heroScene img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.heroScene picture {
   position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  border: 1px solid #a8c1b284;
-  left: -170px;
-  top: -190px;
-  box-shadow:
-    0 0 0 85px #a8c1b211,
-    0 0 0 172px #a8c1b20d;
+  inset: 0;
 }
-.island {
+.heroScene img {
+  object-fit: cover;
+  object-position: center;
+}
+.heroScene::after {
+  content: '';
   position: absolute;
-  background: #678d7c;
-  width: 265px;
-  height: 150px;
-  border-radius: 48% 52% 45% 55%;
-  transform: rotate(-25deg) skew(-12deg);
-  box-shadow:
-    18px 24px 0 #1d3d43,
-    25px 37px 0 #102f3c;
-  border: 12px solid #91aa8f;
-}
-.island i {
-  position: absolute;
-  top: 20px;
-  left: 60px;
-  width: 65px;
-  height: 62px;
-  border: 5px solid #e9b968;
-  border-bottom: 0;
-  transform: rotate(25deg) skew(12deg);
-}
-.islandOne {
-  top: 26%;
-  right: 12%;
-}
-.islandTwo {
-  top: 58%;
-  right: 45%;
-  transform: rotate(-25deg) skew(-12deg) scale(0.65);
-  background: #68888c;
-}
-.islandThree {
-  top: 74%;
-  right: -5%;
-  transform: rotate(-25deg) skew(-12deg) scale(0.54);
-  background: #9b869f;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, #0c223bd6);
+  pointer-events: none;
 }
 .sceneLabel {
   position: absolute;
   left: 8%;
   bottom: 11%;
+  z-index: 1;
   border-right: 2px solid var(--gold);
   padding-right: 15px;
   color: white;
@@ -259,7 +231,10 @@
   color: var(--ink-soft);
 }
 .worldPreview {
-  background: #36586d;
+  background:
+    linear-gradient(90deg, #10243df2, #10243dd9),
+    url('../../assets/game-scene-desktop.webp') center / cover no-repeat,
+    #10243d;
   color: white;
   padding: 95px clamp(24px, 9vw, 140px);
 }
@@ -381,21 +356,20 @@
 .home {
   overflow: clip;
 }
-.bridge {
-  position: absolute;
-  z-index: 1;
-  top: 56%;
-  right: 30%;
-  width: 180px;
-  border-top: 3px dashed #e9b968;
-  transform: rotate(-22deg);
-  transform-origin: right center;
-  opacity: 0.85;
+
+@media (max-width: 600px) {
+  .worldPreview {
+    background-image:
+      linear-gradient(#10243de8, #10243de8), url('../../assets/game-scene-mobile.webp');
+    background-position: center;
+    background-size: cover;
+  }
 }
-@media (max-width: 900px) {
-  .bridge {
-    top: 51%;
-    right: 35%;
-    width: 150px;
+.heroActions .secondary {
+  background: #e8f3f229;
+}
+@media (max-width: 600px) {
+  .heroScene {
+    min-height: 300px;
   }
 }
