@@ -52,3 +52,5 @@ Phase 5 implementation commit `8bfa790` pushed; [PR #5](https://github.com/mmalb
 
 ## Phase 6 handoff (2026-11-03)
 The owner explicitly accepted and merged Phase 5 PR #5 (`4b3a7d1`) and separately authorized Phase 6. This branch (`arena/fcac4f6f-equation-quest`) adds a three-trial workshop under `/game`: pure exact-rational puzzle transitions, mistake-coded gradual hints, original-equation verification, ordered trial gates and one-time in-memory points. This is **not** the eight playable levels, island unlocks or persisted progress. 71 Vitest tests, 16 headless Chromium E2E (real WebGL and fallback), full lint/format/typecheck/build passed; [Phase 6 report](docs/PHASE_06_COMPLETION_REPORT.md). No deployment or external curriculum validation. Stop for owner review; no PR merge or Phase 7 without separate authorization. Earlier handoff paragraphs above are historical as of their dates.
+
+Phase 6 review handoff: implementation commit `bb29136` pushed; [PR #6](https://github.com/mmalborzi1384/equation-quest/pull/6) is **open and unmerged**. Await the owner's decision.
