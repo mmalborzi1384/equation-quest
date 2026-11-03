@@ -11,3 +11,5 @@
 
 - [x] Phase 1 planning scope cross-checked against A1–A5 and the signed/exact-fraction requirements (documentation review, not feature testing).
 - [ ] Verify scope-specific tasks with actual evidence only after this feature is authorized and implemented.
+
+Phase 5 partial gate: four island map links and workshop entry preserved; R3F exploration via `/game` verified at four desktop/mobile widths. Locked/unlocked/progress states are still unauthorized Phase 7–8 scope, so this checklist remains open.

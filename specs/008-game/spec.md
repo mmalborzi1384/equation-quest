@@ -16,3 +16,6 @@ keyboard arrows/WASD E Esc, mobile joystick/tap/pause, fallback and presets. Do 
 
 ## Phase 1 approved scope (A1–A5, including strengthened A2)
 HUD/puzzle panel must display signed and fractional expressions legibly in isolated LTR maths, while keyboard/touch controllers and non-WebGL alternative keep all required puzzles reachable. This is a planning contract, not implemented behavior.
+
+## Phase 5 authorized subset
+The `/game` route offers bounded isometric exploration, four inspectable landmarks, desktop and mobile inputs, pause, quality and a usable no-WebGL DOM mode. It does **not** claim math puzzles, rewards, level unlocks or save progress; `/game/level/:levelId` stays an informational preview. See D22–D23 and `docs/ROADMAP.md` Phase 05.

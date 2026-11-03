@@ -9,7 +9,19 @@ export default defineConfig({
     baseURL: 'http://127.0.0.1:5173/equation-quest/',
     browserName: 'chromium',
     launchOptions: process.env.EQ_CHROMIUM_PATH
-      ? { executablePath: process.env.EQ_CHROMIUM_PATH }
+      ? {
+          executablePath: process.env.EQ_CHROMIUM_PATH,
+          args:
+            process.env.EQ_WEBGL === '1'
+              ? [
+                  '--enable-webgl',
+                  '--use-gl=angle',
+                  '--use-angle=swiftshader',
+                  '--enable-unsafe-swiftshader',
+                  '--ignore-gpu-blocklist',
+                ]
+              : [],
+        }
       : undefined,
   },
   webServer: {

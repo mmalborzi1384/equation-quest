@@ -1,6 +1,6 @@
 # Tasks — 3D exploration and controls
 
-All tasks are **Planned**, not started. Execute only after owner go-ahead.
+The Phase 5 **exploration subset** below is implemented under D22. The full gameplay/puzzle panel and level-manager tasks above remain planned for Phase 6–8; do not claim them done.
 
 1. [ ] Review feature spec with owner decisions and analyze neighboring module contracts.
 2. [ ] Define typed contract and data/content for this feature: R3F scene, orthographic follow camera, game-engine input state, HUD and mobile controls.
@@ -13,3 +13,9 @@ All tasks are **Planned**, not started. Execute only after owner go-ahead.
 ## Phase-specific small tasks (Planned; only execute when authorized)
 - [ ] Specify KaTeX/DOM fraction panel independent of 3D controls; test mobile, keyboard and fallback interaction on a fractional stage.
 - [ ] Record independent tests and anti-slop gate evidence before feature completion.
+
+## Phase 5 scoped work (owner authorized; Phase 6+ still planned)
+- [x] Pure movement/proximity tests and shared keyboard/touch intent mapping (4 unit tests, browser keyboard/CDP touch).
+- [x] Real procedural 3D scene, orthographic following camera, four inspectable landmarks; stage links remain labelled previews.
+- [x] DOM/no-WebGL and context-loss fallback, labelled actions, pause/resume, keyboard/mobile controls and quality presets.
+- [x] Browser desktop/mobile/low-quality/no-WebGL/reduced-motion checks; full lint/typecheck/61 tests/build, 15 Chromium browser tests, scoped anti-slop gate, graph and report.

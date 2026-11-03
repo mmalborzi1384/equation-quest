@@ -36,4 +36,4 @@ Report: phase name/objective; completed tasks; exact created/modified paths; tes
 
 ## Current boundary
 
-Phase 1 accepted; Phase 2 PR #2 merged (`8e4ec20`), original-roadmap Phase 3 Home PR #3 merged (`804b02a`) and explicitly accepted. Owner explicitly authorized **Phase 4: interactive lessons (eight core + independent fractions) and minimum pure exact-rational checker** on 2026-11-03 (D20). No Phase 5+ authorization, no Phase 4 merge or public deployment approval. Stop after Phase 4 and await separate decision.
+Phases 1–4 accepted. Phase 4 PR #4 was explicitly merged (`ea1c52c`). The owner explicitly authorized **Phase 5: R3F scene/camera/controls/interaction** and reiterated that mobile and desktop must both be covered (D22). Phase 6+ puzzle/gameplay/rewards and deployment are **not authorized**. Stop after Phase 5 and await a new decision; no PR merge without separate approval.
