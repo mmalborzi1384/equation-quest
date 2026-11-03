@@ -1,6 +1,6 @@
 # Home narrative and glass carousel
 
-**Status:** Draft / awaiting owner approval. **Branch:** arena/5b2fda5d-equation-quest.
+**Status:** Draft / awaiting owner approval. Portable specification; implementation branch is assigned per Arena session.
 
 ## User story
 As a seventh-grade learner, I can use this feature to understand and practice equations without creating an account.

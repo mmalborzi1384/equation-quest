@@ -12,11 +12,9 @@
 | D08 | Package versions: latest vs ecosystem compatibility | Pin exact compatible React 19/Vite 8/TS 5.9 versions (TS 7 outside typescript-eslint peer range). | Audit findings unresolved; assess security before release. |
 | D10 | Sandbox consistency: shared machine vs repo contract | Pin Node 22.22.3/npm 10.9.8 and exact dependencies in `.nvmrc`, `package.json`, lockfile; bootstrap via user-space pinned uv/Spec Kit/Graphify and `npm ci`; verify, never silently upgrade. No Docker (absent/unverified). | New sandbox requires correct runtime and network; no claim of identical physical image or installed browsers. |
 | D09 | Asset pipeline: install Blender here vs external production | Blender absent; do not silently replace 3D with mockup. Plan procedural Three first, GLB pipeline when assets available. | Asset style/artist and licensing need owner decision. |
+| D11 | Generic phase outputs vs phase-specific objectives | Owner clarified: Phase 1 is specification/design; no executable app required. Interpret three outputs relative to phase: reviewed/validated spec package, current docs, validation/approval report for Phase 1; runnable app increments in implementation phases. Protocol authorizes none. | Phase 1 remains pending A1–A4 owner approvals; no app tests claimed or Phase 2 started. |
 
-| D11 | Generic phase instructions vs permission to begin | `PHASE_EXECUTION_PROTOCOL.md` governs every phase, but authorizes none. Three mandatory outputs: runnable code, current docs, real test report; stop after each phase. | Owner says only “phase 1” done; repo evidence lacks app code/tests. Mark discrepancy, do not silently call phase fully verified or start Phase 02. |
+## Phase 1 decisions awaiting owner (not yet resolved)
+See [concise options, recommendations and consequences](PHASE_01_DECISION_REPORT.md): A1 eight topic routes vs directly addressable modules; A2 numeric/curriculum progression and teacher review timing; A3 procedural 3D vs supplied licensed assets; A4 approval of the Phase 1 planning bundle/Constitution after chosen revisions. A5 actual Pages publication timing may be deferred to Phase 10; defining HashRouter/base strategy needs no further permission. No Phase 2 authorization has been given.
 
-## Owner decisions requested
-1. Confirm teaching/curriculum reference and whether a teacher can review Persian content.
-2. Confirm art-production approach: procedural low-poly first or owner-supplied GLB assets; verify licenses/ownership.
-3. Confirm Pages deployment timing and whether repository Pages Actions settings can be enabled when approved.
-4. Approve starting foundation phase and proposed CSS Modules/token choice; no implementation until explicit approval.
+Safe readings of existing requirements: D01–D05, D07–D08 and D10 stand; D06 CSS Modules is an option expressly allowed in the brief, not a forced owner decision. Engine-before-interactive-lessons dependency is flagged in the review; do not shift phase scope without approval.

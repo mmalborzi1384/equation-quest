@@ -1,0 +1,51 @@
+# Phase 1 — owner decision brief (2026-11-03)
+
+**Status: recommendations for approval, not approvals.** This summarizes every unresolved question in `docs/DECISIONS.md` plus contradictions found while reviewing Phase 1 specifications. The original requirements remain in force until the owner chooses otherwise. Respond with choices **A1–A4** and optionally A5; a single approval of the recommended package is sufficient *only if it explicitly covers these choices*. Approving these specifications is **not** authorization to start Phase 2.
+
+## Decisions genuinely requiring owner approval
+
+### A1. Eight learning topics: what counts as independent instruction?
+- **Exact question:** Must the eight overview topics each have their own deep-linkable lesson route/component, or may several be separate interactive modules within the three explicitly named lesson pages (`/learning/balance`, `/learning/unknown`, `/learning/inverse-operations`)?
+- **Why:** The master specification says each topic needs an independent entry button and each independent section a route/component/logic; `docs/WIREFRAMES.md` currently sends some topics to anchors inside three lessons. A decorative anchor would not satisfy the requirement.
+- **Recommend:** Give all eight topics distinct deep-linkable routes/modules, retaining the three mandatory paths and adding five topic paths. Define exercise and back/related navigation per topic. This preserves the multi-page requirement; exact path names can be finalized before router implementation.
+- **Alternative:** Retain three lesson routes with eight distinct, directly addressable submodules (`?topic=`) and independent exercises. Less routing/code, but weaker interpretation of “independent Route.”
+- **Consequences:** Recommended choice adds five routes and topic-specific tests/copy; educationally it prevents equation parts/verification from being reduced to introductory text. Alternative is lighter but risks failing acceptance and hiding topics behind shared pages.
+
+### A2. Grade-7 numeric progression and content review
+- **Exact question:** Shall v1 begin with small integer examples and progress to signed coefficients and exact rational answers as skills advance; and is an external teacher review required before *Phase 1 sign-off* or before *public release*?
+- **Why:** The brief requires `ax+b=c` for `a≠0`, inverse operations, correctness and grade-7 alignment. `docs/MATHEMATICAL_ENGINE.md` leaves rational-vs-floating comparison unresolved; no curriculum source or qualified reviewer is named.
+- **Recommend:** Specify integer-first authored lessons, then negative coefficients and simple rational solutions in later practice; represent/check exact rational values when necessary (not a guessed float threshold). Use the user-provided grade-7 scope as Phase 1 baseline, and require pedagogical/Persian copy review before publication, without falsely claiming a teacher has approved it today.
+- **Alternatives:** (i) all-integer v1 (simpler but may omit valid `ax+b=c` examples); (ii) unrestricted fractions from the start (broader but higher cognitive load); (iii) teacher sign-off required before Phase 1 (higher assurance but blocks sign-off until reviewer available).
+- **Consequences:** Defines generator and grading tests, hint examples and pacing; external review timing affects schedule, not mathematical correctness. No unsupported curriculum certification will be claimed.
+
+### A3. Asset-production responsibility and visual fidelity
+- **Exact question:** May the initial stylized 3D world and lessons use procedural Three.js geometry, with optimized GLB/GLTF assets added when available, or will the owner provide licensed 3D models before implementation?
+- **Why:** The game must genuinely be 3D, while Blender is unavailable in this sandbox and no licensed asset source is committed. GLB optimization in the spec cannot be claimed before assets exist.
+- **Recommend:** Build real interactive procedural stylized 3D geometry first; include a typed loader/optimization path for future locally licensed GLBs. The final art direction and mobile performance gates still apply; this does **not** remove the 3D game or asset-optimization requirement where GLBs are used.
+- **Alternative:** Owner supplies licensed GLBs/art direction before scene development; may improve bespoke art but delays development and raises provenance/versioning tasks.
+- **Consequences:** Affects scope, asset license evidence, visual polish and performance testing. “Procedural Three geometry” is not the same as the PRD's excluded “procedural GLB asset pipeline.”
+
+### A4. Spec bundle and Constitution ratification
+- **Exact question:** After reviewing this brief and the remaining follow-ups in `docs/PHASE_01_SPEC_REVIEW.md`, do you approve the Phase 1 PRD, Constitution, architecture, educational/game/design direction, route strategy and 12 feature specifications **as planning baselines**, subject to implementing the chosen A1–A3 resolutions before marking Phase 1 complete?
+- **Why:** The Constitution is marked `Ratified: pending owner approval`; specs say `Draft`. A prior PR merge or “phase 1 done” statement did not resolve the specific options above.
+- **Recommend:** Approve the baseline with explicit A1–A3 choices, then update the affected specs/checklist/ratification and run validation before marking Phase 1 completed. Approval of plans is not a claim that features are implemented.
+- **Alternative:** Request targeted revisions first (please identify documents/topics). Consequence: Phase 1 remains in progress until resubmitted.
+
+### A5. Publication timing (approval needed later, not to finish Phase 1)
+- **Exact question:** When should repository Pages Actions/settings be enabled and the site published?
+- **Recommend:** Define the deployment *strategy* now (`HashRouter`, Vite base `/equation-quest/`, GitHub Actions) and defer **actual publication permission** to Phase 10. The owner explicitly controls deployment timing.
+- **Alternative:** Enable Pages early for incremental previews after a runnable build exists; useful for testing but exposes incomplete product and needs Pages permission. Neither choice starts deployment now.
+
+## Safe resolutions already supported by the master specification (no new owner approval required)
+
+| ID | Question | Safe reading / impact |
+|---|---|---|
+| S1 | CSS Modules or Tailwind? | CSS Modules + tokens, explicitly allowed; isolate page styles. Not a new architecture direction (D06). |
+| S2 | HashRouter or server rewrites? | HashRouter + Vite `/equation-quest/`, explicitly requested for Pages (D01). Do not configure Pages yet. |
+| S3 | Spec Kit/Graphify integrations? | Keep local CLI/shared workflow; do not invent Arena integrations (D02–D03). |
+| S4 | Anti-slop and Expo reference? | Keep vendored manual gate; adapt behavior to React Web, no RN/Expo dependency (D04–D05). |
+| S5 | Persisted progress and tooling? | Static LocalStorage/Zustand with versioned schema, no backend; pinned runtime/deps already documented (D07–D08, D10). |
+| S6 | Phase output interpretation? | Phase 1 is a spec/design phase: validated docs, checklist and owner approval; no application code or app-build test required. Implementation phases require runnable app increment (D11, protocol updated). |
+
+## Technical follow-up that must be tracked before Phase 2 planning
+The roadmap puts interactive lessons in Phase 04 but the pure equation engine in Phase 06. A lesson must not reimplement math logic in UI. **Recommendation:** document shared equation/puzzle contracts in Phase 1 and introduce the minimal pure engine when the first interactive lesson needs it, then extend it in Phase 06; obtain explicit owner agreement if this changes phase boundaries. No early engine code is being written here.

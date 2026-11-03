@@ -18,13 +18,15 @@
 - Test what actually exists. Run relevant automated tests, lint/typecheck/build, browser/mobile/keyboard checks when applicable, and the Anti-slop delivery gate. Fix problems introduced in the phase before declaring it complete.
 - Do not claim an unimplemented screen, skipped test, unrun build or undeployed site is verified.
 
-## Three mandatory outputs for **each** phase
+## Three phase-appropriate outputs for **each** phase
 
-1. **Executable code:** runnable behavior or an executable, verifiable project increment appropriate to that phase; provide the exact command and observed result. Documentation, package installation or an untested mockup alone does **not** satisfy this output.
+The owner clarified that deliverables are interpreted **against that phase's original objectives**. Do not force application code into a specification phase merely to satisfy a generic label.
+
+1. **Executable/verifiable increment:** in implementation phases, running application behavior with its exact command and result. In Phase 0, runnable bootstrap/verification tooling; in Phase 1, a reviewable, internally checked specification package and validation checklist — **no application code is required**. Do not describe documentation as executable application code.
 2. **Up-to-date documentation:** update `PROJECT_MEMORY.md`, `docs/DEVELOPMENT_STATUS.md`, relevant feature/technical docs and `docs/DECISIONS.md` for consequential decisions. Record completed and remaining tasks, limitations and risks.
-3. **Test and verification report:** exact commands, actual PASS/FAIL/SKIP results, build/start/deployment checks where relevant, and any remaining blockers. Keep the evidence in the repository and summarize it in the phase completion message.
+3. **Test and verification report:** exact commands, actual PASS/FAIL/SKIP results and phase-relevant evidence. For Phase 1 this includes cross-document consistency/coverage checks and owner approval; build/start/deployment are N/A until implementation. Keep evidence in the repository and summarize it in the completion message.
 
-A phase is not fully verified unless all three outputs are evidenced. If the explicitly authorized phase cannot reasonably provide runnable code, **ask the owner for a scope/acceptance clarification** rather than calling documentation alone a complete phase. Historical work is not retroactively called tested or runnable without evidence.
+A phase is not fully verified unless its **phase-specific** acceptance criteria and appropriate outputs are evidenced. Historical work is never retroactively called tested or runnable without evidence.
 
 ## Phase completion report and stop condition
 
@@ -34,4 +36,4 @@ Report: phase name/objective; completed tasks; exact created/modified paths; tes
 
 ## Current boundary
 
-The owner has stated that only “phase 1” has been done and that no other phase may start yet. Existing repository records describe Phase 01 product specification as in progress and confirm that no app source/build exists. Treat this as a **status/evidence discrepancy**, not permission to run Phase 02 or a claim that the three-output gate has already passed. Reconcile the phase numbering and evidence with the owner when the next phase is explicitly authorized.
+The owner has stated only Phase 1 has been done and has now clarified that Phase 1 is specification/design, not an executable-app phase. Phase 1 remains **pending formal acceptance** until the owner approves the specifications and open decisions documented in `docs/PHASE_01_DECISION_REPORT.md` and the checklist in `docs/PHASE_01_ACCEPTANCE_CHECKLIST.md` is closed. No Phase 2 authorization has been given.

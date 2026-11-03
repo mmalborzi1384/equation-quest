@@ -6,7 +6,7 @@ At session start read `PHASE_EXECUTION_PROTOCOL.md` and `PROJECT_MEMORY.md`, `do
 
 ## Phase authorization and deliverables (permanent)
 - Follow `PHASE_EXECUTION_PROTOCOL.md` for every phase. Execute only the phase explicitly named and authorized by the owner; never start the next phase automatically. The protocol itself does not authorize work.
-- Every phase must produce **executable code, up-to-date documentation, and a test/verification report** with actual evidence. If one output is impossible or missing, do not mark the phase fully verified; ask the owner.
+- Apply the three-output rule **relative to each phase's objectives**: Phase 1 requires a validated specification package, up-to-date documentation and a specification validation/approval report, NOT application code. Implementation phases require executable application increments, updated docs and real test evidence. See the protocol; never label skipped app tests as passing.
 - At phase end update memory/status/decisions, commit on the Arena-assigned branch, report results and STOP until the next explicit authorization. Never merge a PR without the owner's explicit approval.
 
 ## Rules
