@@ -19,3 +19,5 @@ The app now has `npm run test:run` (Vitest/jsdom + React Testing Library). 28 te
 ## Future acceptance additions (D28; no tests run yet)
 
 Phase 8 must test a visible reset/delete control for **every** app-owned persisted category (including the existing reduced-motion setting), a confirmed global delete-all, cancellation, immediate in-memory and reload behavior, repeated actions, migration/corruption and protection of unrelated storage keys. Phase 9 must test a genuine game-derived background with mobile/desktop crops, contrast and fallback, liquid-glass control states/keyboard/touch/accessibility over that image, measured paint/load cost, and explicit use of anti-slop skills during optimization plus their final Delivery Gate. These are pending test requirements, not results.
+
+D29 Phase 9 addendum (not executed): verify lower-page section entry and visibly paced typing-style reveals in browser scroll journeys, including Persian graphemes/ZWNJ, unchanged LTR math, accessibility/full-text fallbacks, one-time triggers, fast scrolling, keyboard focus, OS/user reduced motion, no-JS/observer-unavailable behavior and mobile paint/layout stability.

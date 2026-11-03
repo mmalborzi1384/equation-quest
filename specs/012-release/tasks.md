@@ -19,3 +19,8 @@ All tasks are **Planned**, not started. Execute only after owner go-ahead.
 - [ ] Source/capture and optimize a compelling background from the actual game environment; verify mobile/desktop cropping, text contrast, reduced-motion, static/no-WebGL fallback and measured loading cost.
 - [ ] Design/test restrained liquid-glass states for on-screen buttons and button-like CTAs with the owner's gently rounded corners; verify focus, touch, contrast and unsupported/slow-device fallback, plus measured paint/bundle cost.
 - [ ] Evaluate `reactdrops.dev` (or a comparable approach) for license, accessibility and dependency size **before** any adoption; no package/library selection has been made.
+
+## Phase 9 scroll-led reveal tasks (D29; pending, not authorized)
+- [ ] Audit Home and lower sections of Learning, World, Game and Progress; design purposeful one-time viewport reveals and short Persian typing-style transitions, without animating entire lessons or KaTeX.
+- [ ] Keep semantic text readable before animation and on reduced motion, disabled JS or unavailable observers; verify RTL graphemes/ZWNJ, keyboard/screen reader, fast scrolling and no content gated by motion.
+- [ ] Test actual scroll journeys and text transitions on mobile/desktop alongside background/glass effects; measure paint/layout/performance and run the anti-slop Delivery Gate.

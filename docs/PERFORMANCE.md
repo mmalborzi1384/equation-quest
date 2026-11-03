@@ -9,3 +9,7 @@ The lazy R3F scene uses `Canvas` with DPR caps low 1, balanced 1.5, high 2; shad
 ## Future Phase 9 optimization additions (D28; planned, not measured)
 
 Budget an authentic game-scene background by measured image bytes, viewport-specific crops, responsive delivery and lazy/eager priority appropriate to its placement. Test compositing/paint impact of liquid-glass buttons over the image at mobile widths, reduced motion and low/no-WebGL; keep a cheap solid control fallback for unsupported or slow environments. Use the vendored anti-slop skills throughout profiling and design refinement, then record the Delivery Gate and actual performance numbers. `reactdrops.dev` is a possible design reference only; compare bundle/accessibility/license before adopting any code. No new image, visual effect, library or measurement has been made in this planning update.
+
+## Future Phase 9 scroll-motion budget (D29; planned)
+
+Measure the combined paint/CPU cost of scroll-entry panels, paced Persian text reveals, game-derived background and liquid-glass controls on mobile. Prefer one-time viewport triggers and compositor-friendly transforms/opacity, with no layout-shifting per-character writes; do not multiply scroll listeners across routes. Full semantic text and focus targets must remain available when motion is reduced, JavaScript/observer support fails, or the user scrolls quickly. No timings/FPS for this future effect have been measured.
