@@ -4,12 +4,12 @@
 - cluster-only mode — file stats not available
 
 ## Summary
-- 1032 nodes · 1178 edges · 135 communities (77 shown, 58 thin omitted)
+- 1044 nodes · 1200 edges · 134 communities (76 shown, 58 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.55)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `17667039`
+- Built from commit: `8e4ec202`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -19,7 +19,7 @@
 - common.sh
 - steps
 - contrast-check.py
-- contrast-mcp.py
+- Decision log (2026-11-03)
 - Accessibility Code Patterns
 - Tone & Voice
 - verify-environment.sh
@@ -42,7 +42,7 @@
 - Group 2: Purpose-Gate (technique allowed, purpose required)
 - package.json
 - Feature Specification: [FEATURE NAME]
-- AppLayout.tsx
+- react-router-dom
 - Decorative Elements
 - Layout & Components
 - Visual & Color
@@ -108,7 +108,7 @@
 - 001-foundation/clarifications.md
 - 002-home/checklist.md
 - 002-home/clarifications.md
-- 002-home/plan.md
+- Plan — Home narrative and glass carousel
 - 003-learning/checklist.md
 - 003-learning/clarifications.md
 - 003-learning/plan.md
@@ -143,10 +143,8 @@
 - 013-fractions/clarifications.md
 - 013-fractions/plan.md
 - 013-fractions/tasks.md
-- react-router-dom
+- @playwright/test
 - گزارش تکمیل پیاده‌سازی فاز ۲: ساختار اصلی وب‌سایت
-- DEVELOPMENT_STATUS.md
-- typescript-eslint
 - ROUTES.md
 - TESTING.md
 
@@ -177,15 +175,15 @@
 ## Import Cycles
 - None detected.
 
-## Communities (135 total, 58 thin omitted)
+## Communities (134 total, 58 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.11
-Nodes (19): devDependencies, eslint@9.39.2, @gltf-transform/cli@4.5.1, jsdom@30.1.3, @playwright/test@1.64.1, prettier@3.9.10, @types/react@19.3.0, @types/three@0.187.0 (+11 more)
+Nodes (17): devDependencies, eslint@9.39.2, jsdom@30.1.3, prettier@3.9.10, @types/react@19.3.0, @types/react-dom@19.3.0, typescript@5.9.3, typescript-eslint@8.72.1 (+9 more)
 
 ### Community 1 - "dependencies"
-Cohesion: 0.10
-Nodes (21): dependencies, @fontsource/vazirmatn@5.3.0, gsap@3.15.0, katex@0.19.1, lucide-react@1.67.0, prop-types@15.8.1, react@19.3.1, react-dom@19.3.1 (+13 more)
+Cohesion: 0.09
+Nodes (23): dependencies, @fontsource/vazirmatn@5.3.0, gsap@3.15.0, katex@0.19.1, lucide-react@1.67.0, prop-types@15.8.1, react@19.3.1, react-dom@19.3.1 (+15 more)
 
 ### Community 2 - "common.sh"
 Cohesion: 0.11
@@ -196,12 +194,12 @@ Cohesion: 0.06
 Nodes (30): args, inputs, integration, spec, default, prompt, type, any (+22 more)
 
 ### Community 4 - "contrast-check.py"
-Cohesion: 0.25
-Nodes (9): contrast_ratio(), linearize(), luminance(), main(), parse_hex(), parse_pairing(), parse_reference_rows(), reference_doc_path() (+1 more)
+Cohesion: 0.12
+Nodes (18): contrast_ratio(), linearize(), luminance(), main(), parse_hex(), parse_pairing(), parse_reference_rows(), reference_doc_path() (+10 more)
 
-### Community 5 - "contrast-mcp.py"
-Cohesion: 0.25
-Nodes (9): _channel(), check_contrast(), contrast_ratio(), _error(), main(), relative_luminance(), _reply(), _send() (+1 more)
+### Community 5 - "Decision log (2026-11-03)"
+Cohesion: 0.40
+Nodes (5): D19 — Restore the original Phase 3 scope (owner clarification, 2026-11-03), Decision log (2026-11-03), Owner-approved Phase 1 planning decisions — 2026-11-03 (not final Phase 1 acceptance), Phase 1 decisions awaiting owner (not yet resolved), Phase transition — owner authorization, 2026-11-03
 
 ### Community 6 - "Accessibility Code Patterns"
 Cohesion: 0.04
@@ -216,8 +214,8 @@ Cohesion: 0.70
 Nodes (4): check_version(), fail(), PATH, verify-environment.sh script
 
 ### Community 9 - "scripts"
-Cohesion: 0.22
-Nodes (9): scripts, build, check:deps, dev, format:check, lint, preview, test:run (+1 more)
+Cohesion: 0.20
+Nodes (10): scripts, build, check:deps, dev, format:check, lint, preview, test:e2e (+2 more)
 
 ### Community 10 - ".prettierrc.json"
 Cohesion: 0.50
@@ -232,8 +230,8 @@ Cohesion: 0.06
 Nodes (30): 100vh Sections, antislop-layoutmobile, Bottom Nav That Eats Content, Breakpoint Driven by Device List, Breakpoints, Columns That Don't Collapse, Desktop-Only Layout, Desktop-Sized Everything (+22 more)
 
 ### Community 14 - "PROJECT_MEMORY.md"
-Cohesion: 0.11
-Nodes (10): Decision log (2026-11-03), Owner-approved Phase 1 planning decisions — 2026-11-03 (not final Phase 1 acceptance), Phase 1 decisions awaiting owner (not yet resolved), Phase transition — owner authorization, 2026-11-03, Dependency map and proposed knowledge graph, GitHub Pages deployment proposal — not configured, Game design — Algebra Kingdom (Phase 1 planning baseline), Graphify local graph — preparation extraction (+2 more)
+Cohesion: 0.12
+Nodes (8): Dependency map and proposed knowledge graph, GitHub Pages deployment proposal — not configured, Development status — 2026-11-03, Phase 2 verification, Game design — Algebra Kingdom (Phase 1 planning baseline), Graphify local graph — preparation extraction, Performance plan (targets to measure, not achieved), Task-sized implementation roadmap (requires owner approval)
 
 ### Community 15 - "Tasks: [FEATURE NAME]"
 Cohesion: 0.07
@@ -265,7 +263,7 @@ Nodes (15): CLS: Cumulative Layout Shift, Common LCP issues, Core Web Vitals (LC
 
 ### Community 23 - "App.tsx"
 Cohesion: 0.18
-Nodes (12): react, App(), Game, Home, Learning, lessonPages, Level, NotFound (+4 more)
+Nodes (11): App(), Game, Home, Learning, lessonPages, Level, NotFound, Progress (+3 more)
 
 ### Community 24 - "Route wireframes & design specifications (planning only)"
 Cohesion: 0.14
@@ -277,15 +275,15 @@ Nodes (13): Group 2: Purpose-Gate (technique allowed, purpose required), R-01 �
 
 ### Community 26 - "package.json"
 Cohesion: 0.15
-Nodes (12): react-katex@3.1.0, @react-three/drei@10.7.9, description, @types/react-dom@19.3.0, name, packageManager, private, type (+4 more)
+Nodes (12): react-katex@3.1.0, description, @gltf-transform/cli@4.5.1, @types/three@0.187.0, name, packageManager, private, type (+4 more)
 
 ### Community 27 - "Feature Specification: [FEATURE NAME]"
 Cohesion: 0.15
 Nodes (12): Assumptions, Edge Cases, Feature Specification: [FEATURE NAME], Functional Requirements, Key Entities *(include if feature involves data)*, Measurable Outcomes, Requirements *(mandatory)*, Success Criteria *(mandatory)* (+4 more)
 
-### Community 28 - "AppLayout.tsx"
-Cohesion: 0.28
-Nodes (6): AppLayout(), SiteFooter(), links, SiteHeader(), Preferences, usePreferences
+### Community 28 - "react-router-dom"
+Cohesion: 0.16
+Nodes (13): react, react-router-dom, Card, cards, GlassCarousel(), AppLayout(), SiteFooter(), links (+5 more)
 
 ### Community 29 - "Decorative Elements"
 Cohesion: 0.17
@@ -304,8 +302,8 @@ Cohesion: 0.18
 Nodes (11): A1. Eight learning topics: what counts as independent instruction?, A2. Grade-7 numeric progression and content review — approved with mandatory fraction expansion, A3. Asset-production responsibility and visual fidelity, A4. Spec bundle and Constitution ratification, A5. Math-engine dependency before interactive lessons, A6. Publication timing (approval needed later, not to finish Phase 1), Binding post-approval clarification, Decisions that required owner approval — now approved as planning choices (+3 more)
 
 ### Community 33 - "Equation Quest — project memory index"
-Cohesion: 0.18
-Nodes (11): Approved vs provisional, Architecture (Phase 2 shell implemented; domain features planned), Documentation, Equation Quest — project memory index, Feature state, Goal and constraints, Next step, Permanent execution protocol (+3 more)
+Cohesion: 0.17
+Nodes (12): Approved vs provisional, Architecture (Phase 2 shell implemented; domain features planned), Documentation, Equation Quest — project memory index, Feature state, Goal and constraints, Next step, Permanent execution protocol (+4 more)
 
 ### Community 34 - "Core Principles"
 Cohesion: 0.18
@@ -476,36 +474,32 @@ Cohesion: 0.20
 Nodes (8): PageIntro(), Props, topicPath(), Game(), Learning(), Level(), NotFound(), Progress()
 
 ### Community 78 - "Tasks — Home narrative and glass carousel"
-Cohesion: 0.50
-Nodes (3): Phase 2 structure subset (owner authorized), Phase-specific small tasks (Planned; only execute when authorized), Tasks — Home narrative and glass carousel
-
-### Community 129 - "react-router-dom"
-Cohesion: 0.31
-Nodes (5): react-router-dom, Card, cards, GlassCarousel(), Home()
+Cohesion: 0.40
+Nodes (4): Phase 2 structure subset (owner authorized), Phase 3 execution (owner authorized; original roadmap), Phase-specific small tasks (Planned; only execute when authorized), Tasks — Home narrative and glass carousel
 
 ### Community 130 - "گزارش تکمیل پیاده‌سازی فاز ۲: ساختار اصلی وب‌سایت"
-Cohesion: 0.33
-Nodes (5): بازبینی anti-slop و دسترسی‌پذیری, بدهی و توقف, شواهد اجرایی و آزمون, مجوز، دامنه و تحویل, گزارش تکمیل پیاده‌سازی فاز ۲: ساختار اصلی وب‌سایت
+Cohesion: 0.29
+Nodes (6): بازبینی anti-slop و دسترسی‌پذیری, بدهی و توقف, شواهد اجرایی و آزمون, مجوز، دامنه و تحویل, مرجع بازبینی, گزارش تکمیل پیاده‌سازی فاز ۲: ساختار اصلی وب‌سایت
 
 ## Knowledge Gaps
 - **2 isolated node(s):** `PATH`, `PATH`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 683 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 691 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **58 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react-router-dom` connect `react-router-dom` to `dependencies`, `PageIntro`, `TopicRoute`, `levels.ts`, `App.tsx`, `package.json`, `AppLayout.tsx`?**
-  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **Why does `react-router-dom` connect `react-router-dom` to `dependencies`, `PageIntro`, `TopicRoute`, `levels.ts`, `App.tsx`, `package.json`?**
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
 - **What connects `PATH`, `PATH` to the rest of the system?**
   _2 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
-  _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
-- **Why does `Part 2: Mandatory Rules (R-01 to R-40, grouped)` connect `antislop` to `Group 2: Purpose-Gate (technique allowed, purpose required)`, `Group 1: Hard Gate (absolute, no exceptions)`, `Group 3: Quality Locks (consistency)`?**
+  _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
+- **Why does `antislop-ui` connect `antislop-ui` to `Structural & Flow`, `Performance`, `App & Dashboard`, `Core Web Vitals (LCP, INP, CLS)`, `Decorative Elements`, `Layout & Components`, `Visual & Color`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Should `dependencies` be split into smaller, more focused modules?**
-  _Cohesion score 0.09523809523809523 - nodes in this community are weakly interconnected._
-- **Why does `antislop` connect `antislop` to `Part 3: Liveliness Toolkit`, `Part 1: AI Slop Patterns (Warning Signs)`, `Delivery Gate (Mandatory)`, `The Craftsmanship Standard`?**
+  _Cohesion score 0.08695652173913043 - nodes in this community are weakly interconnected._
+- **Why does `react` connect `react-router-dom` to `dependencies`, `package.json`, `PageIntro`, `App.tsx`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **Should `common.sh` be split into smaller, more focused modules?**
   _Cohesion score 0.11470985155195682 - nodes in this community are weakly interconnected._

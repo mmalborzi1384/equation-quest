@@ -37,3 +37,7 @@ Safe readings of existing requirements: D01–D05, D07–D08 and D10 stand; D06 
 |---|---|---|---|
 | D17 | Phase 1 final sign-off vs pending report | Owner explicitly confirmed Phase 1 complete and separately authorized **Phase 2: Core Website Structure**. | Mark Phase 1 completed as a specification phase (no app code required); implement only Phase 2. Landing structure/carousel and route shells may be built, but not the Phase 3 cinematic storytelling or future lesson/game mechanics. |
 | D18 | Routes for future content during Phase 2 vs pretending lessons/game work | Implement navigable, honest route previews with meaningful links/related content and clear unavailability notices; reserve separate page modules for each planned route. | Navigation can be tested now without mislabeling lesson/game functionality complete; content remains owned by its later authorized phase. |
+
+## D19 — Restore the original Phase 3 scope (owner clarification, 2026-11-03)
+
+The owner explicitly withdrew the interim request to redefine Phase 3 as educational modules and directed us to follow the **previous approved structure**. Phase 3 is the existing roadmap's **Home narrative / web glass carousel** only (`specs/002-home/`); the earlier educational-module attempt was uncommitted and reverted in full. Interactive lessons, the math engine, 3D gameplay and later phases remain unauthorized. PR #2 was merged to `main` at `8e4ec20` before this phase; no new interpretation of a merge as permission to start later phases.

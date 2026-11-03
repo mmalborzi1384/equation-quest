@@ -36,4 +36,4 @@ Report: phase name/objective; completed tasks; exact created/modified paths; tes
 
 ## Current boundary
 
-The owner has stated only Phase 1 has been done and has now clarified that Phase 1 is specification/design, not an executable-app phase. Owner subsequently accepted Phase 1 and authorized **Phase 2: Core Website Structure** only. Phase 3 and later phases remain unauthorized. Phase-specific acceptance evidence must be recorded before declaring Phase 2 complete.
+Phase 1 specification package was accepted; Phase 2 Core Website Structure PR #2 was explicitly merged (`8e4ec20`). The owner subsequently clarified that the **original roadmap** remains binding and explicitly authorized **Phase 3: Home narrative / web glass carousel only**; an intervening educational-module interpretation was withdrawn before commit. Phase 4 learning/math and later phases remain unauthorized. Stop after Phase 3 and await a new explicit decision.

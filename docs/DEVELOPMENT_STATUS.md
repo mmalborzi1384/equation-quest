@@ -1,6 +1,6 @@
 # Development status — 2026-11-03
 
-**Authorization:** owner accepted the completed Phase 1 specification package and separately authorized **Phase 2: Core Website Structure**. Phase 3 and subsequent phases remain unauthorized. This file records what Phase 2 actually supplies; it does not claim that lessons or gameplay work.
+**Authorization:** Phase 1 accepted; Phase 2 PR #2 merged into `main` at `8e4ec20`. The owner explicitly restored and authorized the **original Phase 3 Home narrative/carousel/web glass** scope after withdrawing an interim educational-module request. Phase 4+ remains unauthorized.
 
 | Workstream | State | Evidence / next gate |
 |---|---|---|
@@ -8,8 +8,8 @@
 | 00 Spec Kit / Graphify / anti-slop / Expo research | Completed | Spec Kit CLI (no Arena integration), local Graphify, manually used anti-slop skills; Expo is a visual reference only. |
 | 00 Knowledge graph | Updated for Phase 2 | `graphify update .` + `graphify cluster-only . --no-label --no-viz`: 1032 nodes, 1178 edges, 135 communities (includes tool files/metadata; not all app modules). |
 | 01 Product specification | Completed (owner accepted 2026-11-03) | A1–A5 and D12–D16, 13 feature sets and Persian completion report accepted. Pre-release grade-7/Persian review remains required. |
-| 02 Core Website Structure | Implemented; verification below | Vite/React/TS shell; HashRouter and base; RTL shared responsive navigation/back; route-level lazy modules, 404/error/empty/loading fallbacks; Home section structure and interactive web carousel; Learning/World/Game/Level/Progress route previews. Await owner acceptance before next phase. |
-| 03 Landing cinematic narrative | Not authorized | Phase 2 Home is a responsive structure, **not** the full GSAP/ScrollTrigger/3D narrative. |
+| 02 Core Website Structure | Merged / preserved | Vite/React/TS shell; HashRouter and base; RTL shared responsive navigation/back; route-level lazy modules, 404/error/empty/loading fallbacks; Home section structure and interactive web carousel; Learning/World/Game/Level/Progress route previews. PR #2 merged; shell preserved. |
+| 03 Home narrative / carousel / web glass | Implemented locally; awaiting owner acceptance | GSAP ScrollTrigger reveals/parallax only for decorative storytelling; DOM/CSS/SVG lens, pointer/keyboard/focus navigation, reduced-motion and no-WebGL path. 31 Vitest + 5 Chromium E2E; see Phase 3 report. No game 3D claim. |
 | 04 Interactive learning & math core | Not authorized | Nine lesson routes are navigable previews, not lessons/practice, math engine or teacher-reviewed content. |
 | 05 3D engine | Not authorized | CSS illustrations are decorative, not a 3D game. |
 | 06 Game mechanics | Not authorized | `/game` is an honest explanatory route, not a playable game. |
@@ -26,4 +26,10 @@
 - Local Vite server on `0.0.0.0:5173` returned HTTP 200 for `/equation-quest/`; HTML has `lang="fa" dir="rtl"` and base-rewritten script path. Real browser viewport, touch hardware, screen reader and public Pages checks were **not** run; jsdom/CSS inspection cannot substitute for them.
 - `npm audit --json` reports 16 open issues (2 low, 14 moderate); no automatic forced fix. Exact findings must be rechecked before public release.
 
-**Review handoff:** Phase 2 implementation commit `b8544be` pushed to the assigned branch; [PR #2](https://github.com/mmalborzi1384/equation-quest/pull/2) open for review, not merged. Await owner acceptance and separate Phase 3 authorization.
+**Historical Phase 2 handoff:** implementation commit `b8544be`; [PR #2](https://github.com/mmalborzi1384/equation-quest/pull/2) subsequently merged by explicit owner request.
+
+## Phase 3 verification
+
+`bash scripts/setup.sh` verified this new sandbox before work. `bash scripts/verify-environment.sh --full` **PASS** (lint, formatting, typecheck, 31/31 Vitest, Vite build). `npm run test:e2e` **5/5 PASS** in headless Chromium, using a temporary, untracked npm-packaged browser binary/library bundle in this sandbox; tests cover 320/390/768/1280px without horizontal overflow, carousel/fraction route, side-card focus, keyboard, pointer swipe, mobile nav, no-WebGL, user/OS reduced motion and scroll/lens interaction. No deployed Pages or hardware/mobile screen-reader audit. `npm audit --json`: 16 open findings (2 low, 14 moderate). [Detailed Phase 3 report](PHASE_03_COMPLETION_REPORT.md).
+
+**Phase 3 review handoff:** implementation commit `c3bd06b` pushed on `arena/aefc616b-equation-quest`; [PR #3](https://github.com/mmalborzi1384/equation-quest/pull/3) open and unmerged. Stop pending owner sign-off and separately named Phase 4 authorization.

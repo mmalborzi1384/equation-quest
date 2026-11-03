@@ -376,3 +376,24 @@
   display: inline-flex;
   align-items: center;
 }
+.home {
+  overflow: clip;
+}
+.bridge {
+  position: absolute;
+  z-index: 1;
+  top: 56%;
+  right: 30%;
+  width: 180px;
+  border-top: 3px dashed #e9b968;
+  transform: rotate(-22deg);
+  transform-origin: right center;
+  opacity: 0.85;
+}
+@media (max-width: 900px) {
+  .bridge {
+    top: 51%;
+    right: 35%;
+    width: 150px;
+  }
+}
