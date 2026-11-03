@@ -389,3 +389,9 @@
     font-size: 0.7rem;
   }
 }
+
+.resetProgress {
+  max-width: 1272px;
+  padding: 0 16px;
+  margin: 0 auto 18px;
+}

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { usePreferences } from '../../store/usePreferences';
 import styles from './Layout.module.css';
+import { ResetAction } from '../ui/ResetAction';
 
 export function SiteFooter() {
   const reduceMotion = usePreferences((state) => state.reduceMotion);
@@ -25,7 +26,14 @@ export function SiteFooter() {
       >
         {reduceMotion ? 'حرکت کمتر: روشن' : 'حرکت کمتر: خاموش'}
       </button>
-      <small>نسخهٔ ساختار اولیه؛ درس‌ها و بازی تعاملی در فازهای بعد ساخته می‌شوند.</small>
+      <div className={styles.preferencesReset}>
+        <ResetAction
+          label="ریست تنظیم حرکت کمتر"
+          scope="تنها تنظیم ذخیره‌شدهٔ حرکت کمتر به حالت خاموش بازمی‌گردد."
+          onConfirm={usePreferences.getState().reset}
+        />
+      </div>
+      <small>پیشرفت بازی در همین مرورگر ذخیره می‌شود و هر زمان از دفتر پیشرفت قابل حذف است.</small>
     </footer>
   );
 }

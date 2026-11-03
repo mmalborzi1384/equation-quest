@@ -148,3 +148,9 @@
     margin-inline: 24px;
   }
 }
+
+.reset {
+  max-width: 1272px;
+  margin: 0 auto 30px;
+  padding: 0 16px;
+}

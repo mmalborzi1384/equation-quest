@@ -35,3 +35,83 @@
   display: inline-flex;
   align-items: center;
 }
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  padding: 0 24px;
+}
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  padding: 22px;
+  background: var(--navy);
+  color: var(--ivory);
+  border-radius: var(--control-radius);
+}
+.summary strong {
+  font-size: 1.4rem;
+  color: var(--gold);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  margin: 22px 0;
+}
+.grid article,
+.achievements,
+.danger {
+  background: var(--cream);
+  padding: clamp(18px, 3vw, 30px);
+  border-right: 3px solid var(--ocean);
+}
+.grid h2,
+.achievements h2,
+.danger h2 {
+  margin: 0 0 12px;
+}
+.grid p,
+.danger p {
+  line-height: 1.9;
+}
+.grid ol {
+  padding-inline-start: 24px;
+  line-height: 2;
+}
+.grid li {
+  padding: 5px 0;
+}
+.grid li small {
+  display: block;
+  color: var(--ink-soft);
+}
+.grid article > a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: #543a13;
+  border-bottom: 1px solid currentColor;
+}
+.achievements {
+  border-right-color: var(--mint);
+  margin-bottom: 15px;
+}
+.danger {
+  border-right-color: var(--coral);
+}
+.storageNote {
+  display: block;
+  color: var(--ink-soft);
+  line-height: 2;
+  margin: 22px 0;
+}
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .dashboard {
+    padding: 0 16px;
+  }
+}

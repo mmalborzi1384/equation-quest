@@ -79,13 +79,25 @@ test.describe.serial('eight authored stages, one verified journey for each', () 
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth - innerWidth),
       ).toBeLessThanOrEqual(1);
+      if (stage.id === '08') {
+        await page.reload();
+        await page.goto('#/game/level/08');
+        await expect(page.getByRole('region', { name: 'بازی مرحلهٔ 08' })).toBeVisible();
+        await expect(page.getByRole('link', { name: 'مرحلهٔ 08 کامل‌شده' })).toBeVisible();
+        await page.goto('#/progress');
+        await expect(page.getByText('8 از ۸ مرحلهٔ بررسی‌شده')).toBeVisible();
+        await page.getByRole('button', { name: 'حذف همهٔ داده‌های ذخیره‌شده' }).click();
+        await page.getByRole('button', { name: 'بله، حذف شود' }).click();
+        await page.goto('#/game/level/08');
+        await expect(page.getByRole('region', { name: 'مرحلهٔ قفل‌شده' })).toBeVisible();
+        await page.reload();
+        await expect(page.getByRole('region', { name: 'مرحلهٔ قفل‌شده' })).toBeVisible();
+      }
     });
   }
 });
 
-test('locked route cannot bypass the previous stage; reloading resets the session-only gate', async ({
-  page,
-}) => {
+test('locked route cannot bypass earlier unverified stages', async ({ page }) => {
   await page.goto('#/game/level/08');
   await expect(page.getByRole('region', { name: 'مرحلهٔ قفل‌شده' })).toBeVisible();
   await expect(page.getByRole('region', { name: 'بازی مرحلهٔ 08' })).toHaveCount(0);

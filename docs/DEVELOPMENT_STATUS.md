@@ -1,12 +1,12 @@
 # Development status — 2026-11-03
 
-**Authorization:** Phases 1–7 accepted and merged; Phase 7 PR #7 merged at `dccd87c`. The owner explicitly directed **not to start Phase 8**. D28 updates only the planned acceptance criteria for Phases 8 and 9; neither phase nor deployment is authorized.
+**Authorization:** Phases 1–7 accepted and merged. D30 explicitly authorized Phase 8, now implemented and locally verified on open PR #8; owner review is pending. Phase 9 and deployment remain unauthorized. Earlier planning-only D28/D29 notes below are historical.
 
 | Workstream | State | Evidence / next gate |
 |---|---|---|
 | 00 Environment | Completed for this sandbox | `bash scripts/setup.sh` passed before app work; pinned Node/npm, exact lockfile and toolchain checked. |
 | 00 Spec Kit / Graphify / anti-slop / Expo research | Completed | Spec Kit CLI (no Arena integration), local Graphify, manually used anti-slop skills; Expo is a visual reference only. |
-| 00 Knowledge graph | Updated for Phase 7 | `graphify extract . --code-only`, `graphify cluster-only . --no-label --no-viz`, `graphify update .`: 1229 nodes, 1903 edges, 140 communities after Phase 7 (includes tool files/metadata, not all app modules). |
+| 00 Knowledge graph | Updated for Phase 8 | `graphify extract . --code-only`, `graphify cluster-only . --no-label --no-viz`, `graphify update .`: 1260 nodes, 2086 edges, 140 communities; existing incremental filter-change warning remains. |
 | 01 Product specification | Completed (owner accepted 2026-11-03) | A1–A5 and D12–D16, 13 feature sets and Persian completion report accepted. Pre-release grade-7/Persian review remains required. |
 | 02 Core Website Structure | Merged / preserved | Vite/React/TS shell; HashRouter and base; RTL shared responsive navigation/back; route-level lazy modules, 404/error/empty/loading fallbacks; Home section structure and interactive web carousel; Learning/World/Game/Level/Progress route previews. PR #2 merged; shell preserved. |
 | 03 Home narrative / carousel / web glass | Merged and accepted | GSAP ScrollTrigger reveals/parallax only for decorative storytelling; DOM/CSS/SVG lens, pointer/keyboard/focus navigation, reduced-motion and no-WebGL path. 31 Vitest + 5 Chromium E2E; see Phase 3 report. No game 3D claim. |
@@ -14,7 +14,7 @@
 | 05 3D engine | Merged and accepted | Procedural R3F island on `/game`, orthographic follow camera, four inspectable landmarks, WASD/arrows/E/Escape, held mobile pad/tap, pause, quality low/balanced/high and no-WebGL text map. **Not** a playable level or puzzle. 61 Vitest + 15 Chromium E2E; [report](PHASE_05_COMPLETION_REPORT.md). |
 | 06 Game mechanics | Merged and accepted | Three ordered exact-rational workshop trials on `/game` with hints, original-equation verification and in-memory one-time points; **not** eight authored stages or durable progress. |
 | 07 Eight playable levels | Merged and accepted | Eight playable concept gates and exact-puzzle sequences, ordered unlocks and one-time in-memory rewards; 06–08 require fractions. [Report](PHASE_07_COMPLETION_REPORT.md). |
-| 08 Real progression | Not authorized | `/progress` shows an empty state; only a reduced-motion UI preference is locally persisted. No XP/save data is claimed. |
+| 08 Real progression | Implemented on open PR #8, awaiting owner review | Four versioned validated local stores, truthful `/progress`, contextual reset and confirmed scoped delete-all; **90 Vitest / 29 Chromium E2E PASS**. [Report](PHASE_08_IMPLEMENTATION_REPORT.md). |
 | 09 QA/optimization | Not authorized | Phase 2 tests below do not replace future cross-browser, accessibility and performance audits. |
 | 10 Deployment | Not authorized | Build is local only; GitHub Pages is not deployed or activated. |
 
@@ -76,3 +76,7 @@ Owner accepted and merged PR #6 at `d6109b8`, separately authorized Phase 7. Eac
 Owner approved and merged PR #7 at `dccd87c`, **explicitly prohibited starting Phase 8**, and asked only to amend the Phase 8 and 9 acceptance plans (D28). Phase 8 now requires in-context reset/delete wherever app-owned data is persisted, including reduced-motion preference, plus confirmed global app-data deletion with reload/no-resurrection tests. Phase 9 now explicitly plans anti-slop skills during optimization, a background image derived from the real game world, and restrained liquid-glass buttons with accessibility/performance fallbacks. `reactdrops.dev` is a suggested reference, not evaluated or installed. These are **documentation-only pending requirements**: no storage controls, images, UI effects, new dependencies, implementation tests, deployment or phase authorization occurred.
 
 **Planning-only D29 clarification (2026-11-03):** owner again prohibited Phase 8 implementation and requested scroll-led lower sections plus noticeable typing-style Persian text for future Phase 9. Current Home has limited decorative GSAP ScrollTrigger heading movement only, not site-wide section/text reveal. The requirement, accessible/reduced-motion fallback and test gates were added to future plans. The six vendored anti-slop skills and existing GSAP/ScrollTrigger are present; no new skill is required for planning. No app code, animation, Phase 8/9 execution or deployment was performed.
+
+## Phase 8 implementation (D30, 2026-11-03)
+
+D30 superseded the earlier D28/D29 implementation hold, not the deletion criteria. Four app-owned storage categories now have confirmed contextual resets and an app-scoped global deletion; validated version 1 stores derive XP from verified ordered outcomes and persist canonical rational strings. Empty and saved `/progress` states, mobile/keyboard confirmation and reload/deletion behavior are documented in [the Phase 8 report](PHASE_08_IMPLEMENTATION_REPORT.md). `verify-environment.sh --full` PASS (90 Vitest, lint, format, typecheck, build); 29/29 headless Chromium E2E PASS using a temporary npm-packaged browser outside the repo. No Phase 9 imagery/glass/scroll/typing, PR merge or deployment. Hardware/screen reader, alternate browser, independent WCAG/curriculum review and FPS measurements remain open.

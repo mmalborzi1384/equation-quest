@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test('ordered exact-rational workshop, progressive feedback and session-only one-time points', async ({
+test('ordered exact-rational workshop, progressive feedback and persisted one-time points', async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 780 });
@@ -56,6 +56,15 @@ test('ordered exact-rational workshop, progressive feedback and session-only one
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth - innerWidth),
   ).toBeLessThanOrEqual(1);
+  await page.reload();
+  await expect(
+    page.getByRole('region', { name: 'کارگاه سازوکار معادله' }).locator('strong').first(),
+  ).toHaveText('30');
+  await page
+    .getByRole('region', { name: 'کارگاه سازوکار معادله' })
+    .getByRole('button', { name: 'ریست آزمایش‌های سازوکار' })
+    .click();
+  await page.getByRole('button', { name: 'بله، حذف شود' }).click();
   await page.reload();
   await expect(
     page.getByRole('region', { name: 'کارگاه سازوکار معادله' }).locator('strong').first(),

@@ -3,6 +3,13 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { App } from '../app/App';
 import { topics } from '../data/topics';
 import { levels } from '../data/levels';
+import { useLevelProgress } from '../store/useLevelProgress';
+import { usePreferences } from '../store/usePreferences';
+import { useFractionPractice } from '../store/useFractionPractice';
+import { clearAllSaved } from '../store/clearAllSaved';
+import { stages } from '../features/level-manager/stages';
+import { solution } from '../features/equation-engine/equation';
+import { parseRational } from '../features/equation-engine/rational';
 
 beforeEach(() => {
   window.history.replaceState(null, '', '/#/');
@@ -33,7 +40,7 @@ describe('Phase 2 route structure', () => {
   it.each([
     ['world', /چهار راه/],
     ['game', /ماجراجویی/],
-    ['progress', /ردّ قدم/],
+    ['progress', /راهی که واقعاً/],
   ])('renders a distinct /%s route with working navigation', async (path, title) => {
     window.history.replaceState(null, '', `/#/${path}`);
     render(<App />);
@@ -122,7 +129,7 @@ describe('Phase 2 route structure', () => {
   it('keeps the hash route intact when using the skip link, and provides a safe back fallback', async () => {
     window.history.replaceState(null, '', '/#/progress');
     render(<App />);
-    await screen.findByRole('heading', { level: 1, name: /ردّ قدم/ });
+    await screen.findByRole('heading', { level: 1, name: /راهی که واقعاً/ });
     fireEvent.click(screen.getByRole('link', { name: 'رفتن به محتوای اصلی' }));
     expect(document.activeElement).toBe(screen.getByRole('main'));
     expect(window.location.hash).toBe('#/progress');
@@ -189,5 +196,36 @@ describe('Phase 2 route structure', () => {
     );
     expect(document.querySelector('[data-motion]')).toHaveAttribute('data-motion', 'reduce');
     expect(window.localStorage.getItem('equation-quest-preferences')).toContain('true');
+  });
+});
+
+describe('saved progress dashboard', () => {
+  it('updates live, supports independent reset and confirmed global deletion without touching unrelated storage', async () => {
+    clearAllSaved();
+    localStorage.setItem('unrelated', 'safe');
+    window.history.replaceState(null, '', '/#/progress');
+    render(<App />);
+    expect(await screen.findByText(/هنوز مرحله‌ای بررسی و ذخیره نشده/)).toBeInTheDocument();
+    useLevelProgress
+      .getState()
+      .grantVerifiedStage('01', 2, solution(stages[0].problems.at(-1)!.equation));
+    useFractionPractice.getState().markVerified(0, parseRational('1'));
+    usePreferences.getState().toggleMotion();
+    expect(await screen.findByText(/1 از ۸ مرحلهٔ بررسی‌شده/)).toBeInTheDocument();
+    expect(screen.getByText(/1 تمرین کسری با بررسی جواب/)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'حذف همهٔ داده‌های ذخیره‌شده' }));
+    fireEvent.click(screen.getByRole('button', { name: 'انصراف' }));
+    expect(screen.getByText(/1 تمرین کسری با بررسی جواب/)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'ریست پیشرفت مرحله‌ها' }));
+    fireEvent.click(screen.getByRole('button', { name: 'بله، حذف شود' }));
+    expect(screen.getByText(/0 از ۸ مرحلهٔ بررسی‌شده/)).toBeInTheDocument();
+    expect(screen.getByText(/1 تمرین کسری با بررسی جواب/)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'حذف همهٔ داده‌های ذخیره‌شده' }));
+    fireEvent.click(screen.getByRole('button', { name: 'بله، حذف شود' }));
+    expect(screen.getByText(/0 تمرین کسری با بررسی جواب/)).toBeInTheDocument();
+    expect(usePreferences.getState().reduceMotion).toBe(false);
+    expect(localStorage.getItem('unrelated')).toBe('safe');
+    clearAllSaved();
+    localStorage.removeItem('unrelated');
   });
 });

@@ -6,24 +6,31 @@ import { isUnlocked } from '../../features/level-manager/workshop';
 import { stageOrder } from '../../features/level-manager/stages';
 import { useLevelProgress } from '../../store/useLevelProgress';
 import styles from './World.module.css';
+import { ResetAction } from '../../components/ui/ResetAction';
 
 export default function World() {
-  const completedIds = useLevelProgress((s) => s.rewards.completedIds);
-  const points = useLevelProgress((s) => s.rewards.points);
+  const completedIds = useLevelProgress((s) => s.record.rewards.completedIds);
+  const points = useLevelProgress((s) => s.record.rewards.points);
   return (
     <>
       <PageIntro
         eyebrow="نقشهٔ سرزمین / ۴ منطقه"
         title="چهار راه برای بازگرداندن تعادل"
-        description="در هر منطقه دو مرحلهٔ متفاوت بازی کن. مرحلهٔ بعد تنها پس از حل و بررسی مرحلهٔ پیشین باز می‌شود؛ وضعیت این نقشه با بارگذاری دوباره پاک می‌شود."
+        description="در هر منطقه دو مرحلهٔ متفاوت بازی کن. مرحلهٔ بعد تنها پس از حل و بررسی مرحلهٔ پیشین باز می‌شود؛ مرحله‌های تأییدشده در مرورگر این دستگاه می‌مانند."
       >
         <Link to="/learning">آماده‌سازی با آموزش</Link>
         <Link to="/game">کاوش در جزیرهٔ سه‌بعدی</Link>
       </PageIntro>
       <p className={styles.ledger} role="status">
-        {completedIds.length} مرحلهٔ بررسی‌شده از ۸ · {points} امتیاز مرحله‌ها در همین نشست (با
-        بارگذاری دوباره پاک می‌شود)
+        {completedIds.length} مرحلهٔ بررسی‌شده از ۸ · {points} امتیاز مرحله‌های ذخیره‌شده
       </p>
+      <div className={styles.reset}>
+        <ResetAction
+          label="ریست پیشرفت مرحله‌ها"
+          scope="تکمیل مرحله‌ها، امتیازها و آخرین مرحله حذف می‌شود؛ تمرین‌ها، آزمایش‌ها و تنظیمات می‌مانند."
+          onConfirm={useLevelProgress.getState().reset}
+        />
+      </div>
       <section className={styles.map} aria-label="مناطق سرزمین جبر">
         {islands.map((island, i) => {
           const status = islandStatus(island.level, completedIds);

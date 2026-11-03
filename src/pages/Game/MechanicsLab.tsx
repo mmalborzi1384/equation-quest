@@ -25,6 +25,7 @@ import {
 import { useWorkshopProgress } from '../../store/useWorkshopProgress';
 import { BidiText } from '../Lessons/BidiText';
 import styles from './MechanicsLab.module.css';
+import { ResetAction } from '../../components/ui/ResetAction';
 
 export function MechanicsLab() {
   const [selectedId, setSelectedId] = useState(challenges[0].id);
@@ -35,6 +36,7 @@ export function MechanicsLab() {
   );
   const rewards = useWorkshopProgress((state) => state.rewards);
   const grantVerified = useWorkshopProgress((state) => state.grantVerified);
+  const resetWorkshop = useWorkshopProgress((state) => state.reset);
   const challenge = challenges.find((item) => item.id === selectedId)!;
   const eq = challengeEquation(challenge);
   const completed = new Set(rewards.completedIds);
@@ -71,7 +73,7 @@ export function MechanicsLab() {
       setNotice(
         before
           ? 'بررسی دقیق درست بود؛ این آزمایش قبلاً امتیاز گرفته است، پس پاداش تکراری ندارد.'
-          : 'دو طرف معادلهٔ اصلی برابرند؛ این آزمایش برای اولین بار در همین نشست امتیاز گرفت.',
+          : 'دو طرف معادلهٔ اصلی برابرند؛ این آزمایش برای اولین بار در این مرورگر امتیاز گرفت.',
       );
       return;
     }
@@ -108,7 +110,7 @@ export function MechanicsLab() {
         </div>
         <div className={styles.ledger}>
           <strong>{rewards.points}</strong>
-          <span>امتیاز همین نشست</span>
+          <span>امتیاز ذخیره‌شده</span>
           <small>با بارگذاری دوبارهٔ صفحه پاک می‌شود.</small>
         </div>
       </header>
@@ -213,7 +215,7 @@ export function MechanicsLab() {
           {session.phase === 'complete' && (
             <div className={styles.complete}>
               <strong>راه‌حل و جای‌گذاری درست بود.</strong>
-              <p>پاداش این آزمایش فقط یک بار در این نشست ثبت می‌شود.</p>
+              <p>پاداش این آزمایش فقط یک بار در این مرورگر ذخیره می‌شود.</p>
               {next && (
                 <button type="button" onClick={() => select(next.id)}>
                   آزمایش بعدی ←
@@ -221,6 +223,17 @@ export function MechanicsLab() {
               )}
             </div>
           )}
+          <ResetAction
+            label="ریست آزمایش‌های سازوکار"
+            scope="فقط سه آزمایش و امتیاز آن‌ها پاک می‌شود؛ مرحله‌ها و تنظیمات باقی می‌مانند."
+            onConfirm={() => {
+              resetWorkshop();
+              setSelectedId(challenges[0].id);
+              setSession(startPuzzle());
+              setInput('');
+              setNotice('آزمایش‌ها پاک شدند؛ از ابتدا شروع کن.');
+            }}
+          />
           <div className={styles.tools}>
             {session.phase !== 'complete' && (
               <button type="button" onClick={() => act({ type: 'hint' })}>

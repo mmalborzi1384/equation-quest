@@ -16,6 +16,7 @@ import { SceneBoundary } from './SceneBoundary';
 import { MechanicsLab } from './MechanicsLab';
 import { islandStatus } from '../../features/progression/levels';
 import { useLevelProgress } from '../../store/useLevelProgress';
+import { ResetAction } from '../../components/ui/ResetAction';
 
 const ExplorationScene = lazy(() => import('../../three/ExplorationScene'));
 type Quality = 'low' | 'balanced' | 'high';
@@ -39,7 +40,7 @@ export default function Game() {
   const [message, setMessage] = useState(
     'از مرکز به یکی از چهار نشان نزدیک شو؛ یا آن را از فهرست انتخاب کن.',
   );
-  const completedLevels = useLevelProgress((state) => state.rewards.completedIds);
+  const completedLevels = useLevelProgress((state) => state.record.rewards.completedIds);
 
   const reduceMotion = usePreferences((state) => state.reduceMotion);
   const [osReduced, setOsReduced] = useState(
@@ -172,7 +173,7 @@ export default function Game() {
       <PageIntro
         eyebrow="کارگاه کاوش / فاز ۷"
         title="ماجراجویی از اینجا شکل می‌گیرد"
-        description="در این کارگاه می‌توانی در یک جزیرهٔ سه‌بعدی قدم بزنی و چهار نشان را بررسی کنی. چهار نشان، ورودی هشت مرحلهٔ قابل‌بازی هستند. زیر نقشه نیز سه آزمایش مستقل سازوکار با امتیاز موقت در دسترس است؛ پیشرفت دائمی هنوز ساخته نشده است."
+        description="در این کارگاه می‌توانی در یک جزیرهٔ سه‌بعدی قدم بزنی و چهار نشان را بررسی کنی. چهار نشان، ورودی هشت مرحلهٔ قابل‌بازی هستند. زیر نقشه نیز سه آزمایش مستقل سازوکار با امتیاز ذخیره‌شده در همین مرورگر در دسترس است."
       >
         <Link to="/world">نقشهٔ چهار منطقه</Link>
         <Link to="/learning">مرور درس‌ها</Link>
@@ -183,6 +184,13 @@ export default function Game() {
           شروع آزمایش‌های معادله ↓
         </button>
       </PageIntro>
+      <div className={styles.resetProgress}>
+        <ResetAction
+          label="ریست پیشرفت مرحله‌ها"
+          scope="فقط مرحله‌ها، امتیاز و کریستال آن‌ها پاک می‌شوند؛ آزمایش‌های کارگاه و تنظیمات می‌مانند."
+          onConfirm={useLevelProgress.getState().reset}
+        />
+      </div>
       <section
         ref={root}
         tabIndex={-1}

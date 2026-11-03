@@ -16,4 +16,4 @@ All feature tasks/acceptance criteria are in `specs/NNN-*/tasks.md` (12 original
 | 09 | integrate, accessibility/mobile/quality/performance; game-derived background image, restrained liquid-glass buttons (D28), and scroll-led section/text reveals (D29) | Playwright journeys, measured budget, anti-slop skills used during optimization with Delivery Gate; optimized authentic game imagery, readable/fallback controls, keyboard/touch/contrast/reduced-motion/no-WebGL checks; mobile/desktop scroll-entry, Persian typing reveal, accessible full-text and no-animation fallback tests |
 | 10 | CI and Pages deploy only after documented grade-7 curriculum/Persian content review | CI green; deployed hash deep link/assets and curriculum review verified |
 
-**Planning only (D28):** the owner explicitly prohibited starting Phase 08 now. These rows are future acceptance criteria, not work begun or approval for either phase.
+**Current authorization (D30):** the earlier D28 hold on Phase 08 was reversed; Phase 08 is implemented on open PR #8 and awaiting owner review. Phase 09 and deployment remain unauthorized.

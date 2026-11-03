@@ -26,6 +26,9 @@ import {
 } from '../../features/equation-engine/rational';
 import styles from './TopicRoute.module.css';
 import { BidiText } from './BidiText';
+import { ResetAction } from '../../components/ui/ResetAction';
+import { useFractionPractice } from '../../store/useFractionPractice';
+import type { Rational } from '../../features/equation-engine/rational';
 
 const explanations: Record<FeedbackCode, string> = {
   correct: 'درست است: همان عمل در هر دو طرف انجام شد و برابری حفظ شد.',
@@ -60,7 +63,13 @@ function choices(
   ];
 }
 export function Practice({ lesson, fractions }: { lesson: Lesson; fractions: boolean }) {
-  const [index, setIndex] = useState(0);
+  const practiceRecord = useFractionPractice((state) => state.record);
+  const markVerified = useFractionPractice((state) => state.markVerified);
+  const resetPractice = useFractionPractice((state) => state.reset);
+  const [index, setIndex] = useState(() =>
+    fractions ? useFractionPractice.getState().record.verifiedCount : 0,
+  );
+  const [acceptedAnswer, setAcceptedAnswer] = useState<Rational | null>(null);
   const [phase, setPhase] = useState<'constant' | 'coefficient' | 'answer' | 'verify' | 'done'>(
     'constant',
   );
@@ -124,6 +133,7 @@ export function Practice({ lesson, fractions }: { lesson: Lesson; fractions: boo
     event.preventDefault();
     const result = grade(eq, input);
     if (result.code === 'correct') {
+      setAcceptedAnswer(result.answer!);
       setPhase('verify');
       setMistakes(0);
       setShowHint(0);
@@ -141,6 +151,7 @@ export function Practice({ lesson, fractions }: { lesson: Lesson; fractions: boo
     setIndex((n) => n + 1);
     setPhase('constant');
     setInput('');
+    setAcceptedAnswer(null);
     setFeedback('');
     setMistakes(0);
     setShowHint(0);
@@ -218,6 +229,7 @@ export function Practice({ lesson, fractions }: { lesson: Lesson; fractions: boo
             <button
               type="button"
               onClick={() => {
+                if (fractions && acceptedAnswer) markVerified(index, acceptedAnswer);
                 setPhase('done');
                 setFeedback(
                   'درست است: با جای‌گذاری جواب در معادلهٔ اصلی، دو طرف دقیقاً برابر شدند.',
@@ -257,6 +269,25 @@ export function Practice({ lesson, fractions }: { lesson: Lesson; fractions: boo
         <p className={styles.hint}>
           راهنما: <BidiText>{hint[showHint - 1]}</BidiText>
         </p>
+      )}
+      {fractions && (
+        <div>
+          <p>{practiceRecord.verifiedCount} تمرین کسری بررسی‌شده در این مرورگر ذخیره شده است.</p>
+          <ResetAction
+            label="ریست تمرین‌های کسری"
+            scope="فقط تعداد تمرین‌های کسری، جای ادامه و آخرین جواب دقیق پاک می‌شود."
+            onConfirm={() => {
+              resetPractice();
+              setIndex(0);
+              setPhase('constant');
+              setInput('');
+              setAcceptedAnswer(null);
+              setFeedback('تمرین‌های کسری پاک شدند.');
+              setMistakes(0);
+              setShowHint(0);
+            }}
+          />
+        </div>
       )}
       <p role="status" aria-live="polite" className={styles.feedback}>
         {feedback}

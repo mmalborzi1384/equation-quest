@@ -73,3 +73,7 @@
   align-items: center;
   min-height: 44px;
 }
+
+.preferencesReset {
+  grid-column: 1 / -1;
+}
