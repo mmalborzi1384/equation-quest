@@ -29,3 +29,5 @@ Browser binary and bundled SwiftShader/NSS libraries were temporarily expanded f
 Recommendation: owner review this PR and decide whether to accept/merge it. Only **after** a new explicit authorization should Phase 7 author the eight real levels/island gates; Phase 8 owns persistence/dashboard. Do not merge the Phase 6 PR, deploy, or start Phase 7 by inference.
 
 **Review handoff:** implementation commit `bb29136` pushed on `arena/fcac4f6f-equation-quest`; [PR #6](https://github.com/mmalborzi1384/equation-quest/pull/6) is open and **unmerged**. This report handoff note is a follow-up documentation change. No deployment.
+
+**Post-review copy correction:** the graphical interface and browser title now use the Persian name «ماجراجویی معادله‌ها» instead of the transliterated brand. Header, footer, back row, page metadata and accessible home-link name agree. At 320px the header/menu fit without overflow; lint/format/typecheck, 71/71 unit tests and 11/11 affected Home/exploration Chromium tests passed. This changes copy, not Phase 6 mechanics or the deployment boundary.

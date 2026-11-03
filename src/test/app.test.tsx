@@ -38,7 +38,10 @@ describe('Phase 2 route structure', () => {
     window.history.replaceState(null, '', `/#/${path}`);
     render(<App />);
     expect(await screen.findByRole('heading', { level: 1, name: title })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'اکویشن کوئست، خانه' })).toHaveAttribute('href', '#/');
+    expect(screen.getByRole('link', { name: 'ماجراجویی معادله‌ها، خانه' })).toHaveAttribute(
+      'href',
+      '#/',
+    );
   });
 
   it.each(levels)('deep-links to level $id: $title', async (level) => {

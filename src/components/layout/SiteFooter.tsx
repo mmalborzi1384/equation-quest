@@ -8,7 +8,7 @@ export function SiteFooter() {
   return (
     <footer className={styles.footer}>
       <div>
-        <span className={styles.footerTitle}>اکویشن کوئست</span>
+        <span className={styles.footerTitle}>ماجراجویی معادله‌ها</span>
         <p>هر دو سوی ماجرا مهم‌اند.</p>
       </div>
       <div className={styles.footerLinks}>

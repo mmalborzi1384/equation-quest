@@ -144,3 +144,12 @@
   display: inline-flex;
   align-items: center;
 }
+@media (max-width: 380px) {
+  .inner {
+    padding-inline: 12px;
+    gap: 8px;
+  }
+  .menuButton {
+    flex: none;
+  }
+}
