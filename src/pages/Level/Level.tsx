@@ -1,5 +1,6 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { PageIntro } from '../../components/ui/PageIntro';
+import { ResetAction } from '../../components/ui/ResetAction';
 import { levels } from '../../data/levels';
 import { topicPath } from '../../data/topics';
 import { isUnlocked } from '../../features/level-manager/workshop';
@@ -11,8 +12,9 @@ import styles from './Level.module.css';
 
 export default function Level() {
   const { levelId } = useParams();
+  const navigate = useNavigate();
   const level = levels.find((entry) => entry.id === levelId);
-  const completedIds = useLevelProgress((s) => s.rewards.completedIds);
+  const completedIds = useLevelProgress((s) => s.record.rewards.completedIds);
   if (!level) return <NotFound detail="چنین مرحله‌ای در نقشهٔ هشت‌مرحله‌ای وجود ندارد." />;
   const unlocked = isUnlocked(level.id, stageOrder, new Set(completedIds));
   const stage = stageFor(level.id)!;
@@ -27,6 +29,16 @@ export default function Level() {
         <Link to={topicPath(level.topic)}>دیدن موضوع مرتبط</Link>
         <Link to="/world">بازگشت به نقشه</Link>
       </PageIntro>
+      <div className={styles.reset}>
+        <ResetAction
+          label="ریست پیشرفت مرحله‌ها"
+          scope="تکمیل و پاداش مرحله‌ها پاک می‌شود و به نقشه بازمی‌گردی؛ آزمایش‌ها و تنظیمات می‌مانند."
+          onConfirm={() => {
+            useLevelProgress.getState().reset();
+            navigate('/world');
+          }}
+        />
+      </div>
       {unlocked ? (
         <StageRunner key={stage.id} stage={stage} />
       ) : (
@@ -40,7 +52,7 @@ export default function Level() {
         </section>
       )}
       <nav className={styles.next} aria-label="مسیر هشت‌مرحله‌ای">
-        <span>مسیر هشت‌مرحله‌ای / وضعیت همین نشست</span>
+        <span>مسیر هشت‌مرحله‌ای / وضعیت ذخیره‌شده</span>
         <div>
           {levels.map((entry) => {
             const open = isUnlocked(entry.id, stageOrder, new Set(completedIds));

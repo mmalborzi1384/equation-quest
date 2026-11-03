@@ -11,3 +11,9 @@
 
 - [x] Phase 1 planning scope cross-checked against A1–A5 and the signed/exact-fraction requirements (documentation review, not feature testing).
 - [ ] Verify scope-specific tasks with actual evidence only after this feature is authorized and implemented.
+
+- [ ] Phase 9 planning (D28, not authorized): game-derived background, mobile/desktop crops, readability and static/no-WebGL fallback verified with measured image/performance budget.
+- [ ] Phase 9 planning (D28, not authorized): glass-style button/CTA states tested for rounded corners, contrast, keyboard/touch, reduced motion, unsupported/slow blur fallback; evaluate reference license/dependency before use.
+- [ ] Phase 9 planning (D28, not authorized): apply vendored anti-slop skills during optimization and record a real Delivery Gate before moving toward Phase 10.
+
+- [ ] Phase 9 D29 (not authorized): verify lower sections appear on scroll and selected short Persian text reveals with clear typing-style timing; full accessible text, reduced-motion/no-JS fallback, RTL/LTR and measured mobile performance remain correct.

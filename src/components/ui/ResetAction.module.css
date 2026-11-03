@@ -1,0 +1,38 @@
+.action {
+  margin: 14px 0;
+}
+.action > button,
+.confirm button {
+  border: 1px solid var(--navy);
+  color: var(--navy);
+  background: var(--ivory);
+  border-radius: var(--control-radius);
+  padding: 10px 15px;
+  min-height: 44px;
+}
+.action button:hover {
+  background: var(--navy);
+  color: white;
+}
+.confirm {
+  border-right: 3px solid var(--coral);
+  background: var(--ivory);
+  padding: 12px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.confirm p {
+  flex-basis: 100%;
+  margin: 0;
+  line-height: 1.8;
+}
+.action [role='status'] {
+  display: block;
+  padding: 9px 0;
+}
+
+.action button:active {
+  transform: translateY(1px);
+}

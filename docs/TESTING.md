@@ -15,3 +15,13 @@ The app now has `npm run test:run` (Vitest/jsdom + React Testing Library). 28 te
 ## Phase 5 exploration verification
 
 `src/features/exploration/movement.test.ts` tests pure bounds/diagonal input/proximity; `src/pages/Game/Game.test.tsx` tests no-WebGL DOM map, pause/input, quality and honest stage copy. `tests/e2e/exploration.spec.ts` exercises actual SwiftShader-backed WebGL at desktop and mobile, held CDP touch, keyboard E/Escape, DPR cap at device scale 2, 320/390/768/1280px, no-WebGL and context loss. Combined with legacy browser regressions, 61 Vitest and 15 Chromium E2E tests pass in the Phase 5 sandbox. This is not a hardware, screen-reader, FPS or multi-browser test.
+
+## Future acceptance additions (D28; no tests run yet)
+
+Phase 8 must test a visible reset/delete control for **every** app-owned persisted category (including the existing reduced-motion setting), a confirmed global delete-all, cancellation, immediate in-memory and reload behavior, repeated actions, migration/corruption and protection of unrelated storage keys. Phase 9 must test a genuine game-derived background with mobile/desktop crops, contrast and fallback, liquid-glass control states/keyboard/touch/accessibility over that image, measured paint/load cost, and explicit use of anti-slop skills during optimization plus their final Delivery Gate. These are pending test requirements, not results.
+
+D29 Phase 9 addendum (not executed): verify lower-page section entry and visibly paced typing-style reveals in browser scroll journeys, including Persian graphemes/ZWNJ, unchanged LTR math, accessibility/full-text fallbacks, one-time triggers, fast scrolling, keyboard focus, OS/user reduced motion, no-JS/observer-unavailable behavior and mobile paint/layout stability.
+
+## Phase 8 verified progression (D30)
+
+`src/features/progression/saved.test.ts` checks derived stage/workshop points, canonical rational strings, duplicate/out-of-order rejection, migration, corruption, independent and global scoped resets and rehydrate. `src/components/ui/ResetAction.test.tsx` plus `src/test/app.test.tsx` exercise cancellation, Escape/focus, populated and empty dashboard, live deletion. Full `verify-environment.sh --full`: 90 Vitest PASS and build/lint/format/typecheck PASS. Full headless Chromium: 29 E2E PASS (stage/workshop/fraction rehydration, reset/delete/unrelated keys, 320px touch, keyboard, WebGL and prior regressions). See [Phase 8 report](PHASE_08_IMPLEMENTATION_REPORT.md). The earlier "D28 no tests run" heading above was historical planning, not current status.

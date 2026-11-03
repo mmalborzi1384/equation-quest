@@ -20,3 +20,11 @@ Energy 2, rhythm 3, motion 2: the existing editorial Home chapters keep alternat
 ## Persistent UI naming and control shape (owner direction)
 
 The graphical product name is always the Persian «ماجراجویی معادله‌ها» (including header, footer, browser title and accessible name); repository/package identifiers may retain the technical English slug. Buttons and button-like calls to action use modest rounded corners rather than sharp rectangles: shared `--control-radius: 9px`. Preserve deliberately circular indicators/decorative geometry and visible keyboard focus; avoid excessive pill styling or reducing 44px touch targets. Apply this convention to future screens too.
+
+## Future Phase 9 art direction (owner request D28; not implemented)
+
+Use an image captured from the *actual* game world as an art-directed background; keep algebra text and controls readable with tested overlays and mobile crops, plus an optimized static/no-WebGL fallback. Button-like actions should have a coherent, restrained modern liquid-glass treatment rather than sharp rectangles; retain the shared 9px corner token, 44px targets, contrast and visible focus. This owner-specified control treatment extends the earlier selective-glass guidance **for controls only**; avoid turning all reading panels into translucent glass. `reactdrops.dev` is an optional reference, not an installed library. Apply the vendored anti-slop skills **during** Phase 9 optimization and record its final gate. Details and test criteria: [Phase 9 plan](PHASE_09_DESIGN_AND_OPTIMIZATION_PLAN.md). No Phase 9 work has begun.
+
+## Future Phase 9 scroll narrative (D29; not implemented)
+
+Below-the-fold sections/panels should reveal as they enter the viewport, with selected short Persian headings/lines given a clearly noticeable, tasteful typing-style appearance. Current Home only shifts chapter headings on scroll; it does not implement the requested full sequence. Preserve visible semantic text, RTL graphemes/ZWNJ, LTR maths, keyboard focus, reduced-motion/no-JS fallbacks and fast mobile scrolling. Use anti-slop skills to decide *where* the effect adds meaning rather than typing every paragraph. See [Phase 9 plan](PHASE_09_DESIGN_AND_OPTIMIZATION_PLAN.md).

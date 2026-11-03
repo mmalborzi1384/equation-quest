@@ -27,7 +27,7 @@ export function StageRunner({ stage }: { stage: Stage }) {
   const [notice, setNotice] = useState(
     'نخست سازوکار این منطقه را بررسی کن؛ پاسخ نهایی به‌تنهایی کافی نیست.',
   );
-  const rewards = useLevelProgress((s) => s.rewards);
+  const rewards = useLevelProgress((s) => s.record.rewards);
   const grantVerifiedStage = useLevelProgress((s) => s.grantVerifiedStage);
   const problem = stage.problems[session.problemIndex];
   const eq = problem.equation;
@@ -63,11 +63,17 @@ export function StageRunner({ stage }: { stage: Stage }) {
       return;
     }
     if (result.completedNow) {
-      grantVerifiedStage(stage.id);
+      grantVerifiedStage(
+        stage.id,
+        result.session.attemptsTotal +
+          result.session.puzzle.attempts +
+          result.session.conceptAttempts,
+        result.session.puzzle.answer!,
+      );
       setNotice(
         rewards.earnedIds.includes(stage.id)
           ? 'بررسی درست بود؛ امتیاز این مرحله قبلاً داده شده است.'
-          : 'همهٔ مسئله‌ها در معادلهٔ اصلی بررسی شدند؛ پاداش این مرحله فقط یک بار در همین نشست ثبت شد.',
+          : 'همهٔ مسئله‌ها در معادلهٔ اصلی بررسی شدند؛ پاداش این مرحله فقط یک بار در این مرورگر ذخیره شد.',
       );
       return;
     }
@@ -264,7 +270,7 @@ export function StageRunner({ stage }: { stage: Stage }) {
               {session.done && (
                 <div>
                   <strong>
-                    مرحلهٔ {stage.id} کامل شد؛ {stage.points} امتیاز، فقط یک بار در این نشست.
+                    مرحلهٔ {stage.id} کامل شد؛ {stage.points} امتیاز، فقط یک بار در این مرورگر.
                   </strong>
                   <br />
                   {nextId ? (
@@ -297,7 +303,8 @@ export function StageRunner({ stage }: { stage: Stage }) {
         <BidiText>{notice}</BidiText>
       </p>
       <p className={styles.note}>
-        پیشرفت این مرحله فقط تا بارگذاری دوبارهٔ صفحه می‌ماند؛ ذخیرهٔ دائمی در این فاز وجود ندارد.
+        مرحلهٔ کامل‌شده و پاداش آن در مرورگر ذخیره می‌شود؛ پیشرویِ ناتمام هر مسئله با بارگذاری
+        دوباره از نو شروع می‌شود.
       </p>
     </section>
   );

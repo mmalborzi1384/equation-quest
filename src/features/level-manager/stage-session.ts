@@ -8,6 +8,7 @@ import type { Stage } from './stages';
 export type StageSession = Readonly<{
   conceptPassed: boolean;
   conceptAttempts: number;
+  attemptsTotal: number;
   problemIndex: number;
   puzzle: PuzzleSession;
   done: boolean;
@@ -21,6 +22,7 @@ export function startStage(): StageSession {
   return {
     conceptPassed: false,
     conceptAttempts: 0,
+    attemptsTotal: 0,
     problemIndex: 0,
     puzzle: startPuzzle(),
     done: false,
@@ -49,7 +51,12 @@ export function advanceStage(
     if (session.puzzle.phase !== 'complete' || session.problemIndex >= stage.problems.length - 1)
       return { session, completedNow: false };
     return {
-      session: { ...session, problemIndex: session.problemIndex + 1, puzzle: startPuzzle() },
+      session: {
+        ...session,
+        problemIndex: session.problemIndex + 1,
+        attemptsTotal: session.attemptsTotal + session.puzzle.attempts,
+        puzzle: startPuzzle(),
+      },
       completedNow: false,
     };
   }
@@ -61,5 +68,14 @@ export function advanceStage(
     event.event,
   );
   const completedNow = result.verifiedNow && session.problemIndex === stage.problems.length - 1;
-  return { session: { ...session, puzzle: result.session, done: completedNow }, completedNow };
+  return {
+    session: {
+      ...session,
+      puzzle: result.session,
+      done: completedNow,
+      attemptsTotal:
+        session.attemptsTotal + (event.event.type === 'restart' ? session.puzzle.attempts : 0),
+    },
+    completedNow,
+  };
 }
