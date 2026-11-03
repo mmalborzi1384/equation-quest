@@ -15,3 +15,7 @@ The app now has `npm run test:run` (Vitest/jsdom + React Testing Library). 28 te
 ## Phase 5 exploration verification
 
 `src/features/exploration/movement.test.ts` tests pure bounds/diagonal input/proximity; `src/pages/Game/Game.test.tsx` tests no-WebGL DOM map, pause/input, quality and honest stage copy. `tests/e2e/exploration.spec.ts` exercises actual SwiftShader-backed WebGL at desktop and mobile, held CDP touch, keyboard E/Escape, DPR cap at device scale 2, 320/390/768/1280px, no-WebGL and context loss. Combined with legacy browser regressions, 61 Vitest and 15 Chromium E2E tests pass in the Phase 5 sandbox. This is not a hardware, screen-reader, FPS or multi-browser test.
+
+## Future acceptance additions (D28; no tests run yet)
+
+Phase 8 must test a visible reset/delete control for **every** app-owned persisted category (including the existing reduced-motion setting), a confirmed global delete-all, cancellation, immediate in-memory and reload behavior, repeated actions, migration/corruption and protection of unrelated storage keys. Phase 9 must test a genuine game-derived background with mobile/desktop crops, contrast and fallback, liquid-glass control states/keyboard/touch/accessibility over that image, measured paint/load cost, and explicit use of anti-slop skills during optimization plus their final Delivery Gate. These are pending test requirements, not results.

@@ -13,3 +13,9 @@ All tasks are **Planned**, not started. Execute only after owner go-ahead.
 ## Phase-specific small tasks (Planned; only execute when authorized)
 - [ ] Add pre-release curriculum review gate and fraction coverage matrix alongside CI/Pages tests; do not claim teacher review or deployment before recorded evidence.
 - [ ] Record independent tests and anti-slop gate evidence before feature completion.
+
+## Phase 9 pre-release visual/optimization tasks (D28; planning only, not authorized)
+- [ ] Apply vendored anti-slop core and relevant UI/mobile/code/copy skills throughout optimization; document purposeful decisions, findings/fixes and PASS/FAIL Delivery Gate.
+- [ ] Source/capture and optimize a compelling background from the actual game environment; verify mobile/desktop cropping, text contrast, reduced-motion, static/no-WebGL fallback and measured loading cost.
+- [ ] Design/test restrained liquid-glass states for on-screen buttons and button-like CTAs with the owner's gently rounded corners; verify focus, touch, contrast and unsupported/slow-device fallback, plus measured paint/bundle cost.
+- [ ] Evaluate `reactdrops.dev` (or a comparable approach) for license, accessibility and dependency size **before** any adoption; no package/library selection has been made.

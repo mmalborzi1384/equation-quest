@@ -1,6 +1,6 @@
 # Development status — 2026-11-03
 
-**Authorization:** Phases 1–6 accepted and merged; Phase 6 PR #6 merged at `d6109b8`. Owner separately authorized Phase 7 eight authored levels (D27). Phase 8 persistence, Phase 9/10 and deployment are not authorized.
+**Authorization:** Phases 1–7 accepted and merged; Phase 7 PR #7 merged at `dccd87c`. The owner explicitly directed **not to start Phase 8**. D28 updates only the planned acceptance criteria for Phases 8 and 9; neither phase nor deployment is authorized.
 
 | Workstream | State | Evidence / next gate |
 |---|---|---|
@@ -13,7 +13,7 @@
 | 04 Interactive learning & math core | Merged and accepted | Nine deep-linkable authored lessons + exact rational checker, guided steps, original-equation substitution and repeatable fraction practice. 54 Vitest + 9 local headless Chromium Playwright tests and build passed. No independent curriculum review or hardware/mobile screen-reader audit. [Report](PHASE_04_COMPLETION_REPORT.md). |
 | 05 3D engine | Merged and accepted | Procedural R3F island on `/game`, orthographic follow camera, four inspectable landmarks, WASD/arrows/E/Escape, held mobile pad/tap, pause, quality low/balanced/high and no-WebGL text map. **Not** a playable level or puzzle. 61 Vitest + 15 Chromium E2E; [report](PHASE_05_COMPLETION_REPORT.md). |
 | 06 Game mechanics | Merged and accepted | Three ordered exact-rational workshop trials on `/game` with hints, original-equation verification and in-memory one-time points; **not** eight authored stages or durable progress. |
-| 07 Eight playable levels | Implemented; review pending | Eight playable concept gates and exact-puzzle sequences, ordered unlocks and one-time in-memory rewards; 06–08 require fractions. [Report](PHASE_07_COMPLETION_REPORT.md). |
+| 07 Eight playable levels | Merged and accepted | Eight playable concept gates and exact-puzzle sequences, ordered unlocks and one-time in-memory rewards; 06–08 require fractions. [Report](PHASE_07_COMPLETION_REPORT.md). |
 | 08 Real progression | Not authorized | `/progress` shows an empty state; only a reduced-motion UI preference is locally persisted. No XP/save data is claimed. |
 | 09 QA/optimization | Not authorized | Phase 2 tests below do not replace future cross-browser, accessibility and performance audits. |
 | 10 Deployment | Not authorized | Build is local only; GitHub Pages is not deployed or activated. |
@@ -70,3 +70,7 @@ Owner accepted and merged PR #6 at `d6109b8`, separately authorized Phase 7. Eac
 - Graphify extract/cluster/update **PASS**: 1229 nodes, 1903 edges, 140 communities; incremental watch emitted the existing filter-change warning.
 
 [Detailed Phase 7 report](PHASE_07_COMPLETION_REPORT.md). No hardware, screen-reader, curriculum-specialist review, persisted save, CI/deployment or real FPS claim.
+
+## Planning-only update after Phase 7 merge (2026-11-03)
+
+Owner approved and merged PR #7 at `dccd87c`, **explicitly prohibited starting Phase 8**, and asked only to amend the Phase 8 and 9 acceptance plans (D28). Phase 8 now requires in-context reset/delete wherever app-owned data is persisted, including reduced-motion preference, plus confirmed global app-data deletion with reload/no-resurrection tests. Phase 9 now explicitly plans anti-slop skills during optimization, a background image derived from the real game world, and restrained liquid-glass buttons with accessibility/performance fallbacks. `reactdrops.dev` is a suggested reference, not evaluated or installed. These are **documentation-only pending requirements**: no storage controls, images, UI effects, new dependencies, implementation tests, deployment or phase authorization occurred.

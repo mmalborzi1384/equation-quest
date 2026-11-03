@@ -36,4 +36,4 @@ Report: phase name/objective; completed tasks; exact created/modified paths; tes
 
 ## Current boundary
 
-Phases 1–6 accepted; Phase 6 PR #6 merged into `main` at `d6109b8` by explicit owner direction. The owner separately authorized **Phase 7** eight playable authored stages with four island pairs (D27). Stop after Phase 7 review handoff: no Phase 8 persisted dashboard, PR merge or deployment without separate authorization.
+Phases 1–7 accepted; Phase 7 PR #7 merged into `main` at `dccd87c` by explicit owner direction. The owner then explicitly instructed **not to start Phase 8** and requested planning-only D28 acceptance changes for Phases 8 and 9. These changes do not authorize either phase, PR merge or deployment; wait for a separate explicit owner instruction.

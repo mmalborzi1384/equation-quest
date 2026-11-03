@@ -11,3 +11,7 @@ A pure one-time reward reducer and in-memory workshop store demonstrate idempote
 
 ## Phase 7 boundary
 Eight real levels and their one-time ordered in-memory rewards now exist, but **no persisted record or resume**. `/progress` clearly distinguishes temporary stage/map status from a durable save. Do not claim migrations/reload retention or convert the Phase 7 store into persistence before separate Phase 8 authorization.
+
+## Phase 8 acceptance addition (D28; planning only)
+
+At implementation time first inventory every app-owned persisted key and map it to a visible in-context reset/delete control; retain a separate global delete-all on `/progress`. Include the existing persisted reduced-motion preference, not just new game data. Make category reset and global deletion deterministic, confirm destructive actions, clear store and storage consistently, and show truthful empty/default states without deleting unrelated localStorage keys. Exercise keyboard/touch, RTL labels, cancel/confirm, corruption/migration, duplicate actions, navigation and reload after each reset. Do not implement or mark these tasks done before explicit Phase 8 authorization.

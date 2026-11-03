@@ -5,3 +5,7 @@ Lazy-load routes and heavy scenes; static sprite/DOM fallback for no WebGL. Cap 
 ## Phase 5 measured configuration (not FPS claims)
 
 The lazy R3F scene uses `Canvas` with DPR caps low 1, balanced 1.5, high 2; shadows only on high, less decorative geometry and no antialias on low. Browser test with device scale factor 2 verified low canvas DPR <=1.05. Offscreen and paused mode switch R3F to demand frameloop; OS/user reduced-motion uses immediate camera follow. Vite build warned of a 925 kB minified / 245 kB gzip lazy scene chunk; it is not loaded by Home/lessons/no-WebGL, but its size requires future profiling. **No actual FPS, memory or low-end hardware measurements were made.**
+
+## Future Phase 9 optimization additions (D28; planned, not measured)
+
+Budget an authentic game-scene background by measured image bytes, viewport-specific crops, responsive delivery and lazy/eager priority appropriate to its placement. Test compositing/paint impact of liquid-glass buttons over the image at mobile widths, reduced motion and low/no-WebGL; keep a cheap solid control fallback for unsupported or slow environments. Use the vendored anti-slop skills throughout profiling and design refinement, then record the Delivery Gate and actual performance numbers. `reactdrops.dev` is a possible design reference only; compare bundle/accessibility/license before adopting any code. No new image, visual effect, library or measurement has been made in this planning update.
