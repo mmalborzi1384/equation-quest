@@ -1,6 +1,6 @@
 # Equation Quest — project memory index
 
-**Status (2026-11-03): Phases 1–9 merged; Phase 9 PR #9 merged at `900d2ec`. D34 authorized Phase 10 CI/Pages publication with documented curriculum/security/device risks. Phase 10 automation is implemented on `arena/758a3991-equation-quest`; local 90 Vitest, 38 Chromium and production smoke pass. PR CI/public Pages artifact and live host verification remain pending merge. The project stays open for future bug fixes/features.**
+**Status (2026-11-03): Phases 1–9 merged; Phase 9 PR #9 merged at `900d2ec`. D34 authorized Phase 10 CI/Pages publication with documented curriculum/security/device risks. Phase 10 PR #10 merged at `1aa3773`; local 90 Vitest, 38 Chromium and production smoke plus main Actions deploy/live smoke `41640153643` pass. Pages source still reports legacy; admin change tracked in issue #13. The project stays open for future bug fixes/features.**
 
 ## Permanent execution protocol
 Read [PHASE_EXECUTION_PROTOCOL.md](PHASE_EXECUTION_PROTOCOL.md) **before every phase**. Wait for explicit phase authorization. Outputs are phase-specific: Phase 1 requires validated specifications, updated docs and a validation/approval report; implementation phases require executable app code and test evidence. Protocol maintenance in this turn is not a product phase.
@@ -84,4 +84,4 @@ User reported global glass controls jumping while scrolling and menu opening abr
 
 ## D34 Phase 10 handoff (2026-11-03)
 
-See [Phase 10 release report](docs/PHASE_10_RELEASE_REPORT.md), [operational deployment guide](docs/DEPLOYMENT.md) and `specs/012-release`. Workflow validates PRs without deploying, builds/deploys on main and live-smokes the public host. Owner chose publication with documented external content-review gap, not a certification or project closure. Do not merge the Phase 10 PR without explicit instruction; do not claim public verification until green live Actions run. Follow-up bug and feature changes use ordinary PRs. Older planning-only states above are historical.
+See [Phase 10 release report](docs/PHASE_10_RELEASE_REPORT.md), [operational deployment guide](docs/DEPLOYMENT.md) and `specs/012-release`. Workflow validates PRs without deploying, builds/deploys on main and live-smokes the public host. Owner chose publication with documented external content-review gap, not a certification or project closure. PR #10 was explicitly approved/merged and public live Actions smoke succeeded; do not conflate this with the still-legacy Pages admin source setting. Follow-up bug and feature changes use ordinary PRs. Older planning-only states above are historical.

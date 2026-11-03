@@ -37,5 +37,6 @@ Local build, hash route/assets smoke, repeated browser and unit suites and autom
 - [x] Add shared preview/live route, asset, mobile and saved-setting smoke and locally run full verification.
 - [x] Document explicit owner risk acceptance; no false independent curriculum review/security certification or site-live claim.
 - [x] Observe real PR Actions validation: PR #10 run `41638949454` passed (build, Chromium and preview smoke); deploy/live-smoke skipped by design.
-- [ ] After explicit PR merge approval, observe green main deploy and live smoke on the actual public URL; address first-time Pages Actions-source setting if required.
+- [x] Owner explicitly approved PR #10 merge; main validate/artifact deploy and public live smoke succeeded (`41640153643`).
+- [ ] Pages admin setting still reports legacy main/root and cannot be updated with this GitHub integration (403); owner action tracked in issue #13.
 - [ ] Independent grade-7/Persian content review, physical device/screen-reader/other browser tests and dependency advisories remain follow-ups, not silently closed.

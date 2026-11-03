@@ -32,5 +32,6 @@
 - [x] No new app UI, production dependency, repository secret or irreversible release freeze; maintainability and rollback documented.
 - [x] Anti-slop scoped release gate recorded in `docs/PHASE_10_RELEASE_REPORT.md`.
 - [x] PR #10 CI validation passed (`41638949454`); no deploy on PR.
-- [ ] Observe main Actions deployment/public host smoke before claiming public release.
+- [x] Main Actions `41640153643` artifact deployment and public Chromium smoke succeeded.
+- [ ] Repo admin must set Pages source to GitHub Actions (still `legacy` after deploy; REST update 403); issue #13.
 - [ ] External curriculum/Persian specialist review and physical/device/screen-reader/alternate-browser checks: explicitly outstanding with owner-approved publication exception, not certified as PASS.
