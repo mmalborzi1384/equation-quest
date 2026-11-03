@@ -47,3 +47,5 @@ Phase 4 implementation commit `497953d` pushed; [PR #4](https://github.com/mmalb
 
 ## Phase 5 handoff (2026-11-03)
 `/game` now hosts a real procedural isometric R3F exploration workshop, pure bounded movement and proximity, four inspectable landmarks, orthographic follow camera, keyboard and held-touch direction controls, E/Escape/tap, quality presets and text fallback on absent/lost WebGL. `/world` keeps stage previews honest and links to workshop. All 61 Vitest and 15 headless Chromium E2E tests passed; WebGL/mobile 320/390/768/1280px and no-WebGL were exercised, details in [Phase 5 report](docs/PHASE_05_COMPLETION_REPORT.md). No puzzle/reward/level completion, persisted progress, independent curriculum review, hardware screen reader or deployment is claimed. Phase 6 needs separate authorization.
+
+Phase 5 implementation commit `8bfa790` pushed; [PR #5](https://github.com/mmalborzi1384/equation-quest/pull/5) open and **not merged**. Await explicit owner decision. Session branch: `arena/bdc71c3b-equation-quest`.

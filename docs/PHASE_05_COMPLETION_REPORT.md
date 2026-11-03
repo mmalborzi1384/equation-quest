@@ -36,3 +36,5 @@ Quality selector sets low/balanced/high DPR caps (1/1.5/2), high-only shadows, l
 ## Stop / owner gate
 
 Phase 5 exploration is locally implemented and verified. Recommend owner review and later explicit Phase 6 authorization for **puzzle/level-manager/reward integration**, but do not begin it, merge this PR, or deploy without permission. The full 008 Game feature and 007 World unlock/progress checklist remain open for later authorized phases.
+
+**Review handoff:** implementation/verification commit `8bfa790` pushed on `arena/bdc71c3b-equation-quest`; [PR #5](https://github.com/mmalborzi1384/equation-quest/pull/5) is open for owner review and **not merged**. This handoff note follows as a documentation commit. No deployment or Phase 6 work started.
