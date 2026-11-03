@@ -36,3 +36,7 @@ The previously planned authentic game-scene background and selective liquid-glas
 ## D33 stable glass and menu
 
 The optical action edge retains the 9px radius and original navy/gold legibility but no longer samples the backdrop while scrolling. Do not reintroduce blur across all controls or translate whole interactive sections; these caused visible scroll jumping. The mobile header now reveals the menu with a short opacity/translate gesture and fixed-size morphing icon, while reduced-motion users see an immediate state. See [polish report](PHASE_09_POLISH_AND_RELEASE_READINESS.md).
+
+## Separate introduction page (D35)
+
+The owner requested another introductory website view connected in both directions to Home, inspired by `rit3zh/expo-glass-carousel`. `#/intro` is a separate lazy route within the existing static site rather than a second deployment. It uses the same captured game-world image and a purposeful four-stop editorial carousel (center card + peeking neighbors, swipe/snap, focus details, Escape and keyboard arrows) adapted to DOM/CSS; no Skia snapshot, shader or Expo code was imported. The glass lens is decorative only, the reading text remains solid, and the controls keep 9px corners. Motion-disabled and 320px views remain usable. See `README.md` and the browser regression.

@@ -9,6 +9,7 @@ const base = new URL(process.env.RELEASE_URL || 'http://127.0.0.1:4173/equation-
 if (!base.pathname.endsWith('/equation-quest/')) throw new Error('Expected /equation-quest/ base');
 const routes = [
   '/',
+  '/intro',
   '/learning',
   '/learning/fractions',
   '/world',
@@ -24,17 +25,35 @@ const server = local
   : null;
 
 async function ready() {
-  for (let i = 0; i < 30; i++) {
+  // Pages can briefly serve its legacy source index.html (which imports uncompiled
+  // /src/main.tsx and looks blank) while an Actions artifact propagates. HTTP 200
+  // alone is not readiness: wait for the *built* Vite entrypoint instead.
+  let lastObservation = 'no response';
+  for (let i = 0; i < (local ? 30 : 90); i++) {
     if (server && server.exitCode !== null) throw new Error('Preview process exited');
     try {
-      const response = await fetch(base, { signal: AbortSignal.timeout(4000) });
-      if (response.ok) return;
-    } catch {
-      /* wait for preview or Pages propagation */
+      const response = await fetch(base, {
+        signal: AbortSignal.timeout(4000),
+        cache: 'no-store',
+      });
+      const html = await response.text();
+      const entrypoint = html.match(/src=["'](\/equation-quest\/assets\/index-[^"']+\.js)/)?.[1];
+      if (response.ok && entrypoint) {
+        const asset = await fetch(new URL(entrypoint, base), {
+          signal: AbortSignal.timeout(4000),
+          cache: 'no-store',
+        });
+        if (asset.ok) return;
+        lastObservation = `entrypoint ${asset.status}: ${entrypoint}`;
+      } else {
+        lastObservation = `HTTP ${response.status}; ${html.includes('/src/main.tsx') ? 'uncompiled legacy index' : 'missing built Vite entrypoint'}`;
+      }
+    } catch (error) {
+      lastObservation = String(error);
     }
     await delay(2000);
   }
-  throw new Error(`Release URL did not become ready: ${base}`);
+  throw new Error(`Compiled release not ready at ${base}: ${lastObservation}`);
 }
 
 let browser;
@@ -60,7 +79,13 @@ try {
       const response = await page.goto(url.href, { waitUntil: 'networkidle' });
       // Same-document hash navigation returns null in Playwright; only a networked response has status.
       if (response && !response.ok()) failures.push(`Document failed: ${route}`);
-      await page.locator('h1').first().waitFor({ state: 'visible' });
+      // A catch-all 404 also has an h1. Assert the new route's actual heading so a
+      // stale deployed bundle cannot masquerade as the updated introduction.
+      if (route === '/intro') {
+        await page.getByRole('heading', { level: 1, name: /هر معادله/ }).waitFor();
+      } else {
+        await page.locator('h1').first().waitFor({ state: 'visible' });
+      }
       if (await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1))
         failures.push(`Horizontal overflow at ${width}px ${route}`);
     }

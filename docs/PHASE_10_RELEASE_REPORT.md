@@ -1,6 +1,6 @@
 # Phase 10 — CI/Pages release and future maintenance
 
-**2026-11-03, D34.** Owner authorized Phase 10, then clarified to finish publication while documenting unreviewed risks and preserving the ability to fix bugs/add features later. Phase 9 PR #9 was merged as `900d2ec`. This report distinguishes local verification, PR CI and actual public Pages behavior. PR #10 was explicitly approved and merged as `1aa3773`; main deployment/live browser smoke passed, with a remaining Pages admin-source setting documented below.
+**2026-11-03, D34.** Owner authorized Phase 10, then clarified to finish publication while documenting unreviewed risks and preserving the ability to fix bugs/add features later. Phase 9 PR #9 was merged as `900d2ec`. This report distinguishes local verification, PR CI and actual public Pages behavior. PR #10 was explicitly approved and merged as `1aa3773`; main deployment/live browser smoke passed, with subsequent source-switch propagation behavior documented below.
 
 ## Scope delivered
 
@@ -19,7 +19,7 @@
 | Same external Chromium, `npm run test:release` | PASS local production preview: seven hash routes, 320/1280px, assets, refresh, browser errors, mobile menu and saved setting. First attempt failed because no browser binary was installed; next attempt found a smoke-script bug treating same-document hash navigation's null Playwright response as failure. Fixed and reran successfully. |
 | Actual GitHub Actions PR validation | **PASS** on PR #10, Actions run `41638949454`: pinned install, static checks, all browser journeys and production smoke; deploy/live-smoke correctly SKIPPED on pull request. Hosted runner emitted non-fatal Node 20 action-runtime deprecation and Ubuntu-label migration notices. |
 | GitHub Pages artifact deployment and public smoke | **PASS** main Actions run [`41640153643`](https://github.com/mmalborzi1384/equation-quest/actions/runs/41640153643): validate, Pages artifact deploy, and browser live-smoke all green. Public URL `https://mmalborzi1384.github.io/equation-quest/` was tested in hosted Chromium against seven routes at 320/1280px with assets, reload, menu and saved setting. Deployment status for main `1aa3773` is success. |
-| Pages source / future reliability | **ACTION REQUIRED by repository admin:** Pages API still returns `build_type: legacy`, source `main`/root, despite successful Actions deployment. Attempted Pages REST source update; GitHub integration returned HTTP 403. Owner must switch Settings → Pages → Source to GitHub Actions and rerun main workflow. Tracked in [issue #13](https://github.com/mmalborzi1384/equation-quest/issues/13); future legacy builds could compete with artifact deployments. |
+| Pages source / future reliability | **OWNER SETTING CHANGED:** after owner selected GitHub Actions, Pages API reports `build_type: workflow`. Run `41642947134` validated and deployed, but immediate live-smoke failed in the source-switch window. Later public Home/Progress/fraction page fetches rendered correctly. D35 hardens readiness; do not call that failed run green. [Issue #13](https://github.com/mmalborzi1384/equation-quest/issues/13) records the original setting and can be reconciled once a new main live-smoke passes. |
 
 ## Curriculum and security exception (no fabricated endorsement)
 
@@ -27,4 +27,8 @@ Existing authored data/tests cover all nine lesson routes, the exact-rational en
 
 ## Anti-slop Delivery Gate (release changes)
 
-No new UI decoration, invented education claims or dependency was introduced. R-16/R-35/R-36: explicit truthful distinctions between local, CI and public checks; tested native navigation/persistence in production preview. R-03/R-32/R-39: browser matrix covers narrow/desktop, focus/Escape and reduced motion; full existing Phase 9 UI gate continues to apply. PASS for local and public browser checks. Admin Pages source remains OPEN, not a completed reliability gate. Maintenance stays OPEN for later fixes/features, not a quality guarantee that all bugs are gone.
+No new UI decoration, invented education claims or dependency was introduced. R-16/R-35/R-36: explicit truthful distinctions between local, CI and public checks; tested native navigation/persistence in production preview. R-03/R-32/R-39: browser matrix covers narrow/desktop, focus/Escape and reduced motion; full existing Phase 9 UI gate continues to apply. PASS for local and public browser checks. Pages source is now workflow, but the most recent main live-smoke failure remains visible until a green rerun. Maintenance stays OPEN for later fixes/features, not a quality guarantee that all bugs are gone.
+
+## D35 Pages source-switch observation (2026-11-03)
+
+After the owner changed Pages source, the API reported `build_type: workflow`. For PR #14 merge SHA `96f3656`, main run `41642947134` passed validate/artifact deploy but **FAILED live-smoke**. The public Home, Progress and fraction routes were later retrieved with rendered content; failure during propagation cannot be claimed as a green live run. The previous Pages API issue #13 describes the now-changed source; keep a separate smoke readiness guard so a 200 response containing the legacy `/src/main.tsx` is not mistaken for a built site. D35's branch will test this behavior locally, and future main runs must prove the public gate green.

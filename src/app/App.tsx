@@ -5,6 +5,7 @@ import { RouteErrorBoundary } from './RouteErrorBoundary';
 import { topics, type TopicId } from '../data/topics';
 
 const Home = lazy(() => import('../pages/Home/Home'));
+const Intro = lazy(() => import('../pages/Intro/Intro'));
 const Learning = lazy(() => import('../pages/Learning/Learning'));
 const World = lazy(() => import('../pages/World/World'));
 const Game = lazy(() => import('../pages/Game/Game'));
@@ -37,6 +38,7 @@ export function App() {
           <Routes>
             <Route element={<AppLayout />}>
               <Route index element={<Home />} />
+              <Route path="intro" element={<Intro />} />
               <Route path="learning" element={<Learning />} />
               {topics.map((topic) => {
                 const Lesson = lessonPages[topic.id];

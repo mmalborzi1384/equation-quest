@@ -29,6 +29,9 @@ export default function Home() {
             <Link className={styles.secondary} to="/world">
               دیدن نقشهٔ جهان
             </Link>
+            <Link className={styles.secondary} to="/intro">
+              آشنایی با ماجراجویی
+            </Link>
           </div>
           <div className={styles.heroNote}>
             <span>پایهٔ هفتم</span>

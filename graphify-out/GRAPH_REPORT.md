@@ -4,12 +4,12 @@
 - cluster-only mode — file stats not available
 
 ## Summary
-- 1330 nodes · 2164 edges · 146 communities (81 shown, 65 thin omitted)
+- 1340 nodes · 2183 edges · 145 communities (81 shown, 64 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 13 edges (avg confidence: 0.73)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `900d2ec2`
+- Built from commit: `96f3656d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -152,7 +152,6 @@
 - Community 135
 - Community 136
 - Community 137
-- Community 138
 
 ## God Nodes (most connected - your core abstractions)
 1. `TopicRoute()` - 29 edges
@@ -160,36 +159,36 @@
 3. `MechanicsLab()` - 23 edges
 4. `Practice()` - 22 edges
 5. `Game()` - 21 edges
-6. `react` - 20 edges
-7. `Group 1: Hard Gate (absolute, no exceptions)` - 20 edges
-8. `equals()` - 18 edges
-9. `StageRunner()` - 18 edges
-10. `compilerOptions` - 18 edges
+6. `react` - 21 edges
+7. `react-router-dom` - 20 edges
+8. `Group 1: Hard Gate (absolute, no exceptions)` - 20 edges
+9. `equals()` - 18 edges
+10. `StageRunner()` - 18 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `problem()` --calls--> `fromStrings()`  [EXTRACTED]
   src/features/level-manager/stages.ts → src/features/equation-engine/equation.ts
-- `open()` --calls--> `TopicRoute()`  [EXTRACTED]
-  src/pages/Lessons/TopicRoute.test.tsx → src/pages/Lessons/TopicRoute.tsx
 - `practiceAnswer()` --calls--> `fromStrings()`  [EXTRACTED]
   src/features/progression/saved.ts → src/features/equation-engine/equation.ts
 - `tryAnswer()` --calls--> `grade()`  [EXTRACTED]
   src/pages/Lessons/Practice.tsx → src/features/equation-engine/equation.ts
 - `practiceAnswer()` --calls--> `solution()`  [EXTRACTED]
   src/features/progression/saved.ts → src/features/equation-engine/equation.ts
+- `recordStage()` --calls--> `solution()`  [EXTRACTED]
+  src/features/progression/saved.ts → src/features/equation-engine/equation.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (146 total, 65 thin omitted)
+## Communities (145 total, 64 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.09
 Nodes (73): react-katex, Action, apply(), Equation, equation(), equationTex(), FeedbackCode, fromStrings() (+65 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.09
-Nodes (45): zustand@5.0.16, zustand, Band, serialize(), StageSession, problem(), stageFor(), stageOrder (+37 more)
+Cohesion: 0.08
+Nodes (56): vitest, zustand, PageIntro(), Props, ResetAction(), islands, LevelInfo, levels (+48 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.04
@@ -200,8 +199,8 @@ Cohesion: 0.05
 Nodes (46): concurrency, cancel-in-progress, group, environment, if, needs, permissions, runs-on (+38 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.08
-Nodes (33): @react-three/drei@10.7.9, @react-three/drei, coordinates, Landmark, landmarks, lessons, advance(), BOUND (+25 more)
+Cohesion: 0.09
+Nodes (32): coordinates, Landmark, landmarks, lessons, advance(), BOUND, Direction, directions (+24 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.05
@@ -228,20 +227,20 @@ Cohesion: 0.08
 Nodes (14): Dependency map and proposed knowledge graph, GitHub Pages deployment proposal — not configured, Development status — 2026-11-03, Phase 2 verification, Game design — Algebra Kingdom (Phase 1 planning baseline), Graphify local graph — preparation extraction, Performance plan (targets to measure, not achieved), Phase 1 — specification acceptance checklist (review copy) (+6 more)
 
 ### Community 11 - "Community 11"
+Cohesion: 0.13
+Nodes (13): react, react-router-dom, Card, cards, AppLayout(), SiteFooter(), links, SiteHeader() (+5 more)
+
+### Community 12 - "Community 12"
 Cohesion: 0.07
 Nodes (26): Dependencies & Execution Order, Format: `[ID] [P?] [Story] Description`, Implementation for User Story 1, Implementation for User Story 2, Implementation for User Story 3, Implementation Strategy, Incremental Delivery, MVP First (User Story 1 Only) (+18 more)
 
-### Community 12 - "Community 12"
-Cohesion: 0.15
-Nodes (14): BalanceLesson(), BothSidesLesson(), EquationLesson(), FractionsLesson(), InverseOperationsLesson(), PartsLesson(), SolveLesson(), BalanceLab() (+6 more)
-
 ### Community 13 - "Community 13"
 Cohesion: 0.14
-Nodes (9): react, AppLayout(), SiteFooter(), links, SiteHeader(), ResetAction(), useStoryReveal(), Quality (+1 more)
+Nodes (15): BalanceLesson(), BothSidesLesson(), EquationLesson(), FractionsLesson(), InverseOperationsLesson(), PartsLesson(), SolveLesson(), BalanceLab() (+7 more)
 
 ### Community 14 - "Community 14"
-Cohesion: 0.17
-Nodes (10): Card, cards, GlassCarousel(), Home(), useHomeMotion(), Progress(), clearAllSaved(), useLevelProgress (+2 more)
+Cohesion: 0.10
+Nodes (21): dependencies, @fontsource/vazirmatn@5.3.0, gsap@3.15.0, lucide-react@1.67.0, prop-types@15.8.1, react@19.3.1, react-dom@19.3.1, react-katex@3.1.0 (+13 more)
 
 ### Community 15 - "Community 15"
 Cohesion: 0.10
@@ -249,47 +248,47 @@ Nodes (20): Group 1: Hard Gate (absolute, no exceptions), R-02 — Copywriting, 
 
 ### Community 16 - "Community 16"
 Cohesion: 0.10
-Nodes (19): devDependencies, @gltf-transform/cli@4.5.1, prettier@3.9.10, @testing-library/react@16.3.3, @types/react@19.3.0, @types/react-dom@19.3.0, @types/three@0.187.0, typescript@5.9.3 (+11 more)
+Nodes (19): devDependencies, eslint@9.39.2, @gltf-transform/cli@4.5.1, @playwright/test@1.64.1, prettier@3.9.10, @types/react-dom@19.3.0, @types/three@0.187.0, typescript@5.9.3 (+11 more)
 
 ### Community 17 - "Community 17"
 Cohesion: 0.10
-Nodes (20): dependencies, @fontsource/vazirmatn@5.3.0, gsap@3.15.0, katex@0.19.1, lucide-react@1.67.0, prop-types@15.8.1, react@19.3.1, react-dom@19.3.1 (+12 more)
+Nodes (19): compilerOptions, allowImportingTsExtensions, esModuleInterop, isolatedModules, jsx, lib, module, moduleResolution (+11 more)
 
 ### Community 18 - "Community 18"
-Cohesion: 0.19
-Nodes (10): PageIntro(), Props, islands, LevelInfo, levels, topicPath(), Learning(), Level() (+2 more)
+Cohesion: 0.11
+Nodes (6): @playwright/test, base, routes, buttonLikeLinks, routes, routes
 
 ### Community 19 - "Community 19"
-Cohesion: 0.10
-Nodes (19): compilerOptions, allowImportingTsExtensions, esModuleInterop, isolatedModules, jsx, lib, module, moduleResolution (+11 more)
+Cohesion: 0.17
+Nodes (12): App(), Game, Home, Intro, Learning, lessonPages, Level, NotFound (+4 more)
 
 ### Community 20 - "Community 20"
 Cohesion: 0.11
 Nodes (17): antislop-code, Code Comment Checklist, Comments That Add Nothing, Decorative Emoji, Decorative Separators, Empty Labels, End Markers, How It Should Read (+9 more)
 
 ### Community 21 - "Community 21"
-Cohesion: 0.18
-Nodes (11): App(), Game, Home, Learning, lessonPages, Level, NotFound, Progress (+3 more)
+Cohesion: 0.17
+Nodes (7): GlassCarousel(), Home(), useHomeMotion(), Intro(), IntroCarousel(), Stop, stops
 
 ### Community 22 - "Community 22"
-Cohesion: 0.12
-Nodes (15): description, eslint@9.39.2, jsdom@30.1.3, @testing-library/jest-dom@7.0.1, engines, node, npm, name (+7 more)
-
-### Community 23 - "Community 23"
 Cohesion: 0.14
 Nodes (13): Additional core topic lessons (`/learning/equation`, `/learning/parts`, `/learning/both-sides`, `/learning/solve`, `/learning/verify`), `/game`, `/game/level/01` … `/08`, `/` Home, `/learning/balance`, `/learning/fractions` — independent fraction lesson and practice, `/learning/inverse-operations`, `/learning` Overview (+5 more)
 
-### Community 24 - "Community 24"
+### Community 23 - "Community 23"
 Cohesion: 0.15
 Nodes (13): Group 2: Purpose-Gate (technique allowed, purpose required), R-01 — Color & Gradients, R-04 — Icons, R-06 — Typography, R-07 — Background, R-08 — Button Arrows, R-09 — Badges, R-10 — Glassmorphism (+5 more)
 
+### Community 24 - "Community 24"
+Cohesion: 0.15
+Nodes (12): katex@0.19.1, description, jsdom@30.1.3, @types/react@19.3.0, name, packageManager, private, type (+4 more)
+
 ### Community 25 - "Community 25"
 Cohesion: 0.15
-Nodes (5): @playwright/test@1.64.1, @playwright/test, buttonLikeLinks, routes, routes
+Nodes (12): Assumptions, Edge Cases, Feature Specification: [FEATURE NAME], Functional Requirements, Key Entities *(include if feature involves data)*, Measurable Outcomes, Requirements *(mandatory)*, Success Criteria *(mandatory)* (+4 more)
 
 ### Community 26 - "Community 26"
-Cohesion: 0.15
-Nodes (12): Assumptions, Edge Cases, Feature Specification: [FEATURE NAME], Functional Requirements, Key Entities *(include if feature involves data)*, Measurable Outcomes, Requirements *(mandatory)*, Success Criteria *(mandatory)* (+4 more)
+Cohesion: 0.22
+Nodes (8): Lesson, lessons, Topic, topicById, TopicId, topicPath(), topics, Learning()
 
 ### Community 27 - "Community 27"
 Cohesion: 0.17
@@ -344,188 +343,188 @@ Cohesion: 0.22
 Nodes (8): Complexity Tracking, Constitution Check, Documentation (this feature), Implementation Plan: [FEATURE], Project Structure, Source Code (repository root), Summary, Technical Context
 
 ### Community 40 - "Community 40"
-Cohesion: 0.28
-Nodes (6): Lesson, lessons, Topic, topicById, TopicId, topics
-
-### Community 41 - "Community 41"
 Cohesion: 0.25
 Nodes (7): Already installed, and the user asks how to update, antislop, Core Principle, Functional Patterns, Part 2: Mandatory Rules (R-01 to R-40, grouped), Two Usage Modes, What This Is (and What It Isn't)
 
-### Community 42 - "Community 42"
+### Community 41 - "Community 41"
 Cohesion: 0.25
 Nodes (8): Accessibility, Copywriting & Content, Decorative Elements, Functionality & Content, Identity & Originality, Layout & Components, Part 1: AI Slop Patterns (Warning Signs), Visual & Color
 
-### Community 43 - "Community 43"
+### Community 42 - "Community 42"
 Cohesion: 0.25
 Nodes (8): App & Dashboard, Charts Without a Question, Default Dashboard Shell, Filler Activity Feed, Filler Data in Fields and Columns, Generic Table Columns, Placeholder Empty and Loading States, Stat Cards With Invented Numbers
 
-### Community 44 - "Community 44"
+### Community 43 - "Community 43"
 Cohesion: 0.25
 Nodes (7): Domain boundary and representation, Feedback and hints, Generator and difficulty policy, Pure equation engine specification — required rational scope (not implemented), Step model and mathematical semantics, Test contract and extension, Timing
 
-### Community 45 - "Community 45"
+### Community 44 - "Community 44"
 Cohesion: 0.25
 Nodes (7): 1. Repository, 2. Tool and skill compatibility, 3. Architecture, page map and memory, 4. Dependency status and knowledge graph, 5. Risks / decisions required, 6. Proposed order, Preparation report — 2026-11-03
 
-### Community 46 - "Community 46"
-Cohesion: 0.39
-Nodes (4): react-router-dom, @testing-library/react, vitest, open()
-
-### Community 47 - "Community 47"
+### Community 45 - "Community 45"
 Cohesion: 0.29
 Nodes (4): Document basics, Runtime, Security defaults, Web Baseline
 
-### Community 48 - "Community 48"
+### Community 46 - "Community 46"
 Cohesion: 0.29
 Nodes (6): Anti-slop and reference, Canonical cross-sandbox contract, Direct npm dependencies (installed, exact lockfile), Security and compatibility risk, Tooling and dependency register (2026-11-03), Verified environment
 
-### Community 49 - "Community 49"
+### Community 47 - "Community 47"
 Cohesion: 0.29
 Nodes (6): Change protocol, Commands (currently implemented), Development workflow and sandbox handoff, End-of-task handoff, Entry gate — every session and PR sandbox, Git/CI policy
 
-### Community 50 - "Community 50"
+### Community 48 - "Community 48"
 Cohesion: 0.29
 Nodes (6): Canonical development environment — Equation Quest, Configuration inventory, From a fresh PR sandbox (checklist), Important boundaries, Troubleshooting differences, What was actually available in this sandbox
 
-### Community 51 - "Community 51"
+### Community 49 - "Community 49"
 Cohesion: 0.29
 Nodes (6): آزمون و محدودیت‌ها, بازمانده‌ها و ریسک‌ها, بررسی معیارهای پذیرش, تاریخچه و توقف, خروجی‌های مستند, گزارش نهایی برای بررسی فاز ۱ — هنوز تأیید نهایی نشده
 
-### Community 52 - "Community 52"
+### Community 50 - "Community 50"
 Cohesion: 0.29
 Nodes (6): بازبینی anti-slop و دسترسی‌پذیری, بدهی و توقف, شواهد اجرایی و آزمون, مجوز، دامنه و تحویل, مرجع بازبینی, گزارش تکمیل پیاده‌سازی فاز ۲: ساختار اصلی وب‌سایت
 
-### Community 53 - "Community 53"
+### Community 51 - "Community 51"
 Cohesion: 0.29
 Nodes (6): Before starting an authorized phase, Current boundary, Equation Quest — Controlled Phase Execution Protocol, Execute only the authorized phase, Phase completion report and stop condition, Three phase-appropriate outputs for **each** phase
 
-### Community 54 - "Community 54"
+### Community 52 - "Community 52"
 Cohesion: 0.29
 Nodes (6): Acceptance evidence required, App foundation and shared navigation, Phase 1 approved scope (A1–A5, including strengthened A2), Requirements, Scope and constraints, User story
 
-### Community 55 - "Community 55"
+### Community 53 - "Community 53"
 Cohesion: 0.29
 Nodes (6): Acceptance evidence required, Home narrative and glass carousel, Phase 1 approved scope (A1–A5, including strengthened A2), Requirements, Scope and constraints, User story
 
-### Community 56 - "Community 56"
+### Community 54 - "Community 54"
 Cohesion: 0.29
 Nodes (6): Acceptance evidence required, Learning overview, Phase 1 approved scope (A1–A5, including strengthened A2), Requirements, Scope and constraints, User story
 
-### Community 57 - "Community 57"
+### Community 55 - "Community 55"
 Cohesion: 0.29
 Nodes (6): Acceptance evidence required, Balance lesson, Phase 1 approved scope (A1–A5, including strengthened A2), Requirements, Scope and constraints, User story
 
-### Community 58 - "Community 58"
+### Community 56 - "Community 56"
 Cohesion: 0.29
 Nodes (6): Acceptance evidence required, Phase 1 approved scope (A1–A5, including strengthened A2), Requirements, Scope and constraints, Unknown lesson, User story
 
-### Community 59 - "Community 59"
+### Community 57 - "Community 57"
 Cohesion: 0.29
 Nodes (6): Acceptance evidence required, Inverse operations lesson, Phase 1 approved scope (A1–A5, including strengthened A2), Requirements, Scope and constraints, User story
 
-### Community 60 - "Community 60"
+### Community 58 - "Community 58"
 Cohesion: 0.29
 Nodes (6): Acceptance evidence required, Phase 1 approved scope (A1–A5, including strengthened A2), Requirements, Scope and constraints, User story, World map and four islands
 
-### Community 61 - "Community 61"
+### Community 59 - "Community 59"
 Cohesion: 0.29
 Nodes (6): 3D exploration and controls, Acceptance evidence required, Phase 1 approved scope (A1–A5, including strengthened A2), Requirements, Scope and constraints, User story
 
-### Community 62 - "Community 62"
+### Community 60 - "Community 60"
 Cohesion: 0.29
 Nodes (6): Acceptance evidence required, Equation and puzzle engine, Phase 1 approved scope (A1–A5, including strengthened A2), Requirements, Scope and constraints, User story
 
-### Community 63 - "Community 63"
+### Community 61 - "Community 61"
 Cohesion: 0.29
 Nodes (6): Acceptance evidence required, Eight authored levels and unlocks, Phase 1 approved scope (A1–A5, including strengthened A2), Requirements, Scope and constraints, User story
 
-### Community 64 - "Community 64"
+### Community 62 - "Community 62"
 Cohesion: 0.29
 Nodes (6): Acceptance evidence required, Persistent progress dashboard, Phase 1 approved scope (A1–A5, including strengthened A2), Requirements, Scope and constraints, User story
 
-### Community 65 - "Community 65"
+### Community 63 - "Community 63"
 Cohesion: 0.29
 Nodes (6): Acceptance evidence required, Phase 1 approved scope (A1–A5, including strengthened A2), Quality and GitHub Pages release, Requirements, Scope and constraints, User story
 
-### Community 66 - "Community 66"
+### Community 64 - "Community 64"
 Cohesion: 0.33
 Nodes (6): C-1 — Intentionality, C-2 — Functional Completeness, C-3 — Content-Driven Composition, C-4 — Resilience, C-5 — Evidence Over Claims, The Craftsmanship Standard
 
-### Community 67 - "Community 67"
+### Community 65 - "Community 65"
 Cohesion: 0.33
 Nodes (5): Anti-slop gate, Page composition, Tokens, Visual and interaction direction, Web glass adaptation
 
-### Community 68 - "Community 68"
+### Community 66 - "Community 66"
 Cohesion: 0.33
 Nodes (5): Educational content plan — grade seven (Phase 1 planning baseline), Feedback ladder, Guided worked examples (LTR maths within Persian RTL UI), Review and assessment gate, Scope and progression
 
-### Community 70 - "Community 70"
+### Community 67 - "Community 67"
 Cohesion: 0.40
 Nodes (5): Block 1: Hard Gate (absolute), Block 2: Purpose-Gate (technique allowed, reason required), Block 3: Liveliness (required to be alive, not just clean), Block 4: Craftsmanship & Quality Locks, Delivery Gate (Mandatory)
 
-### Community 71 - "Community 71"
+### Community 68 - "Community 68"
 Cohesion: 0.40
 Nodes (5): D19 — Restore the original Phase 3 scope (owner clarification, 2026-11-03), Decision log (2026-11-03), Owner-approved Phase 1 planning decisions — 2026-11-03 (not final Phase 1 acceptance), Phase 1 decisions awaiting owner (not yet resolved), Phase transition — owner authorization, 2026-11-03
 
-### Community 72 - "Community 72"
+### Community 69 - "Community 69"
 Cohesion: 0.40
 Nodes (4): Cross-cutting inconsistencies / missing decisions, Phase 1 — specification cross-review and findings, Post-approval reconciliation (2026-11-03), Validation boundary
 
-### Community 74 - "Community 74"
+### Community 70 - "Community 70"
+Cohesion: 0.40
+Nodes (4): @testing-library/jest-dom@7.0.1, @testing-library/react@16.3.3, @testing-library/jest-dom, @testing-library/react
+
+### Community 72 - "Community 72"
 Cohesion: 0.70
 Nodes (4): check_version(), fail(), PATH, verify-environment.sh script
 
-### Community 75 - "Community 75"
+### Community 73 - "Community 73"
 Cohesion: 0.40
 Nodes (4): Constraints, Core principles, Equation Quest Constitution, Governance
 
-### Community 76 - "Community 76"
+### Community 74 - "Community 74"
 Cohesion: 0.40
 Nodes (4): [Category 1], [Category 2], [CHECKLIST TYPE] Checklist: [FEATURE NAME], Notes
 
-### Community 77 - "Community 77"
+### Community 75 - "Community 75"
 Cohesion: 0.40
 Nodes (4): Phase 2 structure subset (owner authorized), Phase 3 execution (owner authorized; original roadmap), Phase-specific small tasks (Planned; only execute when authorized), Tasks — Home narrative and glass carousel
 
-### Community 78 - "Community 78"
+### Community 76 - "Community 76"
 Cohesion: 0.40
 Nodes (4): Acceptance evidence (future implementation), Independent fractional equation lesson and practice, Required interaction, Story and objective
 
-### Community 79 - "Community 79"
+### Community 77 - "Community 77"
 Cohesion: 0.50
 Nodes (3): Equation Quest — permanent agent instructions, Phase authorization and deliverables (permanent), Rules
 
-### Community 80 - "Community 80"
+### Community 78 - "Community 78"
 Cohesion: 0.50
 Nodes (4): Design Read (how the dials are set), Levers (how the dials become visual decisions), Part 3: Liveliness Toolkit, Three Dials (required)
 
-### Community 81 - "Community 81"
+### Community 79 - "Community 79"
 Cohesion: 0.50
 Nodes (4): Dead Navigation, Non-Functional Controls, Sections That Fill a Template, Structural & Flow
 
-### Community 82 - "Community 82"
+### Community 80 - "Community 80"
 Cohesion: 0.50
 Nodes (3): printWidth, singleQuote, trailingComma
 
+### Community 82 - "Community 82"
+Cohesion: 0.67
+Nodes (3): engines, node, npm
+
 ## Knowledge Gaps
 - **4 isolated node(s):** `BlockMath`, `InlineMath`, `PATH`, `PATH`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 775 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **65 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 778 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **64 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `Community 13` to `Community 0`, `Community 4`, `Community 12`, `Community 14`, `Community 17`, `Community 18`, `Community 21`, `Community 22`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+- **Why does `react` connect `Community 11` to `Community 0`, `Community 1`, `Community 4`, `Community 13`, `Community 14`, `Community 19`, `Community 21`, `Community 24`?**
+  _High betweenness centrality (0.013) - this node is a cross-community bridge._
 - **Are the 5 inferred relationships involving `Game()` (e.g. with `down()` and `reset()`) actually correct?**
   _`Game()` has 5 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `BlockMath`, `InlineMath`, `PATH` to the rest of the system?**
   _4 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.0932073544433095 - nodes in this community are weakly interconnected._
-- **Why does `react-router-dom` connect `Community 46` to `Community 0`, `Community 12`, `Community 13`, `Community 14`, `Community 17`, `Community 18`, `Community 21`, `Community 22`?**
-  _High betweenness centrality (0.010) - this node is a cross-community bridge._
+- **Why does `react-router-dom` connect `Community 11` to `Community 0`, `Community 1`, `Community 4`, `Community 13`, `Community 14`, `Community 19`, `Community 21`, `Community 24`, `Community 26`?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.09461152882205513 - nodes in this community are weakly interconnected._
-- **Why does `vitest` connect `Community 46` to `Community 0`, `Community 1`, `Community 4`, `Community 14`, `Community 16`, `Community 83`, `Community 22`?**
-  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+  _Cohesion score 0.07728474875110197 - nodes in this community are weakly interconnected._
+- **Why does `@playwright/test` connect `Community 18` to `Community 24`, `Community 16`, `Community 26`, `Community 0`?**
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
