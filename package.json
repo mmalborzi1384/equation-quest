@@ -7,12 +7,13 @@
   "scripts": {
     "check:deps": "npm ls --depth=0",
     "lint": "eslint .",
-    "format:check": "prettier --check package.json eslint.config.mjs .prettierrc.json \"src/**/*.{ts,tsx,css}\" \"*.{ts,tsx,html}\"",
+    "format:check": "prettier --check package.json eslint.config.mjs .prettierrc.json \"src/**/*.{ts,tsx,css}\" \"*.{ts,tsx,html}\" \"tests/**/*.{ts,tsx}\"",
     "dev": "vite --host 0.0.0.0",
     "typecheck": "tsc --noEmit",
     "test:run": "vitest run",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "preview": "vite preview --host 0.0.0.0",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@fontsource/vazirmatn": "5.3.0",

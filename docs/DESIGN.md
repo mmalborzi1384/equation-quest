@@ -13,3 +13,6 @@ Reference: `rit3zh/expo-glass-carousel` README (React Native: Skia snapshot + sh
 
 ## Anti-slop gate
 During each feature read `.agents/skills/antislop/SKILL.md` plus relevant UI/copy/human/mobile/code rules. Check layout is recognizably algebra/balance-specific, copy explains real actions, no fake stats/testimonials or dead controls, no gratuitous glass/glow/icons. Record PASS/FAIL and evidence in feature checklist. Skill folder is vendored; Arena does not auto-run it.
+
+## Phase 3 applied design read
+Energy 2, rhythm 3, motion 2: the existing editorial Home chapters keep alternating cream/navy surfaces and balance-line motif. The gold dashed bridge joins the illustrated islands (a conceptual 2.5D scene, not a gameplay screenshot). GSAP moves chapter headings only on scroll and decoratively offsets the hero; text is never hidden and OS/user reduced motion disables the effect. A **single** carousel gets the SVG-displaced circular glass lens; its readable card text remains on a dark solid/gradient surface. Pointer tilt is decorative, while navigation/focus and fallbacks are standard DOM. The approved Expo carousel remains a visual reference only.

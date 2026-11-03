@@ -135,6 +135,45 @@ describe('Phase 2 route structure', () => {
     expect(screen.getByTestId('carousel-status')).toHaveTextContent('جنگل مجهول 2 / 4');
   });
 
+  it('keeps the full Home narrative readable and carousel navigation independent of WebGL', async () => {
+    const previous = HTMLCanvasElement.prototype.getContext;
+    HTMLCanvasElement.prototype.getContext = vi.fn(() => null) as typeof previous;
+    try {
+      render(<App />);
+      await screen.findByRole('heading', { level: 1, name: /سرزمین/ });
+      expect(document.querySelectorAll('[data-narrative]')).toHaveLength(8);
+      expect(screen.getByRole('heading', { name: 'چهار ایستگاه؛ یک داستان' })).toBeInTheDocument();
+      fireEvent.click(screen.getByRole('button', { name: 'نمایش کارت کسرهای دقیق' }));
+      fireEvent.click(screen.getByRole('link', { name: 'دیدن مسیر' }));
+      expect(
+        await screen.findByRole('heading', { level: 1, name: 'معادله‌های کسری' }),
+      ).toBeInTheDocument();
+    } finally {
+      HTMLCanvasElement.prototype.getContext = previous;
+    }
+  });
+
+  it('focuses the current carousel destination after activating an adjacent card', async () => {
+    render(<App />);
+    await screen.findByRole('heading', { level: 1 });
+    const sideCard = screen.getAllByRole('button', { name: 'نمایش این کارت' })[0];
+    fireEvent.click(sideCard);
+    await waitFor(() =>
+      expect(document.activeElement).toBe(screen.getByRole('link', { name: 'دیدن مسیر' })),
+    );
+  });
+
+  it('does not navigate when a swipe ends over a card link', async () => {
+    render(<App />);
+    await screen.findByRole('heading', { level: 1 });
+    const stage = screen.getByRole('generic', { name: /کلیدهای جهت‌نما/ });
+    fireEvent.pointerDown(stage, { clientX: 220 });
+    fireEvent.pointerUp(stage, { clientX: 70 });
+    fireEvent.click(screen.getByRole('link', { name: 'دیدن مسیر' }));
+    expect(window.location.hash).toBe('#/');
+    expect(screen.getByTestId('carousel-status')).toHaveTextContent('جنگل مجهول 2 / 4');
+  });
+
   it('persists the meaningful reduced-motion preference', async () => {
     render(<App />);
     await screen.findByRole('heading', { level: 1 });

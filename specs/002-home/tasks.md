@@ -18,3 +18,9 @@ All tasks are **Planned**, not started. Execute only after owner go-ahead.
 - [x] Implement RTL Home layout with narrative section structure and responsive CSS balance/island motif.
 - [x] Implement a web CSS glass-inspired carousel with real lesson destinations, button/dot/keyboard/swipe navigation and reduced-motion support.
 - [x] Test controls and fraction destination in jsdom; full GSAP cinematic narrative, browser-visual verification and gameplay integration remain Phase 3+ tasks above (not checked).
+
+## Phase 3 execution (owner authorized; original roadmap)
+- [x] Refined Home chapter copy, bridge/balance/island illustration and existing meaningful route links. No game 3D or lesson mechanics.
+- [x] Scoped GSAP/ScrollTrigger chapter heading reveals/parallax with OS/user reduced-motion and route cleanup; reading path remains visible without GSAP.
+- [x] DOM/CSS/SVG decorative glass lens, pointer tilt, focus transfer for side-card activation, keyboard/touch and solid no-backdrop-filter fallback. Fraction lesson deep link remains a navigable Phase 2 preview.
+- [x] 31 Vitest, 5 headless Chromium Playwright E2E, full lint/format/typecheck/build, anti-slop review, graph/memory/status/report. Actual touch hardware, screen-reader and public Pages remain future QA/deployment gates.

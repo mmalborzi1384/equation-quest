@@ -1,4 +1,5 @@
-import { useRef, useState, type PointerEvent, type MouseEvent } from 'react';
+import { useEffect, useRef, useState, type PointerEvent, type MouseEvent } from 'react';
+import { usePreferences } from '../../store/usePreferences';
 import { Link } from 'react-router-dom';
 import styles from './GlassCarousel.module.css';
 
@@ -38,7 +39,35 @@ export function GlassCarousel() {
   const [index, setIndex] = useState(0);
   const start = useRef<number | null>(null);
   const swiped = useRef(false);
+  const stage = useRef<HTMLDivElement>(null);
+  const currentLink = useRef<HTMLAnchorElement>(null);
+  const reduceMotion = usePreferences((state) => state.reduceMotion);
   const select = (step: number) => setIndex((i) => (i + step + cards.length) % cards.length);
+  useEffect(() => {
+    if (reduceMotion) {
+      stage.current?.style.removeProperty('--lens-x');
+      stage.current?.style.removeProperty('--lens-y');
+    }
+  }, [reduceMotion]);
+  const moveLens = (event: PointerEvent<HTMLDivElement>) => {
+    if (reduceMotion || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    if (!bounds.width || !bounds.height) return;
+    const x = Math.max(
+      -13,
+      Math.min(13, ((event.clientX - bounds.left) / bounds.width - 0.5) * 26),
+    );
+    const y = Math.max(
+      -13,
+      Math.min(13, ((event.clientY - bounds.top) / bounds.height - 0.5) * 26),
+    );
+    event.currentTarget.style.setProperty('--lens-x', `${x}px`);
+    event.currentTarget.style.setProperty('--lens-y', `${y}px`);
+  };
+  const focusCard = (i: number) => {
+    setIndex(i);
+    window.setTimeout(() => currentLink.current?.focus(), 0);
+  };
   const onPointerUp = (event: PointerEvent<HTMLDivElement>) => {
     if (start.current !== null && Math.abs(event.clientX - start.current) > 45) {
       swiped.current = true;
@@ -57,7 +86,32 @@ export function GlassCarousel() {
     }
   };
   return (
-    <div className={styles.carousel} aria-roledescription="گردونه" aria-label="مسیرهای یادگیری">
+    <div
+      className={styles.carousel}
+      role="region"
+      aria-roledescription="گردونه"
+      aria-label="مسیرهای یادگیری"
+    >
+      <svg className={styles.filter} aria-hidden="true" focusable="false" width="0" height="0">
+        <defs>
+          <filter id="equation-glass-lens">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.035"
+              numOctaves="2"
+              seed="5"
+              result="texture"
+            />
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="texture"
+              scale="5"
+              xChannelSelector="R"
+              yChannelSelector="G"
+            />
+          </filter>
+        </defs>
+      </svg>
       <div className={styles.top}>
         <p aria-live="polite" data-testid="carousel-status">
           {cards[index].label}{' '}
@@ -75,7 +129,13 @@ export function GlassCarousel() {
         </div>
       </div>
       <div
+        ref={stage}
         className={styles.stage}
+        onPointerMove={moveLens}
+        onPointerLeave={(event) => {
+          event.currentTarget.style.removeProperty('--lens-x');
+          event.currentTarget.style.removeProperty('--lens-y');
+        }}
         onPointerDown={(e) => {
           start.current = e.clientX;
           swiped.current = false;
@@ -116,25 +176,41 @@ export function GlassCarousel() {
               aria-hidden={position === 'hidden'}
             >
               <div className={styles.glassEdge} aria-hidden="true" />
+              <div className={styles.lens} aria-hidden="true">
+                <svg viewBox="0 0 160 160">
+                  <g filter="url(#equation-glass-lens)">
+                    <circle
+                      cx="80"
+                      cy="80"
+                      r="53"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M 26 80 H 134 M 80 24 V 136"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      fill="none"
+                    />
+                  </g>
+                </svg>
+              </div>
               <div className={styles.cardTop}>
                 <span className="math">{card.number}</span>
                 <span>{card.label}</span>
-              </div>
-              <div className={styles.symbol} aria-hidden="true">
-                <i />
-                <b />
               </div>
               <div className={styles.cardBottom}>
                 <h3>{card.title}</h3>
                 <p>{card.description}</p>
                 {position === 'current' ? (
-                  <Link to={card.to}>
+                  <Link ref={currentLink} to={card.to}>
                     دیدن مسیر <span aria-hidden="true">←</span>
                   </Link>
                 ) : (
                   <button
                     type="button"
-                    onClick={() => setIndex(i)}
+                    onClick={() => focusCard(i)}
                     tabIndex={position === 'hidden' ? -1 : 0}
                     disabled={position === 'hidden'}
                   >
