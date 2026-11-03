@@ -30,4 +30,4 @@ Existing `three@0.187.0`, `@react-three/fiber@9.8.2` and `@react-three/drei@10.7
 
 ## D34 CI/Pages dependency boundary
 
-No new npm runtime or development dependency. GitHub Actions uses checkout@v4, setup-node@v4, upload-artifact@v4, download-artifact@v4, configure-pages@v5, upload-pages-artifact@v3 and deploy-pages@v4 plus `npx playwright install --with-deps chromium` on hosted Ubuntu. Node 22.22.3/npm 10.9.8 and `npm ci` are pinned. Local npm audit repeated: 16 total (2 low, 14 moderate), production-only 2 low via KaTeX/react-katex; release choice documented in D34, no forced upgrade. Revisit these in future maintenance PRs.
+No new npm runtime or development dependency. GitHub Actions uses checkout@v5, setup-node@v5, upload-artifact@v4, download-artifact@v4, configure-pages@v5, upload-pages-artifact@v3 and deploy-pages@v4 plus `npx playwright install --with-deps chromium` on hosted Ubuntu. Node 22.22.3/npm 10.9.8 and `npm ci` are pinned. Local npm audit repeated: 16 total (2 low, 14 moderate), production-only 2 low via KaTeX/react-katex; release choice documented in D34, no forced upgrade. Revisit these in future maintenance PRs.

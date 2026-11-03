@@ -36,6 +36,6 @@ Local build, hash route/assets smoke, repeated browser and unit suites and autom
 - [x] Add main-only Pages artifact/OIDC deploy and separate post-deploy public smoke; document Actions-source setting/rollback.
 - [x] Add shared preview/live route, asset, mobile and saved-setting smoke and locally run full verification.
 - [x] Document explicit owner risk acceptance; no false independent curriculum review/security certification or site-live claim.
-- [ ] Observe real PR Actions validation after push and fix any CI failures.
+- [x] Observe real PR Actions validation: PR #10 run `41638949454` passed (build, Chromium and preview smoke); deploy/live-smoke skipped by design.
 - [ ] After explicit PR merge approval, observe green main deploy and live smoke on the actual public URL; address first-time Pages Actions-source setting if required.
 - [ ] Independent grade-7/Persian content review, physical device/screen-reader/other browser tests and dependency advisories remain follow-ups, not silently closed.

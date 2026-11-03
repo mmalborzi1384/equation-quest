@@ -31,5 +31,6 @@
 - [x] Local canonical setup/full checks, 90 unit, 38 Chromium, measured budgets and isolated production preview smoke pass.
 - [x] No new app UI, production dependency, repository secret or irreversible release freeze; maintainability and rollback documented.
 - [x] Anti-slop scoped release gate recorded in `docs/PHASE_10_RELEASE_REPORT.md`.
-- [ ] Observe actual PR CI and main Actions deployment/public host smoke before claiming public release.
+- [x] PR #10 CI validation passed (`41638949454`); no deploy on PR.
+- [ ] Observe main Actions deployment/public host smoke before claiming public release.
 - [ ] External curriculum/Persian specialist review and physical/device/screen-reader/alternate-browser checks: explicitly outstanding with owner-approved publication exception, not certified as PASS.
