@@ -16,3 +16,7 @@ During each feature read `.agents/skills/antislop/SKILL.md` plus relevant UI/cop
 
 ## Phase 3 applied design read
 Energy 2, rhythm 3, motion 2: the existing editorial Home chapters keep alternating cream/navy surfaces and balance-line motif. The gold dashed bridge joins the illustrated islands (a conceptual 2.5D scene, not a gameplay screenshot). GSAP moves chapter headings only on scroll and decoratively offsets the hero; text is never hidden and OS/user reduced motion disables the effect. A **single** carousel gets the SVG-displaced circular glass lens; its readable card text remains on a dark solid/gradient surface. Pointer tilt is decorative, while navigation/focus and fallbacks are standard DOM. The approved Expo carousel remains a visual reference only.
+
+## Persistent UI naming and control shape (owner direction)
+
+The graphical product name is always the Persian «ماجراجویی معادله‌ها» (including header, footer, browser title and accessible name); repository/package identifiers may retain the technical English slug. Buttons and button-like calls to action use modest rounded corners rather than sharp rectangles: shared `--control-radius: 9px`. Preserve deliberately circular indicators/decorative geometry and visible keyboard focus; avoid excessive pill styling or reducing 44px touch targets. Apply this convention to future screens too.

@@ -13,6 +13,7 @@ import {
 import { usePreferences } from '../../store/usePreferences';
 import styles from './Game.module.css';
 import { SceneBoundary } from './SceneBoundary';
+import { MechanicsLab } from './MechanicsLab';
 
 const ExplorationScene = lazy(() => import('../../three/ExplorationScene'));
 type Quality = 'low' | 'balanced' | 'high';
@@ -167,12 +168,18 @@ export default function Game() {
   return (
     <>
       <PageIntro
-        eyebrow="کارگاه کاوش / فاز ۵"
+        eyebrow="کارگاه کاوش / فاز ۶"
         title="ماجراجویی از اینجا شکل می‌گیرد"
-        description="در این کارگاه می‌توانی در یک جزیرهٔ سه‌بعدی قدم بزنی و چهار نشان را بررسی کنی. حل معما، باز شدن مرحله‌ها و ثبت پیشرفت هنوز ساخته نشده‌اند."
+        description="در این کارگاه می‌توانی در یک جزیرهٔ سه‌بعدی قدم بزنی و چهار نشان را بررسی کنی. پایین جزیره، سه آزمایش سازوکار معادله با راهنمای گام‌به‌گام و امتیاز موقت در دسترس است؛ هشت مرحلهٔ بازی هنوز ساخته نشده‌اند."
       >
         <Link to="/world">نقشهٔ چهار منطقه</Link>
         <Link to="/learning">مرور درس‌ها</Link>
+        <button
+          type="button"
+          onClick={() => document.getElementById('mechanics-lab')?.scrollIntoView()}
+        >
+          شروع آزمایش‌های معادله ↓
+        </button>
       </PageIntro>
       <section
         ref={root}
@@ -369,6 +376,9 @@ export default function Game() {
           </aside>
         </div>
       </section>
+      <div id="mechanics-lab">
+        <MechanicsLab />
+      </div>
     </>
   );
 }

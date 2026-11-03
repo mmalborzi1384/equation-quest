@@ -57,3 +57,17 @@ The owner explicitly approved Phase 4 and instructed merging PR #4; it was merge
 ## D23 — Phase 5 fallback and render boundary
 
 The existing lazy `/game` route will load the R3F scene only when WebGL is supported and the user elects the 3D view. A fully functional DOM map/landmark list and identical controls/inspection are available without WebGL or on context loss. Movement and proximity are pure functions; React input adapters emit the same intent for keyboard/touch; Three is a disposable view and never owns progress or learning correctness. Quality presets cap DPR/shadows, pause/offscreen suspends animation, reduced motion disables camera easing. No new binary art assets or dependencies are needed.
+
+## D24 — Phase 5 acceptance and Phase 6 authorization (2026-11-03)
+
+The owner explicitly accepted Phase 5 and requested merging PR #5; it merged into `main` at `4b3a7d1`. The owner separately authorized **Phase 6** by name. Per `docs/ROADMAP.md`, this phase extends the pure exact-rational checker with a puzzle state machine, a reusable ordered challenge/level-manager contract and **idempotent one-time reward** integration. It must test integer, signed and fractional paths and mistake-specific progressive hints. Eight authored playable stages/island unlocks remain Phase 7; a persisted progress dashboard and migrations remain Phase 8; deployment remains Phase 10. The existing `/game/level/:id` routes remain honest previews. The executable Phase 6 bridge is an explicitly labelled three-question **mechanics workshop** on `/game`, not a claim that the eight-level game is complete.
+
+## D25 — Ephemeral workshop rewards, not a save system
+
+Reward eligibility is emitted only after exact answer and explicit original-equation verification; a pure progress reducer grants once per challenge ID and unlocks the next workshop challenge. Zustand holds this workshop progress **in memory only** (including between route navigations in the same loaded tab); no storage keys, XP dashboard, global level save, or achievements are created before Phase 8. Reload resets workshop state; copy must say so. React/R3F do not own algebra or reward logic. Error/hint codes are deterministic in the pure puzzle module and do not reveal a final answer before the learner completes both-sided actions.
+
+## D26 — Persian graphical name and gently rounded controls (owner direction)
+
+The owner requested that all graphical product-name instances use the Persian equivalent instead of the transliteration «اکویشن کوئست», and that buttons consistently have mildly rounded corners for a modern, minimal feel. UI name: «ماجراجویی معادله‌ها». Use shared `--control-radius: 9px` for interactive buttons and button-like calls to action; deliberately circular markers remain circular. Technical repository/URL/package slugs are not UI copy. This rule applies to subsequent work as well as the current Phase 6 interface; it does not authorize Phase 7, merging or deployment.
+
+**D26 implementation correction:** the initial 9px token covered native `<button>` controls but missed several links styled as buttons. Rounded corners now also apply to boxed Home, carousel, game pause, level navigator, page-intro and header actions, plus clickable learning/journey rows and the skip action. Plain inline text links remain text links. A browser audit checks computed radii across seven routes at 320px and 1280px.

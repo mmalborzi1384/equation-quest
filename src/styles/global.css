@@ -13,6 +13,7 @@
   --violet: #927dbb;
   --ink-soft: #405369;
   --line: #d8d3c7;
+  --control-radius: 9px;
 }
 * {
   box-sizing: border-box;
@@ -30,6 +31,7 @@ input {
 }
 button {
   cursor: pointer;
+  border-radius: var(--control-radius);
 }
 a {
   color: inherit;

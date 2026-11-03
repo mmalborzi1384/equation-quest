@@ -76,6 +76,7 @@
   padding: 11px 18px;
   color: var(--gold);
   margin-inline-start: 6px;
+  border-radius: var(--control-radius);
 }
 .gameLink span {
   margin-inline-start: 8px;
@@ -143,4 +144,13 @@
   min-height: 44px;
   display: inline-flex;
   align-items: center;
+}
+@media (max-width: 380px) {
+  .inner {
+    padding-inline: 12px;
+    gap: 8px;
+  }
+  .menuButton {
+    flex: none;
+  }
 }

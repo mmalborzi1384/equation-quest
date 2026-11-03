@@ -30,7 +30,8 @@
   gap: 12px;
   margin-top: 28px;
 }
-.actions a {
+.actions a,
+.actions button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -39,12 +40,19 @@
   background: var(--navy);
   color: var(--ivory);
   border: 1px solid var(--navy);
+  border-radius: var(--control-radius);
 }
 .actions a + a {
   background: transparent;
   color: var(--navy);
 }
-.actions a:hover {
+.actions a:hover,
+.actions button:hover {
   background: var(--ocean);
   color: white;
+}
+
+.actions button {
+  font: inherit;
+  cursor: pointer;
 }

@@ -11,8 +11,8 @@
 | 02 Core Website Structure | Merged / preserved | Vite/React/TS shell; HashRouter and base; RTL shared responsive navigation/back; route-level lazy modules, 404/error/empty/loading fallbacks; Home section structure and interactive web carousel; Learning/World/Game/Level/Progress route previews. PR #2 merged; shell preserved. |
 | 03 Home narrative / carousel / web glass | Merged and accepted | GSAP ScrollTrigger reveals/parallax only for decorative storytelling; DOM/CSS/SVG lens, pointer/keyboard/focus navigation, reduced-motion and no-WebGL path. 31 Vitest + 5 Chromium E2E; see Phase 3 report. No game 3D claim. |
 | 04 Interactive learning & math core | Merged and accepted | Nine deep-linkable authored lessons + exact rational checker, guided steps, original-equation substitution and repeatable fraction practice. 54 Vitest + 9 local headless Chromium Playwright tests and build passed. No independent curriculum review or hardware/mobile screen-reader audit. [Report](PHASE_04_COMPLETION_REPORT.md). |
-| 05 3D engine | Implemented locally; review pending | Procedural R3F island on `/game`, orthographic follow camera, four inspectable landmarks, WASD/arrows/E/Escape, held mobile pad/tap, pause, quality low/balanced/high and no-WebGL text map. **Not** a playable level or puzzle. 61 Vitest + 15 Chromium E2E; [report](PHASE_05_COMPLETION_REPORT.md). |
-| 06 Game mechanics | Not authorized | `/game` offers real exploration but **not** a solvable puzzle, level manager or reward loop. |
+| 05 3D engine | Merged and accepted | Procedural R3F island on `/game`, orthographic follow camera, four inspectable landmarks, WASD/arrows/E/Escape, held mobile pad/tap, pause, quality low/balanced/high and no-WebGL text map. **Not** a playable level or puzzle. 61 Vitest + 15 Chromium E2E; [report](PHASE_05_COMPLETION_REPORT.md). |
+| 06 Game mechanics | Implemented; review pending | Three ordered exact-rational workshop trials on `/game` with hints, original-equation verification and in-memory one-time points; **not** eight authored stages or durable progress. |
 | 07 Eight playable levels | Not authorized | 01–08 have informational intros only. |
 | 08 Real progression | Not authorized | `/progress` shows an empty state; only a reduced-motion UI preference is locally persisted. No XP/save data is claimed. |
 | 09 QA/optimization | Not authorized | Phase 2 tests below do not replace future cross-browser, accessibility and performance audits. |
@@ -50,3 +50,13 @@
 - 3D scene/controls inspected in local screenshots at 390 and 1280px; forwarded-host Vite preview HTTP 200. `npm audit --json` rechecked in Phase 5 report. No deployment, hardware touch or screen-reader review, independent curriculum validation, measured FPS or eight playable levels.
 
 **Phase 5 review handoff:** commit `8bfa790` pushed; [PR #5](https://github.com/mmalborzi1384/equation-quest/pull/5) is **open and unmerged**. Do not merge, deploy or start Phase 6 without explicit owner approval.
+
+## Phase 6 verification and limits (2026-11-03)
+
+Owner accepted and merged Phase 5 PR #5 at `4b3a7d1` and separately authorized Phase 6 (D24–D25). `/game` now has a three-trial exact-rational mechanics workshop **below** the exploration scene. Integer, signed and fractional two-sided operations, exact answers, explicit original-equation substitution, progressive mistake-specific hints, ordered trial unlocks and one-time **in-memory** points are implemented. The separate `/game/level/:id` routes still only preview the eight later authored levels. `/progress` still does not record workshop points.
+
+- `EXPECTED_BRANCH=arena/fcac4f6f-equation-quest bash scripts/verify-environment.sh --full`: **PASS** for lint, format, typecheck, 71/71 Vitest and production Vite build. Build still warns of the existing ~925 kB minified lazy R3F chunk.
+- `EQ_WEBGL=1 LD_LIBRARY_PATH=/tmp/eq6-libs/lib:/tmp/eq6-libs:/tmp EQ_CHROMIUM_PATH=/tmp/eq6-chromium npm run test:e2e -- --reporter=line`: **16/16 PASS** in headless Chromium 153, including genuine SwiftShader WebGL, touch/keyboard exploration, 390px workshop exact/replay/refresh and no-WebGL fallback. Browser unpacked from npm into `/tmp`, not committed. An initial 11/16 run lacked SwiftShader next to Chromium; after symlinking libs, 15/16 revealed that the existing world→game keyboard test needed scene scroll/focus once the new content expanded the page; full rerun passed. This does not evidence physical touch devices, screen readers, alternate browsers, measured FPS or a public deployment.
+- `graphify extract . --code-only`, `graphify cluster-only . --no-label --no-viz`, `graphify update .`: **PASS**, 1198 nodes, 1728 edges, 139 communities. Graphify's incremental watch emitted a filter-change warning; no app functionality depends on the graph.
+
+[Detailed Phase 6 report](PHASE_06_COMPLETION_REPORT.md). No Phase 7 or Phase 8 work, PR merge or deployment authorized.

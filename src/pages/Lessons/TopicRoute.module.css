@@ -107,7 +107,7 @@
   background: transparent;
   padding: 10px 16px;
   min-height: 46px;
-  border-radius: 2px;
+  border-radius: var(--control-radius);
   text-align: right;
 }
 .controls button:hover,

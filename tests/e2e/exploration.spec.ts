@@ -155,7 +155,10 @@ test('keyboard control activates after navigating from the world map', async ({ 
   await page.goto('#/world');
   await page.getByRole('link', { name: 'ورود به کارگاه سه‌بعدی' }).click();
   await expect(page).toHaveURL(/#\/game$/);
-  await expect(page.getByRole('region', { name: 'کارگاه کاوش' }).locator('canvas')).toBeVisible();
+  const scene = page.getByRole('region', { name: 'کارگاه کاوش' });
+  await expect(scene.locator('canvas')).toBeVisible();
+  await scene.scrollIntoViewIfNeeded();
+  await scene.focus();
   await page.keyboard.down('w');
   await page.waitForTimeout(300);
   await page.keyboard.up('w');

@@ -22,12 +22,12 @@ export function SiteHeader() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <Link className={styles.brand} to="/" aria-label="اکویشن کوئست، خانه">
+        <Link className={styles.brand} to="/" aria-label="ماجراجویی معادله‌ها، خانه">
           <span className={styles.mark} aria-hidden="true">
             <span />
           </span>
           <span>
-            اکویشن <strong>کوئست</strong>
+            ماجراجویی <strong>معادله‌ها</strong>
             <small>راز سرزمین مجهول‌ها</small>
           </span>
         </Link>
@@ -62,7 +62,7 @@ export function SiteHeader() {
             onClick={() => setOpen(false)}
             className={({ isActive }) => `${styles.gameLink} ${isActive ? styles.active : ''}`}
           >
-            بازی: به‌زودی <span aria-hidden="true">↗</span>
+            کارگاه معادله <span aria-hidden="true">↗</span>
           </NavLink>
         </nav>
       </div>
@@ -72,7 +72,7 @@ export function SiteHeader() {
             → بازگشت
           </button>
           <span aria-hidden="true">/</span>
-          <span>اکویشن کوئست</span>
+          <span>ماجراجویی معادله‌ها</span>
         </div>
       )}
     </header>
