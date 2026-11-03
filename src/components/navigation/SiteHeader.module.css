@@ -76,6 +76,7 @@
   padding: 11px 18px;
   color: var(--gold);
   margin-inline-start: 6px;
+  border-radius: var(--control-radius);
 }
 .gameLink span {
   margin-inline-start: 8px;

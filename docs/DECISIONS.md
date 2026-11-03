@@ -65,3 +65,7 @@ The owner explicitly accepted Phase 5 and requested merging PR #5; it merged int
 ## D25 — Ephemeral workshop rewards, not a save system
 
 Reward eligibility is emitted only after exact answer and explicit original-equation verification; a pure progress reducer grants once per challenge ID and unlocks the next workshop challenge. Zustand holds this workshop progress **in memory only** (including between route navigations in the same loaded tab); no storage keys, XP dashboard, global level save, or achievements are created before Phase 8. Reload resets workshop state; copy must say so. React/R3F do not own algebra or reward logic. Error/hint codes are deterministic in the pure puzzle module and do not reveal a final answer before the learner completes both-sided actions.
+
+## D26 — Persian graphical name and gently rounded controls (owner direction)
+
+The owner requested that all graphical product-name instances use the Persian equivalent instead of the transliteration «اکویشن کوئست», and that buttons consistently have mildly rounded corners for a modern, minimal feel. UI name: «ماجراجویی معادله‌ها». Use shared `--control-radius: 9px` for interactive buttons and button-like calls to action; deliberately circular markers remain circular. Technical repository/URL/package slugs are not UI copy. This rule applies to subsequent work as well as the current Phase 6 interface; it does not authorize Phase 7, merging or deployment.
