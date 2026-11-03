@@ -13,3 +13,9 @@ All tasks are **Planned**, not started. Execute only after owner go-ahead.
 ## Phase-specific small tasks (Planned; only execute when authorized)
 - [ ] Map nine topic IDs to unique routes, objectives, exercise entry controls and prerequisites; test every destination and repeatable fraction practice entry.
 - [ ] Record independent tests and anti-slop gate evidence before feature completion.
+
+## Phase 4 execution (explicitly authorized)
+- [x] Build pure rational/checking core with exact tests before grading UI (11 engine tests).
+- [x] Author nine distinct lessons and independent repeatable fraction practice with integer → signed → fraction scaffolding; external grade-7 review pending.
+- [x] Implement reusable accessible DOM visual/step/KaTeX/practice components and engine-backed feedback.
+- [x] Verify nine routes, math, RTL/mobile at 320/390/768/1280px, keyboard, reduced-motion/no-WebGL, lint/build, anti-slop and update docs/graph/report (54 Vitest + 9 Chromium E2E).

@@ -4,7 +4,7 @@
 - [x] Planning assumptions and test gate recorded.
 - [ ] Analyze feature against constitution and adjacent specs immediately before coding.
 - [ ] Implement functional controls and navigation.
-- [ ] Verify: unit edge cases/negative coefficients, both-side transformations and feedback taxonomy.
+- [x] Verify Phase 4 minimal engine edge cases/negative rational coefficients, both-sided transformations, invalid inputs and original substitution. Full taxonomy/puzzle integration remains for Phase 6+.
 - [ ] Check RTL/LTR, keyboard/touch, reduced motion, errors/empty states as applicable.
 - [ ] Run relevant anti-slop skill Delivery Gate (PASS/FAIL + evidence), record actual result here.
 - [ ] Converge: update status, decisions, memory; mark completed only after tests.

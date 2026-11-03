@@ -10,7 +10,7 @@ Pages → components + features; Game/Level → game-engine + level-manager + 3D
 `HashRouter` inside Vite app; Vite `base: '/equation-quest/'` for GitHub Pages; React Router paths omit repo prefix (URL `https://.../equation-quest/#/learning`). Route-level `React.lazy` + suspense/error fallback; unknown paths and invalid level IDs show a useful not-found path. Navigation uses `Link`/`useNavigate`; back uses history when valid and home fallback. Asset URLs via imports or `import.meta.env.BASE_URL`, never root hardcoded.
 
 ## Educational dependency schedule
-A5 approved: Phase 1 specifies the pure math contract, Phase 04 implements the minimum exact-rational operation/checking core needed by interactive lessons, and Phase 06 expands puzzle/level/reward integration. Do not duplicate math rules inside React. Future implementation still requires its phase authorization.
+A5 approved: Phase 1 specifies the pure math contract, Phase 04 implements the minimum exact-rational operation/checking core needed by interactive lessons, and Phase 06 expands puzzle/level/reward integration. Do not duplicate math rules inside React. Phase 4 now authorized/implemented (D20); Phase 5+ still requires separate authorization.
 
 ## Gameplay ownership
 Data definitions (8 authored levels, pedagogic prompts, target equation, region, reward) feed level manager. Game engine owns movement, interaction radius and pause; fixed-follow orthographic/isometric camera adapter; puzzle engine gates progression and invokes pure math checking. UI exposes next step, hints and status. Keyboard WASD/arrows, E, Escape; virtual joystick/touch interaction/pause on mobile. Both controllers emit the same movement/interaction intents.

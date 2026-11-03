@@ -1,66 +1,324 @@
-.body {
-  max-width: 1180px;
-  margin: 0 auto 110px;
+.lesson {
+  max-width: 1040px;
+  margin: 0 auto 100px;
   padding: 0 24px;
-  display: grid;
-  grid-template-columns: minmax(220px, 0.8fr) 1.2fr;
-  gap: 28px;
 }
-.formula {
+.introLine {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 270px;
-  background: var(--navy);
-  color: var(--ivory);
-  padding: clamp(24px, 5vw, 55px);
+  gap: 20px;
+  align-items: baseline;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 64px;
 }
-.formula span {
-  color: var(--gold);
-}
-.formula strong {
-  font-size: clamp(1.4rem, 3vw, 2.6rem);
-  margin-top: 25px;
-  text-align: center;
-}
-.notice {
-  border-top: 2px solid var(--gold);
-  padding: 25px 14px;
-}
-.label {
-  color: #765021;
-  font-size: 0.85rem;
+.introLine span,
+.sectionHeading span {
+  color: #775020;
+  font-size: 0.82rem;
   font-weight: 700;
+  white-space: nowrap;
 }
-.notice h2 {
-  font-size: clamp(1.5rem, 2.5vw, 2.3rem);
-  line-height: 1.5;
+.introLine p {
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 2;
 }
-.notice p {
+.teaching,
+.concept,
+.practice {
+  margin: 0 0 84px;
+}
+.sectionHeading {
+  display: flex;
+  align-items: baseline;
+  gap: 22px;
+  border-top: 2px solid var(--navy);
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+.sectionHeading h2 {
+  font-size: clamp(1.5rem, 3vw, 2.35rem);
+  margin: 0;
+}
+.teaching > p,
+.practice > p,
+.modelBody p {
+  line-height: 2;
   color: var(--ink-soft);
-  line-height: 2.1;
 }
-.notice div {
+.teaching h3,
+.practice h3 {
+  margin: 40px 0 16px;
+  font-size: 1.3rem;
+}
+.model {
+  background: #ebe7dc;
+  border: 1px solid var(--line);
+  margin: 32px 0 42px;
+  padding: clamp(20px, 4vw, 42px);
+}
+.modelBody > p:first-child {
+  margin-top: 0;
+}
+.pans {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 4vw, 60px);
+  margin: 30px 0;
+}
+.pans > div {
+  width: min(35%, 200px);
+  min-height: 135px;
+  background: var(--ivory);
+  border-bottom: 7px solid var(--ocean);
+  display: grid;
+  text-align: center;
+  align-content: space-around;
+  padding: 10px;
+}
+.pans strong {
+  font-family: Georgia, serif;
+  font-size: 2rem;
+}
+.weight {
+  color: var(--ocean);
+  letter-spacing: 4px;
+  font-size: 0.7rem;
+}
+.equal {
+  font:
+    2rem Georgia,
+    serif;
+}
+.controls,
+.choices {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 25px;
+  gap: 10px;
 }
-.notice a {
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 5px;
-  color: #5d3b13;
+.controls button,
+.choices button,
+.answerForm button,
+.verify button,
+.nextButton,
+.hintButton {
+  border: 1px solid var(--navy);
+  color: var(--navy);
+  background: transparent;
+  padding: 10px 16px;
+  min-height: 46px;
+  border-radius: 2px;
+  text-align: right;
 }
-@media (max-width: 720px) {
-  .body {
-    grid-template-columns: 1fr;
-  }
-  .formula {
-    min-height: 180px;
-  }
+.controls button:hover,
+.choices button:hover,
+.controls button:focus-visible,
+.choices button:focus-visible {
+  background: var(--navy);
+  color: var(--ivory);
 }
-.notice a {
+.choices button[aria-pressed='true'] {
+  background: var(--navy);
+  color: var(--ivory);
+}
+.parts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 8px;
+  margin: 30px 0;
+}
+.parts > div {
+  display: grid;
+  min-width: 95px;
+  text-align: center;
+  gap: 8px;
+  padding: 14px;
+  background: var(--ivory);
+  border-bottom: 4px solid var(--ocean);
+}
+.parts b {
+  font:
+    bold 1.7rem Georgia,
+    serif;
+}
+.parts span {
+  font-size: 0.8rem;
+}
+.fractionRows {
+  display: grid;
+  gap: 16px;
+  margin: 25px 0;
+}
+.fractionRows > div {
+  display: grid;
+  grid-template-columns: 90px minmax(100px, 1fr) 55px;
+  align-items: center;
+  gap: 12px;
+}
+.bar {
+  height: 40px;
+  display: flex;
+  gap: 3px;
+}
+.bar i {
+  flex: 1;
+  background: var(--ivory);
+  border: 1px solid var(--ocean);
+}
+.bar .filled {
+  background: var(--ocean);
+}
+.worked {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 2px;
+}
+.worked li {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 4px 16px;
+  border-top: 1px solid var(--line);
+  padding: 17px 0;
+  align-items: center;
+}
+.stepNumber {
+  grid-row: span 2;
+  align-self: start;
+  color: #775020;
+  font:
+    1.2rem Georgia,
+    serif;
+}
+.workedMath {
+  overflow-x: auto;
+  max-width: 100%;
+  text-align: left;
+}
+.workedMath .katex-display {
+  margin: 0.35em 0;
+  text-align: left;
+}
+.worked li p {
+  margin: 0;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+.misconception {
+  padding: 20px 25px;
+  border-right: 4px solid var(--coral);
+  background: #f2e9e1;
+  line-height: 1.9;
+}
+.misconception p {
+  margin: 4px 0 0;
+}
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+legend {
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 0 0 18px;
+}
+.feedback {
+  min-height: 2.8em;
+  padding: 12px 0;
+  line-height: 1.9;
+  font-weight: 600;
+}
+.hint {
+  padding: 12px 18px;
+  border-right: 3px solid var(--gold);
+  background: var(--cream);
+  line-height: 1.9;
+}
+.practice {
+  background: #e8eee9;
+  padding: clamp(20px, 4vw, 42px);
+}
+.mathCard,
+.stepResult,
+.verify > div {
+  overflow-x: auto;
+  background: var(--ivory);
+  padding: 10px;
+  margin: 16px 0;
+  text-align: center;
+}
+.stepResult {
+  background: transparent;
+  border-bottom: 1px solid #b5c4b8;
+}
+.answerForm label {
+  display: block;
+  margin: 25px 0 12px;
+  font-weight: 700;
+}
+.answerForm > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.answerForm input {
+  border: 1px solid var(--navy);
+  padding: 10px;
+  width: 160px;
+  min-height: 48px;
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+}
+.answerForm button,
+.verify button,
+.nextButton {
+  background: var(--navy);
+  color: white;
+}
+.hintButton {
+  display: block;
+  margin-top: 28px;
+  border-style: dashed;
+}
+.bottomNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 25px;
+  border-top: 1px solid var(--line);
+  padding-top: 30px;
+}
+.bottomNav a {
   min-height: 44px;
+  border-bottom: 1px solid currentColor;
   display: inline-flex;
   align-items: center;
+}
+.reviewNote {
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  margin-top: 40px;
+}
+@media (max-width: 600px) {
+  .introLine,
+  .sectionHeading {
+    flex-wrap: wrap;
+    gap: 5px 18px;
+  }
+  .lesson {
+    padding: 0 18px;
+  }
+  .parts > div {
+    min-width: 70px;
+  }
+  .worked li {
+    grid-template-columns: 32px 1fr;
+  }
+  .controls button,
+  .choices button {
+    flex: 1 1 135px;
+  }
 }

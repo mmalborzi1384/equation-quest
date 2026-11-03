@@ -10,3 +10,6 @@ Provide distinct worked examples, multiple graded exercises, successive hints fo
 
 ## Acceptance evidence (future implementation)
 Direct hash route and lesson navigation; guided fractional step and feedback tests; exact answer/substitution tests; signed fraction and zero-denominator handling; mobile/keyboard/reduced-motion/non-WebGL checks; Anti-slop gate. Phase 1 approves specification only; no runnable lesson exists.
+
+## Phase 4 implementation note (2026-11-03)
+Independent route has equal-part bar model, equivalence and common-denominator instruction, five authored guided fractional exercises and repeatable bounded generated problems (rational coefficient/integer result, integer coefficient/rational result, rational coefficient/rational result, signed variants). Exact grading/step checks use pure shared engine, not floats. External curriculum review pending.

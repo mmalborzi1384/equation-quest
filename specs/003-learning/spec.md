@@ -16,3 +16,6 @@ click each concept, check destination and example rendering in RTL/LTR. Do not m
 
 ## Phase 1 approved scope (A1–A5, including strengthened A2)
 Overview has eight core concept entries and a ninth, distinct fraction-learning entry. Each opens an independent lesson with a specific teaching action, not an anchor-only stub; show prerequisite progression from integer and signed operations to fractions. This is a planning contract, not implemented behavior.
+
+## Phase 4 implementation note (2026-11-03)
+Owner accepted Phase 3 and explicitly authorized this original Phase 4 scope (D20). Nine independent lessons now have authored worked reasoning, interactive concept discrimination, guided two-sided operations, exact free answers and verification; overview links each route. Pre-release curriculum review remains outstanding.
