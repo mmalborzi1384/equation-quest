@@ -1,4 +1,4 @@
-# Pure equation engine specification — required rational scope (not implemented)
+# Pure equation engine specification — required rational scope (Phase 4 minimum implemented)
 
 ## Domain boundary and representation
 Version 1 solves **`ax+b=c`** with `a≠0`, including **signed integer and rational `a`, `b`, `c` and exact rational `x`**. Here a fraction means a constant-denominator rational number (e.g. `x/2+1/4=3/4`, `(2/3)x+1/2=5/6`), not a variable in a denominator such as `1/x` (outside the authorized linear form). The required fractional scope is part of v1, **not deferred to an optional extension**.
@@ -20,4 +20,4 @@ Categorize at least `unilateral-change`, `wrong-inverse`, `sign-error`, `divisio
 Unit tests must cover normalization, sign rules, zero denominator/coefficient rejection, exact arithmetic without float drift, nonzero divisors, seeded solvable generation across all bands, equivalent fractions, fractional coefficient with integer/fractional solution, negative fractions, correct and incorrect both-sided operations, hint progression, exact substitution and duplicate attempts. Boundary tests cover Persian input normalization and serialized rational round-trip. Extend the pure equation/step interface for any later equation class; do not hide generalized rational equations or unbounded parsing inside v1.
 
 ## Timing
-A5 approved: specify this contract in Phase 1; implement a minimal pure engine when the first interactive lessons are explicitly authorized in Phase 04. Phase 06 expands puzzle, level and progression integration. **No engine implementation exists in this documentation phase.**
+A5 approved: specify this contract in Phase 1; implement a minimal pure engine when the first interactive lessons are explicitly authorized in Phase 04. Phase 06 expands puzzle, level and progression integration. **Phase 4 implementation:** `src/features/equation-engine/{rational,equation,generate}.ts` provides normalized BigInt rational operations, validated digit/fraction input and serialization, pure `ax+b=c` solving, both-sided guided step checking, exact free-answer grading and original-equation substitution. Tests: `equation.test.ts`. Phase 6+ extends taxonomy, puzzle/level/reward integration and broader generator bands; this phase does not implement gameplay.

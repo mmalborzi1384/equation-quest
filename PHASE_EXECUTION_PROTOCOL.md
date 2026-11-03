@@ -36,4 +36,4 @@ Report: phase name/objective; completed tasks; exact created/modified paths; tes
 
 ## Current boundary
 
-Phase 1 specification package was accepted; Phase 2 Core Website Structure PR #2 was explicitly merged (`8e4ec20`). The owner subsequently clarified that the **original roadmap** remains binding and explicitly authorized **Phase 3: Home narrative / web glass carousel only**; an intervening educational-module interpretation was withdrawn before commit. Phase 4 learning/math and later phases remain unauthorized. Stop after Phase 3 and await a new explicit decision.
+Phase 1 accepted; Phase 2 PR #2 merged (`8e4ec20`), original-roadmap Phase 3 Home PR #3 merged (`804b02a`) and explicitly accepted. Owner explicitly authorized **Phase 4: interactive lessons (eight core + independent fractions) and minimum pure exact-rational checker** on 2026-11-03 (D20). No Phase 5+ authorization, no Phase 4 merge or public deployment approval. Stop after Phase 4 and await separate decision.

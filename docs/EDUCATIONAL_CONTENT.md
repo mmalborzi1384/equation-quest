@@ -27,3 +27,7 @@ First error: point to the invariant or the equal-parts model without revealing t
 
 ## Review and assessment gate
 Author each lesson/level with objective, misconception examples, scaffold steps, precise answer form and verification expression. Test positive/negative coefficients, zero constants, rational coefficients/solutions and exact equivalent fractions. Before public release, compare all grade-7 scope, examples, exercises, mathematical terminology and Persian copy with the selected curriculum and obtain documented content review. Until that happens, label them **planned/not externally validated**.
+
+## Phase 4 authored learning increment (2026-11-03)
+
+`src/data/lessons.ts` authors objective, explanation, misconception, worked KaTeX steps, discriminating concept question and exercises for each of eight core routes and the independent fraction route. `src/pages/Lessons/TopicRoute.tsx` presents DOM balance/part/equal-part models; `Practice.tsx` requires both-sided inverse selections, exact input and original-equation verification before completing each exercise. Fraction practice cycles five authored example families then deterministic seeded small-range fraction problems. Grade-7 content and Persian language are **not externally curriculum-reviewed**; that review is a pre-release gate, not claimed here. Phase 6–8 level objectives remain plans.

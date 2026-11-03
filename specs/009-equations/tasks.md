@@ -1,6 +1,6 @@
 # Tasks — Equation and puzzle engine
 
-All tasks are **Planned**, not started. Execute only after owner go-ahead.
+Phase 4 **minimal lesson math core** implemented under owner authorization D20. The general puzzle/level/reward engine remains **Planned**, awaiting Phase 6+ authorization.
 
 1. [ ] Review feature spec with owner decisions and analyze neighboring module contracts.
 2. [ ] Define typed contract and data/content for this feature: Typed domain modules no React/Three imports; seeded generator and testable checking API.
@@ -11,5 +11,5 @@ All tasks are **Planned**, not started. Execute only after owner go-ahead.
 7. [ ] Converge: update `docs/DEVELOPMENT_STATUS.md`, `PROJECT_MEMORY.md`, dependency/decision logs and extracted graph after code changes.
 
 ## Phase-specific small tasks (Planned; only execute when authorized)
-- [ ] Define normalized rational representation and serialized form; unit-test zero denominator/coefficient, reduced equivalent fractions, signed/rational coefficient/result and exact substitution.
-- [ ] Record independent tests and anti-slop gate evidence before feature completion.
+- [x] Define normalized BigInt rational representation and serialized form; unit-test zero denominator/coefficient, equivalent fractions, signed/rational coefficient/result and exact substitution (11 engine tests).
+- [x] Record independent math tests and manual anti-slop PASS for Phase 4 math UI; full puzzle engine feature remains incomplete.

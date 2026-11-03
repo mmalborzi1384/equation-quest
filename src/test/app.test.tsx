@@ -23,7 +23,7 @@ describe('Phase 2 route structure', () => {
     window.history.replaceState(null, '', `/#/learning/${topic.id}`);
     render(<App />);
     expect(await screen.findByRole('heading', { level: 1, name: topic.title })).toBeInTheDocument();
-    expect(screen.getByText(/تمرین هنوز آماده نیست/)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'گام‌ها را خودت بساز' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'همهٔ موضوع‌ها' })).toHaveAttribute(
       'href',
       '#/learning',

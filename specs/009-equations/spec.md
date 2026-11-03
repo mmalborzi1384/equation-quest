@@ -16,3 +16,6 @@ unit edge cases/negative coefficients, both-side transformations and feedback ta
 
 ## Phase 1 approved scope (A1–A5, including strengthened A2)
 Pure engine must support exact signed rational a,b,c in `ax+b=c` with `a≠0`, exact fractional solutions, both-side rational operations, substitution, seeded generation and denominator/reciprocal feedback without floating-point tolerance. This is a planning contract, not implemented behavior.
+
+## Phase 4 minimal implementation note (2026-11-03)
+Pure exact-rational BigInt parsing/operations/serialization, `ax+b=c` solving, original substitution and pedagogical two-sided step checking are implemented and unit tested for lessons. Puzzle/level integration, rewards and expanded error taxonomy remain for separately authorized later phases.

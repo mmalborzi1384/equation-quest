@@ -41,3 +41,11 @@ Safe readings of existing requirements: D01–D05, D07–D08 and D10 stand; D06 
 ## D19 — Restore the original Phase 3 scope (owner clarification, 2026-11-03)
 
 The owner explicitly withdrew the interim request to redefine Phase 3 as educational modules and directed us to follow the **previous approved structure**. Phase 3 is the existing roadmap's **Home narrative / web glass carousel** only (`specs/002-home/`); the earlier educational-module attempt was uncommitted and reverted in full. Interactive lessons, the math engine, 3D gameplay and later phases remain unauthorized. PR #2 was merged to `main` at `8e4ec20` before this phase; no new interpretation of a merge as permission to start later phases.
+
+## D20 — Phase 3 acceptance and explicit Phase 4 authorization (2026-11-03)
+
+The owner explicitly accepted Phase 3 after PR #3 merged into `main` at `804b02a`, then confirmed **Phase 4 (original roadmap): interactive learning and the minimum pure exact-rational math core needed for grading**. Phase 5+ (3D/gameplay) remains unauthorized. Phase 4 covers the eight core concept routes plus the independent fraction route; content review by a real Grade 7 curriculum specialist remains a separate pre-release gate, not a claim of this phase.
+
+## D21 — Domain/UI division for Phase 4
+
+Pure `src/features/equation-engine/` owns normalized BigInt rationals, `ax+b=c` solving/step operations, exact substitution/checking and deterministic exercise generation without React/Three imports. Lesson data authors explanations, worked steps, examples, misconception-specific hints and representational choices. UI delegates all free-form numeric answer checks and step algebra to the engine, never float comparisons; authored concept identification choices are checked by stable IDs only. No puzzle/level-manager/reward/persistence integration (Phase 6+).
