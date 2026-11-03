@@ -1,19 +1,19 @@
 # Development status — 2026-11-03
 
-**Authorization:** Phase 1 accepted; Phase 2 PR #2 merged into `main` at `8e4ec20`. The owner explicitly restored and authorized the **original Phase 3 Home narrative/carousel/web glass** scope after withdrawing an interim educational-module request. Phase 3 PR #3 merged (`804b02a`) and accepted; owner separately authorized original **Phase 4** (D20). Phase 4 PR #4 merged (`ea1c52c`), and owner explicitly authorized original **Phase 5** with mobile and desktop coequal (D22). Phase 6+ remains unauthorized.
+**Authorization:** Phases 1–6 accepted and merged; Phase 6 PR #6 merged at `d6109b8`. Owner separately authorized Phase 7 eight authored levels (D27). Phase 8 persistence, Phase 9/10 and deployment are not authorized.
 
 | Workstream | State | Evidence / next gate |
 |---|---|---|
 | 00 Environment | Completed for this sandbox | `bash scripts/setup.sh` passed before app work; pinned Node/npm, exact lockfile and toolchain checked. |
 | 00 Spec Kit / Graphify / anti-slop / Expo research | Completed | Spec Kit CLI (no Arena integration), local Graphify, manually used anti-slop skills; Expo is a visual reference only. |
-| 00 Knowledge graph | Updated for Phase 5 | `graphify extract . --code-only`, `graphify cluster-only . --no-label --no-viz`, `graphify update .`: 1156 nodes, 1534 edges, 142 communities after Phase 5 (includes tool files/metadata, not all app modules). |
+| 00 Knowledge graph | Updated for Phase 7 | `graphify extract . --code-only`, `graphify cluster-only . --no-label --no-viz`, `graphify update .`: 1229 nodes, 1903 edges, 140 communities after Phase 7 (includes tool files/metadata, not all app modules). |
 | 01 Product specification | Completed (owner accepted 2026-11-03) | A1–A5 and D12–D16, 13 feature sets and Persian completion report accepted. Pre-release grade-7/Persian review remains required. |
 | 02 Core Website Structure | Merged / preserved | Vite/React/TS shell; HashRouter and base; RTL shared responsive navigation/back; route-level lazy modules, 404/error/empty/loading fallbacks; Home section structure and interactive web carousel; Learning/World/Game/Level/Progress route previews. PR #2 merged; shell preserved. |
 | 03 Home narrative / carousel / web glass | Merged and accepted | GSAP ScrollTrigger reveals/parallax only for decorative storytelling; DOM/CSS/SVG lens, pointer/keyboard/focus navigation, reduced-motion and no-WebGL path. 31 Vitest + 5 Chromium E2E; see Phase 3 report. No game 3D claim. |
 | 04 Interactive learning & math core | Merged and accepted | Nine deep-linkable authored lessons + exact rational checker, guided steps, original-equation substitution and repeatable fraction practice. 54 Vitest + 9 local headless Chromium Playwright tests and build passed. No independent curriculum review or hardware/mobile screen-reader audit. [Report](PHASE_04_COMPLETION_REPORT.md). |
 | 05 3D engine | Merged and accepted | Procedural R3F island on `/game`, orthographic follow camera, four inspectable landmarks, WASD/arrows/E/Escape, held mobile pad/tap, pause, quality low/balanced/high and no-WebGL text map. **Not** a playable level or puzzle. 61 Vitest + 15 Chromium E2E; [report](PHASE_05_COMPLETION_REPORT.md). |
-| 06 Game mechanics | Implemented; review pending | Three ordered exact-rational workshop trials on `/game` with hints, original-equation verification and in-memory one-time points; **not** eight authored stages or durable progress. |
-| 07 Eight playable levels | Not authorized | 01–08 have informational intros only. |
+| 06 Game mechanics | Merged and accepted | Three ordered exact-rational workshop trials on `/game` with hints, original-equation verification and in-memory one-time points; **not** eight authored stages or durable progress. |
+| 07 Eight playable levels | Implemented; review pending | Eight playable concept gates and exact-puzzle sequences, ordered unlocks and one-time in-memory rewards; 06–08 require fractions. [Report](PHASE_07_COMPLETION_REPORT.md). |
 | 08 Real progression | Not authorized | `/progress` shows an empty state; only a reduced-motion UI preference is locally persisted. No XP/save data is claimed. |
 | 09 QA/optimization | Not authorized | Phase 2 tests below do not replace future cross-browser, accessibility and performance audits. |
 | 10 Deployment | Not authorized | Build is local only; GitHub Pages is not deployed or activated. |
@@ -60,3 +60,13 @@ Owner accepted and merged Phase 5 PR #5 at `4b3a7d1` and separately authorized P
 - `graphify extract . --code-only`, `graphify cluster-only . --no-label --no-viz`, `graphify update .`: **PASS**, 1198 nodes, 1728 edges, 139 communities. Graphify's incremental watch emitted a filter-change warning; no app functionality depends on the graph.
 
 [Detailed Phase 6 report](PHASE_06_COMPLETION_REPORT.md). No Phase 7 or Phase 8 work, PR merge or deployment authorized.
+
+## Phase 7 verification and limits (2026-11-03)
+
+Owner accepted and merged PR #6 at `d6109b8`, separately authorized Phase 7. Each of the eight existing level routes now plays a distinct concept-and-equation sequence. Stages 06–08 contain required fractional work; 07 has three guided rational tasks, 08 an integer/signed/fractional assessment. Every problem requires exact two-sided work and substitution in the original equation. Correct final verification awards once and opens the next stage; four island markers reflect progress in 3D and the DOM fallback. Progress is **in memory only**; `/progress` explicitly does not present a persisted record.
+
+- Fresh `bash scripts/setup.sh`, initial `EXPECTED_BRANCH=arena/8e2972ea-equation-quest bash scripts/verify-environment.sh`: **PASS**. Final `EXPECTED_BRANCH=arena/8e2972ea-equation-quest bash scripts/verify-environment.sh --full`: **PASS**: lint, format, typecheck, **82/82 Vitest**, production build. Existing lazy R3F chunk size warning remains.
+- `EQ_WEBGL=1 LD_LIBRARY_PATH=/tmp/eq7-libs/lib:/tmp/eq7-libs:/tmp EQ_CHROMIUM_PATH=/tmp/eq7-chromium npm run test:e2e -- --reporter=line`: **27/27 PASS** after one test-selector correction for a renamed World CTA (first full run 26/27). Chromium 153/SwiftShader temporarily unpacked from npm to `/tmp`, not committed. Eight individually routed solve/verify E2E cases, locked route, stage fractions, 320/390/768/1280px regression, actual WebGL, no-WebGL and mobile emulation.
+- Graphify extract/cluster/update **PASS**: 1229 nodes, 1903 edges, 140 communities; incremental watch emitted the existing filter-change warning.
+
+[Detailed Phase 7 report](PHASE_07_COMPLETION_REPORT.md). No hardware, screen-reader, curriculum-specialist review, persisted save, CI/deployment or real FPS claim.

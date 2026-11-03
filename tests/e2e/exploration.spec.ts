@@ -153,7 +153,7 @@ test('scene and controls remain reachable at phone, tablet and desktop widths', 
 
 test('keyboard control activates after navigating from the world map', async ({ page }) => {
   await page.goto('#/world');
-  await page.getByRole('link', { name: 'ورود به کارگاه سه‌بعدی' }).click();
+  await page.getByRole('link', { name: 'کاوش در جزیرهٔ سه‌بعدی' }).click();
   await expect(page).toHaveURL(/#\/game$/);
   const scene = page.getByRole('region', { name: 'کارگاه کاوش' });
   await expect(scene.locator('canvas')).toBeVisible();

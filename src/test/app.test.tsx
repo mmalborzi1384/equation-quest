@@ -54,7 +54,7 @@ describe('Phase 2 route structure', () => {
     );
   });
 
-  it('renders each level introduction and rejects an invalid level', async () => {
+  it('guards locked authored levels and rejects an invalid level', async () => {
     window.history.replaceState(null, '', '/#/game/level/06');
     const { unmount } = render(<App />);
     expect(
@@ -64,6 +64,7 @@ describe('Phase 2 route structure', () => {
       'href',
       '#/learning/fractions',
     );
+    expect(screen.getByRole('region', { name: 'مرحلهٔ قفل‌شده' })).toBeInTheDocument();
     unmount();
     window.history.replaceState(null, '', '/#/game/level/99');
     render(<App />);

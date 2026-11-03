@@ -30,3 +30,37 @@
   background: var(--gold);
   color: var(--navy);
 }
+.locked {
+  max-width: 950px;
+  margin: 0 auto 45px;
+  padding: 35px;
+  background: var(--cream);
+  border-right: 4px solid var(--gold);
+}
+.locked h2 {
+  margin: 0 0 10px;
+}
+.locked p {
+  line-height: 1.9;
+}
+.locked a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  border-bottom: 1px solid currentColor;
+}
+.next .blocked {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: #dddcd7;
+  color: #566169;
+  border-radius: var(--control-radius);
+}
+@media (max-width: 600px) {
+  .locked {
+    margin-inline: 16px;
+    padding: 20px;
+  }
+}

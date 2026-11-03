@@ -22,7 +22,10 @@ describe('exploration DOM and no-WebGL parity', () => {
       'href',
       '/learning/fractions',
     );
-    expect(screen.getByText('این مرحله هنوز قابل بازی نیست.')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /بازی مرحلهٔ 05/ })).toHaveAttribute(
+      'href',
+      '/game/level/05',
+    );
   });
   it('moves via accessible directional buttons and pauses/resumes without fabricating progress', async () => {
     open();
@@ -36,9 +39,9 @@ describe('exploration DOM and no-WebGL parity', () => {
     fireEvent.click(screen.getByRole('button', { name: 'ادامهٔ حرکت' }));
     await waitFor(() => expect(screen.getByRole('button', { name: 'بالا' })).toBeEnabled());
   });
-  it('hides WebGL-only quality controls in fallback and distinguishes trials from levels', () => {
+  it('hides WebGL-only quality controls in fallback and keeps trials separate from playable levels', () => {
     open();
     expect(screen.queryByLabelText('کیفیت نمایش')).not.toBeInTheDocument();
-    expect(screen.getByText(/سه آزمایش سازوکار معادله/)).toBeInTheDocument();
+    expect(screen.getByText(/سه آزمایش مستقل سازوکار/)).toBeInTheDocument();
   });
 });

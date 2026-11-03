@@ -1,6 +1,6 @@
 # Eight authored levels and unlocks
 
-**Status:** Draft / awaiting owner approval. Portable specification; implementation branch is assigned per Arena session.
+**Status:** Phase 7 implemented for review under D27; persistent dashboard remains Phase 8. Portable specification; implementation branch is assigned per Arena session.
 
 ## User story
 As a seventh-grade learner, I can use this feature to understand and practice equations without creating an account.
