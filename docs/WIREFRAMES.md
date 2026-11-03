@@ -17,9 +17,9 @@ Desktop asymmetrical hero with one focal mechanism; mobile canvas is decorative 
 ```text
 [breadcrumb: home] [heading: a route from equality to x] [concept map 8 nodes]
 [what is equation?] [unknown] [equality] [parts] [both sides]
-[inverse operation] [solve] [verify] [enter Balance / Unknown / Inverse]
+[inverse operation] [solve] [verify] [fractions: guided advanced path + repeated practice]
 ```
-Each node includes concise explanation, concrete example and route to nearest lesson; nodes without separate dedicated route link to a relevant lesson anchor with an actual focused exercise, not a dead stub. Responsive vertical map on mobile.
+Each of eight core nodes opens its own deep-linkable lesson with an actual exercise; a ninth, independent fraction node opens `/learning/fractions` with teaching and repeatable practice, not a final-game-only link. Responsive vertical map on mobile.
 
 ## `/learning/balance`
 ```text
@@ -45,6 +45,23 @@ Mystery box never reveals x until reasoned or hint progression; input has numeri
 ```
 Operation and operand selection explicit; prevent division by zero; RTL explanatory prose, LTR equation strip.
 
+## Additional core topic lessons (`/learning/equation`, `/learning/parts`, `/learning/both-sides`, `/learning/solve`, `/learning/verify`)
+```text
+[breadcrumb + concept objective] [small worked example + manipulation/step control]
+[feedback/hint + retry] [next related lesson or stage] [back/overview]
+```
+Each path owns its own teaching content, interaction and accessible fallback; signed terms progress after small integer balance. Solve/verify include exact fractional answers only after fraction groundwork.
+
+## `/learning/fractions` — independent fraction lesson and practice
+```text
+[goal: equal parts and rational coefficients] [visual fraction strips / accessible text alternative]
+[guided example: x/2 + 1/4 = 3/4] [choose action on BOTH sides]
+[worked (2/3)x + 1/2 = 5/6 with exact x = 1/2]
+[feedback: denominator / reciprocal / rounded answer] [retry + new exercise]
+[link to inverse lesson, level 06, solve and verify]
+```
+Expose separate examples and repeatable practice for rational coefficients and fractional solutions, not just a question appended to level 08. Mobile-safe LTR KaTeX; preserve accessible equivalent controls without WebGL.
+
 ## `/world`
 ```text
 [back / route map title] [island map with 4 interactive markers]
@@ -67,7 +84,7 @@ When a level is active, game shell can route to Level, not duplicate the entire 
 [step action controls / hint / feedback] [verified success + award once]
 [pause: resume, restart puzzle, map] [next unlocked / progress]
 ```
-Each of 8 level definitions supplies its own story/objective, scene mechanism, puzzle steps and feedback; player walk area and interactive target keyboard/touch parity. Mobile bottom dock with virtual joystick and interaction/pause controls; HUD never blocks math. Non-WebGL accessible alternate puzzle controls.
+Each of 8 level definitions supplies its own story/objective, scene mechanism, puzzle steps and feedback; levels 06–08 include increasingly challenging fraction objectives (06 introduction, 07 worked two-step, 08 assessed integration); player walk area and interactive target keyboard/touch parity. Mobile bottom dock with virtual joystick and interaction/pause controls; HUD never blocks math. Non-WebGL accessible alternate puzzle controls.
 
 ## `/progress`
 ```text

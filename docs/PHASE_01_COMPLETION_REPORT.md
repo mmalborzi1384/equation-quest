@@ -1,19 +1,31 @@
-# Phase 1 completion report — DRAFT, not a completion claim
+# گزارش نهایی برای بررسی فاز ۱ — هنوز تأیید نهایی نشده
 
-**Phase:** 01 — Product specification, architecture and design. **Current state:** IN PROGRESS / awaiting owner choices and ratification. The owner clarified that application code/build are **not Phase 1 acceptance criteria**. This report is available for review now and must be finalized after approvals; it is not a declaration of completion.
+**هدف فاز:** تدوین مشخصات محصول، معماری، طراحی، آموزش و برنامهٔ توسعه. **وضعیت:** تصمیم‌های برنامه‌ریزی A1 تا A5 تأیید و در D12 تا D16 ثبت شده‌اند؛ **پذیرش نهایی تکمیل فاز ۱ هنوز از سوی مالک صادر نشده است**. این گزارش برای بررسی و تصمیم جداگانه آماده شده و مجوز شروع فاز ۲ نیست.
 
-## Delivered planning artifacts
-- Product scope and outcomes: `docs/PRD.md`; game and learning flow: `docs/GAME_DESIGN.md`, `docs/EDUCATIONAL_CONTENT.md`, `docs/MATHEMATICAL_ENGINE.md`.
-- Architecture and delivery strategy: `docs/ARCHITECTURE.md`, `docs/ROUTES.md`, `docs/DEPENDENCY_MAP.md`, `docs/DEPLOYMENT.md`.
-- Visual direction and per-route wireframes: `docs/DESIGN.md`, `docs/WIREFRAMES.md`.
-- Constitution `.specify/memory/constitution.md`, roadmap `docs/ROADMAP.md`, and 12 independent feature folders in `specs/` (each with spec, plan, clarifications, checklist, tasks).
-- Decision brief `docs/PHASE_01_DECISION_REPORT.md`, per-feature review `docs/PHASE_01_SPEC_REVIEW.md` and acceptance checklist `docs/PHASE_01_ACCEPTANCE_CHECKLIST.md`.
+## خروجی‌های مستند
 
-## Verification and limitations
-The formal Phase 0/1 audit found no `src/`, `index.html`, tests, CI or deployment. This is **N/A for Phase 1's document deliverables**, not a failed application build. Phase 1 validation is specification coverage, internal consistency and owner sign-off; see the checklist for actual checks and remaining conflicts. Canonical environment verification passed but does not test educational claims. No teacher review, running game or deployed URL is claimed.
+- نیازمندی‌های محصول و معماری: `docs/PRD.md`، `docs/ARCHITECTURE.md`، `docs/ROUTES.md`، `.specify/memory/constitution.md`.
+- مسیر آموزشی و بازی: `docs/EDUCATIONAL_CONTENT.md`، `docs/GAME_DESIGN.md`، `docs/MATHEMATICAL_ENGINE.md`، `docs/ROADMAP.md`؛ از اعداد صحیح کوچک، سپس ضرایب علامت‌دار و عملیات معکوس تا معادله‌های دارای ضرایب/جواب دقیق کسری.
+- طراحی و وایرفریم: `docs/DESIGN.md`، `docs/WIREFRAMES.md`؛ هشت مسیر مستقل مفاهیم اصلی **به‌علاوه** `/learning/fractions` برای آموزش و تمرین مستقل کسرها.
+- تمام **۱۲ مجموعهٔ اولیه** `spec.md`، `plan.md`، `clarifications.md`، `tasks.md` و `checklist.md` بازبینی و با این تصمیم‌ها هماهنگ شدند؛ `specs/013-fractions/` نیز به دلیل مستقل‌بودن ویژگی آموزش کسرها اضافه شد. ایجاد این مشخصه، اجرای ویژگی نیست.
+- نقشهٔ مرحله‌ها: ۰۱ تا ۰۳ صحیح ساده، ۰۴ و ۰۵ علامت‌دار، ۰۶ معرفی کسر، ۰۷ تمرین‌های هدایت‌شدهٔ چندمرحله‌ای کسری، ۰۸ سنجش اجباری کسر؛ تمرین مستقل خارج از بازی نیز محفوظ است. کسرها فقط چند سؤال انتهایی نیستند.
+- موتور ریاضیِ **برنامه‌ریزی‌شده**: `ax+b=c` با `a≠0` و ضرایب/ثابت‌های گویا و جواب دقیق گویا؛ نمایش کسر به‌صورت صورت/مخرج نرمال‌شده، بررسی گام‌ها و جایگذاری بدون مقایسهٔ تقریبی اعشاری.
 
-## Open before completion
-Owner decisions A1–A5 and following document reconciliation; future publication timing A6 may remain deferred. Cross-feature concerns: 8 topics vs 3 lesson routes, lesson/math-engine sequencing, numeric progression, asset source, stale feature metadata and generic tasks. Constitution ratification and final memory/status update pending.
+## بررسی معیارهای پذیرش
 
-## Git history / next authorization
-Initial planning and environment came via PR #1 (commits `185e34c`, `2fcfd96`, merge `2410239`); the phase protocol was added in `4c7256e` on this working branch. Record the commit containing the final approved Phase 1 report here **after** approval. Do not start Phase 2 or merge a PR without explicit owner authorization.
+ده معیار و شواهد هر یک در `docs/PHASE_01_ACCEPTANCE_CHECKLIST.md` ثبت شده‌اند. معیارهای ۱ تا ۷ و وجود گزارش/چک‌لیست (۱۰) در حد **مستندسازی و بازبینی** آماده‌اند؛ تأیید A4 فقط مبنای برنامه‌ریزی را تثبیت کرده است. معیار ۸ (تأیید جداگانهٔ تکمیل فاز)، و در پی آن ثبت وضعیت نهایی در معیار ۹، **در انتظار تصمیم مالک** هستند. بازبینی واقعی آموزشی/متن فارسی پیش از انتشار عمومی الزامی است ولی هنوز انجام نشده؛ ادعای تأیید معلم نداریم.
+
+## آزمون و محدودیت‌ها
+
+بررسی ایستای درون‌مخزنی با Python **PASS** شد: ۱۱ سند برنامه‌ریزی اصلی، ۱۳ مجموعهٔ کامل پنج‌فایلی (۱۲ اولیه + کسرها)، اشارهٔ صریح تمام ۱۲ جفتِ spec/tasks به دامنهٔ کسر/عدد گویا، ۸ مسیر اصلی + مسیر مستقل کسر، حضور کسر در مراحل ۰۶ تا ۰۸ و صحت حسابی نمونهٔ `2/3 × 1/2 + 1/2 = 5/6` و نمونهٔ علامت‌دار بررسی شد. `git diff --check` نیز **PASS** شد. این بررسی ساختاری/حسابیِ مثال‌های مستند است، نه تست موتور پیاده‌سازی‌شده یا تأیید برنامهٔ درسی. `bash scripts/verify-environment.sh` محیط و وابستگی‌های قفل‌شده را بررسی می‌کند، **نه** درستی محتوای اجراشدهٔ بازی. هیچ `src/`، `index.html`، بازی، تست محصول، build یا انتشار Pages وجود ندارد؛ این موارد معیار فاز ۱ نیستند و موفقیتشان ادعا نمی‌شود.
+
+## بازمانده‌ها و ریسک‌ها
+
+- **نیازمند تأیید مالک:** فقط پذیرش نهایی گزارش تکمیل فاز ۱؛ تصمیم‌های A1 تا A5 برای برنامه‌ریزی تأیید شده‌اند. زمان فعال‌سازی/انتشار واقعی Pages (A6) بعداً مجوز جدا می‌خواهد.
+- **گیت پیش از انتشار عمومی:** بازبینی مستند و واقعی تمام مثال‌ها، تمرین‌ها، اصطلاحات و متن‌های فارسی با برنامهٔ درسی موردنظر پایه هفتم؛ هیچ متخصصی تاکنون تأیید نشده است.
+- **مرز دامنهٔ ریاضی:** معادله‌های گویا با مخرج‌های ثابت در `ax+b=c` الزامی‌اند؛ معادلاتی مانند `1/x` کلاس دیگری هستند و جزو نسخهٔ اولِ تصریح‌شده نیستند. اگر مالک آن‌ها را هم بخواهد، تصمیم و مشخصهٔ مستقل لازم است.
+- **ریسک‌های ابزار:** یافته‌های قبلی `npm audit`، عدم وجود Blender/مرورگر Playwright و نیاز به سنجش واقعی عملکرد 3D/دسترسی‌پذیری در فازهای آینده؛ در فاز ۱ حل‌شده تلقی نشده‌اند.
+
+## تاریخچه و توقف
+
+PR شمارهٔ ۱ آماده‌سازی را در `2410239` وارد `main` کرد؛ پروتکل فازها در `4c7256e` و گزارش انتخاب‌ها در `74d38bb` و `515e09e` ثبت شده‌اند. شناسهٔ کامیت این بازبینی پس از ثبت Git در گزارش یا پیام تحویل ذکر می‌شود. **پس از ارائهٔ این گزارش منتظر تأیید جداگانهٔ تکمیل فاز ۱ می‌مانیم؛ فاز ۲ شروع نمی‌شود.**

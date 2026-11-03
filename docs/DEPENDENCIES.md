@@ -15,5 +15,7 @@ Dev: Vite 8.3.5, plugin-react 6.2.1, TypeScript 5.9.3, React types 19.3.0, React
 
 `npm run check:deps`, `npm ci --ignore-scripts`, `npm ls --depth=0`, `npx vite --version`, `npx vitest --version`, `npx gltf-transform --version` succeeded. `npm ls` reports three extraneous optional platform/transitive packages after clean install; audit before release. Playwright browser binaries NOT installed; Blender not installed. No assets yet, so GLB optimization untested. React Native peers on R3F are optional; Expo/RN were not installed.
 
+Exact-rational BigInt representation is a planned built-in TypeScript/JavaScript capability; no math dependency is installed or implemented for it in Phase 1. Any new library must be separately justified/locked in its authorized phase.
+
 ## Security and compatibility risk
 `npm audit`: 16 (2 low, 14 moderate), mainly ESLint/typescript-eslint/glob/caporal and KaTeX via react-katex. `npm audit fix --force` suggests incompatible major downgrades; do not blindly apply. Review advisories/upstream patches and plan alternatives/overrides before publication; version lock is not a security certification. ESLint 9 is marked deprecated by npm despite compatible TypeScript peer range; consider ESLint 10 after validating config. TS 7 current but typescript-eslint 8.72.1 requires `<6.1`, therefore TS 5.9 chosen. No app/CI config or format/tests yet.

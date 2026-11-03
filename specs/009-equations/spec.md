@@ -13,3 +13,6 @@ Typed domain modules no React/Three imports; seeded generator and testable check
 
 ## Acceptance evidence required
 unit edge cases/negative coefficients, both-side transformations and feedback taxonomy. Do not mark completed without implementation, tests and anti-slop delivery gate.
+
+## Phase 1 approved scope (A1–A5, including strengthened A2)
+Pure engine must support exact signed rational a,b,c in `ax+b=c` with `a≠0`, exact fractional solutions, both-side rational operations, substitution, seeded generation and denominator/reciprocal feedback without floating-point tolerance. This is a planning contract, not implemented behavior.

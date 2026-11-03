@@ -13,3 +13,6 @@ Zustand persist versioned migration; derived progress selectors and Progress pag
 
 ## Acceptance evidence required
 reload, duplicate award, migrate, corrupt storage and empty state. Do not mark completed without implementation, tests and anti-slop delivery gate.
+
+## Phase 1 approved scope (A1–A5, including strengthened A2)
+Progress tracks actual completion of fraction lesson/practice and fraction objectives in stages 06–08; persisted rational answers must serialize canonical numerator/denominator strings, never raw BigInt. This is a planning contract, not implemented behavior.

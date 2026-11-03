@@ -9,3 +9,7 @@ All tasks are **Planned**, not started. Execute only after owner go-ahead.
 5. [ ] Manually exercise keyboard, touch/mobile, RTL/LTR, reduced motion and error states; record observations.
 6. [ ] Run anti-slop Delivery Gate; fix failures and document evidence.
 7. [ ] Converge: update `docs/DEVELOPMENT_STATUS.md`, `PROJECT_MEMORY.md`, dependency/decision logs and extracted graph after code changes.
+
+## Phase-specific small tasks (Planned; only execute when authorized)
+- [ ] Author per-level integer/signed/rational content gates, fraction scaffolds 06–08 and verification; test a required rational problem in each of 06, 07 and 08.
+- [ ] Record independent tests and anti-slop gate evidence before feature completion.

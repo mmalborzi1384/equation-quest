@@ -12,6 +12,8 @@ flowchart LR
   Pages --> Game
   Pages --> Progress
   Lessons --> EquationEngine
+  FractionsLesson --> EquationEngine
+  LearningOverview --> FractionsLesson
   Game --> LevelManager
   Game --> GameEngine
   Game --> ThreeAdapters
@@ -28,7 +30,7 @@ flowchart LR
 | Source | Depends on | Contract / change impact |
 |---|---|---|
 | Router | Pages | route ID/path changes affect links + Playwright |
-| Lessons, PuzzleEngine | EquationEngine | math contract changes affect teaching and level gates |
+| Lessons (including independent FractionsLesson), PuzzleEngine | EquationEngine | math contract changes affect teaching and level gates |
 | Game, ThreeAdapters | GameEngine | input/camera changes affect desktop/mobile and HUD |
 | Game | LevelManager, PuzzleEngine | unlock/objective changes affect save and map |
 | Progression/Store | Level IDs, LocalStorage | IDs/schema changes need migration and idempotence tests |

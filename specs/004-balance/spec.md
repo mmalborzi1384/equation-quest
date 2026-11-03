@@ -13,3 +13,6 @@ R3F balance with accessible numeric control fallback; lesson-specific state/feed
 
 ## Acceptance evidence required
 weight operations, reset, equality explanation, touch and keyboard fallback. Do not mark completed without implementation, tests and anti-slop delivery gate.
+
+## Phase 1 approved scope (A1–A5, including strengthened A2)
+Begin with small integer weights and equal-pan operations; use equal-part language as a conceptual bridge to the later fraction lesson without prematurely grading fractions in level 01. This is a planning contract, not implemented behavior.

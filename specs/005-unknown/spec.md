@@ -13,3 +13,6 @@ Unknown 3D objects + accessible DOM input, equation/data contracts from math cor
 
 ## Acceptance evidence required
 check correct/incorrect x, hint escalation, reset/new example and mobile input. Do not mark completed without implementation, tests and anti-slop delivery gate.
+
+## Phase 1 approved scope (A1–A5, including strengthened A2)
+Mystery boxes start with positive integer x, while related Parts and level 04 introduce signed coefficients before fractions. Link to independent Parts and Fractions routes rather than silently replacing the unknown lesson. This is a planning contract, not implemented behavior.

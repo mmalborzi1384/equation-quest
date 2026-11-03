@@ -1,6 +1,6 @@
 # Development status — 2026-11-03
 
-**Authorization:** owner clarified Phase 1 is specification/design: no runnable application is required for Phase 1. This turn reviews decisions and specs only; Phase 1 remains **IN PROGRESS / awaiting owner A1–A5 approval** and Phase 2 is **NOT AUTHORIZED**. See `docs/PHASE_01_ACCEPTANCE_CHECKLIST.md`. No product implementation was started.
+**Authorization:** owner clarified Phase 1 is specification/design: no runnable application is required for Phase 1. This turn reviews decisions and specs only; Phase 1 remains **IN PROGRESS / awaiting separate final owner acceptance of the report** and Phase 2 is **NOT AUTHORIZED**. See `docs/PHASE_01_ACCEPTANCE_CHECKLIST.md`. No product implementation was started.
 
 | Workstream | State | Evidence / next gate |
 |---|---|---|
@@ -9,7 +9,7 @@
 | 00 Spec Kit / Graphify / anti-slop / Expo research | Completed | CLI scaffold; Graphify local; six manual skills; Expo reference inspected. |
 | 00 Documentation and proposals | Completed (drafts pending approval) | Required memory/docs and 12 feature spec/task sets produced; owner review pending. |
 | 00 Knowledge graph | Tooling graph Generated; application graph Blocked | Graphify updated to 184 nodes / 277 edges from setup scripts and manifests only; no `src/` exists. See GRAPHIFY_BOOTSTRAP. |
-| 01 Product specification | In Progress — awaiting formal owner approval | 12 spec/task sets reviewed; decision brief A1–A5, per-feature review, draft completion report and validation checklist prepared. Resolve choices, reconcile affected docs and ratify before Completed. App code/build not Phase 1 criteria. |
+| 01 Product specification | In Progress — awaiting formal owner approval | A1–A5 planning choices approved and D12–D16 recorded; 12 original spec/task sets reconciled and an independent 013-fractions set added. Final Persian report/checklist submitted; await separate owner completion acceptance before Completed. App code/build not Phase 1 criteria; pre-publication grade-7/Persian content review remains future gate. |
 | 02 Foundation | Planned; NOT AUTHORIZED | Await explicit phase authorization. |
 | 03 Landing | Planned | Await approval. |
 | 04 Learning pages | Planned | Await approval. |

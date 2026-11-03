@@ -13,3 +13,6 @@ Overview page data-driven concept map; shared lesson entry routes; no empty subs
 
 ## Acceptance evidence required
 click each concept, check destination and example rendering in RTL/LTR. Do not mark completed without implementation, tests and anti-slop delivery gate.
+
+## Phase 1 approved scope (A1–A5, including strengthened A2)
+Overview has eight core concept entries and a ninth, distinct fraction-learning entry. Each opens an independent lesson with a specific teaching action, not an anchor-only stub; show prerequisite progression from integer and signed operations to fractions. This is a planning contract, not implemented behavior.
