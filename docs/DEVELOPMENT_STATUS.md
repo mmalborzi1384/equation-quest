@@ -40,3 +40,5 @@
 - 54 Vitest tests: nine hash deep links, nine lesson unit routes, DOM balance, multi-step guided answers/verification, rational math and prior regressions. Exact integer/signed/fraction checking via BigInt and Persian/Arabic digits.
 - Browser Playwright: binary initially absent; temporary npm-registry Chromium 153 and bundled NSS libs expanded **outside the repository** into `/tmp`; `LD_LIBRARY_PATH=/tmp/eq4-chromium-libs/lib EQ_CHROMIUM_PATH=/tmp/eq4-chromium-bin npm run test:e2e` **9/9 PASS** (5 Home regressions + 4 lesson tests). All nine routes fit 320/390/768/1280px in headless Chromium; signed/fraction flow, keyboard focus/Enter, RTL/LTR, reduced motion and no-WebGL checked. Hardware touch/screen-reader and other browsers remain untested.
 - Live Vite preview bound `0.0.0.0:5173` and returned HTTP 200 under forwarded Host; no Pages deployment. `npm audit --json`: 16 vulnerabilities (2 low, 14 moderate), existing backlog.
+
+**Phase 4 review handoff:** commit `497953d` pushed; [PR #4](https://github.com/mmalborzi1384/equation-quest/pull/4) is **open and unmerged**. Stop for owner review; no Phase 5 or deployment.

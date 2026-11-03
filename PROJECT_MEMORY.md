@@ -42,3 +42,5 @@ Phase 3 implementation commit `c3bd06b` is pushed; [PR #3](https://github.com/mm
 
 ## Phase 4 handoff (2026-11-03)
 Nine authored lessons and repeatable guided fraction practice, exact rational normalization/step checking/substitution, KaTeX LTR islands and DOM models on existing routes. 54 Vitest, 9 headless Chromium E2E tests and local production build passed; see [Phase 4 completion report](docs/PHASE_04_COMPLETION_REPORT.md) for commands, browser limitations and audit. Hardware/mobile screen-reader, other-browser and independent curriculum-specialist review remain open. Phase 5 is not authorized.
+
+Phase 4 implementation commit `497953d` pushed; [PR #4](https://github.com/mmalborzi1384/equation-quest/pull/4) open for review, not merged. Await owner decision; do not start Phase 5 or deploy.
