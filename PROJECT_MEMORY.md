@@ -37,3 +37,5 @@ Implementation and 28/28 tests passed in `b8544be`; Persian evidence/limits in [
 
 ## Phase 3 handoff
 The withdrawn interim educational-module work was reverted uncommitted. Original Phase 3 Home adds scoped GSAP ScrollTrigger narrative motion, responsive balance/island illustration and SVG-filtered web lens with pointer/keyboard/focus/fallback. 31 Vitest and 5 real headless-Chromium Playwright tests passed; `bash scripts/verify-environment.sh --full` passed. Details/limits: [Phase 3 completion report](docs/PHASE_03_COMPLETION_REPORT.md). Do not start Phase 4.
+
+Phase 3 implementation commit `c3bd06b` is pushed; [PR #3](https://github.com/mmalborzi1384/equation-quest/pull/3) is open for review and **not merged**. The current branch is `arena/aefc616b-equation-quest`; await owner sign-off.
