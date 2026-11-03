@@ -2,7 +2,12 @@
 
 Before starting any task in a new sandbox, read the environment setup documentation, verify the canonical development environment, and initialize the sandbox using the repository's setup scripts. See `docs/ENVIRONMENT_SETUP.md` and `docs/DEVELOPMENT_WORKFLOW.md`; run `bash scripts/setup.sh` and inspect its verification report. Never assume tools or `node_modules` persisted.
 
-At session start read `PROJECT_MEMORY.md`, `docs/DEVELOPMENT_STATUS.md`, `docs/DECISIONS.md`, relevant `specs/*` and `docs/ARCHITECTURE.md`. The user specification in the initial project brief is authoritative; record clarifications in the repo before changing course.
+At session start read `PHASE_EXECUTION_PROTOCOL.md` and `PROJECT_MEMORY.md`, `docs/DEVELOPMENT_STATUS.md`, `docs/DECISIONS.md`, relevant `specs/*` and `docs/ARCHITECTURE.md`. The user specification in the initial project brief is authoritative; record clarifications in the repo before changing course.
+
+## Phase authorization and deliverables (permanent)
+- Follow `PHASE_EXECUTION_PROTOCOL.md` for every phase. Execute only the phase explicitly named and authorized by the owner; never start the next phase automatically. The protocol itself does not authorize work.
+- Every phase must produce **executable code, up-to-date documentation, and a test/verification report** with actual evidence. If one output is impossible or missing, do not mark the phase fully verified; ask the owner.
+- At phase end update memory/status/decisions, commit on the Arena-assigned branch, report results and STOP until the next explicit authorization. Never merge a PR without the owner's explicit approval.
 
 ## Rules
 - Preparation phase only until the owner explicitly approves implementation. Do not represent plans, installed libraries, or wireframes as working features.

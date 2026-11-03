@@ -1,7 +1,7 @@
 # Development workflow and sandbox handoff
 
 ## Entry gate — every session and PR sandbox
-Read `AGENTS.md` → `PROJECT_MEMORY.md` → `docs/ENVIRONMENT_SETUP.md` → `docs/DEVELOPMENT_STATUS.md` → `docs/DECISIONS.md` → relevant `specs/*`. Check `git status -sb`, current branch, origin, latest commit; check Node/npm/Python/Git; run `bash scripts/setup.sh`; inspect every PASS/SKIP/FAIL from verification. Never assume files, tools, browser binaries or home directory state survived a different sandbox. Do not overwrite unrelated changes. Report differences and block if the required runtime cannot be provisioned.
+Read `PHASE_EXECUTION_PROTOCOL.md` → `AGENTS.md` → `PROJECT_MEMORY.md` → `docs/ENVIRONMENT_SETUP.md` → `docs/DEVELOPMENT_STATUS.md` → `docs/DECISIONS.md` → relevant `specs/*`. Check `git status -sb`, current branch, origin, latest commit; check Node/npm/Python/Git; run `bash scripts/setup.sh`; inspect every PASS/SKIP/FAIL from verification. Never assume files, tools, browser binaries or home directory state survived a different sandbox. Do not overwrite unrelated changes. Report differences and block if the required runtime cannot be provisioned.
 
 ## Commands (currently implemented)
 - Bootstrap: `bash scripts/setup.sh` (pins tools, `npm ci`, then verification).
@@ -12,6 +12,8 @@ Read `AGENTS.md` → `PROJECT_MEMORY.md` → `docs/ENVIRONMENT_SETUP.md` → `do
 - Dev preview when implemented: `npm run dev -- --host 0.0.0.0` through Arena background-process tool; browser smoke separately. The verify script does not launch a persistent server or claim browser validation.
 
 ## Change protocol
+Only the phase explicitly named by the owner may run. A phase must produce executable code, updated documentation and a report of real tests/verification; then stop pending authorization. See root `PHASE_EXECUTION_PROTOCOL.md`.
+
 Use `.specify` constitution and feature spec → clarify → plan → checklist → tasks → analyze → implement → converge. Develop on the Arena-assigned branch (never rename or switch to main). If dependency changes are essential, review package compatibility/security, pin exact direct versions, update `package-lock.json` with canonical npm, run `npm ci` and verification, document reasons in `docs/DEPENDENCIES.md` and `docs/DECISIONS.md`. Never use `npm audit fix --force` without review. Apply anti-slop skills/gate during development. Extend lint/format checks to new source and TypeScript strict config when app foundation is approved.
 
 ## End-of-task handoff
