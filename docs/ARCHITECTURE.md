@@ -20,3 +20,6 @@ Zustand `persist` with explicit version/migration and storage key, allowlisted f
 
 ## Deployment and quality
 Static Vite `dist` uploaded by GitHub Actions after npm ci, typecheck, lint, unit/integration/E2E smoke and build. Browser E2E in CI needs explicit browser install. Assets local/self-hosted where licensing permits. No build/runtime config or CI has been implemented at preparation stage.
+
+## Phase 2 implemented subset (2026-11-03)
+`src/app/App.tsx` owns HashRouter, explicit route table, `React.lazy` route modules and error/loading fallback. `src/components/layout/` owns RTL shared layout/footer and the skip link, `src/components/navigation/` owns desktop/mobile links and back fallback, and `src/components/carousel/` owns the web carousel (CSS lens, pointer/keyboard/button/dot controls). `src/pages/Lessons/` has nine separately lazy-loaded entry modules, with a shared informational preview component, not nine interactive lesson engines. `src/data/` contains route/topic/level preview metadata; `src/store/usePreferences.ts` persists only a reduced-motion preference. Game/math/3D/progression directories remain future architecture, not Phase 2 implementations.

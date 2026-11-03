@@ -1,3 +1,5 @@
+> Historical pre-acceptance review: the owner subsequently accepted Phase 1 and authorized Phase 2 on 2026-11-03 (D17). Statements below about pending approval describe the earlier review point, not current status.
+
 # Phase 1 — owner decision brief (2026-11-03)
 
 **Status: A1–A5 approved as a Phase 1 planning baseline on 2026-11-03; A2 approved with stronger mandatory fractional scope. This historical decision brief remains for alternatives/consequences; binding choices are in `docs/DECISIONS.md` D12–D16. Formal Phase 1 completion acceptance is still pending.** This preserves the original questions, alternatives and consequences; the binding owner choices are now D12–D16. A1–A5 have been answered by the owner; A6 publication permission remains deferred. Approving these specifications is **not** authorization to start Phase 2.

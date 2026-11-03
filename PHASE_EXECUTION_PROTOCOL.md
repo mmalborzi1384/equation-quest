@@ -36,4 +36,4 @@ Report: phase name/objective; completed tasks; exact created/modified paths; tes
 
 ## Current boundary
 
-The owner has stated only Phase 1 has been done and has now clarified that Phase 1 is specification/design, not an executable-app phase. Phase 1 remains **pending formal acceptance** until the owner approves the specifications and open decisions documented in `docs/PHASE_01_DECISION_REPORT.md` and the checklist in `docs/PHASE_01_ACCEPTANCE_CHECKLIST.md` is closed. No Phase 2 authorization has been given.
+The owner has stated only Phase 1 has been done and has now clarified that Phase 1 is specification/design, not an executable-app phase. Owner subsequently accepted Phase 1 and authorized **Phase 2: Core Website Structure** only. Phase 3 and later phases remain unauthorized. Phase-specific acceptance evidence must be recorded before declaring Phase 2 complete.

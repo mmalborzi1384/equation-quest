@@ -1,0 +1,185 @@
+import { Link } from 'react-router-dom';
+import { GlassCarousel } from '../../components/carousel/GlassCarousel';
+import { islands } from '../../data/levels';
+import styles from './Home.module.css';
+
+export default function Home() {
+  return (
+    <>
+      <section className={styles.hero} aria-labelledby="hero-title">
+        <div className={styles.heroCopy}>
+          <span className={styles.kicker}>یک ماجراجویی برای فهمیدن، نه حدس زدن</span>
+          <h1 id="hero-title">
+            راز <em>سرزمین</em>
+            <br />
+            مجهول‌ها
+          </h1>
+          <p>
+            در سرزمینی که توازن از دست رفته، هر برابری یک پل است. برای بازگرداندن مسیرها، باید بفهمی
+            چرا دو سوی معادله با هم برابرند.
+          </p>
+          <div className={styles.heroActions}>
+            <Link className={styles.primary} to="/learning">
+              آغاز مسیر یادگیری <span aria-hidden="true">←</span>
+            </Link>
+            <Link className={styles.secondary} to="/world">
+              دیدن نقشهٔ جهان
+            </Link>
+          </div>
+          <div className={styles.heroNote}>
+            <span>پایهٔ هفتم</span>
+            <span>بدون نیاز به حساب کاربری</span>
+            <span>نقشهٔ آموزش مرحله‌به‌مرحله</span>
+          </div>
+        </div>
+        <div
+          className={styles.heroScene}
+          role="img"
+          aria-label="تصویری نمادین از جزیره‌های سرزمین جبر"
+        >
+          <div className={styles.sceneSky} />
+          <div className={`${styles.island} ${styles.islandOne}`}>
+            <i />
+          </div>
+          <div className={`${styles.island} ${styles.islandTwo}`}>
+            <i />
+          </div>
+          <div className={`${styles.island} ${styles.islandThree}`}>
+            <i />
+          </div>
+          <span className={styles.sceneLabel}>
+            سرزمین جبر
+            <br />
+            <small>نقشهٔ سفر</small>
+          </span>
+        </div>
+        <span className={styles.heroIndex}>E Q / ۰۱</span>
+      </section>
+
+      <section className={styles.manifest} aria-labelledby="intro-title">
+        <div>
+          <span className={styles.sectionLabel}>01 / دربارهٔ سفر</span>
+          <h2 id="intro-title">
+            معادله یک راز نیست؛
+            <br />
+            یک <em>تعادل</em> است.
+          </h2>
+        </div>
+        <div>
+          <p>
+            وقتی از یک طرف چیزی کم می‌کنی، طرف دیگر هم باید همان تغییر را تجربه کند. اینجا با
+            حرکت‌دادن، دیدن و آزمودن می‌فهمی هر گام چرا درست است.
+          </p>
+          <Link to="/learning/balance">آشنایی با برابری ←</Link>
+        </div>
+      </section>
+
+      <section className={styles.goals} aria-labelledby="goals-title">
+        <div className={styles.sectionHead}>
+          <span className={styles.sectionLabel}>02 / هدف‌های یادگیری</span>
+          <h2 id="goals-title">از تساوی تا جواب دقیق</h2>
+        </div>
+        <div className={styles.goalRows}>
+          <div>
+            <b>الف</b>
+            <h3>برابری را ببین</h3>
+            <p>بفهم چرا انجام عمل یکسان روی دو سوی معادله، تعادل را حفظ می‌کند.</p>
+          </div>
+          <div>
+            <b>ب</b>
+            <h3>مجهول را پیدا کن</h3>
+            <p>به‌جای حدس‌زدن x، از نشانه‌ها، ضریب‌ها و عمل‌های وارون کمک بگیر.</p>
+          </div>
+          <div>
+            <b>پ</b>
+            <h3>جوابت را بررسی کن</h3>
+            <p>از عددهای صحیح و علامت‌دار تا کسرهای دقیق، پاسخ را در معادلهٔ اصلی بیازما.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.journey} aria-labelledby="journey-title">
+        <div className={styles.sectionHead}>
+          <span className={styles.sectionLabel}>03 / مسیر یادگیری</span>
+          <h2 id="journey-title">چهار ایستگاه؛ یک داستان</h2>
+          <p>مسیر پیشنهادی از برابری شروع می‌شود و به حل و بررسی معادله می‌رسد.</p>
+        </div>
+        <div className={styles.journeyList}>
+          {islands.map((island, i) => (
+            <Link to="/world" key={island.name}>
+              <span className="math">0{i + 1}</span>
+              <div>
+                <strong>{island.name}</strong>
+                <small>{island.detail}</small>
+              </div>
+              <span aria-hidden="true">←</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.worldPreview} aria-labelledby="world-title">
+        <span className={styles.sectionLabel}>04 / نگاهی به جهان</span>
+        <h2 id="world-title">پل‌ها منتظر یک دلیل‌اند.</h2>
+        <p>
+          چهار جزیره در نقشهٔ سرزمین جبر، هرکدام یک پرسش تازه دارند. در این مرحله می‌توانی نقشه و
+          موضوع هر منطقه را ببینی؛ بازی تعاملی در فازهای بعد ساخته می‌شود.
+        </p>
+        <Link to="/world">دیدن چهار منطقه ←</Link>
+      </section>
+
+      <section className={styles.interactive} aria-labelledby="interactive-title">
+        <div>
+          <span className={styles.sectionLabel}>05 / شیوهٔ یاد گرفتن</span>
+          <h2 id="interactive-title">جواب تنها کافی نیست.</h2>
+        </div>
+        <p>
+          در مسیر کامل، ترازو، جعبه‌های مجهول و دروازه‌های معادله به گام‌های تو واکنش نشان می‌دهند.
+          هر گام با توضیح ریاضی و فرصت تلاش دوباره همراه خواهد بود. این تعامل‌ها هنوز در نسخهٔ
+          ساختاری فاز ۲ فعال نیستند.
+        </p>
+      </section>
+
+      <section className={styles.how} aria-labelledby="how-title">
+        <span className={styles.sectionLabel}>06 / راهنمای سفر</span>
+        <h2 id="how-title">چطور پیش برویم؟</h2>
+        <div>
+          <p>
+            <strong>۱.</strong> از مسیر یادگیری، مفهوم را با مثال بشناس.
+          </p>
+          <p>
+            <strong>۲.</strong> در نقشه، منطقه و هدف هر مرحله را ببین.
+          </p>
+          <p>
+            <strong>۳.</strong> در نسخه‌های بعد، با حل گام‌به‌گام مسیرها را باز کن.
+          </p>
+        </div>
+        <Link to="/learning">دیدن مسیر یادگیری ←</Link>
+      </section>
+
+      <section className={styles.modules} aria-labelledby="modules-title">
+        <div className={styles.sectionHead}>
+          <span className={styles.sectionLabel}>07 / راه‌های ورود</span>
+          <h2 id="modules-title">یک موضوع را انتخاب کن</h2>
+          <p>
+            کارت‌ها را با دکمه‌ها، کلیدهای جهت‌نما یا لمس جابه‌جا کن. هر کارت به صفحهٔ موضوع خودش
+            می‌رود.
+          </p>
+        </div>
+        <GlassCarousel />
+      </section>
+
+      <section className={styles.end} aria-labelledby="end-title">
+        <span className={styles.sectionLabel}>08 / ادامهٔ مسیر</span>
+        <h2 id="end-title">برابری از همین‌جا آغاز می‌شود.</h2>
+        <p>
+          برای شروع، یکی از موضوع‌های آموزشی را انتخاب کن؛ برای آشنایی با سرزمین، سراغ نقشه برو.
+        </p>
+        <div>
+          <Link to="/learning">رفتن به مسیر یادگیری</Link>
+          <Link to="/world">باز کردن نقشهٔ جهان</Link>
+        </div>
+      </section>
+    </>
+  );
+}

@@ -1,3 +1,5 @@
+> Historical pre-acceptance review: the owner subsequently accepted Phase 1 and authorized Phase 2 on 2026-11-03 (D17). Statements below about pending approval describe the earlier review point, not current status.
+
 # Phase 1 — specification cross-review and findings
 
 Reviewed 2026-11-03 against the master project brief, `.specify/memory/constitution.md`, PRD, architecture, routes, education, game, design, wireframes, math engine, deployment, roadmap and **all 12** feature `spec.md`/`plan.md`/`clarifications.md`/`tasks.md`/`checklist.md` files. **Original 12 sets reviewed; A1–A5 are now approved as planning choices, not implemented behavior. A thirteenth independent fraction specification was added. Formal Phase 1 completion acceptance remains pending.** Requirements are preserved; historical findings below are followed by the post-approval reconciliation section.

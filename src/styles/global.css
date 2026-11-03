@@ -1,0 +1,73 @@
+:root {
+  font-family: Vazirmatn, system-ui, sans-serif;
+  color: #172a46;
+  background: #f7f5f0;
+  font-synthesis: none;
+  --navy: #172a46;
+  --ocean: #426d83;
+  --mint: #65b89b;
+  --gold: #e9b968;
+  --cream: #f0e9d8;
+  --ivory: #f7f5f0;
+  --coral: #db806e;
+  --violet: #927dbb;
+  --ink-soft: #405369;
+  --line: #d8d3c7;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration-thickness: 2px;
+}
+:focus-visible {
+  outline: 3px solid #a36c2e;
+  outline-offset: 4px;
+}
+::selection {
+  background: #e9b968;
+  color: #172a46;
+}
+.math {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-family: Georgia, serif;
+  display: inline-block;
+}
+[data-motion='reduce'] *,
+[data-motion='reduce'] *::before,
+[data-motion='reduce'] *::after {
+  scroll-behavior: auto !important;
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* Text links retain comfortable touch targets without turning paragraphs into buttons. */

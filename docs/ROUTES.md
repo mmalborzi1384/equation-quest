@@ -1,4 +1,4 @@
-# Route contract (proposed)
+# Route contract (Phase 2 structures implemented; feature actions below are future contracts)
 
 | Path | Page owner | Primary action | Related navigation |
 |---|---|---|---|
@@ -18,6 +18,9 @@
 | `/game/level/:levelId` | Level | Explore and solve stage 01–08 | game, next unlocked, world |
 | `/progress` | Progress | Inspect real local save and resume | world, game, learning |
 
-Eight core concept routes (equation, unknown, balance/equality, parts, both-sides, inverse, solve, verify) plus **one additional fractional lesson/practice route** satisfy A1 and the strengthened A2 scope. The five new core topic routes and fraction route are planning targets, **not implemented**; maintain independent page/component/lesson logic for each.
+Eight core concept routes (equation, unknown, balance/equality, parts, both-sides, inverse, solve, verify) plus **one additional fractional lesson/practice route** satisfy A1 and the strengthened A2 scope. All nine URLs now have distinct lazy route entry modules and an honest shared introductory preview. Interactive teaching, feedback and practice in the table above are **not implemented**; those are later-phase contracts.
 
 Shared navigation on every route: home, learning, world, continue game, progress, back; compact menu on mobile; accessible active state. Continue resolves saved last accessible level, otherwise `/game`. Locked island/level controls display requirement and route to prerequisite (not a dead button). Carousel items navigate to lesson/world/progress. Invalid route/ID offers home and map. HashRouter removes server-side deep-link rewrite requirement; actual Pages verification remains pending.
+
+## Phase 2 reality
+All listed paths resolve under `#/` with shared Home/Learning/World/Game/Progress navigation, responsive menu and back/home fallback. `/game/level/01`–`08` have informational previews; unsupported IDs and unknown paths show a useful 404. Nav game link is labeled "بازی: به‌زودی" because no level can yet be continued. No locked/unlocked state, resume, teaching controls or real progression exists. Routing works with a static repo base but GitHub Pages itself has not been deployed/verified.

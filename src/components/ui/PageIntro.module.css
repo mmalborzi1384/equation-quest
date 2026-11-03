@@ -1,0 +1,50 @@
+.intro {
+  padding: clamp(48px, 7vw, 110px) clamp(20px, 7vw, 116px) 44px;
+  max-width: 1320px;
+  margin: auto;
+}
+.eyebrow {
+  display: inline-block;
+  color: #715019;
+  font-size: 0.83rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 8px;
+}
+.intro h1 {
+  font-size: clamp(2.6rem, 6vw, 5.8rem);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  max-width: 15ch;
+  margin: 20px 0;
+}
+.intro p {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 2.1;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+.actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 11px 20px;
+  background: var(--navy);
+  color: var(--ivory);
+  border: 1px solid var(--navy);
+}
+.actions a + a {
+  background: transparent;
+  color: var(--navy);
+}
+.actions a:hover {
+  background: var(--ocean);
+  color: white;
+}

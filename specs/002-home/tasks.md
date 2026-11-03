@@ -13,3 +13,8 @@ All tasks are **Planned**, not started. Execute only after owner go-ahead.
 ## Phase-specific small tasks (Planned; only execute when authorized)
 - [ ] Author carousel destination map and Persian copy; test keyboard/touch routes to `/learning/fractions` and reduced-motion navigation.
 - [ ] Record independent tests and anti-slop gate evidence before feature completion.
+
+## Phase 2 structure subset (owner authorized)
+- [x] Implement RTL Home layout with narrative section structure and responsive CSS balance/island motif.
+- [x] Implement a web CSS glass-inspired carousel with real lesson destinations, button/dot/keyboard/swipe navigation and reduced-motion support.
+- [x] Test controls and fraction destination in jsdom; full GSAP cinematic narrative, browser-visual verification and gameplay integration remain Phase 3+ tasks above (not checked).
