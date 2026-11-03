@@ -1,6 +1,6 @@
 # Phase 1 — owner decision brief (2026-11-03)
 
-**Status: recommendations for approval, not approvals.** This summarizes every unresolved question in `docs/DECISIONS.md` plus contradictions found while reviewing Phase 1 specifications. The original requirements remain in force until the owner chooses otherwise. Respond with choices **A1–A4** and optionally A5; a single approval of the recommended package is sufficient *only if it explicitly covers these choices*. Approving these specifications is **not** authorization to start Phase 2.
+**Status: recommendations for approval, not approvals.** This summarizes every unresolved question in `docs/DECISIONS.md` plus contradictions found while reviewing Phase 1 specifications. The original requirements remain in force until the owner chooses otherwise. Respond with choices **A1–A5**; A6 can be deferred. A single approval of the recommended package is sufficient *only if it explicitly covers these choices*. Approving these specifications is **not** authorization to start Phase 2.
 
 ## Decisions genuinely requiring owner approval
 
@@ -26,12 +26,19 @@
 - **Consequences:** Affects scope, asset license evidence, visual polish and performance testing. “Procedural Three geometry” is not the same as the PRD's excluded “procedural GLB asset pipeline.”
 
 ### A4. Spec bundle and Constitution ratification
-- **Exact question:** After reviewing this brief and the remaining follow-ups in `docs/PHASE_01_SPEC_REVIEW.md`, do you approve the Phase 1 PRD, Constitution, architecture, educational/game/design direction, route strategy and 12 feature specifications **as planning baselines**, subject to implementing the chosen A1–A3 resolutions before marking Phase 1 complete?
+- **Exact question:** After reviewing this brief and the remaining follow-ups in `docs/PHASE_01_SPEC_REVIEW.md`, do you approve the Phase 1 PRD, Constitution, architecture, educational/game/design direction, route strategy and 12 feature specifications **as planning baselines**, subject to implementing the chosen A1–A3 and A5 resolutions before marking Phase 1 complete?
 - **Why:** The Constitution is marked `Ratified: pending owner approval`; specs say `Draft`. A prior PR merge or “phase 1 done” statement did not resolve the specific options above.
-- **Recommend:** Approve the baseline with explicit A1–A3 choices, then update the affected specs/checklist/ratification and run validation before marking Phase 1 completed. Approval of plans is not a claim that features are implemented.
+- **Recommend:** Approve the baseline with explicit A1–A3 and A5 choices, then update the affected specs/checklist/ratification and run validation before marking Phase 1 completed. Approval of plans is not a claim that features are implemented.
 - **Alternative:** Request targeted revisions first (please identify documents/topics). Consequence: Phase 1 remains in progress until resubmitted.
 
-### A5. Publication timing (approval needed later, not to finish Phase 1)
+### A5. Math-engine dependency before interactive lessons
+- **Exact question:** May the minimal pure equation-operation/checking core be implemented when interactive lessons begin in Phase 04, with the wider puzzle/level/reward systems still built in Phase 06, rather than deferring all math code until Phase 06?
+- **Why:** Current roadmap schedules lessons before the engine they depend on. Duplicate grading logic inside React would contradict the approved pure-engine boundary.
+- **Recommend:** Specify pure equation interfaces now; implement only the lesson-needed core in the explicitly authorized learning phase, then expand/integrate it in Phase 06. This is a sequencing clarification, not permission to start either phase now.
+- **Alternative:** Defer the interactive lessons until after Phase 06 (slower educational delivery), or use temporary UI math (faster initial screens but violates separation/testability and creates rework — not recommended).
+- **Consequences:** Recommended option changes the placement of a small implementation task, not the required feature set; requires future phase task plans to reflect the dependency.
+
+### A6. Publication timing (approval needed later, not to finish Phase 1)
 - **Exact question:** When should repository Pages Actions/settings be enabled and the site published?
 - **Recommend:** Define the deployment *strategy* now (`HashRouter`, Vite base `/equation-quest/`, GitHub Actions) and defer **actual publication permission** to Phase 10. The owner explicitly controls deployment timing.
 - **Alternative:** Enable Pages early for incremental previews after a runnable build exists; useful for testing but exposes incomplete product and needs Pages permission. Neither choice starts deployment now.
@@ -48,4 +55,4 @@
 | S6 | Phase output interpretation? | Phase 1 is a spec/design phase: validated docs, checklist and owner approval; no application code or app-build test required. Implementation phases require runnable app increment (D11, protocol updated). |
 
 ## Technical follow-up that must be tracked before Phase 2 planning
-The roadmap puts interactive lessons in Phase 04 but the pure equation engine in Phase 06. A lesson must not reimplement math logic in UI. **Recommendation:** document shared equation/puzzle contracts in Phase 1 and introduce the minimal pure engine when the first interactive lesson needs it, then extend it in Phase 06; obtain explicit owner agreement if this changes phase boundaries. No early engine code is being written here.
+The roadmap puts interactive lessons in Phase 04 but the pure equation engine in Phase 06. A lesson must not reimplement math logic in UI. Resolve **A5** before changing the future phase task plans. No engine code is being written here.

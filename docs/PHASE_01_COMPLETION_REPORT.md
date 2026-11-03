@@ -13,7 +13,7 @@
 The formal Phase 0/1 audit found no `src/`, `index.html`, tests, CI or deployment. This is **N/A for Phase 1's document deliverables**, not a failed application build. Phase 1 validation is specification coverage, internal consistency and owner sign-off; see the checklist for actual checks and remaining conflicts. Canonical environment verification passed but does not test educational claims. No teacher review, running game or deployed URL is claimed.
 
 ## Open before completion
-Owner decisions A1–A4 and following document reconciliation; future publication timing A5 may remain deferred. Cross-feature concerns: 8 topics vs 3 lesson routes, lesson/math-engine sequencing, numeric progression, asset source, stale feature metadata and generic tasks. Constitution ratification and final memory/status update pending.
+Owner decisions A1–A5 and following document reconciliation; future publication timing A6 may remain deferred. Cross-feature concerns: 8 topics vs 3 lesson routes, lesson/math-engine sequencing, numeric progression, asset source, stale feature metadata and generic tasks. Constitution ratification and final memory/status update pending.
 
 ## Git history / next authorization
 Initial planning and environment came via PR #1 (commits `185e34c`, `2fcfd96`, merge `2410239`); the phase protocol was added in `4c7256e` on this working branch. Record the commit containing the final approved Phase 1 report here **after** approval. Do not start Phase 2 or merge a PR without explicit owner authorization.

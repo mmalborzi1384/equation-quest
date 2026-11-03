@@ -26,7 +26,7 @@ Reviewed 2026-11-03 against the master project brief, `.specify/memory/constitut
 5. **Asset wording:** PRD excludes procedural *GLB pipeline*, not procedural 3D geometry; D09 is provisional and A3 requests source approval. No art or GLB optimization has occurred.
 6. **Draft/stale metadata:** all 12 feature specs name a prior Arena branch and are marked draft; specs are portable and should not encode an obsolete branch as an implementation target. Task lists have generic steps; feature-specific acceptance/test lines exist but must be decomposed further before each implementation phase.
 7. **Language/content proof:** most documentation is English planning text; user-facing Persian microcopy, teacher validation and non-integer learning progression are not yet accepted. Phase 1 need not pretend these were classroom-tested; A2 resolves review timing.
-8. **Pages vs phase:** `DEPLOYMENT.md` defines base/hash strategy; Actions/Pages are correctly deferred, not a Phase 1 implementation failure. Publication permission is separate (A5).
+8. **Pages vs phase:** `DEPLOYMENT.md` defines base/hash strategy; Actions/Pages are correctly deferred, not a Phase 1 implementation failure. Publication permission is separate (A6).
 
 ## Validation boundary
 A Phase 1 review can validate the existence and cross-document coherence of planning artifacts. It cannot validate 3D gameplay, browser navigation, math correctness, CI or live Pages. No user specification is weakened by calling these *future-phase* tests N/A. Checklist/results: `docs/PHASE_01_ACCEPTANCE_CHECKLIST.md`.
