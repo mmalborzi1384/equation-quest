@@ -1,0 +1,214 @@
+.runner {
+  max-width: 1130px;
+  margin: 0 auto 55px;
+  padding: 28px clamp(18px, 4vw, 48px);
+  background: #e8eee9;
+  border-top: 4px solid var(--ocean);
+}
+.topline {
+  display: flex;
+  gap: 14px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: #694b1f;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.mechanism {
+  margin: 28px 0;
+  padding: 15px 25px;
+  background: var(--navy);
+  color: var(--ivory);
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+.mechanism span {
+  font:
+    2rem Georgia,
+    serif;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.mechanism p {
+  margin: 0;
+  line-height: 1.9;
+}
+.runner h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  margin: 15px 0;
+}
+.runner h3 {
+  margin: 28px 0 12px;
+  font-size: 1.1rem;
+}
+.runner p {
+  line-height: 1.9;
+}
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.runner button,
+.success a {
+  min-height: 46px;
+  border-radius: var(--control-radius);
+  border: 1px solid var(--navy);
+  color: var(--navy);
+  background: transparent;
+  padding: 10px 17px;
+  text-align: right;
+}
+.runner button:hover {
+  background: var(--navy);
+  color: var(--ivory);
+}
+.concept {
+  border-right: 3px solid var(--gold);
+  padding: 0 22px 15px;
+}
+.concept small,
+.answer small {
+  display: block;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+.math,
+.mathStep {
+  padding: 12px;
+  margin: 18px 0;
+  overflow-x: auto;
+  text-align: center;
+  background: var(--ivory);
+}
+.mathStep {
+  border-bottom: 1px solid #bac7be;
+  background: transparent;
+}
+.answer {
+  margin: 25px 0;
+}
+.answer label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.answer > div {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.answer input {
+  min-height: 46px;
+  border: 1px solid var(--navy);
+  border-radius: var(--control-radius);
+  background: white;
+  width: 160px;
+  padding: 7px 12px;
+  font:
+    1.15rem Georgia,
+    serif;
+}
+.verify {
+  border-top: 1px solid #b5c1b9;
+  padding-top: 10px;
+}
+.success {
+  border-right: 4px solid #316856;
+  background: #d5e7d7;
+  padding: 20px;
+  margin: 22px 0;
+}
+.success a {
+  display: inline-flex;
+  margin-top: 15px;
+  align-items: center;
+  background: var(--navy);
+  color: white;
+}
+.success a:hover {
+  background: var(--ocean);
+}
+.success .math {
+  display: inline-block;
+  margin: 0;
+  background: transparent;
+}
+.tools {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 28px 0;
+}
+.tools button:first-child {
+  border-style: dashed;
+}
+.notice {
+  background: var(--ivory);
+  border-right: 3px solid var(--gold);
+  padding: 12px 16px;
+  min-height: 58px;
+}
+.note {
+  color: var(--ink-soft);
+  font-size: 0.87rem;
+}
+@media (max-width: 600px) {
+  .runner {
+    padding: 18px;
+  }
+  .choices button {
+    flex: 1 1 140px;
+  }
+  .mechanism {
+    padding: 12px;
+  }
+}
+.balance,
+.boxes {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  direction: ltr;
+  width: fit-content;
+  padding: 18px;
+  margin: 15px 0;
+  border-bottom: 3px solid var(--navy);
+  color: var(--navy);
+  font:
+    1.4rem Georgia,
+    serif;
+}
+.balance span:first-child,
+.balance span:last-child {
+  background: var(--cream);
+  padding: 12px;
+  border-radius: var(--control-radius);
+  border-bottom: 4px solid var(--ocean);
+}
+.fractionModel {
+  display: grid;
+  gap: 12px;
+  max-width: 320px;
+  margin: 16px 0;
+}
+.fractionModel span {
+  display: flex;
+  direction: ltr;
+  gap: 2px;
+  border: 2px solid var(--navy);
+  background: var(--ivory);
+  min-height: 48px;
+  border-radius: var(--control-radius);
+  overflow: hidden;
+}
+.fractionModel i {
+  flex: 1;
+  background: var(--mint);
+  border-right: 2px solid var(--navy);
+}
+.fractionModel i:last-child {
+  border: 0;
+}

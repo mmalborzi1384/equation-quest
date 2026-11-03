@@ -28,3 +28,7 @@ All listed paths resolve under `#/` with shared Home/Learning/World/Game/Progres
 ## Phase 5 route reality
 
 `/game` lazily loads a real R3F island if WebGL is available; otherwise it immediately provides a semantic interactive text map. Four landmarks can be inspected by walking/pressing E, by tapping a 3D marker, or by choosing from the DOM list/map; inspection links to an existing lesson and an **informational** level preview. The `/world` map links to this workshop. `/game/level/:levelId` and `/progress` retain their honest preview/empty states. No unlock, reward or save state exists.
+
+## Phase 7 route reality (D27)
+
+`#/game/level/01`–`08` now render eight authored *playable* stages. Locked deep links explain and link to the previous stage; stage 01 is initially open, each next stage opens only after all required exact answers and original-equation verifications. `#/world` lists both levels in each of four regions and shows only verified **session** completion/points. `#/game` retains the separate three-trial workshop, exploration controls and no-WebGL fallback; inspection links to a playable stage, and markers illuminate according to actual completed levels. `#/progress` is explicitly still an empty **persistent** record because Phase 8 save/resume is not implemented. Earlier route reality paragraphs describe historical phases, not the current UI.

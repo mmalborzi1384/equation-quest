@@ -30,3 +30,7 @@ Static Vite `dist` uploaded by GitHub Actions after npm ci, typecheck, lint, uni
 ## Phase 5 3D exploration subset (2026-11-03)
 
 `src/features/exploration/movement.ts` owns pure bounded movement, keyboard direction mapping and nearby-target selection. `src/data/exploration.ts` places four informative landmarks sourced from island metadata. `src/pages/Game/` owns input, pause, DOM controls/map and quality preferences (in-memory only); `SceneBoundary` contains renderer errors. `src/three/ExplorationScene.tsx` renders procedural R3F meshes, orthographic following camera and quality-dependent DPR/shadows in a lazy chunk loaded only on supported WebGL. On absent/lost WebGL, same movement/inspection persists in DOM. No puzzle engine, level manager, game progress/reward state, or player save has been implemented.
+
+## Implemented Phase 7 stage slice
+
+`features/level-manager/stages.ts` authors eight typed stage concepts/problems by the existing `01`–`08` route IDs. `stage-session.ts` composes the pure Phase 6 puzzle transition and emits `completedNow` only after the last original-equation verification. `progression/levels.ts` gates the next stage and grants once; `useLevelProgress` is an **in-memory** adapter separate from the Phase 6 workshop. `/game/level/:id` owns the semantic DOM puzzle view, `/world` and `/game` consume stage completion and island status. The R3F marker lights respond to the two stage completions per region; the DOM fallback shows identical unlock/status information. Persistence and dashboard still belong to Phase 8.

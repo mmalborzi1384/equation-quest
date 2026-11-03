@@ -41,3 +41,7 @@ Later use Graphify `explain`, `affected` and `path` on **extracted** graph for c
 ### Implemented Phase 6 slice
 
 `Game/MechanicsLab → puzzle-engine → equation-engine`; `MechanicsLab → level-manager/workshop → equation-engine/generate`; `MechanicsLab → useWorkshopProgress → progression/workshop → progression/rewards + level-manager/workshop`. These modules are DOM/pure-state only, so the R3F renderer remains optional. The planned `Store → LocalStorage` and authored `LevelManager → LevelData`/`Progress → Progression` arrows above are **not implemented** for game progress; later phases own those contracts.
+
+### Implemented Phase 7 stage flow
+
+`Level/StageRunner → level-manager/stages + stage-session → puzzle-engine → equation-engine`; `Level/StageRunner → useLevelProgress → progression/levels → progression/rewards`; `World/Game → islandStatus/useLevelProgress`; `ExplorationScene` receives completed stage IDs only for decorative marker feedback (math remains DOM/pure). The workshop has its own independent reward store. Persistent stage save and Progress dashboard are **still planned for Phase 8**, not wired into these arrows.

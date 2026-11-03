@@ -107,3 +107,44 @@
   display: inline-flex;
   align-items: center;
 }
+.stageList {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  width: 100%;
+}
+.stageList a,
+.stageList span {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 7px 13px;
+  border-radius: var(--control-radius);
+}
+.stageList a {
+  border: 1px solid var(--navy);
+  color: var(--navy);
+  background: #ffffff9c;
+}
+.stageList a:hover {
+  background: var(--navy);
+  color: white;
+}
+.stageList span {
+  background: #ffffff82;
+  color: #545f66;
+}
+.ledger {
+  max-width: 1272px;
+  margin: 0 auto 26px;
+  padding: 14px 20px;
+  color: var(--navy);
+  background: var(--cream);
+  border-right: 3px solid var(--gold);
+  line-height: 1.9;
+}
+@media (max-width: 700px) {
+  .ledger {
+    margin-inline: 24px;
+  }
+}

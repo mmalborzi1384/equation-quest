@@ -14,3 +14,6 @@ Phase 1 alignment: HUD/puzzle panel must display signed and fractional expressio
 
 ## Phase 6 extension
 Add a DOM exact-rational mechanics workshop next to the existing exploration scene. Inspecting a landmark may open a related challenge but the 3D scene never grades algebra. Preserve keyboard/touch movement, pause, quality presets and no-WebGL map; the workshop is operable without WebGL and does not mark a level complete.
+
+## Phase 7 level entry
+Four R3F island landmarks now provide links to the first authored level in each region and light up one marker gem per verified stage, plus a ring when both are complete. The DOM map and level route expose the same information without WebGL. Puzzle controls and correctness remain in semantic DOM/pure modules, not in Three. The Phase 6 workshop is independent; persistence/resume is Phase 8.

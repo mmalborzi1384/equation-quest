@@ -11,19 +11,39 @@ function Marker({
   index,
   onInspect,
   selected,
+  completedCount,
 }: {
   landmark: Landmark;
   index: number;
   onInspect: (id: string) => void;
   selected: boolean;
+  completedCount: number;
 }) {
   const color = colors[index];
   return (
     <group position={[landmark.x, 0, landmark.z]}>
       <mesh receiveShadow position={[0, 0.08, 0]}>
         <cylinderGeometry args={[1.2, 1.4, 0.16, 8]} />
-        <meshStandardMaterial color={selected ? '#e9b968' : '#253d4e'} />
+        <meshStandardMaterial
+          color={completedCount === 2 ? '#65b89b' : selected ? '#e9b968' : '#253d4e'}
+        />
       </mesh>
+      {completedCount === 2 && (
+        <mesh position={[0, 0.22, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <ringGeometry args={[1.02, 1.16, 20]} />
+          <meshBasicMaterial color="#e9b968" />
+        </mesh>
+      )}
+      {[-0.45, 0.45].map((x, i) => (
+        <mesh key={i} position={[x, 0.24, 0.8]}>
+          <octahedronGeometry args={[0.16, 0]} />
+          <meshStandardMaterial
+            color={i < completedCount ? '#e9b968' : '#566477'}
+            emissive={i < completedCount ? '#88632c' : '#000000'}
+            emissiveIntensity={0.7}
+          />
+        </mesh>
+      ))}
       <group
         onClick={(event) => {
           event.stopPropagation();
@@ -173,6 +193,7 @@ export default function ExplorationScene({
   paused,
   onInspect,
   onContextLost,
+  completedLevels,
 }: {
   position: Point;
   selected: string | null;
@@ -181,6 +202,7 @@ export default function ExplorationScene({
   paused: boolean;
   onInspect: (id: string) => void;
   onContextLost: () => void;
+  completedLevels: readonly string[];
 }) {
   const ratio = { low: 1, balanced: 1.5, high: 2 }[quality];
   return (
@@ -214,6 +236,11 @@ export default function ExplorationScene({
           index={index}
           onInspect={onInspect}
           selected={landmark.id === selected}
+          completedCount={
+            [landmark.level, String(Number(landmark.level) + 1).padStart(2, '0')].filter((id) =>
+              completedLevels.includes(id),
+            ).length
+          }
         />
       ))}
       <Walker position={position} />

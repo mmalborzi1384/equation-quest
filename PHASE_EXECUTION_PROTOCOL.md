@@ -36,4 +36,4 @@ Report: phase name/objective; completed tasks; exact created/modified paths; tes
 
 ## Current boundary
 
-Phases 1–5 accepted; PR #5 merged into `main` at `4b3a7d1` by explicit owner direction. The owner separately authorized **Phase 6** puzzle/ordered workshop/reward integration (D24–D25). Stop after Phase 6 handoff: no Phase 7 eight playable levels, Phase 8 persisted progress, PR merge or deployment without separate authorization.
+Phases 1–6 accepted; Phase 6 PR #6 merged into `main` at `d6109b8` by explicit owner direction. The owner separately authorized **Phase 7** eight playable authored stages with four island pairs (D27). Stop after Phase 7 review handoff: no Phase 8 persisted dashboard, PR merge or deployment without separate authorization.

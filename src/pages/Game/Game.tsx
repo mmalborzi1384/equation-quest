@@ -14,6 +14,8 @@ import { usePreferences } from '../../store/usePreferences';
 import styles from './Game.module.css';
 import { SceneBoundary } from './SceneBoundary';
 import { MechanicsLab } from './MechanicsLab';
+import { islandStatus } from '../../features/progression/levels';
+import { useLevelProgress } from '../../store/useLevelProgress';
 
 const ExplorationScene = lazy(() => import('../../three/ExplorationScene'));
 type Quality = 'low' | 'balanced' | 'high';
@@ -37,6 +39,8 @@ export default function Game() {
   const [message, setMessage] = useState(
     'از مرکز به یکی از چهار نشان نزدیک شو؛ یا آن را از فهرست انتخاب کن.',
   );
+  const completedLevels = useLevelProgress((state) => state.rewards.completedIds);
+
   const reduceMotion = usePreferences((state) => state.reduceMotion);
   const [osReduced, setOsReduced] = useState(
     () =>
@@ -56,9 +60,7 @@ export default function Game() {
 
   const inspect = useCallback((landmark: Landmark) => {
     setSelected(landmark.id);
-    setMessage(
-      `${landmark.name}: ${landmark.detail} اینجا هنوز مرحلهٔ قابل‌حل وجود ندارد؛ برای یادگیری از پیوند درس استفاده کن.`,
-    );
+    setMessage(`${landmark.name}: ${landmark.detail} از پیوند مرحله برای ورود به معما استفاده کن.`);
   }, []);
   const inspectNear = useCallback(() => {
     const target = nearest(positionRef.current, landmarks);
@@ -168,9 +170,9 @@ export default function Game() {
   return (
     <>
       <PageIntro
-        eyebrow="کارگاه کاوش / فاز ۶"
+        eyebrow="کارگاه کاوش / فاز ۷"
         title="ماجراجویی از اینجا شکل می‌گیرد"
-        description="در این کارگاه می‌توانی در یک جزیرهٔ سه‌بعدی قدم بزنی و چهار نشان را بررسی کنی. پایین جزیره، سه آزمایش سازوکار معادله با راهنمای گام‌به‌گام و امتیاز موقت در دسترس است؛ هشت مرحلهٔ بازی هنوز ساخته نشده‌اند."
+        description="در این کارگاه می‌توانی در یک جزیرهٔ سه‌بعدی قدم بزنی و چهار نشان را بررسی کنی. چهار نشان، ورودی هشت مرحلهٔ قابل‌بازی هستند. زیر نقشه نیز سه آزمایش مستقل سازوکار با امتیاز موقت در دسترس است؛ پیشرفت دائمی هنوز ساخته نشده است."
       >
         <Link to="/world">نقشهٔ چهار منطقه</Link>
         <Link to="/learning">مرور درس‌ها</Link>
@@ -192,7 +194,7 @@ export default function Game() {
           <div>
             <span>کشف / ۰۱</span>
             <h2>جزیرهٔ تعادل</h2>
-            <p>چهار نشان، چهار سرنخ برای مسیر یادگیری؛ بدون امتیاز و قفل ساختگی.</p>
+            <p>چهار نشان، هشت مرحله؛ هر منطقه پس از حل و بررسی هر دو مرحله روشن می‌شود.</p>
           </div>
           <div className={styles.options}>
             {canRender && (
@@ -237,6 +239,7 @@ export default function Game() {
                     }
                   >
                     <ExplorationScene
+                      completedLevels={completedLevels}
                       position={position}
                       quality={quality}
                       selected={selected}
@@ -366,11 +369,13 @@ export default function Game() {
                 <p>{inspected.detail}</p>
                 <div>
                   <Link to={`/learning/${inspected.lesson}`}>درس مرتبط ←</Link>
-                  <Link to={`/game/level/${inspected.level}`}>
-                    معرفی مرحلهٔ {inspected.level} ←
-                  </Link>
+                  <Link to={`/game/level/${inspected.level}`}>بازی مرحلهٔ {inspected.level} ←</Link>
                 </div>
-                <small>این مرحله هنوز قابل بازی نیست.</small>
+                <small>
+                  {islandStatus(inspected.level, completedLevels) === 'restored'
+                    ? 'هر دو مرحلهٔ این منطقه کامل شده‌اند.'
+                    : 'برای باز شدن مرحله‌های بعد، جواب‌ها را در معادلهٔ اصلی بررسی کن.'}
+                </small>
               </div>
             )}
           </aside>
