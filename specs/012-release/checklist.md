@@ -24,3 +24,13 @@
 - [x] Existing Phase 9 game-derived image, 9px optical controls and scroll reveal corrected for reported jump; two full Chromium 38/38 passes, 90 Vitest and budget build passed.
 - [x] Temporary axe-core automated WCAG 2/2.1 A/AA scan of seven routes at 320/1280px found no violations; no hardware/screen-reader certification.
 - [ ] Independent grade-7 curriculum/Persian content review, security advisory decision, CI, live Pages checks and explicit deploy authorization. Phase 10 remains unexecuted.
+
+## D34 implementation gate (current; prior planning-only lines are historical)
+
+- [x] PR validation never deploys; main deployment waits for green validation.
+- [x] Local canonical setup/full checks, 90 unit, 38 Chromium, measured budgets and isolated production preview smoke pass.
+- [x] No new app UI, production dependency, repository secret or irreversible release freeze; maintainability and rollback documented.
+- [x] Anti-slop scoped release gate recorded in `docs/PHASE_10_RELEASE_REPORT.md`.
+- [x] PR #10 CI validation passed (`41638949454`); no deploy on PR.
+- [ ] Observe main Actions deployment/public host smoke before claiming public release.
+- [ ] External curriculum/Persian specialist review and physical/device/screen-reader/alternate-browser checks: explicitly outstanding with owner-approved publication exception, not certified as PASS.

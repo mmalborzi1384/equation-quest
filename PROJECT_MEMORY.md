@@ -1,6 +1,6 @@
 # Equation Quest — project memory index
 
-**Status (2026-11-03): Phases 1–4 accepted and merged; Phase 4 PR #4 merged at `ea1c52c`. Phase 5 R3F exploration workshop, desktop/mobile controls and fallback implemented on `arena/bdc71c3b-equation-quest`, awaiting owner review.** Phase 6+ gameplay/rewards and deployment not authorized.
+**Status (2026-11-03): Phases 1–9 merged; Phase 9 PR #9 merged at `900d2ec`. D34 authorized Phase 10 CI/Pages publication with documented curriculum/security/device risks. Phase 10 automation is implemented on `arena/758a3991-equation-quest`; local 90 Vitest, 38 Chromium and production smoke pass. PR CI/public Pages artifact and live host verification remain pending merge. The project stays open for future bug fixes/features.**
 
 ## Permanent execution protocol
 Read [PHASE_EXECUTION_PROTOCOL.md](PHASE_EXECUTION_PROTOCOL.md) **before every phase**. Wait for explicit phase authorization. Outputs are phase-specific: Phase 1 requires validated specifications, updated docs and a validation/approval report; implementation phases require executable app code and test evidence. Protocol maintenance in this turn is not a product phase.
@@ -81,3 +81,7 @@ Owner explicitly requested Phase 9 after PR #8 merged. On `arena/5e702cfc-equati
 ## D33 Phase 9 polish handoff (2026-11-03)
 
 User reported global glass controls jumping while scrolling and menu opening abruptly, requested repeated mobile/desktop QA and upload preparation. Removed global action backdrop-filter and whole-section translation, kept 9px optical glass edge; animated the mobile menu with Escape/focus/outside/reduced-motion behavior. 90 Vitest, 38 Chromium E2E, production preview hash/asset smoke and temporary axe automated 14 route/viewport scans passed; npm audit remains 16 total (2 runtime low), and curriculum/hardware/screen-reader/live-host gates remain. See [polish/readiness report](docs/PHASE_09_POLISH_AND_RELEASE_READINESS.md). PR #9 open; do not merge or deploy without separate approval.
+
+## D34 Phase 10 handoff (2026-11-03)
+
+See [Phase 10 release report](docs/PHASE_10_RELEASE_REPORT.md), [operational deployment guide](docs/DEPLOYMENT.md) and `specs/012-release`. Workflow validates PRs without deploying, builds/deploys on main and live-smokes the public host. Owner chose publication with documented external content-review gap, not a certification or project closure. Do not merge the Phase 10 PR without explicit instruction; do not claim public verification until green live Actions run. Follow-up bug and feature changes use ordinary PRs. Older planning-only states above are historical.

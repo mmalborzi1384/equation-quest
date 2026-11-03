@@ -28,3 +28,14 @@ All tasks are **Planned**, not started. Execute only after owner go-ahead.
 ## D33 preflight (not a release authorization)
 
 Local build, hash route/assets smoke, repeated browser and unit suites and automated accessibility scans are documented in `docs/PHASE_09_POLISH_AND_RELEASE_READINESS.md`; CI, public Pages, curriculum/security reviews and the release decision remain unchecked Phase 10 tasks. Do not deploy from this preparation.
+
+## D34 authorized Phase 10 execution (2026-11-03)
+
+- [x] Inspect constitution/architecture, merged Phase 9, Pages legacy-source state, bootstrap fresh sandbox and record D34 scope.
+- [x] Pin CI Node/npm and `npm ci`, build/budget/lint/format/unit/browser gates on PRs without deployment.
+- [x] Add main-only Pages artifact/OIDC deploy and separate post-deploy public smoke; document Actions-source setting/rollback.
+- [x] Add shared preview/live route, asset, mobile and saved-setting smoke and locally run full verification.
+- [x] Document explicit owner risk acceptance; no false independent curriculum review/security certification or site-live claim.
+- [x] Observe real PR Actions validation: PR #10 run `41638949454` passed (build, Chromium and preview smoke); deploy/live-smoke skipped by design.
+- [ ] After explicit PR merge approval, observe green main deploy and live smoke on the actual public URL; address first-time Pages Actions-source setting if required.
+- [ ] Independent grade-7/Persian content review, physical device/screen-reader/other browser tests and dependency advisories remain follow-ups, not silently closed.

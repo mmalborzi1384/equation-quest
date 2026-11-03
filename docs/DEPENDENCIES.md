@@ -27,3 +27,7 @@ Existing `three@0.187.0`, `@react-three/fiber@9.8.2` and `@react-three/drei@10.7
 ## D33 pre-upload audit check (2026-11-03)
 
 `npm audit --json` still reports **16 findings** (2 low, 14 moderate; none high/critical). `npm audit --omit=dev --json` reports **2 low runtime findings** via `react-katex`/KaTeX (prototype pollution trust restriction advisory). The app renders authored TeX rather than accepting arbitrary user TeX; that narrows exposure but does not fix the packages. Forced auto-fix proposes an unvalidated major react-katex version change; do not silently change pinned versions before assessing compatibility/security and rerunning the entire curriculum and UI test matrix. Temporary `axe-core@4.10.3` and Chromium 153 used for local scans are outside the repo and not dependencies. See [D33 readiness](PHASE_09_POLISH_AND_RELEASE_READINESS.md).
+
+## D34 CI/Pages dependency boundary
+
+No new npm runtime or development dependency. GitHub Actions uses checkout@v5, setup-node@v5, upload-artifact@v4, download-artifact@v4, configure-pages@v5, upload-pages-artifact@v3 and deploy-pages@v4 plus `npx playwright install --with-deps chromium` on hosted Ubuntu. Node 22.22.3/npm 10.9.8 and `npm ci` are pinned. Local npm audit repeated: 16 total (2 low, 14 moderate), production-only 2 low via KaTeX/react-katex; release choice documented in D34, no forced upgrade. Revisit these in future maintenance PRs.

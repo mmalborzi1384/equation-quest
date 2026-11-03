@@ -1,6 +1,6 @@
 # Development status — 2026-11-03
 
-**Authorization:** Phases 1–8 accepted and merged; PR #8 is confirmed merged. D32 explicitly authorized Phase 9, now implemented and locally verified on the current branch, pending owner review. Phase 10 deployment remains unauthorized. Earlier planning-only notes below are historical.
+**Authorization:** Phases 1–9 accepted and merged (Phase 9 PR #9 merge `900d2ec`). D34 authorizes Phase 10 CI/Pages release and documents the owner’s decision to publish while tracking unresolved reviews. This branch implements Phase 10; actual public artifact deployment requires merged workflow and green live checks. Future bug fixes and features remain possible through PRs. Earlier planning-only notes below are historical.
 
 | Workstream | State | Evidence / next gate |
 |---|---|---|
@@ -90,3 +90,7 @@ Owner authorized Phase 9 following confirmed Phase 8 PR #8 merge. The product no
 ## Phase 9 owner polish / upload preparation (D33, 2026-11-03)
 
 The owner identified scroll-jumping liquid-glass controls and an abrupt mobile menu. Global backdrop blur and section container translation were removed; a 260ms mobile menu animation, Escape/focus/outside dismissal and reduced-motion fallback were added. A focus/visibility race in keyboard scene movement and contradictory workshop persistence copy were also corrected. Expanded browser suite: final 38/38 Chromium PASS after 18/18 repeated exploration cases; repeated full typecheck/lint/format/90 tests/build and asset budgets PASS. Production preview route/asset/reload smoke at 320/1280px and temporary axe-core 14 route/viewport checks (0 automated A/AA violations) passed. Security, curriculum, hardware and public-host verification remain open; see [polish and release-readiness report](PHASE_09_POLISH_AND_RELEASE_READINESS.md). PR #9 remains open; Phase 10 publication is not claimed.
+
+## Phase 10 release automation (D34, 2026-11-03)
+
+Owner explicitly requested Phase 10 and clarified that publication should be completed with unresolved external review risks visible, not a final closure of bug fixing or feature work. `.github/workflows/pages.yml` now validates every PR, deploys only green `main` builds as Pages artifacts and checks the live result; `scripts/smoke-release.mjs` verifies production preview and live routes/assets/mobile navigation/persistence. Local full toolchain 90/90 Vitest, 38/38 Chromium, budgets and local production smoke passed. PR #10 validation passed on Actions run `41638949454` (main-only deployment correctly skipped); Pages artifact and live public checks are pending merge; see [Phase 10 report](PHASE_10_RELEASE_REPORT.md). An independent curriculum/Persian review is still missing; no teacher certification, hardware/assistive-tech or other-browser claim. Keep future issue/PR workflow open.
