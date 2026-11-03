@@ -17,6 +17,17 @@ beforeEach(() => {
 });
 
 describe('Phase 2 route structure', () => {
+  it('links the introduction from Home and returns to Home without leaving the app', async () => {
+    render(<App />);
+    await screen.findByRole('heading', { level: 1, name: /سرزمین/ });
+    fireEvent.click(screen.getByRole('link', { name: 'آشنایی با ماجراجویی' }));
+    expect(await screen.findByRole('heading', { level: 1, name: /هر معادله/ })).toBeInTheDocument();
+    expect(window.location.hash).toBe('#/intro');
+    fireEvent.click(screen.getByRole('link', { name: 'بازگشت به صفحهٔ اصلی' }));
+    expect(await screen.findByRole('heading', { level: 1, name: /سرزمین/ })).toBeInTheDocument();
+    expect(window.location.hash).toBe('#/');
+  });
+
   it('renders Persian RTL home, shared links and a working learning navigation', async () => {
     render(<App />);
     expect(await screen.findByRole('heading', { level: 1, name: /سرزمین/ })).toBeInTheDocument();

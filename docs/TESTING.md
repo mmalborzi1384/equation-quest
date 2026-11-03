@@ -37,3 +37,7 @@ Six new `tests/e2e/phase9.spec.ts` Chromium cases cover authentic responsive ass
 ## Phase 10 release contract (D34)
 
 `npm run test:release` drives the built `dist` under Vite preview and checks seven hash routes at 320/1280px, asset errors, reload, overflow, mobile menu Escape and saved motion preference. Set `RELEASE_URL` to test the *public* Pages site without starting preview. `.github/workflows/pages.yml` must pass lint/format/typecheck/90 Vitest/build/budgets/38 Chromium E2E plus the preview smoke before main can deploy; live smoke runs after deployment and can fail independently. Local result PASS; CI and live outcomes must be observed separately in the Phase 10 report. Browser requires installed Chromium; local sandbox used a temporary external binary/SwiftShader, not a committed dependency.
+
+## Intro route (D35)
+
+`tests/e2e/intro.spec.ts` covers Home ↔ Intro links, direct hash reload, keyboard arrows/Escape/details, and 320/390/768/1280px overflow with reduced motion. `src/test/app.test.tsx` covers route-to-route navigation. Release smoke includes `#/intro`; it waits for a compiled Vite entrypoint instead of treating a legacy, uncompiled Pages index as ready. Local results on D35 branch: 91/91 unit, 40/40 Chromium browser journeys, lint/format/typecheck/build, payload budgets and production preview PASS. A green build alone does not establish that GitHub Pages has finished propagation.

@@ -33,5 +33,6 @@
 - [x] Anti-slop scoped release gate recorded in `docs/PHASE_10_RELEASE_REPORT.md`.
 - [x] PR #10 CI validation passed (`41638949454`); no deploy on PR.
 - [x] Main Actions `41640153643` artifact deployment and public Chromium smoke succeeded.
-- [ ] Repo admin must set Pages source to GitHub Actions (still `legacy` after deploy; REST update 403); issue #13.
+- [x] Owner switched Pages source to GitHub Actions; API reports `workflow`.
+- [ ] Source-switch run `41642947134` failed immediate live-smoke despite green deploy. Require next green main live-smoke with compiled-index readiness.
 - [ ] External curriculum/Persian specialist review and physical/device/screen-reader/alternate-browser checks: explicitly outstanding with owner-approved publication exception, not certified as PASS.

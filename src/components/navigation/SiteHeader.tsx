@@ -4,6 +4,7 @@ import styles from './SiteHeader.module.css';
 
 const links = [
   { to: '/', label: 'خانه', end: true },
+  { to: '/intro', label: 'معرفی' },
   { to: '/learning', label: 'مسیر یادگیری' },
   { to: '/world', label: 'دنیای بازی' },
   { to: '/progress', label: 'پیشرفت من' },
