@@ -1,0 +1,15 @@
+# Learning overview
+
+**Status:** Draft / awaiting owner approval. **Branch:** arena/5b2fda5d-equation-quest.
+
+## User story
+As a seventh-grade learner, I can use this feature to understand and practice equations without creating an account.
+
+## Requirements
+Eight concepts each have a concise grade-7 example and a working action linking to its concept exercise.
+
+## Scope and constraints
+Overview page data-driven concept map; shared lesson entry routes; no empty subsections. Persian RTL, mathematical LTR, desktop/mobile, accessible and usable without backend. Shared navigation and no dead controls. Refer to PRD, ROUTES, EDUCATIONAL_CONTENT and constitution for cross-cutting requirements.
+
+## Acceptance evidence required
+click each concept, check destination and example rendering in RTL/LTR. Do not mark completed without implementation, tests and anti-slop delivery gate.

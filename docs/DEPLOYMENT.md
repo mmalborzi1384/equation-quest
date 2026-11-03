@@ -1,0 +1,5 @@
+# GitHub Pages deployment proposal — not configured
+
+Repo `mmalborzi1384/equation-quest`; expected site `https://mmalborzi1384.github.io/equation-quest/`. Configure Vite `base: '/equation-quest/'` and React Router HashRouter; route `/#/learning` deep link survives refresh. `import.meta.env.BASE_URL` or asset imports for resources. Avoid absolute `/models/...` URLs and external blocked font CDN.
+
+Proposed `.github/workflows/pages.yml`: checkout; setup Node 22 with npm cache; `npm ci`; `npm run typecheck`; `npm run lint`; `npm run test:run`; install Playwright Chromium and run smoke E2E (if CI runner/browser supported); `npm run build`; `actions/configure-pages`; `actions/upload-pages-artifact` with `dist`; deploy-pages with `pages: write`/`id-token: write`. GitHub Pages source must be GitHub Actions in repo settings. Verify deployed landing, hash-deep-link refresh, asset requests, save restore on real host before stating live. No Actions workflow or site exists yet. Owner approval required before implementation/publication.
