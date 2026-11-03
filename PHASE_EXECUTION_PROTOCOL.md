@@ -36,4 +36,4 @@ Report: phase name/objective; completed tasks; exact created/modified paths; tes
 
 ## Current boundary
 
-Phases 1–4 accepted. Phase 4 PR #4 was explicitly merged (`ea1c52c`). The owner explicitly authorized **Phase 5: R3F scene/camera/controls/interaction** and reiterated that mobile and desktop must both be covered (D22). Phase 6+ puzzle/gameplay/rewards and deployment are **not authorized**. Stop after Phase 5 and await a new decision; no PR merge without separate approval.
+Phases 1–5 accepted; PR #5 merged into `main` at `4b3a7d1` by explicit owner direction. The owner separately authorized **Phase 6** puzzle/ordered workshop/reward integration (D24–D25). Stop after Phase 6 handoff: no Phase 7 eight playable levels, Phase 8 persisted progress, PR merge or deployment without separate authorization.

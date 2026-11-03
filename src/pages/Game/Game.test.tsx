@@ -36,11 +36,9 @@ describe('exploration DOM and no-WebGL parity', () => {
     fireEvent.click(screen.getByRole('button', { name: 'ادامهٔ حرکت' }));
     await waitFor(() => expect(screen.getByRole('button', { name: 'بالا' })).toBeEnabled());
   });
-  it('hides WebGL-only quality controls in fallback and does not invent puzzles', () => {
+  it('hides WebGL-only quality controls in fallback and distinguishes trials from levels', () => {
     open();
     expect(screen.queryByLabelText('کیفیت نمایش')).not.toBeInTheDocument();
-    expect(
-      screen.getByText(/حل معما، باز شدن مرحله‌ها و ثبت پیشرفت هنوز ساخته نشده‌اند/),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/سه آزمایش سازوکار معادله/)).toBeInTheDocument();
   });
 });

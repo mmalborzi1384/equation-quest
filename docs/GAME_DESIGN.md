@@ -20,3 +20,7 @@ Rewards: one-time XP/crystals; achievements tied to real completed events, not f
 ## Phase 5 exploration boundary
 
 A real stylized R3F island/camera/player and four station markers now exist at `/game`; desktop/mobile controls, pause, quality and no-WebGL text navigation are operational. Inspection reveals a short station note and links to a lesson/preview, **not a playable algebra puzzle**. The stage objective/reward/progression loop described above remains Phase 6–8 work.
+
+## Phase 6 mechanics boundary
+
+The `/game` page now adds three **mechanics trials** below exploration: integer (`2x+4=12`), signed (`-2x+3=9`) and fractional (`(2/3)x+1/2=5/6`), generated deterministically from the existing exact-rational core. The learner applies the same inverse action to both sides, supplies an exact answer, then explicitly compares the substitution into the **original** equation. One-sided changes, wrong signs/reciprocals, zero division, bad denominators, rounded decimals and arithmetic errors have distinct feedback, followed by hints that grow from a prompt to an operation, not a premature answer. A verified trial awards 10 in-memory points once and opens the next workshop trial. It does **not** unlock an island/stage, grant persistent XP, or complete any of the eight authored levels.

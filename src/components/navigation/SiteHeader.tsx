@@ -62,7 +62,7 @@ export function SiteHeader() {
             onClick={() => setOpen(false)}
             className={({ isActive }) => `${styles.gameLink} ${isActive ? styles.active : ''}`}
           >
-            بازی: به‌زودی <span aria-hidden="true">↗</span>
+            کارگاه معادله <span aria-hidden="true">↗</span>
           </NavLink>
         </nav>
       </div>

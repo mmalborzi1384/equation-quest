@@ -11,3 +11,6 @@ Phase 1 alignment: HUD/puzzle panel must display signed and fractional expressio
 2. Build an R3F orthographic isometric scene with procedural low-poly balance/bridge/station geometry and a following camera; isolate behind the `/game` lazy page and a WebGL guard.
 3. Wire keyboard arrows/WASD/E/Escape and mobile held directional pad/interact/pause to the same input state. Provide DOM station inspection, textual position/proximity and reachable lesson/stage-preview links, including when WebGL fails.
 4. Add quality low/balanced/high (pixel ratio/shadows), reduced-motion and visibility handling; validate routes, no-WebGL, keyboard/pointer/mobile/desktop widths and build in Chromium when available. No Phase 6 puzzles/awards/unlocks.
+
+## Phase 6 extension
+Add a DOM exact-rational mechanics workshop next to the existing exploration scene. Inspecting a landmark may open a related challenge but the 3D scene never grades algebra. Preserve keyboard/touch movement, pause, quality presets and no-WebGL map; the workshop is operable without WebGL and does not mark a level complete.

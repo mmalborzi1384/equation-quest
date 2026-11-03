@@ -37,3 +37,7 @@ flowchart LR
 | Carousel | Router | destination changes affect landing navigation |
 
 Later use Graphify `explain`, `affected` and `path` on **extracted** graph for component impact analysis; do not use this planned diagram as proof of implementation.
+
+### Implemented Phase 6 slice
+
+`Game/MechanicsLab → puzzle-engine → equation-engine`; `MechanicsLab → level-manager/workshop → equation-engine/generate`; `MechanicsLab → useWorkshopProgress → progression/workshop → progression/rewards + level-manager/workshop`. These modules are DOM/pure-state only, so the R3F renderer remains optional. The planned `Store → LocalStorage` and authored `LevelManager → LevelData`/`Progress → Progression` arrows above are **not implemented** for game progress; later phases own those contracts.
