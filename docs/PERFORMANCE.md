@@ -1,0 +1,3 @@
+# Performance plan (targets to measure, not achieved)
+
+Lazy-load routes and heavy scenes; static sprite/DOM fallback for no WebGL. Cap pixel ratio by preset; performance ≈1, balanced ≤1.5, high ≤2; detect device conservatively and offer manual override. Prefer baked lighting and a limited number of dynamic shadows; instance repeated geometry; pause/offscreen R3F work when appropriate. Profile mobile before selecting budget. Author GLB locally, run gltf-transform inspection/meshopt/draco optimization where assets exist; no GLBs or Blender install yet. Self-host assets/fonts; verify Vite base path. E2E mobile viewport, screen reader/keyboard and reduced-motion smoke are release gates. Do not claim FPS/load time without measurements.
