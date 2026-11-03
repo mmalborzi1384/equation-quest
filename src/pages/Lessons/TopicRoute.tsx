@@ -146,7 +146,7 @@ function ConceptCheck({ id }: { id: TopicId }) {
   const [selected, setSelected] = useState<string | null>(null);
   const [hint, setHint] = useState(0);
   return (
-    <section className={styles.concept} aria-labelledby="concept-title">
+    <section data-story className={styles.concept} aria-labelledby="concept-title">
       <div className={styles.sectionHeading}>
         <span>۰۲ / فکر کن</span>
         <h2 id="concept-title">یک تصمیم با دلیل</h2>
@@ -200,7 +200,7 @@ export default function TopicRoute({ id }: { id: TopicId }) {
             <BidiText>{lesson.objective}</BidiText>
           </p>
         </div>
-        <section className={styles.teaching} aria-labelledby="teaching-title">
+        <section data-story className={styles.teaching} aria-labelledby="teaching-title">
           <div className={styles.sectionHeading}>
             <span>۰۱ / کشف کن</span>
             <h2 id="teaching-title">از تصویر تا نماد</h2>

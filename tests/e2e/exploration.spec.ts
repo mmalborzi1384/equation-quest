@@ -11,6 +11,8 @@ test('desktop WebGL: isometric scene, keyboard movement, nearby inspection and p
   await page.goto('#/game');
   const scene = page.getByRole('region', { name: 'کارگاه کاوش' });
   await expect(scene.locator('canvas')).toBeVisible();
+  await scene.scrollIntoViewIfNeeded();
+  await expect(scene).toBeInViewport();
   await scene.focus();
   await page.keyboard.down('ArrowUp');
   await page.keyboard.down('a');

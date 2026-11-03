@@ -1,0 +1,33 @@
+# Phase 9 polish and release-readiness review — 2026-11-03
+
+**Scope:** follow-up quality pass on open PR #9 (`arena/5e702cfc-equation-quest`). This prepares an inspectable production build; it does **not** publish, merge, configure Pages or certify that untested devices are defect-free. Public deployment remains Phase 10, subject to separate approval and content/security review.
+
+## Reproduced issues and fixes
+
+1. **Glass controls appeared to jump during scroll.** The Phase 9 global selector applied `backdrop-filter: blur(6px)` to almost every action, forcing repeated backdrop sampling; the section-entry keyframe also translated whole containers, including live buttons, by 20px as they entered the viewport. Removed global control blur and the container translation. Kept the product-specific inner optical edge, shadow, opaque readable colors and 9px corners; hover/pressed/focus states remain. Only the carousel's decorative lens may blur on large screens; its opaque cards no longer do, and the lens blur is disabled on mobile/reduced motion. A browser regression now asserts document-space button position stays within 1px through repeated wheel scroll and `backdrop-filter`/`filter` remain `none`.
+2. **Mobile menu opened abruptly.** Replaced `display: none/flex` swapping and glyph substitution with a fixed-size three-line icon that turns into an X, plus a 260ms opacity/translate panel transition. Closed links are hidden from pointer/keyboard access via `visibility: hidden`. Escape closes and returns focus; outside pointer closes; navigation and route changes close normally. Both OS and saved reduced-motion preference disable transition. Desktop navigation is unchanged. Browser tests cover open, Escape, outside tap, route change, focus and reduced-motion.
+3. **Borderless back action looked like a floating button.** Removed the generic action shadow specifically from the text-style back control so it remains visually distinct from button-like actions.
+4. **Scene keyboard focus could race initial visibility.** One complete browser run exposed a failure where the focused WebGL scene stayed at X0/Z0 when movement began before its visibility observer activated. Focusing the scene now activates it immediately; the browser test also ensures it is in the viewport before driving movement. The focused exploration suite then passed 18/18 over three repetitions.
+5. **Workshop persistence copy contradicted actual saved progress.** Changed the claim that points vanish on reload to say they remain in this browser and can be cleared. Added a post-reload browser assertion. Removed a stale phase-number label from the game hero.
+
+## Actual verification
+
+- Pinned environment `EXPECTED_BRANCH=arena/5e702cfc-equation-quest bash scripts/verify-environment.sh --full`: **90/90 Vitest, lint, formatting, typecheck, production build PASS**; `npm run check:phase9` PASS (desktop/mobile captured WebP 32,900/17,570 bytes; lazy scene 242,738 gzip bytes). This was run repeatedly after changes.
+- Full browser `LD_LIBRARY_PATH=/tmp/al2023/lib EQ_CHROMIUM_PATH=/tmp/chromium EQ_WEBGL=1 npm run test:e2e`: **38/38 Chromium PASS** on the final code (29 prior journeys, 6 Phase 9 visual/motion checks, 3 new polish regressions). Two earlier full runs also passed 38/38. A later run passed 37/38 because scene movement raced its visibility observer; after the focus fix, exploration passed **18/18 across three repetitions**, and the final entire suite passed 38/38. Browser binary under `/tmp` is not a project dependency.
+- Production Vite preview under `/equation-quest/`, repeated after the final build: all seven principal hash routes at 320/1280px, asset loads, reload and JS console: **no errors, HTTP 4xx/5xx or horizontal overflow**. Additional viewport inspection on the dev preview for those routes at 320/390/768/1280px found no runtime errors or overflow. 320px menu, Progress and world-preview, and 1280px World/Home screenshots inspected locally; temporary screenshots were removed, not committed.
+- Temporary `axe-core@4.10.3` (outside the repo) checked seven principal routes at 320 and 1280px in Chromium with WebGL disabled: **0 WCAG 2/2.1 A/AA automated violations across 14 route/viewport samples**. This is not a screen-reader or manual accessibility certification.
+- One post-fix synthetic 390px Chromium 4× CPU-throttled Home scroll (135 animation-frame intervals) measured **16.6ms median, 20.2ms p95, 43.8ms maximum**. This noisy single run is **not** proof of FPS improvement or hardware performance; positional stability is asserted directly in the browser regression.
+- `npm audit --json`: 16 findings (2 low, 14 moderate; 0 high/critical). Production-only `npm audit --omit=dev --json`: 2 low (KaTeX via react-katex). The app uses authored TeX rather than accepting arbitrary TeX from visitors; this reduces exposure but does **not** resolve the advisories. No forced incompatible major upgrade was applied.
+
+## Anti-slop correction gate (new surfaces only)
+
+- **R-03/R-25/R-32/R-39 PASS:** 320–1280px screenshots/overflow, tested image contrast from Phase 9, focus return/Escape/outside/touch and motion-disabled mobile nav; 44px targets and 9px button-like corners retained.
+- **R-10/R-12/R-19/R-31 PASS:** no scrolling backdrop compositor on action surfaces; only decorative carousel lens can blur at desktop widths. Sections now fade without moving buttons; Persian text remains semantically complete before reveal. Purpose is spatial reading cue, not continuous decoration.
+- **C-2/C-4/R-35 PASS within tested scope:** production build and both browser/server smoke suites run; no dead menu action or positional scroll jump in covered routes. No claim about untested hardware or browser engines.
+
+## Remaining gates before public upload
+
+- Independent grade-7/Persian curriculum review of the actual lesson, fraction and stage content has not been performed.
+- Two low-severity production dependency advisories and 14 development advisories remain for a deliberate dependency/security decision; `npm audit fix --force` is not an acceptable untested release step.
+- No physical phone, assistive-technology/screen-reader test, other browser engine, measured real-device FPS or live GitHub Pages deep-link test has been completed. This client-rendered React application also does not render the full lessons with JavaScript disabled; observer-unavailable and reduced-motion fallbacks were verified **after** the app mounts, not a no-JS site.
+- CI/Pages publication and live-host verification belong to Phase 10 and require explicit owner authorization. This branch and PR are ready **for review and staging**, not honestly certifiable as zero-defect public deployment.

@@ -25,3 +25,11 @@ D29 Phase 9 addendum (not executed): verify lower-page section entry and visibly
 ## Phase 8 verified progression (D30)
 
 `src/features/progression/saved.test.ts` checks derived stage/workshop points, canonical rational strings, duplicate/out-of-order rejection, migration, corruption, independent and global scoped resets and rehydrate. `src/components/ui/ResetAction.test.tsx` plus `src/test/app.test.tsx` exercise cancellation, Escape/focus, populated and empty dashboard, live deletion. Full `verify-environment.sh --full`: 90 Vitest PASS and build/lint/format/typecheck PASS. Full headless Chromium: 29 E2E PASS (stage/workshop/fraction rehydration, reset/delete/unrelated keys, 320px touch, keyboard, WebGL and prior regressions). See [Phase 8 report](PHASE_08_IMPLEMENTATION_REPORT.md). The earlier "D28 no tests run" heading above was historical planning, not current status.
+
+## Phase 9 visual/motion checks (D32)
+
+Six new `tests/e2e/phase9.spec.ts` Chromium cases cover authentic responsive assets, no-WebGL, 320/390/768/1280px overflow, lower-section and RTL heading reveals, user/OS reduced motion, missing IntersectionObserver, mobile solid and desktop blur controls, native focus/Enter and sampled image contrast. Full result: 90 Vitest and 35/35 headless Chromium E2E, build/lint/format/typecheck and measured payload guard PASS. See [Phase 9 report](PHASE_09_COMPLETION_REPORT.md); no physical device/screen-reader or public deployment claim.
+
+## Phase 9 owner polish regressions (D33)
+
+`tests/e2e/polish.spec.ts` adds menu opening/closing/reduced-motion/keyboard/outside-pointer cases and a document-space scroll-position regression for buttons. `tests/e2e/phase9.spec.ts` now asserts stable glass edge **without** global backdrop blur. The scene-focus race is covered by `tests/e2e/exploration.spec.ts` (18/18 across three repetitions) and persistence copy by `tests/e2e/mechanics.spec.ts`. 90 Vitest and the final 38/38 Chromium E2E pass; temporary axe-core returned 0 automated WCAG 2/2.1 A/AA violations across seven principal routes at two viewport sizes. Production build hash routes and assets also passed a 320/1280px smoke check. Details and limitations: [polish/readiness report](PHASE_09_POLISH_AND_RELEASE_READINESS.md).

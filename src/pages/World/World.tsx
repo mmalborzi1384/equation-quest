@@ -36,7 +36,11 @@ export default function World() {
           const status = islandStatus(island.level, completedIds);
           const pair = levels.slice(i * 2, i * 2 + 2);
           return (
-            <article key={island.name} className={`${styles.island} ${styles[island.tone]}`}>
+            <article
+              data-story
+              key={island.name}
+              className={`${styles.island} ${styles[island.tone]}`}
+            >
               <span className={styles.index}>
                 منطقهٔ ۰{i + 1} <span className="math">/ {island.label}</span> ·{' '}
                 {status === 'restored' ? 'بازسازی‌شده' : status === 'open' ? 'باز' : 'قفل‌شده'}

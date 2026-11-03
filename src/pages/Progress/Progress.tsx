@@ -38,7 +38,7 @@ export default function Progress() {
           <span>{crystals} کریستالِ مرحلهٔ تأییدشده</span>
         </header>
         <div className={styles.grid}>
-          <article>
+          <article data-story>
             <h2>مرحله‌ها</h2>
             {cleared.size === 0 ? (
               <p>هنوز مرحله‌ای بررسی و ذخیره نشده است. از مرحلهٔ ۰۱ شروع کن.</p>
@@ -68,7 +68,7 @@ export default function Progress() {
               onConfirm={useLevelProgress.getState().reset}
             />
           </article>
-          <article>
+          <article data-story>
             <h2>آزمایش سازوکار</h2>
             <p>
               {workshop.completedIds.length} از ۳ آزمایش · {workshop.points} امتیاز جدا از مرحله‌ها
@@ -80,7 +80,7 @@ export default function Progress() {
               onConfirm={useWorkshopProgress.getState().reset}
             />
           </article>
-          <article>
+          <article data-story>
             <h2>تمرین کسری</h2>
             <p>{practice.verifiedCount} تمرین کسری با بررسی جواب در معادلهٔ اصلی ثبت شده است.</p>
             {practice.lastAnswer && (
@@ -98,7 +98,7 @@ export default function Progress() {
               onConfirm={useFractionPractice.getState().reset}
             />
           </article>
-          <article>
+          <article data-story>
             <h2>تنظیمات نمایش</h2>
             <p>حرکت کمتر: {reduceMotion ? 'روشن' : 'خاموش'}</p>
             <ResetAction
@@ -108,7 +108,7 @@ export default function Progress() {
             />
           </article>
         </div>
-        <section className={styles.achievements} aria-label="دستاوردهای واقعی">
+        <section data-story className={styles.achievements} aria-label="دستاوردهای واقعی">
           <h2>دستاوردها</h2>
           {achievements.length ? (
             <ul>
@@ -120,7 +120,7 @@ export default function Progress() {
             <p>هنوز دستاوردی ثبت نشده؛ با حل مرحله‌ها به‌دست می‌آیند.</p>
           )}
         </section>
-        <div className={styles.danger}>
+        <div data-story className={styles.danger}>
           <h2>حذف همهٔ داده‌های این برنامه</h2>
           <p>
             فقط پیشرفت مرحله‌ها، آزمایش‌ها، تمرین‌های کسری و تنظیم حرکت کمتر در این مرورگر حذف

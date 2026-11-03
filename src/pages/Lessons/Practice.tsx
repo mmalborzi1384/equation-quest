@@ -157,7 +157,7 @@ export function Practice({ lesson, fractions }: { lesson: Lesson; fractions: boo
     setShowHint(0);
   }
   return (
-    <section className={styles.practice} aria-labelledby="practice-title">
+    <section data-story className={styles.practice} aria-labelledby="practice-title">
       <div className={styles.sectionHeading}>
         <span>۰۳ / نوبت شما</span>
         <h2 id="practice-title">گام‌ها را خودت بساز</h2>

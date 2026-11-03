@@ -171,7 +171,7 @@ export default function Game() {
   return (
     <>
       <PageIntro
-        eyebrow="کارگاه کاوش / فاز ۷"
+        eyebrow="کارگاه کاوش / جزیرهٔ تعادل"
         title="ماجراجویی از اینجا شکل می‌گیرد"
         description="در این کارگاه می‌توانی در یک جزیرهٔ سه‌بعدی قدم بزنی و چهار نشان را بررسی کنی. چهار نشان، ورودی هشت مرحلهٔ قابل‌بازی هستند. زیر نقشه نیز سه آزمایش مستقل سازوکار با امتیاز ذخیره‌شده در همین مرورگر در دسترس است."
       >
@@ -193,12 +193,13 @@ export default function Game() {
       </div>
       <section
         ref={root}
+        onFocusCapture={() => setInView(true)}
         tabIndex={-1}
         className={styles.workshop}
         aria-label="کارگاه کاوش"
         data-quality={quality}
       >
-        <header className={styles.heading}>
+        <header data-story className={styles.heading}>
           <div>
             <span>کشف / ۰۱</span>
             <h2>جزیرهٔ تعادل</h2>
@@ -389,7 +390,7 @@ export default function Game() {
           </aside>
         </div>
       </section>
-      <div id="mechanics-lab">
+      <div data-story id="mechanics-lab">
         <MechanicsLab />
       </div>
     </>

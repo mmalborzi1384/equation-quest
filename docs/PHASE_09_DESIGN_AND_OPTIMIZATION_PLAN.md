@@ -1,6 +1,6 @@
 # Phase 9 visual and optimization acceptance plan (D28)
 
-**Status: proposed scope only.** Phase 8 must not start under the current owner instruction; this document does not authorize Phase 9 or implementation. Phase 9 remains the roadmap's integration, accessibility, mobile, quality and performance phase. Phase 10 alone owns CI/public deployment after its separate gates.
+**Status: Phase 9 authorized (D32), implemented and locally tested; owner review pending.** Earlier D28/D29 wording below describes the planning boundary at that time. Phase 10 still owns CI/public deployment after separate gates. See [Phase 9 completion report](PHASE_09_COMPLETION_REPORT.md) for measured outcomes and limitations.
 
 ## Direction specified by the owner
 
@@ -21,3 +21,7 @@
 - Existing Phase 3 Home `useHomeMotion` already registers GSAP ScrollTrigger and shifts some headings on entry, but currently has **no opacity/typing sequence and no site-wide lower-panel treatment**. Audit each route; extend this pattern where pedagogically useful rather than duplicating heavy listeners on every element.
 - Keep the real Persian text in the DOM and accessible from the start; animate only visual presentation. For RTL/Persian type reveals, preserve grapheme clusters and zero-width non-joiners (ZWNJ), and do not break LTR KaTeX, accessible names, copy/selection, or screen-reader reading order. If JS/IntersectionObserver/animation support fails, the full text and sections remain visible. Honor both OS and stored reduced-motion preferences with immediate, non-animated content; avoid hiding focus targets or delaying navigation.
 - Acceptance evidence in Phase 9: Playwright/browser scroll journeys on Home plus lower sections of Learning, World, Game and Progress at mobile/desktop widths; assert section entry and text reveal are visible and one-time, text is fully readable with reduced motion or unavailable animation, keyboard/focus and screen readers are not gated, no layout shift/overflow or mobile performance regression. Record a real anti-slop/motion-purpose and performance gate; do **not** claim these animations exist yet.
+
+## D33 correction after implementation
+
+A real scroll-jump complaint showed the originally applied global blur and 20px whole-section translation were too costly/unstable for interactive controls. The corrected implementation uses an optical edge without global blur and opacity-only entry; only the noninteractive desktop carousel lens may blur. The mobile menu now animates with reduced-motion/focus/keyboard support. See [polish/readiness report](PHASE_09_POLISH_AND_RELEASE_READINESS.md). Older "future" text above is historical acceptance planning, not a description of the current CSS.

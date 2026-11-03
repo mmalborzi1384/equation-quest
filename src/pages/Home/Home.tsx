@@ -1,3 +1,5 @@
+import desktopScene from '../../assets/game-scene-desktop.webp';
+import mobileScene from '../../assets/game-scene-mobile.webp';
 import { Link } from 'react-router-dom';
 import { GlassCarousel } from '../../components/carousel/GlassCarousel';
 import { islands } from '../../data/levels';
@@ -38,19 +40,19 @@ export default function Home() {
           className={styles.heroScene}
           data-scene
           role="img"
-          aria-label="تصویری نمادین از جزیره‌های سرزمین جبر"
+          aria-label="تصویر واقعیِ صحنهٔ چهار جزیره از بازی ماجراجویی معادله‌ها"
         >
-          <div className={styles.sceneSky} />
-          <div className={styles.bridge} aria-hidden="true" />
-          <div className={`${styles.island} ${styles.islandOne}`}>
-            <i />
-          </div>
-          <div className={`${styles.island} ${styles.islandTwo}`}>
-            <i />
-          </div>
-          <div className={`${styles.island} ${styles.islandThree}`}>
-            <i />
-          </div>
+          <picture>
+            <source media="(max-width: 900px)" srcSet={mobileScene} type="image/webp" />
+            <img
+              src={desktopScene}
+              width="929"
+              height="634"
+              alt=""
+              fetchPriority="high"
+              decoding="async"
+            />
+          </picture>
           <span className={styles.sceneLabel}>
             سرزمین جبر
             <br />
@@ -71,7 +73,7 @@ export default function Home() {
         </div>
         <div>
           <p>
-            وقتی از یک طرف چیزی کم می‌کنی، طرف دیگر هم باید همان تغییر را تجربه کند. در نسخهٔ کامل،
+            وقتی از یک طرف چیزی کم می‌کنی، طرف دیگر هم باید همان تغییر را تجربه کند. در تمرین تعادل،
             با دیدن و آزمودن می‌فهمی هر گام چرا درست است.
           </p>
           <Link to="/learning/balance">آشنایی با برابری ←</Link>
@@ -132,8 +134,8 @@ export default function Home() {
           پل‌ها منتظر یک دلیل‌اند.
         </h2>
         <p>
-          از جزیرهٔ تعادل تا قلعهٔ معادله، هر منطقه پرسشی تازه دارد. در این مرحله می‌توانی نقشه و
-          موضوع هر منطقه را ببینی؛ بازی تعاملی در فازهای بعد ساخته می‌شود.
+          از جزیرهٔ تعادل تا قلعهٔ معادله، هر منطقه پرسشی تازه دارد. در نقشه می‌توانی منطقه‌ها را
+          ببینی و با حل مرحله‌ها پل‌ها را باز کنی.
         </p>
         <Link to="/world">دیدن چهار منطقه ←</Link>
       </section>
@@ -146,9 +148,8 @@ export default function Home() {
           </h2>
         </div>
         <p>
-          در مسیر کامل، ترازو، جعبه‌های مجهول و دروازه‌های معادله به گام‌های تو واکنش نشان می‌دهند.
-          هر گام با توضیح ریاضی و فرصت تلاش دوباره همراه خواهد بود. این تعامل‌ها هنوز ساخته
-          نشده‌اند؛ فعلاً می‌توانی مسیرها و هدف هر بخش را ببینی.
+          ترازو و دروازه‌های معادله به گام‌های تو واکنش نشان می‌دهند. هر جواب را در معادلهٔ اصلی
+          بررسی کن؛ اگر اشتباه کردی، با راهنمای مرحله دوباره تلاش کن.
         </p>
       </section>
 
@@ -165,7 +166,7 @@ export default function Home() {
             <strong>۲.</strong> در نقشه، منطقه و هدف هر مرحله را ببین.
           </p>
           <p>
-            <strong>۳.</strong> در نسخه‌های بعد، با حل گام‌به‌گام مسیرها را باز کن.
+            <strong>۳.</strong> با حل گام‌به‌گام مسیرها را باز کن.
           </p>
         </div>
         <Link to="/learning">دیدن مسیر یادگیری ←</Link>

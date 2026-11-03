@@ -13,3 +13,7 @@ Before Phase 10 CI/Pages work, Phase 9 should integrate and optimize existing ga
 ## Phase 9 motion acceptance addition (D29; not authorized)
 
 Add scroll-entering lower sections and clearly perceivable typing-style reveals for selected short Persian text to the future design/optimization checks; see `docs/PHASE_09_DESIGN_AND_OPTIMIZATION_PLAN.md`. Existing Home ScrollTrigger movement is only a starting point, not completion. Require semantic full text, RTL grapheme correctness, non-animated fallback, keyboard/screen-reader safety and measured mobile performance before marking the phase done.
+
+## D33 preparation only (Phase 10 remains unexecuted)
+
+A local production build/base-path route smoke, 38/38 Chromium tests, 90/90 Vitest and temporary axe-core scans have been recorded in `docs/PHASE_09_POLISH_AND_RELEASE_READINESS.md`. This does **not** satisfy CI or live Pages acceptance: independent grade-7/Persian curriculum review, dependency-advisory decision, hardware/assistive-technology and alternate-browser checks, owner deployment authorization, CI and real live-host checks remain pending. The client-rendered app requires JavaScript for full content; do not call observer fallback a no-JS rendered app.
