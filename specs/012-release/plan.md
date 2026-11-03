@@ -1,19 +1,11 @@
-# Plan — Quality and GitHub Pages release
+# Plan — Phase 10 repeatable release (D34, 2026-11-03)
 
-**Draft, not executed.** Playwright/RTL/Vitest/ESLint/Prettier config, Actions artifact deploy and final gates.
+Owner explicitly authorized Phase 10 and public-release preparation, accepting that external grade-7/Persian curriculum review is still unperformed and must remain a documented risk. The project stays open for subsequent bug-fix/feature PRs; no archive, tag-based freeze or permanent closure.
 
-Dependency analysis: see `docs/DEPENDENCY_MAP.md` and roadmap; test gate: CI run, deployed route/asset checks, responsive/a11y/reduced-motion and anti-slop gates. Keep feature code isolated under its page/feature boundary and update docs after implementation.
+1. Keep the existing React/Vite/HashRouter app and `/equation-quest/` asset base; do not introduce a backend or new runtime dependency.
+2. On each pull request and main push, run pinned Node/npm `npm ci`, lint, formatting, typecheck, 90 unit tests, payload budgets, production build and all browser journeys. Build once, smoke-test the production preview at 320/1280px and verify asset loads/hash reload/reduced-motion/persistent settings. PR checks must never deploy.
+3. On main only, after successful tests, upload `dist` as an Actions Pages artifact and deploy via OIDC with concurrency serialization; after deployment, run the same smoke checks against the public URL with propagation retries. No custom secret. Keep failed live checks visible.
+4. Document first-time GitHub Pages Actions-source setup and rollback/redeploy procedure, residual advisories and educational/device review gaps. Preserve normal main/PR workflow for future fixes and enhancements.
+5. Verify locally, push branch, inspect actual CI. Do not claim a live deployment without observed public checks. Never merge without separate explicit merge approval.
 
-Phase 1 alignment: Release requires tests for exact rational engine, fraction lesson and levels 06–08, plus documented review of grade-7 curriculum, examples, exercises, math terminology and Persian copy before public Pages publication.
-
-## Phase 9 pre-release quality boundary (D28; planning only)
-
-Before Phase 10 CI/Pages work, Phase 9 should integrate and optimize existing gameplay/mobile/a11y and the owner's game-derived background + liquid-glass button treatment, guided by vendored anti-slop skills throughout. Use `docs/PHASE_09_DESIGN_AND_OPTIMIZATION_PLAN.md` for visual, fallback and measured performance gates. `reactdrops.dev` is a suggested reference, not a dependency decision. Phase 10 still separately requires documented curriculum/Persian-content review, green CI and approval before public deployment. No Phase 9 implementation authorized by this note.
-
-## Phase 9 motion acceptance addition (D29; not authorized)
-
-Add scroll-entering lower sections and clearly perceivable typing-style reveals for selected short Persian text to the future design/optimization checks; see `docs/PHASE_09_DESIGN_AND_OPTIMIZATION_PLAN.md`. Existing Home ScrollTrigger movement is only a starting point, not completion. Require semantic full text, RTL grapheme correctness, non-animated fallback, keyboard/screen-reader safety and measured mobile performance before marking the phase done.
-
-## D33 preparation only (Phase 10 remains unexecuted)
-
-A local production build/base-path route smoke, 38/38 Chromium tests, 90/90 Vitest and temporary axe-core scans have been recorded in `docs/PHASE_09_POLISH_AND_RELEASE_READINESS.md`. This does **not** satisfy CI or live Pages acceptance: independent grade-7/Persian curriculum review, dependency-advisory decision, hardware/assistive-technology and alternate-browser checks, owner deployment authorization, CI and real live-host checks remain pending. The client-rendered app requires JavaScript for full content; do not call observer fallback a no-JS rendered app.
+Dependency direction: only workflow configuration and isolated release smoke test; no production app import of test code. Scope check: existing lessons/exact-rational levels and save/delete behavior remain intact. Anti-slop gate applies to existing UI, not a new visual redesign.

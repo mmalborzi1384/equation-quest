@@ -7,13 +7,14 @@
   "scripts": {
     "check:deps": "npm ls --depth=0",
     "lint": "eslint .",
-    "format:check": "prettier --check package.json eslint.config.mjs .prettierrc.json \"src/**/*.{ts,tsx,css}\" \"*.{ts,tsx,html}\" \"tests/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check package.json eslint.config.mjs .prettierrc.json \"src/**/*.{ts,tsx,css}\" \"*.{ts,tsx,html}\" \"tests/**/*.{ts,tsx}\" .github/workflows/pages.yml scripts/smoke-release.mjs",
     "dev": "vite --host 0.0.0.0",
     "typecheck": "tsc --noEmit",
     "test:run": "vitest run",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 0.0.0.0",
     "test:e2e": "playwright test",
+    "test:release": "node scripts/smoke-release.mjs",
     "check:phase9": "node scripts/check-phase9-budgets.mjs"
   },
   "dependencies": {

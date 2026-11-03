@@ -34,3 +34,7 @@ Static Vite `dist` uploaded by GitHub Actions after npm ci, typecheck, lint, uni
 ## Implemented Phase 7 stage slice
 
 `features/level-manager/stages.ts` authors eight typed stage concepts/problems by the existing `01`–`08` route IDs. `stage-session.ts` composes the pure Phase 6 puzzle transition and emits `completedNow` only after the last original-equation verification. `progression/levels.ts` gates the next stage and grants once; `useLevelProgress` is an **in-memory** adapter separate from the Phase 6 workshop. `/game/level/:id` owns the semantic DOM puzzle view, `/world` and `/game` consume stage completion and island status. The R3F marker lights respond to the two stage completions per region; the DOM fallback shows identical unlock/status information. Persistence and dashboard still belong to Phase 8.
+
+## Phase 10 release boundary
+
+The Vite base and HashRouter are unchanged. `.github/workflows/pages.yml` validates PRs without deployment; green main builds upload `dist/` via Pages artifact/OIDC, then an independent live smoke checks the public host. `scripts/smoke-release.mjs` is test-only code and is not bundled in the client. Future bug/feature PRs reuse these gates; no app server or release freeze.

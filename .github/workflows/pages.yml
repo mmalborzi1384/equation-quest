@@ -1,0 +1,96 @@
+name: Validate and publish Equation Quest
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.3'
+          cache: npm
+      - name: Pin npm and install exact dependencies
+        run: |
+          npm install -g npm@10.9.8
+          npm --version
+          npm ci
+      - name: Static checks, tests and measured payload budgets
+        run: |
+          npm run lint
+          npm run format:check
+          npm run typecheck
+          npm run test:run
+          npm run build
+          npm run check:phase9
+      - name: Install Chromium for browser journeys and release smoke
+        run: npx playwright install --with-deps chromium
+      - name: Browser journeys (including WebGL fallback and interaction)
+        run: npm run test:e2e
+        env:
+          EQ_WEBGL: '1'
+      - name: Production preview smoke
+        run: npm run test:release
+      - name: Retain a deployable build only for the main branch
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-site
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: validate
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: production-site
+          path: dist/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  live-smoke:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.3'
+          cache: npm
+      - run: |
+          npm install -g npm@10.9.8
+          npm ci
+          npx playwright install --with-deps chromium
+      - name: Verify live hash routes, assets, mobile controls and persistence
+        run: npm run test:release
+        env:
+          RELEASE_URL: https://mmalborzi1384.github.io/equation-quest/
