@@ -57,6 +57,7 @@ test('ordered exact-rational workshop, progressive feedback and persisted one-ti
     await page.evaluate(() => document.documentElement.scrollWidth - innerWidth),
   ).toBeLessThanOrEqual(1);
   await page.reload();
+  await expect(page.getByText('در همین مرورگر می‌ماند؛ هر زمان می‌توانی پاکش کنی.')).toBeVisible();
   await expect(
     page.getByRole('region', { name: 'کارگاه سازوکار معادله' }).locator('strong').first(),
   ).toHaveText('30');
@@ -66,6 +67,7 @@ test('ordered exact-rational workshop, progressive feedback and persisted one-ti
     .click();
   await page.getByRole('button', { name: 'بله، حذف شود' }).click();
   await page.reload();
+  await expect(page.getByText('در همین مرورگر می‌ماند؛ هر زمان می‌توانی پاکش کنی.')).toBeVisible();
   await expect(
     page.getByRole('region', { name: 'کارگاه سازوکار معادله' }).locator('strong').first(),
   ).toHaveText('0');

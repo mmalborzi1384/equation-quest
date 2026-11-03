@@ -1,6 +1,6 @@
 # Dependency map and proposed knowledge graph
 
-**The Mermaid below is an architecture sketch, not proof of an extracted edge.** Actual source modules and Graphify output now exist; Phase 9 extraction produced 1273 nodes / 2100 edges / 139 communities. Use `graphify-out/graph.json` for extracted topology and the implemented-slice notes below for human-reviewed contracts.
+**The Mermaid below is an architecture sketch, not proof of an extracted edge.** Actual source modules and Graphify output now exist; Phase 9 extraction produced 1276 nodes / 2103 edges / 147 communities. Use `graphify-out/graph.json` for extracted topology and the implemented-slice notes below for human-reviewed contracts.
 
 ```mermaid
 flowchart LR
@@ -52,4 +52,4 @@ Later use Graphify `explain`, `affected` and `path` on **extracted** graph for c
 
 ### Implemented Phase 9 presentation
 
-`AppLayout → useStoryReveal → native IntersectionObserver/MutationObserver` enhances only marked narrative sections, leaving semantic content visible without observers and with reduced motion. `Home → responsive WebP game-scene capture` uses assets from the already-implemented `ExplorationScene` canvas, while the live R3F scene remains lazy-loaded from Game. `global.css → actionable controls` provides a no-dependency optical edge with media-query blur fallback. These effects do not alter math or stored progression. Graphify output refreshed to 1273 nodes / 2100 edges / 139 communities.
+`AppLayout → useStoryReveal → native IntersectionObserver/MutationObserver` enhances only marked narrative sections, leaving semantic content visible without observers and with reduced motion. `Home → responsive WebP game-scene capture` uses assets from the already-implemented `ExplorationScene` canvas, while the live R3F scene remains lazy-loaded from Game. `global.css → actionable controls` provides a no-dependency optical edge without global scrolling backdrop blur; only the decorative carousel lens can blur on desktop. These effects do not alter math or stored progression. Graphify output refreshed to 1276 nodes / 2103 edges / 147 communities.

@@ -77,3 +77,7 @@ Owner explicitly reversed the previous Phase 8 hold. On `arena/260614e7-equation
 ## Phase 9 handoff (D32, 2026-11-03)
 
 Owner explicitly requested Phase 9 after PR #8 merged. On `arena/5e702cfc-equation-quest`, Home now uses real game-scene WebP image crops, action-only restrained liquid glass and a shared accessible scroll/short Persian heading reveal across Home, Learning, lesson, World, Game and Progress. Reduced motion, no-WebGL and missing observer fallbacks remain readable. Local test/contrast/performance evidence: [Phase 9 report](docs/PHASE_09_COMPLETION_REPORT.md). Owner review pending; no Phase 9 PR merge or Phase 10 deployment authorized. Earlier D28/D29 planning holds are historical.
+
+## D33 Phase 9 polish handoff (2026-11-03)
+
+User reported global glass controls jumping while scrolling and menu opening abruptly, requested repeated mobile/desktop QA and upload preparation. Removed global action backdrop-filter and whole-section translation, kept 9px optical glass edge; animated the mobile menu with Escape/focus/outside/reduced-motion behavior. 90 Vitest, 38 Chromium E2E, production preview hash/asset smoke and temporary axe automated 14 route/viewport scans passed; npm audit remains 16 total (2 runtime low), and curriculum/hardware/screen-reader/live-host gates remain. See [polish/readiness report](docs/PHASE_09_POLISH_AND_RELEASE_READINESS.md). PR #9 open; do not merge or deploy without separate approval.

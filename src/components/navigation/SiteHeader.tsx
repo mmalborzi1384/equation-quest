@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import styles from './SiteHeader.module.css';
 
@@ -11,16 +11,36 @@ const links = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const header = useRef<HTMLElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => setOpen(false), [location.pathname]);
+  useEffect(() => {
+    if (!open) return;
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
+    }
+    function onPointerDown(event: PointerEvent) {
+      if (!header.current?.contains(event.target as Node)) setOpen(false);
+    }
+    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener('pointerdown', onPointerDown);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('pointerdown', onPointerDown);
+    };
+  }, [open]);
   function goBack() {
     const index = window.history.state?.idx;
     if (typeof index === 'number' && index > 0) navigate(-1);
     else navigate('/');
   }
   return (
-    <header className={styles.header}>
+    <header ref={header} className={styles.header}>
       <div className={styles.inner}>
         <Link className={styles.brand} to="/" aria-label="ماجراجویی معادله‌ها، خانه">
           <span className={styles.mark} aria-hidden="true">
@@ -32,6 +52,7 @@ export function SiteHeader() {
           </span>
         </Link>
         <button
+          ref={menuButton}
           className={styles.menuButton}
           type="button"
           aria-label={open ? 'بستن فهرست' : 'باز کردن فهرست'}
@@ -39,7 +60,12 @@ export function SiteHeader() {
           aria-controls="site-navigation"
           onClick={() => setOpen((v) => !v)}
         >
-          <span aria-hidden="true">{open ? '✕' : '☰'}</span> فهرست
+          <span className={styles.menuIcon} aria-hidden="true">
+            <i />
+            <i />
+            <i />
+          </span>{' '}
+          فهرست
         </button>
         <nav
           id="site-navigation"

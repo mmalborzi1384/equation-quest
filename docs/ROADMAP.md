@@ -19,3 +19,5 @@ All feature tasks/acceptance criteria are in `specs/NNN-*/tasks.md` (12 original
 **Current authorization (D30):** the earlier D28 hold on Phase 08 was reversed; Phase 08 is implemented on open PR #8 and awaiting owner review. Phase 09 and deployment remain unauthorized.
 
 **D32 (current):** Phase 9 implementation explicitly authorized after PR #8 merged; locally tested and awaiting owner review. Phase 10 remains unauthorized. The prior D28 hold recorded above is historical.
+
+**D33 quality follow-up:** Phase 9 scroll/control bugs repaired and tested; open PR #9 is staged for review. Preparing for upload is not a Phase 10 public deployment authorization. Independent educational-content review and security/assistive-technology gates remain.

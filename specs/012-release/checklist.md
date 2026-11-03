@@ -17,3 +17,10 @@
 - [ ] Phase 9 planning (D28, not authorized): apply vendored anti-slop skills during optimization and record a real Delivery Gate before moving toward Phase 10.
 
 - [ ] Phase 9 D29 (not authorized): verify lower sections appear on scroll and selected short Persian text reveals with clear typing-style timing; full accessible text, reduced-motion/no-JS fallback, RTL/LTR and measured mobile performance remain correct.
+
+## D33 local preparation evidence (not Phase 10 completion)
+
+- [x] Local 320/1280 production build route/asset/reload smoke and 320/390/768/1280 dev-preview overflow/error check recorded.
+- [x] Existing Phase 9 game-derived image, 9px optical controls and scroll reveal corrected for reported jump; two full Chromium 38/38 passes, 90 Vitest and budget build passed.
+- [x] Temporary axe-core automated WCAG 2/2.1 A/AA scan of seven routes at 320/1280px found no violations; no hardware/screen-reader certification.
+- [ ] Independent grade-7 curriculum/Persian content review, security advisory decision, CI, live Pages checks and explicit deploy authorization. Phase 10 remains unexecuted.

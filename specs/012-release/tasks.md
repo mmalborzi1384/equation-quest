@@ -24,3 +24,7 @@ All tasks are **Planned**, not started. Execute only after owner go-ahead.
 - [ ] Audit Home and lower sections of Learning, World, Game and Progress; design purposeful one-time viewport reveals and short Persian typing-style transitions, without animating entire lessons or KaTeX.
 - [ ] Keep semantic text readable before animation and on reduced motion, disabled JS or unavailable observers; verify RTL graphemes/ZWNJ, keyboard/screen reader, fast scrolling and no content gated by motion.
 - [ ] Test actual scroll journeys and text transitions on mobile/desktop alongside background/glass effects; measure paint/layout/performance and run the anti-slop Delivery Gate.
+
+## D33 preflight (not a release authorization)
+
+Local build, hash route/assets smoke, repeated browser and unit suites and automated accessibility scans are documented in `docs/PHASE_09_POLISH_AND_RELEASE_READINESS.md`; CI, public Pages, curriculum/security reviews and the release decision remain unchecked Phase 10 tasks. Do not deploy from this preparation.

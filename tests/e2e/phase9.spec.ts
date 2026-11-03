@@ -84,7 +84,7 @@ test('OS/user reduced motion and absent observer keep complete Persian text, foc
   await expect(page.getByRole('heading', { level: 1, name: 'معادله‌های کسری' })).toBeVisible();
 });
 
-test('glass action states retain 9px corners, focus, contrast, and mobile solid fallback', async ({
+test('stable glass action states retain 9px corners, focus and contrast without scroll-bound blur', async ({
   page,
 }) => {
   await page.goto('#/');
@@ -93,7 +93,7 @@ test('glass action states retain 9px corners, focus, contrast, and mobile solid 
   await expect(action).toBeFocused();
   await expect(action).toHaveCSS('border-top-left-radius', '9px');
   await expect(action).toHaveCSS('box-shadow', /inset/);
-  await expect(action).toHaveCSS('backdrop-filter', /blur/);
+  await expect(action).toHaveCSS('backdrop-filter', 'none');
   await page.setViewportSize({ width: 320, height: 780 });
   await expect(action).toHaveCSS('backdrop-filter', 'none');
   await action.click();

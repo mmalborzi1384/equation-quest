@@ -111,7 +111,7 @@ export function MechanicsLab() {
         <div className={styles.ledger}>
           <strong>{rewards.points}</strong>
           <span>امتیاز ذخیره‌شده</span>
-          <small>با بارگذاری دوبارهٔ صفحه پاک می‌شود.</small>
+          <small>در همین مرورگر می‌ماند؛ هر زمان می‌توانی پاکش کنی.</small>
         </div>
       </header>
       <div className={styles.grid}>

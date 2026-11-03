@@ -32,3 +32,7 @@ Below-the-fold sections/panels should reveal as they enter the viewport, with se
 ## Phase 9 application (D32)
 
 The previously planned authentic game-scene background and selective liquid-glass **actions**, plus lower-section/short RTL heading reveals, are now implemented. The WebGL canvas itself provided the optimized WebP image; the old symbolic CSS scene was removed from Home. See the [Phase 9 report](PHASE_09_COMPLETION_REPORT.md) for reasons, measured contrast, fallback and limits. Older "future" sections above record prior planning state, not the current implementation.
+
+## D33 stable glass and menu
+
+The optical action edge retains the 9px radius and original navy/gold legibility but no longer samples the backdrop while scrolling. Do not reintroduce blur across all controls or translate whole interactive sections; these caused visible scroll jumping. The mobile header now reveals the menu with a short opacity/translate gesture and fixed-size morphing icon, while reduced-motion users see an immediate state. See [polish report](PHASE_09_POLISH_AND_RELEASE_READINESS.md).

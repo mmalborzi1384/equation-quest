@@ -6,7 +6,7 @@
 |---|---|---|
 | 00 Environment | Completed for this sandbox | `bash scripts/setup.sh` passed before app work; pinned Node/npm, exact lockfile and toolchain checked. |
 | 00 Spec Kit / Graphify / anti-slop / Expo research | Completed | Spec Kit CLI (no Arena integration), local Graphify, manually used anti-slop skills; Expo is a visual reference only. |
-| 00 Knowledge graph | Updated for Phase 9 | `graphify extract . --code-only`, `graphify cluster-only . --no-label --no-viz`, `graphify update .`: 1273 nodes, 2100 edges, 139 communities; existing incremental filter-change warning remains. |
+| 00 Knowledge graph | Updated for Phase 9 | `graphify extract . --code-only`, `graphify cluster-only . --no-label --no-viz`, `graphify update .`: 1276 nodes, 2103 edges, 147 communities; existing incremental filter-change warning remains. |
 | 01 Product specification | Completed (owner accepted 2026-11-03) | A1–A5 and D12–D16, 13 feature sets and Persian completion report accepted. Pre-release grade-7/Persian review remains required. |
 | 02 Core Website Structure | Merged / preserved | Vite/React/TS shell; HashRouter and base; RTL shared responsive navigation/back; route-level lazy modules, 404/error/empty/loading fallbacks; Home section structure and interactive web carousel; Learning/World/Game/Level/Progress route previews. PR #2 merged; shell preserved. |
 | 03 Home narrative / carousel / web glass | Merged and accepted | GSAP ScrollTrigger reveals/parallax only for decorative storytelling; DOM/CSS/SVG lens, pointer/keyboard/focus navigation, reduced-motion and no-WebGL path. 31 Vitest + 5 Chromium E2E; see Phase 3 report. No game 3D claim. |
@@ -15,7 +15,7 @@
 | 06 Game mechanics | Merged and accepted | Three ordered exact-rational workshop trials on `/game` with hints, original-equation verification and in-memory one-time points; **not** eight authored stages or durable progress. |
 | 07 Eight playable levels | Merged and accepted | Eight playable concept gates and exact-puzzle sequences, ordered unlocks and one-time in-memory rewards; 06–08 require fractions. [Report](PHASE_07_COMPLETION_REPORT.md). |
 | 08 Real progression | Accepted (D31); PR #8 open/unmerged | Four versioned validated local stores, truthful `/progress`, contextual reset and confirmed scoped delete-all; **90 Vitest / 29 Chromium E2E PASS**. [Report](PHASE_08_IMPLEMENTATION_REPORT.md). |
-| 09 QA/optimization | Implemented locally, awaiting owner review | Authentic captured game image, restrained action-only liquid glass and scroll/RTL heading reveals; **90 Vitest / 35 Chromium E2E PASS**, measured image/contrast/mobile sample and scoped anti-slop gate. [Report](PHASE_09_COMPLETION_REPORT.md). |
+| 09 QA/optimization | Implemented locally, awaiting owner review | Authentic captured game image, restrained action-only liquid glass and scroll/RTL heading reveals; **90 Vitest / 38 Chromium E2E PASS**, measured image/contrast/mobile sample and scoped anti-slop gate. [Report](PHASE_09_COMPLETION_REPORT.md). |
 | 10 Deployment | Not authorized | Build is local only; GitHub Pages is not deployed or activated. |
 
 ## Phase 2 verification
@@ -86,3 +86,7 @@ D30 superseded the earlier D28/D29 implementation hold, not the deletion criteri
 ## Phase 9 implementation (D32, 2026-11-03)
 
 Owner authorized Phase 9 following confirmed Phase 8 PR #8 merge. The product now uses an optimized static capture of the real WebGL game scene, responsive image crops, action-surface glass/fallback and accessible scroll-led lower sections with short Persian heading reveals. Full local verification and scoped delivery gate: [Phase 9 report](PHASE_09_COMPLETION_REPORT.md). This is not a PR merge or Phase 10/deployment authorization.
+
+## Phase 9 owner polish / upload preparation (D33, 2026-11-03)
+
+The owner identified scroll-jumping liquid-glass controls and an abrupt mobile menu. Global backdrop blur and section container translation were removed; a 260ms mobile menu animation, Escape/focus/outside dismissal and reduced-motion fallback were added. A focus/visibility race in keyboard scene movement and contradictory workshop persistence copy were also corrected. Expanded browser suite: final 38/38 Chromium PASS after 18/18 repeated exploration cases; repeated full typecheck/lint/format/90 tests/build and asset budgets PASS. Production preview route/asset/reload smoke at 320/1280px and temporary axe-core 14 route/viewport checks (0 automated A/AA violations) passed. Security, curriculum, hardware and public-host verification remain open; see [polish and release-readiness report](PHASE_09_POLISH_AND_RELEASE_READINESS.md). PR #9 remains open; Phase 10 publication is not claimed.
