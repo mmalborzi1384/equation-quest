@@ -1,4 +1,4 @@
-# Route contract (Phase 4 lessons implemented; game/progression actions remain future contracts)
+# Route contract (Phase 5 exploratory 3D implemented; puzzle/progression remain future contracts)
 
 | Path | Page owner | Primary action | Related navigation |
 |---|---|---|---|
@@ -14,13 +14,17 @@
 | `/learning/verify` | VerifyLesson | Substitute an integer or exact fractional answer in original equation | solve, fractions, game |
 | `/learning/fractions` | FractionsLesson | Learn equal parts, fractional coefficients and exact fractional solutions with repeatable exercises and guided feedback | inverse, solve, levels 06–08 |
 | `/world` | World | Enter four island level paths | levels 01/03/05/07, progress |
-| `/game` | Game | Tutorial/start or continue last unlocked level | world, levels, pause |
+| `/game` | Game | Explore R3F island / DOM map, inspect four landmarks, pause, change quality | world, lessons, informational level routes |
 | `/game/level/:levelId` | Level | Explore and solve stage 01–08 | game, next unlocked, world |
 | `/progress` | Progress | Inspect real local save and resume | world, game, learning |
 
-Eight core concept routes (equation, unknown, balance/equality, parts, both-sides, inverse, solve, verify) plus **one additional fractional lesson/practice route** satisfy A1 and the strengthened A2 scope. All nine URLs have distinct lazy route entries, authored teaching/feedback, guided equation operations and exact practice; `/learning/fractions` adds an equal-part model and repeatable exercises. Game/world/progress actions in the table remain future contracts, not working features.
+Eight core concept routes (equation, unknown, balance/equality, parts, both-sides, inverse, solve, verify) plus **one additional fractional lesson/practice route** satisfy A1 and the strengthened A2 scope. All nine URLs have distinct lazy route entries, authored teaching/feedback, guided equation operations and exact practice; `/learning/fractions` adds an equal-part model and repeatable exercises. The `/game` exploration and `/world` informational map work in Phase 5; math puzzles, unlocked levels and progress remain future contracts.
 
 Shared navigation links Home, learning, world and honest game/progress previews; compact menu on mobile and a back/home fallback. **Future only:** resume last unlocked level and locked/unlocked island requirements (Phase 6–8); neither exists yet. Carousel items navigate to real lesson routes. Invalid route/ID offers a useful fallback. HashRouter removes server-side deep-link rewrite requirement; actual Pages verification remains pending.
 
 ## Phase 2 reality
-All listed paths resolve under `#/` with shared Home/Learning/World/Game/Progress navigation, responsive menu and back/home fallback. `/game/level/01`–`08` have informational previews; unsupported IDs and unknown paths show a useful 404. Nav game link is labeled "بازی: به‌زودی" because no level can yet be continued. No locked/unlocked state, resume or real progression exists. Phase 4 added teaching controls and exact grading on the nine lesson routes. Routing works with a static repo base but GitHub Pages itself has not been deployed/verified.
+All listed paths resolve under `#/` with shared Home/Learning/World/Game/Progress navigation, responsive menu and back/home fallback. `/game/level/01`–`08` have informational previews; unsupported IDs and unknown paths show a useful 404. The nav game link still says "بازی: به‌زودی" because no stage is playable; `/game` now offers an interactive exploration workshop without puzzles. No locked/unlocked state, resume or real progression exists. Phase 4 added teaching controls and exact grading on the nine lesson routes. Routing works with a static repo base but GitHub Pages itself has not been deployed/verified.
+
+## Phase 5 route reality
+
+`/game` lazily loads a real R3F island if WebGL is available; otherwise it immediately provides a semantic interactive text map. Four landmarks can be inspected by walking/pressing E, by tapping a 3D marker, or by choosing from the DOM list/map; inspection links to an existing lesson and an **informational** level preview. The `/world` map links to this workshop. `/game/level/:levelId` and `/progress` retain their honest preview/empty states. No unlock, reward or save state exists.

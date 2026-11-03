@@ -49,3 +49,11 @@ The owner explicitly accepted Phase 3 after PR #3 merged into `main` at `804b02a
 ## D21 — Domain/UI division for Phase 4
 
 Pure `src/features/equation-engine/` owns normalized BigInt rationals, `ax+b=c` solving/step operations, exact substitution/checking and deterministic exercise generation without React/Three imports. Lesson data authors explanations, worked steps, examples, misconception-specific hints and representational choices. UI delegates all free-form numeric answer checks and step algebra to the engine, never float comparisons; authored concept identification choices are checked by stable IDs only. No puzzle/level-manager/reward/persistence integration (Phase 6+).
+
+## D22 — Phase 4 acceptance and Phase 5 authorization (2026-11-03)
+
+The owner explicitly approved Phase 4 and instructed merging PR #4; it was merged into `main` at `ea1c52c`. The owner emphasized verifying **mobile and desktop together**. The owner then explicitly authorized **Phase 5**, defined by `docs/ROADMAP.md` as the R3F world scene, orthographic camera, controls and scene interaction with desktop/mobile/low-quality input smoke. This does **not** authorize Phase 6 math puzzle/level/progression integration, Phase 7 playable stages, or deployment. A navigable 3D exploration workshop on the `/game` route may inspect four landmarks and lead to lessons/stage previews; it must not pretend those stages are playable.
+
+## D23 — Phase 5 fallback and render boundary
+
+The existing lazy `/game` route will load the R3F scene only when WebGL is supported and the user elects the 3D view. A fully functional DOM map/landmark list and identical controls/inspection are available without WebGL or on context loss. Movement and proximity are pure functions; React input adapters emit the same intent for keyboard/touch; Three is a disposable view and never owns progress or learning correctness. Quality presets cap DPR/shadows, pause/offscreen suspends animation, reduced motion disables camera easing. No new binary art assets or dependencies are needed.
