@@ -28,8 +28,20 @@ describe('motion safety guards', () => {
     // A Chromium 153 headless build crashed the renderer when `balance` was
     // applied to a long RTL heading inside a complex DOM. `pretty` is the
     // safe equivalent and is used everywhere instead.
-    const files = [...sourceFiles, join(root, 'design-proposal.html'), join(root, 'index.html')];
+    const files = [
+      ...sourceFiles,
+      join(root, 'design-proposal.html'),
+      join(root, 'public', 'design-proposal.html'),
+      join(root, 'index.html'),
+    ];
     expect(files.filter((path) => /text-wrap:\s*balance/.test(read(path)))).toEqual([]);
+  });
+
+  it('keeps the published design board self-contained', () => {
+    const published = read(join(root, 'public', 'design-proposal.html'));
+    expect(published).not.toMatch(/node_modules\/|src\/assets\//);
+    expect(published.match(/data:font\/woff2;base64,/g)).toHaveLength(4);
+    expect(published.match(/data:image\/webp;base64,/g)).toHaveLength(1);
   });
 
   it('keeps GSAP confined to the lazy introduction route', () => {

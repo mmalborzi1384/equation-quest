@@ -17,6 +17,7 @@ export function SiteFooter() {
         <Link to="/learning">آموزش</Link>
         <Link to="/world">جهان</Link>
         <Link to="/progress">پیشرفت</Link>
+        <a href={`${import.meta.env.BASE_URL}design-proposal.html`}>بورد پیشنهادی طراحی</a>
       </div>
       <button
         type="button"
