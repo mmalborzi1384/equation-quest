@@ -31,7 +31,8 @@ export function App() {
         <Suspense
           fallback={
             <div className="route-loading" role="status">
-              در حال آماده‌سازی مسیر…
+              <span className="route-loading-line" aria-hidden="true" />
+              <span>در حال آماده‌سازی مسیر…</span>
             </div>
           }
         >

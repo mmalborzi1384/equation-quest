@@ -5,7 +5,10 @@ import { setTimeout as delay } from 'node:timers/promises';
 import { chromium } from '@playwright/test';
 
 const local = !process.env.RELEASE_URL;
-const base = new URL(process.env.RELEASE_URL || 'http://127.0.0.1:4173/equation-quest/');
+// Overridable only for local runs in sandboxes where 4173 is already in use;
+// the default (and CI behaviour) is unchanged.
+const releasePort = Number(process.env.EQ_RELEASE_PORT ?? 4173);
+const base = new URL(process.env.RELEASE_URL || `http://127.0.0.1:${releasePort}/equation-quest/`);
 if (!base.pathname.endsWith('/equation-quest/')) throw new Error('Expected /equation-quest/ base');
 const routes = [
   '/',
@@ -18,11 +21,18 @@ const routes = [
   '/progress',
 ];
 const server = local
-  ? spawn('npm', ['run', 'preview', '--', '--port', '4173', '--strictPort'], {
+  ? spawn('npm', ['run', 'preview', '--', '--port', String(releasePort), '--strictPort'], {
       stdio: 'ignore',
       detached: true,
     })
   : null;
+
+// Match playwright.config.ts: restricted sandboxes can add launch flags without
+// editing this script. Empty by default, so CI behaviour is unchanged.
+const extraArgs = (process.env.EQ_CHROMIUM_ARGS ?? '')
+  .split(',')
+  .map((arg) => arg.trim())
+  .filter(Boolean);
 
 async function ready() {
   // Pages can briefly serve its legacy source index.html (which imports uncompiled
@@ -61,7 +71,7 @@ try {
   await ready();
   browser = await chromium.launch({
     ...(process.env.EQ_CHROMIUM_PATH ? { executablePath: process.env.EQ_CHROMIUM_PATH } : {}),
-    args: ['--disable-webgl'],
+    args: ['--disable-webgl', ...extraArgs],
   });
   for (const width of [320, 1280]) {
     const page = await browser.newPage({

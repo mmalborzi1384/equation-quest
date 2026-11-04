@@ -1,5 +1,7 @@
 # Phase 9: authentic world image, action surfaces and scroll narrative
 
+> **سند تاریخی (۱۲ آبان ۱۴۰۵).** ارقام و توضیحات این گزارش مربوط به همان اجراست. وضعیت جاری کد، تست‌ها و شواهد بصری در [`FINAL_VERIFICATION_2026-11-04.md`](FINAL_VERIFICATION_2026-11-04.md) و [`MOTION.md`](MOTION.md) است.
+
 **Implemented on `arena/5e702cfc-equation-quest`, 2026-11-03.** Owner authorized Phase 9 after merging Phase 8 PR #8. This report is local verification, not owner acceptance, a PR merge, a public deployment or Phase 10 authorization.
 
 ## Direction and decisions during implementation

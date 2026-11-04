@@ -38,7 +38,7 @@ npm run test:e2e
 npm run test:release
 ```
 
-آزمون‌های مرورگر به Chromium نصب‌شده برای Playwright نیاز دارند (`npx playwright install --with-deps chromium`). `test:release` در حالت عادی پیش‌نمایش تولیدی را موقتاً راه می‌اندازد و خاموش می‌کند؛ برای آزمون سایت منتشرشده `RELEASE_URL=https://mmalborzi1384.github.io/equation-quest/ npm run test:release` را اجرا کنید. دستورهای پیش‌نیاز و بازسازی محیط در [راهنمای محیط](docs/ENVIRONMENT_SETUP.md) آمده است.
+آزمون‌های مرورگر به Chromium نصب‌شده برای Playwright نیاز دارند (`npx playwright install --with-deps chromium`). در محیط‌های محدود، `EQ_CHROMIUM_PATH` مسیر باینری و `EQ_CHROMIUM_ARGS` فلگ‌های اضافی (جداشده با کاما) را مشخص می‌کنند و `EQ_WEBGL=1` فلگ‌های SwiftShader را می‌افزاید. `test:release` در حالت عادی پیش‌نمایش تولیدی را موقتاً راه می‌اندازد و خاموش می‌کند؛ برای آزمون سایت منتشرشده `RELEASE_URL=https://mmalborzi1384.github.io/equation-quest/ npm run test:release` را اجرا کنید. دستورهای پیش‌نیاز و بازسازی محیط در [راهنمای محیط](docs/ENVIRONMENT_SETUP.md) آمده است.
 
 ## ساختار
 
@@ -49,6 +49,17 @@ npm run test:release
 - `.github/workflows/pages.yml` بررسی PR، انتشار `dist/` از شاخهٔ اصلی و آزمون زندهٔ Pages
 
 صفحهٔ معرفی از الگوی **کارت مرکزی، انتخاب کارت‌های کناری، ورق‌زدن، باز/بسته کردن جزئیات و کنترل صفحه‌کلید** در [expo-glass-carousel](https://github.com/rit3zh/expo-glass-carousel) الهام گرفته است. آن پروژه برای Expo/React Native با Skia و Reanimated است؛ اینجا رفتار با React DOM و CSS بازآفرینی شده و هیچ کد یا وابستگی React Native/Skia به بستهٔ وب افزوده نشده است. تصویر صحنه از محیط واقعی همین بازی گرفته شده است. متن کارت‌ها در DOM می‌ماند؛ جلوه‌ها با تنظیم «حرکت کمتر» یا ترجیح سیستم غیرفعال می‌شوند.
+
+## مستندات طراحی و حرکت
+
+- [`docs/MOTION.md`](docs/MOTION.md) — قرارداد حرکت، توکنها، جدول هدف M-01…M-10 و فهرست «هرگز متحرک نکن»
+- [`docs/FINAL_VERIFICATION_2026-11-04.md`](docs/FINAL_VERIFICATION_2026-11-04.md) و [`docs/verification/`](docs/verification/) — گزارش راستی‌آزمایی نهایی و تصاویر موبایل/دسکتاپ (۱۰۰/۱۰۰ تست واحد، ۳۵/۴۰ E2E به‌دلیل نبود WebGL در محیط، ۳۲ ترکیب بصری بدون نقص)
+- [`docs/GAME_DESIGN_READ.md`](docs/GAME_DESIGN_READ.md) — طراحیخوانی LM-GM/SDT/ZPD هشت مرحله؛ سندی تحلیلی، بدون تغییر محتوای درسی
+- [`docs/DESIGN_REVIEW_2026-11-03.md`](docs/DESIGN_REVIEW_2026-11-03.md) و [`design-proposal.html`](design-proposal.html) — بازبینی و بورد پیشنهادی
+- [`docs/DESIGN_RESEARCH_2026-11-03.md`](docs/DESIGN_RESEARCH_2026-11-03.md) — پژوهش مهارتها، CSS بومی و کتابخانهها
+- [`.agents/skills/VENDORED.md`](.agents/skills/VENDORED.md) — منابع، commitها و مجوز مهارتهای vendored شده
+
+حرکت سایت عمدتاً CSS بومی است (`animation-timeline`, `@starting-style`, View Transitions)؛ GSAP فقط در چانک lazy صفحهٔ `#/intro` و `@formkit/auto-animate` فقط در دفتر گامهای مسیرهای lazy درس/مرحله/کارگاه بهکار رفتهاند.
 
 ## وضعیت و مشارکت
 

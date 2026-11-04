@@ -1,4 +1,6 @@
-# Tooling and dependency register (2026-11-03)
+# Tooling and dependency register (2026-11-03; revised 2026-11-04)
+
+> **Current-state note:** one small local runtime library, `@formkit/auto-animate@0.10.0`, was added on this branch by explicit owner request; it is used only through `src/features/motion/useMotionList.ts` in lazy lesson/level/workshop ledgers. Vazirmatn weights **400/500/700/800** are now imported in `src/main.tsx` (weight 800 powers the Home `h1`). `playwright.config.ts` accepts optional `EQ_CHROMIUM_ARGS` for restricted sandboxes. All other sections below are historical environment/verification records.
 
 ## Canonical cross-sandbox contract
 Exact Node 22.22.3/npm 10.9.8 in `.nvmrc`, `package.json` engines/packageManager and `.npmrc` engine-strict/save-exact; existing exact package pins and lockfile. `scripts/setup.sh` installs missing Python CLI tools at pinned versions and `npm ci`; `scripts/verify-environment.sh` checks versions, direct package consistency, lint/format. See `docs/ENVIRONMENT_SETUP.md`. The app is implemented; canonical verification runs lint/format/typecheck/tests/build.
@@ -10,7 +12,7 @@ Python 3.11.2, git 2.39.5, Node 22.22.3, npm 10.9.8, gh authenticated; no uv/Ble
 Official repository six skills copied into `.agents/skills` from GitHub. `npx antislop-ai --help` returned `installer needs a terminal`; no Arena-native skill autoload is verified. AGENTS.md pointers enable manual reads. Expo Glass Carousel README inspected: Expo 58/RN 0.88/Skia/Reanimated; incompatible as direct web dependency; no Expo packages installed.
 
 ## Direct npm dependencies (installed, exact lockfile)
-Runtime: React 19.3.1, React DOM 19.3.1, React Router DOM 7.18.5, Three 0.187.0, R3F 9.8.2, Drei 10.7.9, GSAP 3.15.0, Zustand 5.0.16, Lucide 1.67.0, KaTeX 0.19.1, react-katex 3.1.0, prop-types 15.8.1 (peer), Vazirmatn fontsource 5.3.0.
+Runtime: React 19.3.1, React DOM 19.3.1, React Router DOM 7.18.5, Three 0.187.0, R3F 9.8.2, Drei 10.7.9, GSAP 3.15.0, Zustand 5.0.16, Lucide 1.67.0, KaTeX 0.19.1, react-katex 3.1.0, prop-types 15.8.1 (peer), Vazirmatn fontsource 5.3.0, @formkit/auto-animate 0.10.0 (exact pin, one local library, owner-authorized 2026-11-03).
 Dev: Vite 8.3.5, plugin-react 6.2.1, TypeScript 5.9.3, React types 19.3.0, React DOM types 19.3.0, Three types 0.187.0, Vitest 5.1.0, RTL 16.3.3, jest-dom 7.0.1, Playwright 1.64.1, jsdom 30.1.3, ESLint 9.39.2, typescript-eslint 8.72.1, Prettier 3.9.10, gltf-transform CLI 4.5.1. Zustand persist is built in (not separate package); ScrollTrigger comes with GSAP. CSS Modules require no additional package.
 
 `npm run check:deps`, `npm ci --ignore-scripts`, `npm ls --depth=0`, `npx vite --version`, `npx vitest --version`, `npx gltf-transform --version` succeeded. `npm ls` reports three extraneous optional platform/transitive packages after clean install; audit before release. Playwright browser binaries NOT installed; Blender not installed. No assets yet, so GLB optimization untested. React Native peers on R3F are optional; Expo/RN were not installed.

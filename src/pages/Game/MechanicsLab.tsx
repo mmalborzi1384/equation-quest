@@ -26,8 +26,10 @@ import { useWorkshopProgress } from '../../store/useWorkshopProgress';
 import { BidiText } from '../Lessons/BidiText';
 import styles from './MechanicsLab.module.css';
 import { ResetAction } from '../../components/ui/ResetAction';
+import { useMotionList } from '../../features/motion/useMotionList';
 
 export function MechanicsLab() {
+  const ledgerRef = useMotionList<HTMLDivElement>();
   const [selectedId, setSelectedId] = useState(challenges[0].id);
   const [session, setSession] = useState(startPuzzle);
   const [input, setInput] = useState('');
@@ -148,16 +150,18 @@ export function MechanicsLab() {
           <div className={styles.math} dir="ltr">
             <BlockMath math={equationTex(eq)} />
           </div>
-          {session.first && (
-            <div className={styles.mathStep} dir="ltr" aria-label="نتیجهٔ گام اول">
-              <BlockMath math={stateTex(session.first)} />
-            </div>
-          )}
-          {session.second && (
-            <div className={styles.mathStep} dir="ltr" aria-label="نتیجهٔ گام دوم">
-              <BlockMath math={stateTex(session.second)} />
-            </div>
-          )}
+          <div ref={ledgerRef} aria-live="polite">
+            {session.first && (
+              <div className={styles.mathStep} dir="ltr" aria-label="نتیجهٔ گام اول">
+                <BlockMath math={stateTex(session.first)} />
+              </div>
+            )}
+            {session.second && (
+              <div className={styles.mathStep} dir="ltr" aria-label="نتیجهٔ گام دوم">
+                <BlockMath math={stateTex(session.second)} />
+              </div>
+            )}
+          </div>
           {(session.phase === 'constant' || session.phase === 'coefficient') && (
             <div>
               <h4>

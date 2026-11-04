@@ -34,6 +34,9 @@ Report: phase name/objective; completed tasks; exact created/modified paths; tes
 
 **STOP after the authorized phase.** Wait for explicit authorization naming the next phase. The owner's latest explicit decision takes precedence over older planning documents; record any inconsistency instead of silently changing scope.
 
-## Current boundary
+## Current boundary (historical snapshot, 2026-11-03)
+
+> **Note 2026-11-04:** the paragraph below records the boundary at the moment this snapshot was written. It is **not** the current authorization state; use `AGENTS.md` and the latest entry in `docs/DECISIONS.md` (D35) for that. No new phase has been declared since, and the protocol itself is unchanged.
+
 
 Phases 1–7 accepted; Phase 7 PR #7 merged into `main` at `dccd87c` by explicit owner direction. The owner then explicitly instructed **not to start Phase 8** and requested planning-only D28 acceptance changes for Phases 8 and 9. These changes do not authorize either phase, PR merge or deployment; wait for a separate explicit owner instruction.

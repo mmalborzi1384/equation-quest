@@ -4,21 +4,21 @@ import { Link } from 'react-router-dom';
 import { GlassCarousel } from '../../components/carousel/GlassCarousel';
 import { islands } from '../../data/levels';
 import styles from './Home.module.css';
-import { useHomeMotion } from './hooks/useHomeMotion';
 
 export default function Home() {
-  const root = useHomeMotion();
   return (
-    <div ref={root} className={styles.home}>
+    <div className={styles.home}>
       <section className={styles.hero} aria-labelledby="hero-title" data-hero>
         <div className={styles.heroCopy}>
-          <span className={styles.kicker}>یک ماجراجویی برای فهمیدن، نه حدس زدن</span>
-          <h1 id="hero-title">
+          <span className={`${styles.kicker} hero-enter-line hero-enter-1`}>
+            یک ماجراجویی برای فهمیدن، نه حدس زدن
+          </span>
+          <h1 id="hero-title" className="hero-enter-line hero-enter-2">
             راز <em>سرزمین</em>
             <br />
             مجهول‌ها
           </h1>
-          <p>
+          <p className="hero-enter-line hero-enter-3">
             در سرزمینی که توازن از دست رفته، هر برابری یک پل است. برای بازگرداندن مسیرها، باید بفهمی
             چرا دو سوی معادله با هم برابرند.
           </p>
@@ -33,7 +33,7 @@ export default function Home() {
               آشنایی با ماجراجویی
             </Link>
           </div>
-          <div className={styles.heroNote}>
+          <div className={`${styles.heroNote} hero-enter-line hero-enter-4`}>
             <span>پایهٔ هفتم</span>
             <span>بدون نیاز به حساب کاربری</span>
             <span>نقشهٔ آموزش مرحله‌به‌مرحله</span>
@@ -54,6 +54,7 @@ export default function Home() {
               alt=""
               fetchPriority="high"
               decoding="async"
+              data-scroll-motion
             />
           </picture>
           <span className={styles.sceneLabel}>
@@ -62,7 +63,7 @@ export default function Home() {
             <small>نقشهٔ سفر</small>
           </span>
         </div>
-        <span className={styles.heroIndex}>E Q / ۰۱</span>
+        <span className={styles.heroIndex}>فصل ۰۱ / ۰۴</span>
       </section>
 
       <section className={styles.manifest} data-narrative aria-labelledby="intro-title">

@@ -1,5 +1,7 @@
 # Route wireframes & design specifications (planning only)
 
+> **Historical planning document (2026-11-03).** Wireframes remain the layout contract, but the motion implementation changed: ScrollTrigger no longer drives Home reveals; native CSS scroll timelines, `@starting-style`, View Transitions and a single GSAP timeline in `#/intro` do. See [`MOTION.md`](MOTION.md) and [`FINAL_VERIFICATION_2026-11-04.md`](FINAL_VERIFICATION_2026-11-04.md) for the verified 320/390/768/1280px result.
+
 Shared shell (all routes): `skip to content` → logo/home, learning, world, continue, progress, back; compact labelled menu on mobile with visible active route; main and footer/status. Mobile layout stacks main/aside and keeps 44px actions. No app implemented yet.
 
 ## `/` Home
@@ -11,7 +13,7 @@ Shared shell (all routes): `skip to content` → logo/home, learning, world, con
 [glass carousel: lesson / region cards < prev | next >, focus, open route]
 [final begin adventure / resume] [footer: learning, world, progress]
 ```
-Desktop asymmetrical hero with one focal mechanism; mobile canvas is decorative fallback, content/CTA always visible. ScrollTrigger only reveals story; carousel works independently with keyboard/touch and reduced motion.
+Desktop asymmetrical hero with one focal mechanism; mobile canvas is decorative fallback, content/CTA always visible. Native scroll-driven CSS only reveals story (ScrollTrigger removed); carousel works independently with keyboard/touch and reduced motion.
 
 ## `/learning` Overview
 ```text

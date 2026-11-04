@@ -1,0 +1,114 @@
+# گزارش راستیآزمایی نسخهٔ نهایی (۱۴ آبان ۱۴۰۵ / 2026-11-04)
+
+**شاخه:** `arena/13834b82-equation-quest` · **جایگاه:** سند **اجرا و شواهد**، مکمل [`MOTION.md`](MOTION.md)، [`TESTING.md`](TESTING.md) و [`DEVELOPMENT_STATUS.md`](DEVELOPMENT_STATUS.md). هیچ فاز تازهای اعلام نمیشود؛ `AGENTS.md` (D35) و `specs/` تغییر نکردهاند. تصاویر [`verification/`](verification/) خروجی همین اجرا هستند.
+
+## ۱. خلاصهٔ نتیجه
+
+| دروازه | نتیجه |
+|---|---|
+| `lint` | **PASS** |
+| `format:check` | **PASS** |
+| `typecheck` | **PASS** |
+| `test:run` | **PASS — ۱۰۰/۱۰۰** (۹۱ قبلی + ۴ تست گذار مسیر + ۵ تست نگهبان حرکت) |
+| `build` | **PASS** |
+| `check:phase9` | **PASS** (WebP ۳۲٬۹۰۰ / ۱۷٬۵۷۰ بایت، صحنهٔ lazy ۲۴۲٬۷۳۸ بایت gzip) |
+| `test:e2e` | **۳۵/۴۰ PASS**؛ ۵ تست شکستخورده همگی **فقط WebGL**اند و به دلیل نبود WebGL در مرورگر این محیط است (توضیح بند ۲) |
+| `test:release` (پیشنمایش بیلد تولیدی) | **PASS** در ۳۲۰ و ۱۲۸۰px: هشت مسیر، داراییها، بارگذاری دوباره، فهرست RTL/Escape و ترجیح ذخیرهشده |
+| بازبینی بصری ۳۲ ترکیب مسیر×عرض | **۰ سرریز افقی، ۰ متن پنهان، ۰ خطای کنسول/صفحه** |
+| بازبینی دسترسپذیری ۸ مسیر | **۰ کنترل بینیام، ۰ شناسهٔ تکراری**؛ ۱ مورد کنتراست پیدا و **رفع شد** |
+
+## ۲. محیط مرورگر (محدودیتها، صادقانه)
+
+`cdn.playwright.dev` در این سندباکس قابل دسترس نیست (`ECONNRESET`)، پس باینری رسمی Playwright نصب نشد. بهجای آن از **`chrome-headless-shell` نسخهٔ ۱۵۳٫۰٫۸۰۱۰٫۰** درون بستهٔ npmـی `@sparticuz/chromium@153.0.0` (از `registry.npmjs.org`) استفاده شد؛ کتابخانهها و فونتهای همراه بسته خارج از ریپو، در `/tmp` باز شدند.
+
+- **WebGL در دسترس نیست:** SwANGLE/SwiftShader Vulkan با خطای `EGL_NOT_INITIALIZED` شکست میخورد؛ `canvas.getContext('webgl')` در همهٔ ترکیبهای فلگها `null` است. بنابراین پنج تست `tests/e2e/exploration.spec.ts` که وجود `<canvas>` را شرط میدانند، در این محیط اجرا نمیشوند. تست «سقوط بدون WebGL» همان فایل **PASS** است و مسیر متنی جایگزین در اسکرینشات `desktop-game` دیده شد. کد `src/three/` در این دور تغییر نکرده و شواهد تاریخی ۴۰/۴۰ با Chromium رسمی در `INTRO_IMPLEMENTATION_REPORT.md` ثبت است.
+- **woff2 در این بیلد بارگذاری نمیشود:** `document.fonts` چهار `@font-face` بورد پیشنهادی را `error` گزارش میکند. برای اینکه اسکرینشاتها از نظر تایپوگرافی گمراهکننده نباشند، همان فایلهای `vazirmatn-arabic-{400,500,700,800}-normal.woff2` با `fonttools` (از PyPI) به TTF تبدیل و از طریق `fontconfig` به مرورگر معرفی شدند؛ یعنی تصاویر با **قلم واقعی Vazirmatn** گرفته شدهاند. در مرورگر معمولی همان قلم از `@font-face` بار میشود و نیازی به این تبدیل نیست.
+- برای اجرای E2E در محیط محدود، `playwright.config.ts` دو متغییر محیطی تازه و اختیاری پذیرفت: `EQ_CHROMIUM_PATH` (از قبل بود) و `EQ_CHROMIUM_ARGS` (فلگهای اضافی، جداشده با کاما). `scripts/smoke-release.mjs` هم همان `EQ_CHROMIUM_ARGS` و یک `EQ_RELEASE_PORT` اختیاری (پیشفرض ۴۱۷۳، بدون تغییر رفتار CI) میپذیرد تا پیشنمایش بیلد تولیدی در محیطهای پرت هم قابل اجرا باشد. دستور کامل در بند ۵.
+
+## ۳. تست بصری موبایل و دسکتاپ
+
+۴ عرض × ۸ مسیر = **۳۲ ترکیب**: `320×780`, `390×844`, `768×1024`, `1280×800` روی `#/`, `#/intro`, `#/learning`, `#/learning/fractions`, `#/world`, `#/game`, `#/game/level/01`, `#/progress`.
+
+هر ترکیب بررسی شد: سرریز افقی (`documentElement.scrollWidth - innerWidth`)، وجود و ابعاد `h1`، عناصر متندار با `opacity: 0`، کنترلهای بُعد صفر، و خطاهای `pageerror`/`console`/`requestfailed`. نتیجه: **همه صفر**، بهجز یک `<button>` فهرست موبایل که در دسکتاپ عمداً `display:none` دارد (رفتار موردانتظار، نه نقص).
+
+تصاویر نمونه:
+
+| فایل | محتوا |
+|---|---|
+| `verification/mobile-home-390.png` | قهرمان، دکمهها، یادداشت و شروع تصویر در ۳۹۰px |
+| `verification/mobile-intro-390.png` | صفحهٔ معرفی، CTA و aside در ۳۹۰px |
+| `verification/mobile-menu-390.png` | فهرست بازشدهٔ موبایل (۶ پیوند) |
+| `verification/desktop-home-1280.png` | قهرمان دوسویه، وزن ۸۰۰ تیتر، نشان ترازوی SVG |
+| `verification/desktop-intro-1280.png` | معرفی و تایم لاین GSAP پس از اتمام |
+| `verification/desktop-carousel-1280.png` | کاروسل چهار ایستگاه و کنترلها |
+| `verification/desktop-katex-1280.png` | ریاضی LTR ایزولهٔ KaTeX کنار متن RTL |
+
+بورد پیشنهادی `design-proposal.html` هم جداگانه در **هر چهار عرض** (۳۲۰/۳۹۰/۷۶۸/۱۲۸۰px) بار شد: بدون کرش، `overflow=0`، تیتر قابل رؤیت، `text-wrap: pretty` و صفر خطا. دکمههای ترازو کار میکنند و نتیجهٔ «دو کفه همارزشاند» پس از عمل دوطرفه نمایش داده میشود.
+
+## ۴. باگهای پیداشده و رفعشده
+
+### B-01 (مهم) — `text-wrap: balance` رندرر را کرش میداد
+با باینری فوق، بارگذاری صفحهٔ نخست و بورد پیشنهادی با `Page crashed` شکست میخورد. با بایسکشن دوتایی روی CSS (۹ مرحله) مشخص شد تنها اعمال `text-wrap: balance` روی یک تیتر RTL بلند در DOM پیچیده، رندرر را `SIGTRAP` میکند؛ همان خاصیت روی صفحهٔ ساده کرش نمیکرد. `text-wrap: pretty` در همان شرایط سالم است.
+
+**رفع:** همهٔ ۵ مورد در `Home.module.css`, `Intro.module.css`, `PageIntro.module.css` و ۴ مورد در `design-proposal.html` به `text-wrap: pretty` تغییر یافت (برچسب متنی بورد هم بهروز شد). بعد از رفع، هر دو صفحه بدون کرش بار میشوند و ۳۵ تست E2E غیر WebGL سبز است. **نگهبان رگرسیون:** `src/test/motion-safety.test.ts` وجود دوبارهٔ `text-wrap: balance` را در `src/`، `index.html` و بورد رد میکند.
+
+### B-02 — کنتراست پیکان معادله در `#/intro`
+`span` پیکان `↓` با رنگ `#a36c2e` روی کرم، نسبت **۴٫۰۶:۱** داشت (حداقل WCAG AA برای متن معمولی ۴٫۵:۱). به `var(--gold-ink)` (`#8a5a12`، **۵٫۴۳:۱** روی ivory و **۴٫۸۹:۱** روی cream) تغییر یافت. بازبینی دوباره: ۰ مورد کنتراست پایین در ۸ مسیر.
+
+### B-03 — وزن تیتر قهرمان
+پیشنهاد G-03 در `DESIGN_REVIEW_2026-11-03.md` اضافهکردن وزن ۸۰۰ Vazirmatn بود تا پس از حذف ترکینگ منفی، تیتر قدرت خود را حفظ کند. `800.css` به `main.tsx` و `font-weight: 800` به `.hero h1` اضافه شد؛ سرریز در هر چهار عرض دوباره اندازهگیری و صفر ماند.
+
+### B-04 — مقاومسازی جزئی
+`useMotionAllowed` اکنون در نبود `MediaQueryList.addEventListener` (Safari قدیمی) به `addListener` سقوط میکند. `playwright.config.ts` فلگهای اضافی محیطهای محدود و `scripts/smoke-release.mjs` همان فلگها بهعلاوهٔ `EQ_RELEASE_PORT` اختیاری را میپذیرند (پیشفرض ۴۱۷۳ و رفتار CI بدون تغییر).
+
+### B-05 — بهروزرسانی اسناد و پاکسازی
+همهٔ اسنادی که رفتار قدیمی `Home` با GSAP/ScrollTrigger، فایل حذفشدهٔ `useHomeMotion.ts`، اعداد «۹۱/۹۱» و «۴۰/۴۰» یا `text-wrap: balance` را **بهعنوان وضعیت جاری** معرفی میکردند، یا اصلاح شدند یا صریحاً **تاریخی** برچسب خوردند: `ARCHITECTURE`, `DESIGN`, `WIREFRAMES`, `DEPENDENCIES`, `TESTING`, `DEVELOPMENT_STATUS`, `DECISIONS`, `ENVIRONMENT_SETUP`, `PROJECT_MEMORY`, `AGENTS.md`, `PHASE_EXECUTION_PROTOCOL.md`, چهار گزارش پایان فاز، پژوهش و بازبینی طراحی. دو نویسهٔ CJK تصادفی (معنای «واقعی») هم از متن `DESIGN_REVIEW` حذف شد. پنج تست نگهبان در `src/test/motion-safety.test.ts` اضافه شد و ۱۸ اسکریپت موقتی عیبیابی از ریشهٔ ریپو پاک شدند؛ `test-results/` و `dist/` تولیدی/گیتایگنور باقیاند.
+
+## ۵. رفتارهای تعاملی راستیآزماییشده (فراتر از اسکرینشات)
+
+- **گذار مسیر:** پنچ پیوند هدر (`معرفی`, `مسیر یادگیری`, `دنیای بازی`, `پیشرفت من`, `خانه`) در دسکتاپ همگی ناوبری کردند و دقیقاً ۵ بار `document.startViewTransition` فراخوانی شد؛ **۰ خطای صفحه**. ناوبری از فهرست موبایل هم به `#/world` و تیتر «چهار راه…» رسید.
+- **ورود قهرمان:** `@starting-style` در حالت عادی `opacity` را از `["0","0","0","0"]` به `["1","1","1","1"]` میرساند (یکباره). در هر دو مسیر کاهشحرکت (OS و تنظیم ذخیرهشده) از همان ابتدا `1` و `transition-duration` برابر `0.01ms` است.
+- **GSAP:** در حالت کاهشحرکت، هیچ `[data-intro-line]`ـی `style` درونخطی نمیگیرد؛ یعنی تایم لاین اجرا نشده و محتوا کامل است.
+- **خط پیشرفت خواندن:** `scaleX` از `0` در بالای صفحه به `1` در انتها رفت؛ ۸ بخش روایی یکباره وارد شدند.
+- **کاهشحرکت دوتایی:** OS، تنظیم ذخیرهشده و ترکیب هر دو، بدون خطا و با متن کامل.
+- **دسترسپذیری:** در ۸ مسیر، `lang="fa"`, `dir="rtl"`، ۰ کنترل بینیام، ۰ شناسهٔ تکراری، ۰ متن پنهان.
+
+## ۶. تکرار و تازگی محیط
+
+همهٔ دروازهها **سه بار** اجرا شدند (یک بار پیش از اصلاح اسناد، دو بار پس از آن) و نتایج یکسان بود: ۱۰۰/۱۰۰ واحد، شش دروازهٔ ایستا سبز، ۳۵/۴۰ E2E، `test:release` سبز. E2E نیز **سه بار** اجرا شد و هر بار دقیقاً همان پنج تست WebGL شکست خوردند (بدون شکست تازهای). بین دور دوم و سوم `npm ci --no-audit --no-fund` روی `node_modules` تازه اجرا شد (**۴۳۶ بسته، بدون خطا**) و کل مجموعه دوباره سبز شد؛ یعنی `package-lock.json` برای نصب از صفر سالم است. بازبینی ۳۲ ترکیب بصری و ۸ مسیر دسترسپذیری نیز دو بار (پیش و پس از اصلاح کنتراست) انجام شد.
+
+## ۷. دستورهای تکرارپذیر
+
+```bash
+npm ci
+npm run lint
+npm run format:check
+npm run typecheck
+npm run test:run            # ۱۰۰/۱۰۰
+npm run build
+npm run check:phase9
+npm run test:e2e            # با Chromium رسمی: ۴۰/۴۰ انتظار میرود
+npm run test:release        # PASS در بیلد تولیدی، ۳۲۰ و ۱۲۸۰px
+```
+
+اجرای E2E در محیط محدود این نشست (بدون CDN Playwright)، پس از فراهمکردن باینری و فونتها در `/tmp`:
+
+```bash
+EQ_CHROMIUM_PATH=/path/to/chromium \
+EQ_CHROMIUM_ARGS='--no-sandbox,--disable-dev-shm-usage,--disable-gpu,--disable-features=Vulkan' \
+LD_LIBRARY_PATH=/path/to/libs \
+FONTCONFIG_FILE=/path/to/fonts.conf \
+npm run test:e2e
+
+EQ_RELEASE_PORT=4180 EQ_CHROMIUM_PATH=/path/to/chromium \
+EQ_CHROMIUM_ARGS='--no-sandbox,--disable-dev-shm-usage,--disable-gpu' \
+npm run test:release
+```
+
+## ۸. آنچه عمداً انجام نشد (مرز صداقت)
+
+- پنج تست WebGL در این محیط اجرا نشدند؛ **ادعای ۴۰/۴۰ برای این اجرا نمیشود**. روی CI با Chromium رسمی Playwright اجرا شوند.
+- تست FPS/دستگاه واقعی، صفحهخوان واقعی، بازبینی مستقل برنامهٔ درسی پایهٔ هفتم (issue #11) و بررسی امنیت/دستگاههای دیگر (issue #12) همچنان بازاند.
+- `stages.ts`، معادلهها، موتور کسری، ذخیرهسازی و `specs/` تغییر نکردند؛ [`GAME_DESIGN_READ.md`](GAME_DESIGN_READ.md) سندی تحلیلی است.
+- M-02 (ترازوی زنده)، M-03 (لحظهٔ تأیید)، ادغام کاروسلها، `worldState` دیجتیک، حذف اقتصاد XP و نقشهٔ پیوسته همچنان **مشخص شده، اجرا نشده**اند و نیازمند مجوز جداگانهاند.
+- این سند بهمعنی انتشار عمومی یا سبز بودن Pages زنده نیست.

@@ -16,6 +16,10 @@ The checkout came from Arena on `arena/5b2fda5d-equation-quest` at commit `185e3
 - [ ] When the app exists, start `npm run dev -- --host 0.0.0.0` using Arena's background-process preview tool, open real routes, verify Pages base/hash assets, and stop the server. Until then, startup/build/test are honestly **SKIP**. Record commands and discrepancies in `docs/DEVELOPMENT_STATUS.md`.
 - [ ] Before code changes inspect current Git changes and relevant specs; after task commit reusable changes on the assigned branch and update memory/decisions. Never push to `main`.
 
+## Restricted sandboxes / browser binaries (2026-11-04)
+
+`npm run test:e2e` normally uses the official Playwright Chromium installed by `npx playwright install --with-deps chromium`. Where the CDN is unreachable, `playwright.config.ts` accepts two optional environment variables **without changing the default configuration**: `EQ_CHROMIUM_PATH` (absolute path to a Chrome/Chromium binary) and `EQ_CHROMIUM_ARGS` (comma-separated extra launch flags). `EQ_WEBGL=1` adds the SwiftShader flags when a working software GL stack exists. `scripts/smoke-release.mjs` accepts the same `EQ_CHROMIUM_PATH`/`EQ_CHROMIUM_ARGS` plus an optional `EQ_RELEASE_PORT` (default 4173) for local port conflicts. The owning process may also need `LD_LIBRARY_PATH`, `FONTCONFIG_FILE` and a local font directory when using a self-contained Chromium bundle. These are **environment-only** knobs: no binary, library or font is committed to this repository, and no product code depends on them. The exact command and the WebGL limitation of the verification run are in [`FINAL_VERIFICATION_2026-11-04.md`](FINAL_VERIFICATION_2026-11-04.md).
+
 ## Configuration inventory
 | Repository file | Role |
 |---|---|

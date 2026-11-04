@@ -3,25 +3,36 @@ import desktopScene from '../../assets/game-scene-desktop.webp';
 import mobileScene from '../../assets/game-scene-mobile.webp';
 import { IntroCarousel } from './IntroCarousel';
 import styles from './Intro.module.css';
+import { useIntroMotion } from './useIntroMotion';
 
 export default function Intro() {
+  const root = useIntroMotion();
   return (
-    <div className={styles.page}>
+    <div ref={root} className={styles.page}>
       <section className={styles.hero} aria-labelledby="intro-hero-title">
         <div className={styles.scene} aria-hidden="true">
           <picture>
             <source media="(max-width: 800px)" srcSet={mobileScene} type="image/webp" />
-            <img src={desktopScene} alt="" width="929" height="634" decoding="async" />
+            <img
+              src={desktopScene}
+              alt=""
+              width="929"
+              height="634"
+              decoding="async"
+              data-intro-scene
+            />
           </picture>
         </div>
         <div className={styles.heroContent}>
-          <span className={styles.eyebrow}>آشنایی با ماجراجویی معادله‌ها / راهنمای شروع</span>
-          <h1 id="intro-hero-title">
+          <span className={styles.eyebrow} data-intro-line>
+            آشنایی با ماجراجویی معادله‌ها / راهنمای شروع
+          </span>
+          <h1 id="intro-hero-title" data-intro-line>
             هر معادله،
             <br />
             <em>یک راهِ تازه.</em>
           </h1>
-          <p>
+          <p data-intro-line>
             اینجا جواب را حدس نمی‌زنی. با دیدن تعادل، انتخاب عمل درست و بررسیِ جواب در معادلهٔ اصلی،
             راه‌حل را خودت می‌سازی.
           </p>
@@ -34,7 +45,7 @@ export default function Intro() {
             </Link>
           </div>
         </div>
-        <div className={styles.heroAside} aria-hidden="true">
+        <div className={styles.heroAside} aria-hidden="true" data-intro-line>
           <span>01 — 08</span>
           <span>
             از برابری

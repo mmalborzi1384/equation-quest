@@ -18,6 +18,7 @@ export function AppLayout() {
   }, [location.pathname]);
   return (
     <div className={styles.shell} dir="rtl" data-motion={reduceMotion ? 'reduce' : 'system'}>
+      <div className="route-progress" data-scroll-motion aria-hidden="true" />
       <a
         className={styles.skip}
         href="#main-content"
