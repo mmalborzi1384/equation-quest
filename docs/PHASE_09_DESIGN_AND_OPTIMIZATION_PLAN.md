@@ -1,5 +1,7 @@
 # Phase 9 visual and optimization acceptance plan (D28)
 
+> **سند تاریخی (۱۲ آبان ۱۴۰۵).** ارقام و توضیحات این گزارش مربوط به همان اجراست. وضعیت جاری کد، تست‌ها و شواهد بصری در [`FINAL_VERIFICATION_2026-11-04.md`](FINAL_VERIFICATION_2026-11-04.md) و [`MOTION.md`](MOTION.md) است.
+
 **Status: Phase 9 authorized (D32), implemented and locally tested; owner review pending.** Earlier D28/D29 wording below describes the planning boundary at that time. Phase 10 still owns CI/public deployment after separate gates. See [Phase 9 completion report](PHASE_09_COMPLETION_REPORT.md) for measured outcomes and limitations.
 
 ## Direction specified by the owner

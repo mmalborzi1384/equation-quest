@@ -2,7 +2,7 @@
 
 Before starting any task in a new sandbox, read the environment setup documentation, verify the canonical development environment, and initialize the sandbox using the repository's setup scripts. See `docs/ENVIRONMENT_SETUP.md` and `docs/DEVELOPMENT_WORKFLOW.md`; run `bash scripts/setup.sh` and inspect its verification report. Never assume tools or `node_modules` persisted.
 
-At session start read `PHASE_EXECUTION_PROTOCOL.md` and `PROJECT_MEMORY.md`, `docs/DEVELOPMENT_STATUS.md`, `docs/DECISIONS.md`, relevant `specs/*` and `docs/ARCHITECTURE.md`. The user specification in the initial project brief is authoritative; record clarifications in the repo before changing course.
+At session start read `PHASE_EXECUTION_PROTOCOL.md` and `PROJECT_MEMORY.md`, `docs/DEVELOPMENT_STATUS.md`, `docs/DECISIONS.md`, relevant `specs/*` and `docs/ARCHITECTURE.md`. For any motion/design work also read `docs/MOTION.md`, `docs/FINAL_VERIFICATION_2026-11-04.md` and `docs/verification/`; older phase reports and their test counts are historical. The user specification in the initial project brief is authoritative; record clarifications in the repo before changing course.
 
 ## Phase authorization and deliverables (permanent)
 - Follow `PHASE_EXECUTION_PROTOCOL.md` for every phase. Execute only the phase explicitly named and authorized by the owner; never start the next phase automatically. The protocol itself does not authorize work.

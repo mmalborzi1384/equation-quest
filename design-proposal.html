@@ -1,0 +1,1628 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>جهت پیشنهادی طراحی | ماجراجویی معادله‌ها</title>
+    <style>
+      @font-face {
+        font-family: 'VazirmatnLocal';
+        src: url('node_modules/@fontsource/vazirmatn/files/vazirmatn-arabic-400-normal.woff2')
+          format('woff2');
+        font-weight: 400;
+        font-display: swap;
+        unicode-range: U+0600-06FF, U+0750-077F, U+200C-200F, U+FB50-FDFF, U+FE70-FEFC;
+      }
+      @font-face {
+        font-family: 'VazirmatnLocal';
+        src: url('node_modules/@fontsource/vazirmatn/files/vazirmatn-arabic-700-normal.woff2')
+          format('woff2');
+        font-weight: 700;
+        font-display: swap;
+        unicode-range: U+0600-06FF, U+0750-077F, U+200C-200F, U+FB50-FDFF, U+FE70-FEFC;
+      }
+      @font-face {
+        font-family: 'VazirmatnLocal';
+        src: url('node_modules/@fontsource/vazirmatn/files/vazirmatn-arabic-800-normal.woff2')
+          format('woff2');
+        font-weight: 800;
+        font-display: swap;
+        unicode-range: U+0600-06FF, U+0750-077F, U+200C-200F, U+FB50-FDFF, U+FE70-FEFC;
+      }
+      @font-face {
+        font-family: 'VazirmatnLocal';
+        src: url('node_modules/@fontsource/vazirmatn/files/vazirmatn-latin-400-normal.woff2')
+          format('woff2');
+        font-weight: 400;
+        font-display: swap;
+        unicode-range: U+0000-00FF;
+      }
+
+      :root {
+        font-family: VazirmatnLocal, system-ui, sans-serif;
+        --ink: #14263e;
+        --ink-soft: #405369;
+        --paper: #f7f4ec;
+        --cream: #efe7d5;
+        --line: #d9d1bf;
+        --mint: #3e9e82;
+        --mint-fill: #65b89b;
+        --gold: #d9a34a;
+        --gold-fill: #e9b968;
+        --coral: #c96b57;
+        --violet: #7c63a6;
+        --ocean: #3b6479;
+        --r1: #65b89b;
+        --r2: #927dbb;
+        --r3: #426d83;
+        --r4: #bd9456;
+        --radius: 9px;
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        --dur1: 120ms;
+        --dur2: 240ms;
+        --dur3: 480ms;
+        --measure: 64ch;
+        --shadow: 0 14px 34px #14263e14;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        min-width: 320px;
+        background: var(--paper);
+        color: var(--ink);
+        line-height: 1.9;
+        -webkit-font-smoothing: antialiased;
+      }
+      button {
+        font: inherit;
+        cursor: pointer;
+        border-radius: var(--radius);
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      :focus-visible {
+        outline: 3px solid var(--gold);
+        outline-offset: 4px;
+      }
+      ::selection {
+        background: var(--gold-fill);
+        color: var(--ink);
+      }
+      .math {
+        direction: ltr;
+        unicode-bidi: isolate;
+        display: inline-block;
+        font-family: Georgia, serif;
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: auto;
+        padding: 0 clamp(18px, 5vw, 64px);
+      }
+      .notice {
+        background: #21384f;
+        color: #f3ecdc;
+        font-size: 0.84rem;
+        padding: 10px 0;
+        text-align: center;
+        letter-spacing: 0;
+      }
+      .notice strong {
+        color: var(--gold-fill);
+      }
+
+      header.masthead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 34px 0 30px;
+        border-bottom: 1px solid var(--line);
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .brand svg {
+        width: 54px;
+        height: 54px;
+        flex: none;
+      }
+      .brand b {
+        display: block;
+        font-size: 1.3rem;
+        font-weight: 800;
+        letter-spacing: 0;
+        line-height: 1.5;
+      }
+      .brand small {
+        display: block;
+        color: var(--ink-soft);
+        font-size: 0.78rem;
+      }
+      .masthead .meta {
+        font-size: 0.82rem;
+        color: var(--ink-soft);
+        text-align: left;
+        line-height: 1.8;
+      }
+
+      .balance-line {
+        position: relative;
+        height: 1px;
+        background: var(--line);
+        margin: 0 0 0;
+      }
+      .balance-line::after {
+        content: '=';
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        transform: translate(50%, -50%);
+        background: var(--paper);
+        color: var(--gold);
+        padding: 0 12px;
+        font:
+          700 1rem Georgia,
+          serif;
+        line-height: 1;
+      }
+
+      section {
+        padding: clamp(52px, 7vw, 96px) 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .eyebrow {
+        display: inline-block;
+        color: #8a5f1f;
+        font-size: 0.8rem;
+        font-weight: 700;
+        border-bottom: 2px solid var(--gold-fill);
+        padding-bottom: 7px;
+        margin-bottom: 18px;
+      }
+      h2 {
+        font-size: clamp(1.9rem, 3.6vw, 3.2rem);
+        font-weight: 800;
+        letter-spacing: 0;
+        line-height: 1.25;
+        margin: 0 0 14px;
+        text-wrap: pretty;
+      }
+      h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin: 0 0 8px;
+        letter-spacing: 0;
+      }
+      p {
+        max-width: var(--measure);
+        margin: 0 0 14px;
+        color: var(--ink-soft);
+      }
+      p.tight {
+        margin-bottom: 0;
+      }
+      .lead {
+        font-size: 1.06rem;
+      }
+      .caption {
+        font-size: 0.8rem;
+        color: var(--ink-soft);
+        margin-top: 10px;
+      }
+
+      /* Palette */
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 34px;
+      }
+      .swatch {
+        background: #fffdf8;
+        border: 1px solid var(--line);
+        padding: 14px;
+        border-radius: var(--radius);
+      }
+      .swatch i {
+        display: block;
+        height: 54px;
+        border-radius: 6px;
+        margin-bottom: 12px;
+        border: 1px solid #14263e14;
+      }
+      .swatch b {
+        display: block;
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+      .swatch span {
+        display: block;
+        font-size: 0.78rem;
+        color: var(--ink-soft);
+        line-height: 1.7;
+      }
+      .swatch code {
+        direction: ltr;
+        display: inline-block;
+        font:
+          0.78rem Georgia,
+          serif;
+        color: var(--ocean);
+      }
+      .roles {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 30px;
+        margin-top: 28px;
+      }
+      .role {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.9rem;
+      }
+      .role i {
+        width: 14px;
+        height: 14px;
+        border-radius: 4px;
+        flex: none;
+      }
+      .role span {
+        color: var(--ink-soft);
+      }
+
+      /* Type specimen */
+      .type-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 32px;
+      }
+      .type-card {
+        background: #fffdf8;
+        border: 1px solid var(--line);
+        padding: clamp(20px, 3vw, 34px);
+        border-radius: var(--radius);
+      }
+      .type-card .tag {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--coral);
+      }
+      .type-card.after .tag {
+        color: var(--mint);
+      }
+      .type-card .sample {
+        font-size: clamp(2rem, 4.4vw, 3.6rem);
+        font-weight: 800;
+        line-height: 1.25;
+        margin: 14px 0 10px;
+      }
+      .type-card.before .sample {
+        letter-spacing: -0.065em;
+      }
+      .type-card.after .sample {
+        letter-spacing: 0;
+        text-wrap: pretty;
+      }
+      .scale-list {
+        display: grid;
+        gap: 6px;
+        margin-top: 28px;
+        font-size: 0.9rem;
+        color: var(--ink-soft);
+      }
+      .scale-list div {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px dashed var(--line);
+        padding-bottom: 6px;
+      }
+      .scale-list code {
+        direction: ltr;
+        font-family: Georgia, serif;
+        color: var(--ocean);
+      }
+
+      /* Hero concept */
+      .hero-mock {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+        background: var(--ink);
+        color: var(--paper);
+        border-radius: 14px;
+        overflow: hidden;
+        margin-top: 34px;
+        min-height: 430px;
+        box-shadow: var(--shadow);
+      }
+      .hero-copy {
+        padding: clamp(28px, 4vw, 56px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .hero-copy .kicker {
+        color: var(--gold-fill);
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+      .hero-copy h1 {
+        font-size: clamp(2.5rem, 5.2vw, 4.6rem);
+        font-weight: 800;
+        letter-spacing: 0;
+        line-height: 1.22;
+        margin: 16px 0 18px;
+        text-wrap: pretty;
+      }
+      .hero-copy h1 em {
+        font-style: normal;
+        color: var(--gold-fill);
+      }
+      .hero-copy p {
+        color: #dce5e5;
+        line-height: 2;
+        font-size: 0.98rem;
+      }
+      .hero-cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 10px 20px;
+        font-weight: 700;
+        font-size: 0.92rem;
+        border: 1px solid transparent;
+        border-radius: var(--radius);
+        transition:
+          transform var(--dur1) var(--ease),
+          background var(--dur2) ease,
+          box-shadow var(--dur2) ease;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .btn-primary {
+        background: var(--gold-fill);
+        color: var(--ink);
+        box-shadow:
+          inset 0 1px 0 #ffffff8a,
+          0 6px 14px #0b233133;
+      }
+      .btn-secondary {
+        border-color: #9db0b6;
+        color: var(--paper);
+        background: #ffffff12;
+      }
+      .btn-ghost {
+        background: transparent;
+        color: inherit;
+        border-bottom: 1px solid currentColor;
+        border-radius: 0;
+      }
+      .btn-navy {
+        background: var(--ink);
+        color: var(--paper);
+      }
+      .btn-outline {
+        background: transparent;
+        border-color: var(--ink);
+        color: var(--ink);
+      }
+      .btn-success {
+        background: var(--mint);
+        color: #fff;
+      }
+      .btn:disabled,
+      .btn[aria-disabled='true'] {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .hero-scene {
+        position: relative;
+        background: #244259;
+        overflow: hidden;
+      }
+      .hero-scene img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        opacity: 0.96;
+      }
+      .hero-scene::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, #10243d00 50%, #10243db8 100%);
+      }
+      .hotspot {
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        background: #10243dcc;
+        color: #f6f1e7;
+        border: 1px solid #ffffff40;
+        padding: 5px 10px;
+        border-radius: 40px;
+        font-size: 0.72rem;
+        white-space: nowrap;
+      }
+      .hotspot i {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: block;
+      }
+      .hs-1 {
+        top: 12%;
+        right: 46%;
+      }
+      .hs-2 {
+        top: 46%;
+        right: 12%;
+      }
+      .hs-3 {
+        top: 46%;
+        right: 76%;
+      }
+      .hs-4 {
+        bottom: 11%;
+        right: 46%;
+      }
+      .hero-index {
+        position: absolute;
+        bottom: 16px;
+        right: 22px;
+        z-index: 2;
+        color: var(--gold-fill);
+        font-size: 0.75rem;
+      }
+
+      /* Live balance */
+      .lab {
+        margin-top: 22px;
+        background: #fffdf8;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: clamp(20px, 3vw, 36px);
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.9fr);
+        gap: 30px;
+        align-items: center;
+      }
+      .lab h3 {
+        font-size: 1.25rem;
+      }
+      .scale {
+        padding: 26px 10px 0;
+      }
+      .beam {
+        position: relative;
+        height: 6px;
+        background: var(--ink);
+        border-radius: 3px;
+        transform-origin: center center;
+        transition: transform 420ms var(--ease);
+      }
+      .beam::before {
+        content: '';
+        position: absolute;
+        right: 50%;
+        top: 6px;
+        transform: translateX(50%);
+        border-inline: 16px solid transparent;
+        border-top: 26px solid var(--ink);
+      }
+      .pan {
+        position: absolute;
+        top: 16px;
+        width: 40%;
+        min-height: 92px;
+        background: var(--cream);
+        border: 1px solid var(--line);
+        border-bottom: 5px solid var(--ocean);
+        border-radius: 8px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+      .pan.left {
+        right: 4%;
+      }
+      .pan.right {
+        left: 4%;
+      }
+      .pan b {
+        font:
+          700 1.5rem Georgia,
+          serif;
+        color: var(--ink);
+      }
+      .pan .dots {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        justify-content: center;
+        max-width: 110px;
+      }
+      .pan .dots i {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--ocean);
+        display: block;
+      }
+      .pan small {
+        font-size: 0.72rem;
+        color: var(--ink-soft);
+      }
+      .equation-strip {
+        margin-top: 22px;
+        background: var(--ink);
+        color: var(--paper);
+        padding: 10px 18px;
+        border-radius: var(--radius);
+        width: fit-content;
+        font:
+          1.2rem Georgia,
+          serif;
+        direction: ltr;
+      }
+      .verdict {
+        min-height: 2.6em;
+        margin-top: 16px;
+        font-weight: 700;
+      }
+      .verdict[data-state='equal'] {
+        color: var(--mint);
+      }
+      .verdict[data-state='off'] {
+        color: var(--coral);
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 6px;
+      }
+      .controls .btn {
+        min-height: 46px;
+        padding: 9px 14px;
+        font-size: 0.86rem;
+      }
+      .pulse {
+        animation: verified 620ms var(--ease) 1 both;
+      }
+      @keyframes verified {
+        0% {
+          box-shadow: 0 0 0 0 #3e9e8255;
+        }
+        60% {
+          box-shadow: 0 0 0 10px #3e9e8200;
+        }
+        100% {
+          box-shadow: 0 0 0 0 #3e9e8200;
+        }
+      }
+
+      /* Motion score */
+      .beats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 32px;
+      }
+      .beat {
+        background: #fffdf8;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 22px;
+      }
+      .beat .num {
+        font:
+          1rem Georgia,
+          serif;
+        color: var(--gold);
+      }
+      .beat p {
+        font-size: 0.88rem;
+        margin: 8px 0 18px;
+      }
+      .stage {
+        height: 96px;
+        background: var(--cream);
+        border-radius: 7px;
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+      }
+      .stage .mask-line {
+        font-weight: 800;
+        font-size: 1.2rem;
+      }
+      .stage .draw {
+        width: 78%;
+        height: 2px;
+        background: var(--ink);
+        position: relative;
+      }
+      .stage .draw::after {
+        content: '=';
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        transform: translate(50%, -50%);
+        background: var(--cream);
+        color: var(--gold);
+        padding: 0 8px;
+        font:
+          700 1rem Georgia,
+          serif;
+      }
+      .stage .ring {
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        border: 3px solid var(--mint);
+        display: grid;
+        place-items: center;
+        color: var(--mint);
+        font-weight: 800;
+      }
+      .replay {
+        margin-top: 14px;
+        font-size: 0.8rem;
+        padding: 6px 12px;
+        min-height: 40px;
+        background: transparent;
+        border: 1px solid var(--ink);
+        color: var(--ink);
+      }
+      .play .mask-line {
+        animation: maskIn 720ms var(--ease) 1 both;
+      }
+      .play .draw {
+        animation: drawIn 720ms var(--ease) 1 both;
+        transform-origin: right center;
+      }
+      .play .ring {
+        animation: ringIn 620ms var(--ease) 1 both;
+      }
+      @keyframes maskIn {
+        from {
+          clip-path: inset(0 100% 0 0);
+          opacity: 0.5;
+        }
+        to {
+          clip-path: inset(0);
+          opacity: 1;
+        }
+      }
+      @keyframes drawIn {
+        from {
+          transform: scaleX(0);
+        }
+        to {
+          transform: scaleX(1);
+        }
+      }
+      @keyframes ringIn {
+        0% {
+          transform: scale(0.72);
+          opacity: 0;
+        }
+        60% {
+          transform: scale(1.06);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .motion-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 28px;
+        font-size: 0.86rem;
+      }
+      .motion-table th,
+      .motion-table td {
+        text-align: right;
+        padding: 10px 8px;
+        border-bottom: 1px solid var(--line);
+      }
+      .motion-table th {
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .motion-table td {
+        color: var(--ink-soft);
+      }
+      .motion-table code {
+        direction: ltr;
+        font-family: Georgia, serif;
+        color: var(--ocean);
+      }
+
+      /* World map concept */
+      .route {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0;
+        margin-top: 40px;
+      }
+      .station {
+        flex: 1 1 0;
+        text-align: center;
+        min-width: 0;
+      }
+      .station .disc {
+        width: clamp(62px, 8vw, 92px);
+        aspect-ratio: 1;
+        margin: auto;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        font-size: 1.25rem;
+        border: 2px solid var(--line);
+        background: #fffdf8;
+        color: var(--ink-soft);
+        position: relative;
+      }
+      .station.restored .disc {
+        background: var(--mint-fill);
+        border-color: var(--mint);
+        color: #0f3b2f;
+      }
+      .station.open .disc {
+        background: var(--gold-fill);
+        border-color: var(--gold);
+        color: #3d2a08;
+      }
+      .station.locked .disc {
+        border-style: dashed;
+      }
+      .station .disc::after {
+        content: '';
+        position: absolute;
+        inset: -9px;
+        border-radius: 50%;
+        border: 1px dashed #14263e26;
+      }
+      .station b {
+        display: block;
+        font-size: 0.9rem;
+        margin-top: 16px;
+      }
+      .station small {
+        display: block;
+        font-size: 0.76rem;
+        color: var(--ink-soft);
+        line-height: 1.7;
+      }
+      .nodes {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 10px;
+      }
+      .nodes i {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 1px solid var(--ink-soft);
+        display: block;
+      }
+      .station.restored .nodes i {
+        background: var(--mint);
+        border-color: var(--mint);
+      }
+      .station.open .nodes i:first-child {
+        background: var(--gold);
+        border-color: var(--gold);
+      }
+      .bridge {
+        flex: 0 0 clamp(24px, 5vw, 74px);
+        height: 2px;
+        background: var(--line);
+        margin-top: clamp(31px, 4vw, 46px);
+        position: relative;
+      }
+      .bridge.done {
+        background: var(--mint);
+      }
+      .bridge.broken {
+        background: repeating-linear-gradient(90deg, var(--line) 0 7px, transparent 7px 13px);
+        height: 3px;
+      }
+      .bridge::after {
+        content: '';
+        position: absolute;
+        right: 50%;
+        top: -3px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        transform: translateX(50%);
+        background: var(--paper);
+        border: 1px solid var(--line);
+      }
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-top: 34px;
+        font-size: 0.84rem;
+        color: var(--ink-soft);
+      }
+      .legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .legend i {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: block;
+      }
+
+      /* Equation ledger */
+      .ledger {
+        margin-top: 32px;
+        background: #fffdf8;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 56px;
+        overflow: hidden;
+      }
+      .ledger-body {
+        padding: clamp(20px, 3vw, 34px);
+      }
+      .ledger-line {
+        direction: ltr;
+        text-align: center;
+        font:
+          1.3rem Georgia,
+          serif;
+        padding: 13px 10px;
+        border-bottom: 1px solid var(--line);
+        color: var(--ink);
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      .ledger-line.visible {
+        animation: stepIn 360ms var(--ease) 1 both;
+      }
+      .ledger-line.first {
+        opacity: 1;
+        transform: none;
+        animation: none;
+        border-bottom: 2px solid var(--ink);
+      }
+      @keyframes stepIn {
+        from {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .ledger-line .flash {
+        display: inline-block;
+        padding: 0 5px;
+        border-radius: 4px;
+      }
+      .visible .flash {
+        animation: mirrorFlash 480ms ease 1 both;
+      }
+      @keyframes mirrorFlash {
+        0%,
+        100% {
+          background: transparent;
+        }
+        40% {
+          background: #e9b96866;
+        }
+      }
+      .ledger-rail {
+        border-right: 1px solid var(--line);
+        background: var(--cream);
+        display: grid;
+        align-content: start;
+        gap: 0;
+      }
+      .ledger-rail i {
+        height: 52px;
+        display: grid;
+        place-items: center;
+        font-style: normal;
+        font:
+          0.9rem Georgia,
+          serif;
+        color: var(--ink-soft);
+        border-bottom: 1px solid #14263e12;
+      }
+      .ledger-foot {
+        padding: 0 clamp(20px, 3vw, 34px) 26px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+      .ledger-foot small {
+        color: var(--ink-soft);
+        font-size: 0.82rem;
+      }
+
+      /* Button specimen */
+      .specimen {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+        align-items: center;
+      }
+      .specimen .btn {
+        min-height: 46px;
+      }
+      .no-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 26px;
+        margin-top: 30px;
+        font-size: 0.88rem;
+        color: var(--ink-soft);
+      }
+      .no-list div {
+        border-bottom: 1px dashed var(--line);
+        padding: 8px 0;
+      }
+      .no-list b {
+        color: var(--coral);
+      }
+
+      footer.page {
+        padding: 44px 0 70px;
+        font-size: 0.84rem;
+        color: var(--ink-soft);
+      }
+      footer.page .brand svg {
+        width: 36px;
+        height: 36px;
+      }
+      footer.page .brand b {
+        font-size: 1rem;
+      }
+
+      @media (max-width: 860px) {
+        .hero-mock,
+        .lab,
+        .type-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-scene {
+          min-height: 300px;
+        }
+        .beats,
+        .swatches {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .route {
+          flex-wrap: wrap;
+          gap: 18px;
+        }
+        .station {
+          flex: 1 1 40%;
+        }
+        .bridge {
+          display: none;
+        }
+      }
+      @media (max-width: 520px) {
+        .beats,
+        .swatches,
+        .roles,
+        .no-list {
+          grid-template-columns: 1fr;
+        }
+        .hotspot {
+          display: none;
+        }
+        .masthead {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .masthead .meta {
+          text-align: right;
+        }
+        .ledger {
+          grid-template-columns: 1fr;
+        }
+        .ledger-rail {
+          display: none;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="notice">
+      <div class="wrap">
+        <strong>بورد جهت پیشنهادی</strong> · صرفاً نمایش یک زبان بصری تازه. هیچ فایلی از اپلیکیشن
+        تغییر نکرده است و این صفحه وارد باندل نمیشود.
+      </div>
+    </div>
+
+    <div class="wrap">
+      <header class="masthead">
+        <div class="brand">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <g
+              fill="none"
+              stroke="#d9a34a"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M8 25 H56" />
+              <path d="M32 25 V46 M20 50 H44" />
+              <path d="M32 25 L32 18" />
+              <path d="M8 25 V33 M56 25 V33" />
+              <path d="M2 33 H14 M50 33 H62" />
+              <path d="M2 33 A6 6 0 0 0 14 33 M50 33 A6 6 0 0 0 62 33" />
+              <path d="M27 13 H37 M27 17 H37" stroke-width="2" />
+            </g>
+          </svg>
+          <div>
+            <b>ماجراجویی معادله‌ها</b>
+            <small>یک زبان، چهار فصل، یک ترازو</small>
+          </div>
+        </div>
+        <div class="meta">آبان ۱۴۰۵<br />پیشنهاد طراحی گرافیکی، حرکت و سناریو</div>
+      </header>
+
+      <section>
+        <span class="eyebrow">۰۱ / هویت</span>
+        <h2>هر رنگ، یک نقش. نه یک تزیین.</h2>
+        <p class="lead">
+          پالت فعلی خوب است، ولی طلا همزمان «برو»، «شمارهٔ بخش»، «لینک فعال» و «پاداش» است. پیشنهاد:
+          طلا فقط برای لحظهٔ گشودهشدن بماند؛ نعنایی یعنی برابری تأییدشده، مرجانی یعنی تصحیح ملایم،
+          بنفش یعنی مجهول. چهار رنگ جزیرهها هم از دل صحنهٔ واقعی بازی وارد توکنها میشوند تا سایت و
+          جهان یکی شوند.
+        </p>
+        <div class="swatches">
+          <div class="swatch">
+            <i style="background: #14263e"></i><b>مرکب و قاب</b><span>قلم، هدر، زمینهٔ قهرمان</span
+            ><code>#14263E</code>
+          </div>
+          <div class="swatch">
+            <i style="background: #f7f4ec"></i><b>سطح خواندن</b><span>همهٔ متنهای درسی</span
+            ><code>#F7F4EC</code>
+          </div>
+          <div class="swatch">
+            <i style="background: #3e9e82"></i><b>برابری تأییدشده</b
+            ><span>نجات از حدس، جواب درست</span><code>#3E9E82</code>
+          </div>
+          <div class="swatch">
+            <i style="background: #d9a34a"></i><b>گشودهشدن</b
+            ><span>فقط پل، دروازه، پاداش یکباره</span><code>#D9A34A</code>
+          </div>
+          <div class="swatch">
+            <i style="background: #c96b57"></i><b>تصحیح ملایم</b
+            ><span>خطای علامت، مخرج، یکطرفه</span><code>#C96B57</code>
+          </div>
+          <div class="swatch">
+            <i style="background: #7c63a6"></i><b>مجهول</b><span>جنگل، جعبه، کشفنشده</span
+            ><code>#7C63A6</code>
+          </div>
+          <div class="swatch">
+            <i style="background: #3b6479"></i><b>ناوبری و عمق</b><span>غار وارون، لایهٔ دوم</span
+            ><code>#3B6479</code>
+          </div>
+          <div class="swatch">
+            <i
+              style="
+                background: linear-gradient(
+                  90deg,
+                  #65b89b 25%,
+                  #927dbb 25% 50%,
+                  #426d83 50% 75%,
+                  #bd9456 75%
+                );
+              "
+            ></i
+            ><b>چهار فصل</b><span>رنگ گرفتهشده از صحنهٔ واقعی</span><code>--region-1..4</code>
+          </div>
+        </div>
+        <div class="roles">
+          <div class="role">
+            <i style="background: var(--r1)"></i><b>جزیرهٔ تعادل</b><span>: برابری دیده میشود</span>
+          </div>
+          <div class="role">
+            <i style="background: var(--r2)"></i><b>جنگل مجهول</b><span>: x معنا پیدا میکند</span>
+          </div>
+          <div class="role">
+            <i style="background: var(--r3)"></i><b>غار وارون</b><span>: گرهها باز میشوند</span>
+          </div>
+          <div class="role">
+            <i style="background: var(--r4)"></i><b>قلعهٔ معادله</b><span>: جواب بررسی میشود</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="balance-line" aria-hidden="true"></div>
+
+      <section>
+        <span class="eyebrow">۰۲ / تایپوگرافی</span>
+        <h2>فارسی را فشرده نکنیم.</h2>
+        <p>
+          <span class="math">letter-spacing: -0.065em</span> روی تیتر ۸٫۸rem، اتصال حروف فارسی را
+          بههم میزند. وزن ۸۰۰ Vazirmatn در بسته موجود است و هنوز وارد اپ نشده؛ با همان وزن و بدون
+          فشردهسازی، تیتر هم محکمتر است و هم خواناتر. زیرش یک مقیاس تایپ توکنشده میآید تا بیست
+          <span class="math">clamp()</span>
+          پراکنده جای خود را به ریتم واحد بدهند.
+        </p>
+        <div class="type-grid">
+          <div class="type-card before">
+            <span class="tag">وضع فعلی / ترکینگ منفی</span>
+            <div class="sample">راز سرزمین مجهول‌ها</div>
+            <p class="tight" style="font-size: 0.84rem">
+              اتصالها تنگ، نقطهها نزدیک، در اندازهٔ بزرگ آشکار.
+            </p>
+          </div>
+          <div class="type-card after">
+            <span class="tag">پیشنهاد / ترکینگ صفر + وزن ۸۰۰</span>
+            <div class="sample">راز سرزمین مجهول‌ها</div>
+            <p class="tight" style="font-size: 0.84rem">
+              همان اندازه، نفس بیشتر، <span class="math">text-wrap: pretty</span>.
+            </p>
+          </div>
+        </div>
+        <div class="scale-list">
+          <div><span>نمایش / قهرمان</span><code>--step-6 · 800 · 1.2</code></div>
+          <div><span>فصل / صفحات داخلی</span><code>--step-4 · 800 · 1.25</code></div>
+          <div><span>بدنهٔ درسی</span><code>--step-0 · 400 · 1.9</code></div>
+          <div>
+            <span>اعداد روایی فارسی، ریاضی لاتین ایزوله</span><code>۰۱ … ۰۸ / 2x + 4 = 12</code>
+          </div>
+        </div>
+      </section>
+
+      <section style="background: #efe7d588">
+        <div class="wrap" style="padding: 0">
+          <span class="eyebrow">۰۳ / قهرمان قابل بازی</span>
+          <h2>وعده را همان ویوپورت اول اجرا کن.</h2>
+          <p>
+            امروز هشت بخش دربارهٔ «چرا برابری مهم است» حرف میزنند. پیشنهاد: یک معادلهٔ واقعی، حلشدنی
+            و کوچک در همان صفحهٔ نخست، ساختهشده با همان موتور کسری دقیق، بدون WebGL. چهار نشان روی
+            تصویر، مستقیم به همان جزیرهها وصلاند؛ تصویر پسزمینه همچنان از صحنهٔ واقعی بازی است.
+          </p>
+          <div class="hero-mock">
+            <div class="hero-copy">
+              <span class="kicker">فصل ۰۱ / جزیرهٔ تعادل</span>
+              <h1>راز <em>سرزمین</em><br />مجهول‌ها</h1>
+              <p>
+                در سرزمینی که توازن از دست رفته، هر برابری یک پل است. پیش از خواندن توضیح، یکی را
+                خودت متوازن کن.
+              </p>
+              <div class="hero-cta">
+                <span class="btn btn-primary">اولین معادله را حل کن ←</span>
+                <span class="btn btn-secondary">دیدن نقشهٔ چهار منطقه</span>
+              </div>
+              <p class="caption" style="color: #a9bcc0; margin-top: 26px">
+                پایهٔ هفتم · بدون حساب کاربری · پیشرفت در همین مرورگر
+              </p>
+            </div>
+            <div class="hero-scene">
+              <img
+                src="src/assets/game-scene-desktop.webp"
+                alt="صحنهٔ ایزومتریک چهار جزیرهٔ بازی"
+                width="929"
+                height="634"
+              />
+              <span class="hotspot hs-1"
+                ><i style="background: #65b89b"></i>جزیرهٔ تعادل · ۰۱ و ۰۲</span
+              >
+              <span class="hotspot hs-2"
+                ><i style="background: #927dbb"></i>جنگل مجهول · ۰۳ و ۰۴</span
+              >
+              <span class="hotspot hs-3"
+                ><i style="background: #426d83"></i>غار وارون · ۰۵ و ۰۶</span
+              >
+              <span class="hotspot hs-4"
+                ><i style="background: #bd9456"></i>قلعهٔ معادله · ۰۷ و ۰۸</span
+              >
+              <span class="hero-index">فصل ۰۱ / ۰۴</span>
+            </div>
+          </div>
+
+          <div class="lab">
+            <div>
+              <span class="eyebrow" style="margin-bottom: 10px">نمونهٔ زنده / ترازوی دیجتیک</span>
+              <h3>اهمیت بده، بهجای اینکه تغییر شفافیت بده.</h3>
+              <p>
+                عمل یکطرفه تیر را کج نگه میدارد؛ عمل دوطرفه با یک فنر آرام به تراز برمیگرداند؛ لحظهٔ
+                برابری یک پالس نعنایی یکباره میگیرد. همان هشت کد خطای موتور، اینبار در محل حادثه
+                دیده میشوند، نه در یک جعبهٔ متن. امتحانش کن:
+              </p>
+              <div class="controls">
+                <button class="btn btn-outline" type="button" data-scale="left">۱ به چپ</button>
+                <button class="btn btn-outline" type="button" data-scale="right">۱ به راست</button>
+                <button class="btn btn-navy" type="button" data-scale="both">۱ به هر دو طرف</button>
+                <button class="btn btn-ghost" type="button" data-scale="reset">از نو: ۵ = ۵</button>
+              </div>
+              <div class="equation-strip" id="equation" dir="ltr">5 = 5</div>
+              <p class="verdict" id="verdict" role="status" aria-live="polite" data-state="equal">
+                دو کفه همارزشاند.
+              </p>
+            </div>
+            <div class="scale" id="scaleWrap">
+              <div class="beam" id="beam">
+                <div class="pan left">
+                  <b id="leftCount">۵</b>
+                  <div class="dots" id="leftDots"></div>
+                  <small>کفهٔ چپ</small>
+                </div>
+                <div class="pan right">
+                  <b id="rightCount">۵</b>
+                  <div class="dots" id="rightDots"></div>
+                  <small>کفهٔ راست</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="caption">
+            در حالت «حرکت کمتر»، چرخش حذف میشود و فقط رنگ و متن وضعیت تغییر میکند.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <span class="eyebrow">۰۴ / زبان حرکت</span>
+        <h2>سه ضربه، سه معنا.</h2>
+        <p>
+          بهجای یک قانون سراسری «محو شدن ۰٫۷۸ به ۱» برای همهٔ بخشها، حرکت را به لحظهٔ آموزشی گره
+          بزن: ورود قهرمان، کشیدهشدن خط تعادل در آغاز فصل، و حلقهٔ تأیید بعد از جایگذاری. هیچکدام
+          تکرارشونده نیستند، هیچکدام کانتینر حاوی دکمه را جابهجا نمیکنند.
+        </p>
+        <div class="beats">
+          <div class="beat">
+            <span class="num">۰۱</span>
+            <h3>ورود</h3>
+            <p>خطوط تیتر با ماسک و ۸۰ms فاصله. تصویر از ۱٫۰۴ به ۱. فقط بار نخست، ۷۲۰ms.</p>
+            <div class="stage" id="beat1">
+              <span class="mask-line">هر معادله، یک راه تازه</span>
+            </div>
+            <button class="replay" type="button" data-replay="beat1">پخش دوباره</button>
+          </div>
+          <div class="beat">
+            <span class="num">۰۲</span>
+            <h3>فصل</h3>
+            <p>خط تعادل از راست کشیده میشود، بریدگی «=» وسط آن پدیدار میگردد. ۴۸۰ms.</p>
+            <div class="stage" id="beat2"><span class="draw"></span></div>
+            <button class="replay" type="button" data-replay="beat2">پخش دوباره</button>
+          </div>
+          <div class="beat">
+            <span class="num">۰۳</span>
+            <h3>تأیید</h3>
+            <p>
+              بعد از جایگذاری در معادلهٔ اصلی: یک حلقهٔ نعنایی، یکبار، ۶۲۰ms. عدد واقعی XP میشمرد.
+            </p>
+            <div class="stage" id="beat3"><span class="ring">=</span></div>
+            <button class="replay" type="button" data-replay="beat3">پخش دوباره</button>
+          </div>
+        </div>
+        <table class="motion-table">
+          <thead>
+            <tr>
+              <th>لحظه</th>
+              <th>مدت</th>
+              <th>هدف آموزشی</th>
+              <th>معادل بیکنار</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>کج شدن ترازو</td>
+              <td><code>420ms</code></td>
+              <td>نشان دادن تغییر یکطرفه</td>
+              <td>رنگ مرجانی + متن خطا</td>
+            </tr>
+            <tr>
+              <td>درج گام معادله</td>
+              <td><code>360ms</code></td>
+              <td>همزمانی عمل روی دو طرف</td>
+              <td>خط جدید بدون جابهجایی</td>
+            </tr>
+            <tr>
+              <td>افشای تیتر کوتاه</td>
+              <td><code>720ms</code></td>
+              <td>جهت خواندن فصل</td>
+              <td>متن کامل از ابتدا</td>
+            </tr>
+            <tr>
+              <td>حلقهٔ تأیید</td>
+              <td><code>620ms</code></td>
+              <td>ثبت برابری واقعی</td>
+              <td>تغییر رنگ نعنایی</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section style="background: #efe7d588">
+        <div class="wrap" style="padding: 0">
+          <span class="eyebrow">۰۵ / جهان بهجای منو</span>
+          <h2>مسیر، نه ضربدر.</h2>
+          <p>
+            صحنهٔ فعلی چهار نشان همفاصله و همزماندر دسترس دارد؛ یعنی «منوی چهارتایی»، نه «سفری که
+            پلهایش یکییکی باز میشود». پیشنهاد: چهار ایستگاه روی یک مسیر پیوسته، هشت گرهٔ مرحله، و
+            پلهای شکستهٔ پیشرو. هر تأیید موفق یک تختهٔ واقعی به پل اضافه کند، چون وضعیت از همان
+            <span class="math">completedIds</span>
+            ذخیرهشده میآید، نه از انیمیشن تزیینی.
+          </p>
+          <div class="route">
+            <div class="station restored">
+              <div class="disc">۰۱</div>
+              <b>جزیرهٔ تعادل</b><small>برابری دیده شد</small>
+              <div class="nodes"><i></i><i></i></div>
+            </div>
+            <div class="bridge done" aria-hidden="true"></div>
+            <div class="station open">
+              <div class="disc">۰۲</div>
+              <b>جنگل مجهول</b><small>یک گره باز، یکی در انتظار</small>
+              <div class="nodes"><i></i><i></i></div>
+            </div>
+            <div class="bridge broken" aria-hidden="true"></div>
+            <div class="station locked">
+              <div class="disc">۰۳</div>
+              <b>غار وارون</b><small>پل هنوز ترمیم نشده</small>
+              <div class="nodes"><i></i><i></i></div>
+            </div>
+            <div class="bridge broken" aria-hidden="true"></div>
+            <div class="station locked">
+              <div class="disc">۰۴</div>
+              <b>قلعهٔ معادله</b><small>چراغها خاموشاند</small>
+              <div class="nodes"><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="legend">
+            <span><i style="background: var(--mint-fill)"></i>بازسازیشده</span>
+            <span><i style="background: var(--gold-fill)"></i>باز / در دسترس</span>
+            <span
+              ><i style="border: 1px dashed #888; background: transparent"></i>قفلشده ولی قابل
+              دیدن</span
+            >
+            <span><i style="background: var(--line)"></i>پل شکسته</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <span class="eyebrow">۰۶ / دفتر معادله</span>
+        <h2>تبدیل، دیده شود.</h2>
+        <p>
+          امروز خطوط حل معادله با عوضشدن state فوری ظاهر میشوند؛ یعنی دقیقاً همان چیزی که محصول
+          میخواهد آموزش بدهد، پنهان است. هر گام باید با یک هایلایت آینهای روی دو طرف، حذف جمله و
+          ورود خط بعدی همراه باشد. ریل کناری، تاریخچهٔ گامها و امکان برگشت را نگه میدارد. دکمه را
+          بزن:
+        </p>
+        <div class="ledger">
+          <div>
+            <div class="ledger-body" id="ledgerBody">
+              <div class="ledger-line first" dir="ltr">
+                <span class="flash">2x + 4</span> = <span class="flash">12</span>
+              </div>
+              <div class="ledger-line" dir="ltr">
+                <span class="flash">2x</span> = <span class="flash">8</span>
+              </div>
+              <div class="ledger-line" dir="ltr">
+                <span class="flash">x</span> = <span class="flash">4</span>
+              </div>
+              <div class="ledger-line" dir="ltr">2(4) + 4 = 12 ✓</div>
+            </div>
+            <div class="ledger-foot">
+              <button class="btn btn-navy" type="button" id="nextStep">گام بعدی ←</button>
+              <button class="btn btn-outline" type="button" id="resetLedger">از نو</button>
+              <small id="stepNote">گام ۱ از ۴ · عمل یکسان روی هر دو طرف</small>
+            </div>
+          </div>
+          <div class="ledger-rail" aria-hidden="true"><i>۱</i><i>۲</i><i>۳</i><i>✓</i></div>
+        </div>
+      </section>
+
+      <section style="background: #efe7d588">
+        <div class="wrap" style="padding: 0">
+          <span class="eyebrow">۰۷ / دکمهها</span>
+          <h2>چهار نقش، یک شعاع.</h2>
+          <p>
+            بهجای سایهٔ نوری سراسری روی تقریباً هر کنترل، واریانتهای صریح: اولیه، ثانویه، سومین و
+            تأیید. گوشهٔ ۹px، هدف ۴۴px و فوکوس ۳px همانطور که تستها تضمین کردهاند، دستنخورده
+            میمانند.
+          </p>
+          <div class="specimen">
+            <span class="btn btn-primary">شروع یادگیری</span>
+            <span class="btn btn-outline">دیدن نقشه</span>
+            <span class="btn btn-ghost">بازگشت</span>
+            <span class="btn btn-success">برابر شد ✓</span>
+            <span class="btn btn-outline" aria-disabled="true">قفلشده</span>
+          </div>
+          <div class="no-list">
+            <div><b>نه</b> بلور سراسری روی کنترلها هنگام اسکرول</div>
+            <div><b>نه</b> پالس یا شناورشدن دائمی</div>
+            <div><b>نه</b> جابهجایی کانتینر حاوی دکمه</div>
+            <div><b>نه</b> عدد، بج یا گواهی ساختگی</div>
+            <div><b>نه</b> ترکینگ منفی روی تیتر فارسی</div>
+            <div><b>نه</b> افشای متنی که فوکوس را پنهان کند</div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="page">
+        <div class="balance-line" aria-hidden="true" style="margin-bottom: 40px"></div>
+        <div class="brand">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <g
+              fill="none"
+              stroke="#d9a34a"
+              stroke-width="2.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M8 25 H56 M32 25 V46 M20 50 H44 M32 25 L32 18" />
+              <path d="M8 25 V33 M56 25 V33 M2 33 H14 M50 33 H62" />
+              <path d="M2 33 A6 6 0 0 0 14 33 M50 33 A6 6 0 0 0 62 33" />
+              <path d="M27 13 H37 M27 17 H37" stroke-width="2" />
+            </g>
+          </svg>
+          <div><b>ماجراجویی معادله‌ها</b><small>هر دو سوی ماجرا مهماند.</small></div>
+        </div>
+        <p style="margin-top: 22px; font-size: 0.82rem">
+          این صفحه یک بورد جهتدهی مستقل است. جزئیات، ارجاع فایلها، اولویتها و دروازهٔ پذیرش در
+          <span class="math" style="font-family: inherit">docs/DESIGN_REVIEW_2026-11-03.md</span>
+          آمده است. هیچ فاز تازهای آغاز نشده و هیچ کد اپلیکیشنی تغییر نکرده است.
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      // ترازوی زنده: همان منطق مفهومی، بدون وابستگی به اپلیکیشن.
+      const fa = (n) => String(n).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[Number(d)]);
+      const state = { left: 5, right: 5 };
+      const beam = document.getElementById('beam');
+      const equation = document.getElementById('equation');
+      const verdict = document.getElementById('verdict');
+      const scaleWrap = document.getElementById('scaleWrap');
+      function dots(node, count) {
+        node.innerHTML = '';
+        for (let i = 0; i < count; i += 1) node.appendChild(document.createElement('i'));
+      }
+      function renderScale() {
+        const { left, right } = state;
+        document.getElementById('leftCount').textContent = fa(left);
+        document.getElementById('rightCount').textContent = fa(right);
+        dots(document.getElementById('leftDots'), left);
+        dots(document.getElementById('rightDots'), right);
+        equation.textContent = `${left} = ${right}`;
+        const angle = Math.max(-8, Math.min(8, -(left - right) * 2.2));
+        beam.style.transform = `rotate(${angle}deg)`;
+        const equal = left === right;
+        verdict.dataset.state = equal ? 'equal' : 'off';
+        verdict.textContent = equal
+          ? 'دو کفه همارزشاند. عمل یکسان، تعادل را نگه داشت.'
+          : 'فقط یک طرف تغییر کرد؛ همان کار را روی طرف دیگر هم انجام بده.';
+        if (equal) {
+          scaleWrap.classList.remove('pulse');
+          void scaleWrap.offsetWidth;
+          scaleWrap.classList.add('pulse');
+        }
+      }
+      document.querySelectorAll('[data-scale]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const action = button.dataset.scale;
+          if (action === 'left') state.left += 1;
+          if (action === 'right') state.right += 1;
+          if (action === 'both') {
+            state.left += 1;
+            state.right += 1;
+          }
+          if (action === 'reset') {
+            state.left = 5;
+            state.right = 5;
+          }
+          if (state.left > 9 || state.right > 9) {
+            state.left = 5;
+            state.right = 5;
+          }
+          renderScale();
+        });
+      });
+      renderScale();
+
+      // پخش دوبارهٔ سه ضربهٔ حرکت.
+      document.querySelectorAll('[data-replay]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const stage = document.getElementById(button.dataset.replay);
+          stage.classList.remove('play');
+          void stage.offsetWidth;
+          stage.classList.add('play');
+        });
+      });
+
+      // دفتر معادله: درج گامباگام.
+      const lines = Array.from(document.querySelectorAll('#ledgerBody .ledger-line'));
+      const stepNote = document.getElementById('stepNote');
+      const notes = [
+        'گام ۱ از ۴ · عمل یکسان روی هر دو طرف',
+        'گام ۲ از ۴ · ۴ از هر دو طرف کم شد',
+        'گام ۳ از ۴ · بر ۲ تقسیم شد، x تنها ماند',
+        'گام ۴ از ۴ · جایگذاری در معادلهٔ اصلی، دو طرف برابر شدند',
+      ];
+      let shown = 1;
+      function paintLedger() {
+        lines.forEach((line, i) => {
+          line.classList.toggle('visible', i > 0 && i < shown);
+          if (i > 0 && i >= shown) {
+            line.style.opacity = '0';
+            line.style.transform = 'translateY(-8px)';
+          }
+        });
+        stepNote.textContent = notes[shown - 1];
+        document.getElementById('nextStep').textContent =
+          shown >= lines.length ? 'همهٔ گامها آمدند' : 'گام بعدی ←';
+      }
+      document.getElementById('nextStep').addEventListener('click', () => {
+        if (shown < lines.length) {
+          shown += 1;
+          paintLedger();
+        }
+      });
+      document.getElementById('resetLedger').addEventListener('click', () => {
+        shown = 1;
+        paintLedger();
+      });
+      paintLedger();
+    </script>
+  </body>
+</html>

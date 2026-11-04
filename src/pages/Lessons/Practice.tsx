@@ -29,6 +29,7 @@ import { BidiText } from './BidiText';
 import { ResetAction } from '../../components/ui/ResetAction';
 import { useFractionPractice } from '../../store/useFractionPractice';
 import type { Rational } from '../../features/equation-engine/rational';
+import { useMotionList } from '../../features/motion/useMotionList';
 
 const explanations: Record<FeedbackCode, string> = {
   correct: 'درست است: همان عمل در هر دو طرف انجام شد و برابری حفظ شد.',
@@ -63,6 +64,7 @@ function choices(
   ];
 }
 export function Practice({ lesson, fractions }: { lesson: Lesson; fractions: boolean }) {
+  const ledgerRef = useMotionList<HTMLDivElement>();
   const practiceRecord = useFractionPractice((state) => state.record);
   const markVerified = useFractionPractice((state) => state.markVerified);
   const resetPractice = useFractionPractice((state) => state.reset);
@@ -169,20 +171,22 @@ export function Practice({ lesson, fractions }: { lesson: Lesson; fractions: boo
       <div className={styles.mathCard} dir="ltr">
         <BlockMath math={equationTex(eq)} />
       </div>
-      {status > 1 && (
-        <div className={styles.stepResult} dir="ltr" aria-label="نتیجهٔ گام اول">
-          <BlockMath
-            math={stateTex(
-              step(eq, 'constant', { operation: 'subtract', amount: eq.b, sides: 'both' }).state!,
-            )}
-          />
-        </div>
-      )}
-      {(phase === 'verify' || phase === 'done') && (
-        <div className={styles.stepResult} dir="ltr" aria-label="نتیجهٔ گام دوم">
-          <BlockMath math={`x = ${tex(solution(eq))}`} />
-        </div>
-      )}
+      <div ref={ledgerRef} aria-live="polite">
+        {status > 1 && (
+          <div className={styles.stepResult} dir="ltr" aria-label="نتیجهٔ گام اول">
+            <BlockMath
+              math={stateTex(
+                step(eq, 'constant', { operation: 'subtract', amount: eq.b, sides: 'both' }).state!,
+              )}
+            />
+          </div>
+        )}
+        {(phase === 'verify' || phase === 'done') && (
+          <div className={styles.stepResult} dir="ltr" aria-label="نتیجهٔ گام دوم">
+            <BlockMath math={`x = ${tex(solution(eq))}`} />
+          </div>
+        )}
+      </div>
       {currentStage && (
         <div>
           <h3>

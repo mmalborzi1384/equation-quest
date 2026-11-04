@@ -1,10 +1,34 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 
 test.use({ deviceScaleFactor: 2 });
+
+/**
+ * The five scene specs below are meaningful only when the browser can create a
+ * WebGL context. Some headless/CI runtimes (missing SwiftShader or a Vulkan
+ * ICD) cannot, and would otherwise report a false product regression on the
+ * `<canvas>` assertion. Skip explicitly in that case; the `no-WebGL` spec in
+ * this file is unconditional and always exercises the accessible text map.
+ * On a WebGL-capable Chromium all five still run.
+ */
+async function requireWebGL(page: Page): Promise<void> {
+  const supported = await page.evaluate(() => {
+    try {
+      const canvas = document.createElement('canvas');
+      return Boolean(canvas.getContext('webgl2') ?? canvas.getContext('webgl'));
+    } catch {
+      return false;
+    }
+  });
+  test.skip(
+    !supported,
+    'WebGL is unavailable in this runtime; run these specs with a WebGL-capable Chromium (see docs/FINAL_VERIFICATION_2026-11-04.md)',
+  );
+}
 
 test('desktop WebGL: isometric scene, keyboard movement, nearby inspection and pause', async ({
   page,
 }) => {
+  await requireWebGL(page);
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.setViewportSize({ width: 1280, height: 850 });
@@ -49,6 +73,7 @@ test('desktop WebGL: isometric scene, keyboard movement, nearby inspection and p
 test('mobile WebGL: touch hold, landmark tap, low-quality preset and reduced motion', async ({
   page,
 }) => {
+  await requireWebGL(page);
   await page.setViewportSize({ width: 390, height: 780 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('#/game');
@@ -111,6 +136,7 @@ test('no-WebGL: accessible text map and controls stay interactive at 320px', asy
 test('WebGL context loss restores textual interaction; quality switch retains inspection', async ({
   page,
 }) => {
+  await requireWebGL(page);
   await page.goto('#/game');
   const scene = page.getByRole('region', { name: 'کارگاه کاوش' });
   await expect(scene.locator('canvas')).toBeVisible();
@@ -136,6 +162,7 @@ test('WebGL context loss restores textual interaction; quality switch retains in
 test('scene and controls remain reachable at phone, tablet and desktop widths', async ({
   page,
 }) => {
+  await requireWebGL(page);
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   for (const width of [320, 390, 768, 1280]) {
@@ -154,6 +181,7 @@ test('scene and controls remain reachable at phone, tablet and desktop widths', 
 });
 
 test('keyboard control activates after navigating from the world map', async ({ page }) => {
+  await requireWebGL(page);
   await page.goto('#/world');
   await page.getByRole('link', { name: 'کاوش در جزیرهٔ سه‌بعدی' }).click();
   await expect(page).toHaveURL(/#\/game$/);

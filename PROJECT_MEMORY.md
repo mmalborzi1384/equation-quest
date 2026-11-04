@@ -2,6 +2,8 @@
 
 **Status (2026-11-03): Phases 1–9 merged; Phase 9 PR #9 merged at `900d2ec`. D34 authorized Phase 10 CI/Pages publication with documented curriculum/security/device risks. Phase 10 PR #10 merged at `1aa3773`; local 90 Vitest, 38 Chromium and production smoke plus main Actions deploy/live smoke `41640153643` pass. Pages source now reports workflow; main run `41642947134` passed deploy but failed immediate live smoke during propagation. D35 intro-route work and a compiled-entrypoint readiness check are pending PR/merge. The project stays open for future bug fixes/features.**
 
+**Addendum 2026-11-04 (this Arena branch, no new phase):** design/motion finalization is complete on `arena/13834b82-equation-quest`; read [`docs/MOTION.md`](docs/MOTION.md) for the motion contract, [`docs/FINAL_VERIFICATION_2026-11-04.md`](docs/FINAL_VERIFICATION_2026-11-04.md) for the exact test matrix (100/100 unit, 35/40 E2E because WebGL is absent, 32 clean visual combos) and [`docs/verification/`](docs/verification/) for mobile/desktop screenshots. `stages.ts`, `specs/` and `AGENTS.md` decisions are unchanged. Historical phase reports must not be read as current status.
+
 ## Permanent execution protocol
 Read [PHASE_EXECUTION_PROTOCOL.md](PHASE_EXECUTION_PROTOCOL.md) **before every phase**. Wait for explicit phase authorization. Outputs are phase-specific: Phase 1 requires validated specifications, updated docs and a validation/approval report; implementation phases require executable app code and test evidence. Protocol maintenance in this turn is not a product phase.
 

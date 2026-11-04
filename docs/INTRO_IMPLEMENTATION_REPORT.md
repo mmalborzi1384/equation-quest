@@ -1,5 +1,7 @@
 # Introduction page and web glass-carousel adaptation — D35
 
+> **سند تاریخی (۱۲ آبان ۱۴۰۵).** ارقام و توضیحات این گزارش مربوط به همان اجراست. وضعیت جاری کد، تست‌ها و شواهد بصری در [`FINAL_VERIFICATION_2026-11-04.md`](FINAL_VERIFICATION_2026-11-04.md) و [`MOTION.md`](MOTION.md) است.
+
 **2026-11-03, branch `arena/5b9ca4d8-equation-quest`.** Owner requested another introduction site view, bidirectional navigation with the current Home, an Expo glass-carousel reference and a README. Implementation is a separate lazy `#/intro` route in the existing app (not a second deployment or React Native bundle). This report describes branch verification, not a live Pages release.
 
 ## Decisions and implementation

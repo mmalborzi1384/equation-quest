@@ -20,8 +20,10 @@ import { feedbackText, hintFor } from '../../features/puzzle-engine/puzzle';
 import { useLevelProgress } from '../../store/useLevelProgress';
 import { BidiText } from '../Lessons/BidiText';
 import styles from './StageRunner.module.css';
+import { useMotionList } from '../../features/motion/useMotionList';
 
 export function StageRunner({ stage }: { stage: Stage }) {
+  const ledgerRef = useMotionList<HTMLDivElement>();
   const [session, setSession] = useState(startStage);
   const [input, setInput] = useState('');
   const [notice, setNotice] = useState(
@@ -179,16 +181,18 @@ export function StageRunner({ stage }: { stage: Stage }) {
           <div className={styles.math} dir="ltr">
             <BlockMath math={equationTex(eq)} />
           </div>
-          {session.puzzle.first && (
-            <div className={styles.mathStep} dir="ltr" aria-label="نتیجهٔ گام اول">
-              <BlockMath math={stateTex(session.puzzle.first)} />
-            </div>
-          )}
-          {session.puzzle.second && (
-            <div className={styles.mathStep} dir="ltr" aria-label="نتیجهٔ گام دوم">
-              <BlockMath math={stateTex(session.puzzle.second)} />
-            </div>
-          )}
+          <div ref={ledgerRef} aria-live="polite">
+            {session.puzzle.first && (
+              <div className={styles.mathStep} dir="ltr" aria-label="نتیجهٔ گام اول">
+                <BlockMath math={stateTex(session.puzzle.first)} />
+              </div>
+            )}
+            {session.puzzle.second && (
+              <div className={styles.mathStep} dir="ltr" aria-label="نتیجهٔ گام دوم">
+                <BlockMath math={stateTex(session.puzzle.second)} />
+              </div>
+            )}
+          </div>
           {(session.puzzle.phase === 'constant' || session.puzzle.phase === 'coefficient') && (
             <>
               <h3>
