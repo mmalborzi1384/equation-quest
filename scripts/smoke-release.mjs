@@ -117,11 +117,32 @@ try {
       await page.reload({ waitUntil: 'networkidle' });
       await page.getByRole('button', { name: 'حرکت کمتر: روشن' }).waitFor();
     }
+    // The design board is a standalone static page, not a hash route. Verify it
+    // is really reachable on the deployed origin and that its inlined fonts and
+    // hero image produce no missing-asset responses.
+    const board = await browser.newPage({
+      viewport: { width, height: 800 },
+      reducedMotion: 'reduce',
+    });
+    board.on('pageerror', (error) => failures.push(`Proposal JS: ${error.message}`));
+    board.on('response', (response) => {
+      if (response.status() >= 400)
+        failures.push(`Proposal HTTP ${response.status()}: ${response.url()}`);
+    });
+    const boardResponse = await board.goto(new URL('design-proposal.html', base).href, {
+      waitUntil: 'networkidle',
+    });
+    if (!boardResponse?.ok())
+      failures.push(`Proposal board document failed: ${boardResponse?.status()}`);
+    await board.getByRole('heading', { level: 1 }).first().waitFor({ state: 'visible' });
+    if (await board.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1))
+      failures.push(`Horizontal overflow at ${width}px design-proposal.html`);
+    await board.close();
     await page.close();
     if (failures.length) throw new Error(`${width}px: ${failures.join('; ')}`);
   }
   console.log(
-    `PASS: production hash routes/assets/reload/320+1280px/RTL menu/saved preference at ${base}`,
+    `PASS: production hash routes/assets/reload/320+1280px/RTL menu/saved preference/design board at ${base}`,
   );
 } finally {
   await browser?.close();

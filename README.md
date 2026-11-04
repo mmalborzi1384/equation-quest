@@ -55,7 +55,7 @@ npm run test:release
 - [`docs/MOTION.md`](docs/MOTION.md) — قرارداد حرکت، توکنها، جدول هدف M-01…M-10 و فهرست «هرگز متحرک نکن»
 - [`docs/FINAL_VERIFICATION_2026-11-04.md`](docs/FINAL_VERIFICATION_2026-11-04.md) و [`docs/verification/`](docs/verification/) — گزارش راستی‌آزمایی نهایی و تصاویر موبایل/دسکتاپ (۱۰۰/۱۰۰ تست واحد، ۴۰/۴۰ تست E2E سبز روی CI (محلی: ۳۵ سبز + ۵ skip صریح WebGL)، ۳۲ ترکیب بصری بدون نقص)
 - [`docs/GAME_DESIGN_READ.md`](docs/GAME_DESIGN_READ.md) — طراحیخوانی LM-GM/SDT/ZPD هشت مرحله؛ سندی تحلیلی، بدون تغییر محتوای درسی
-- [`docs/DESIGN_REVIEW_2026-11-03.md`](docs/DESIGN_REVIEW_2026-11-03.md) و [`design-proposal.html`](design-proposal.html) — بازبینی و بورد پیشنهادی
+- [`docs/DESIGN_REVIEW_2026-11-03.md`](docs/DESIGN_REVIEW_2026-11-03.md) و [`design-proposal.html`](design-proposal.html) — بازبینی و بورد پیشنهادی (نسخهٔ منتشرشده روی سایت: [`/equation-quest/design-proposal.html`](public/design-proposal.html)، لینکشده از فوتر)
 - [`docs/DESIGN_RESEARCH_2026-11-03.md`](docs/DESIGN_RESEARCH_2026-11-03.md) — پژوهش مهارتها، CSS بومی و کتابخانهها
 - [`.agents/skills/VENDORED.md`](.agents/skills/VENDORED.md) — منابع، commitها و مجوز مهارتهای vendored شده
 
