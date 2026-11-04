@@ -41,17 +41,6 @@ jobs:
         run: npm run test:e2e
         env:
           EQ_WEBGL: '1'
-      - name: Diagnostic - dump Playwright failure snapshots (temporary)
-        if: failure()
-        run: |
-          echo "=== test-results files ==="
-          find test-results -type f 2>/dev/null | head -40 || true
-          for f in test-results/*/error-context.md; do
-            if [ -f "$f" ]; then
-              echo "=== $f ==="
-              sed -n '1,200p' "$f"
-            fi
-          done
       - name: Production preview smoke
         run: npm run test:release
       - name: Retain a deployable build only for the main branch
