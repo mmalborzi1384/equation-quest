@@ -18,6 +18,9 @@ test('the real captured game background loads across responsive widths without W
   for (const width of [320, 390, 768, 1280]) {
     await page.setViewportSize({ width, height: 800 });
     await page.goto('#/');
+    // A hash-only navigation can be same-document. Force a fresh document so
+    // <picture> re-runs source selection for this viewport on every browser.
+    await page.reload();
     const scene = page.getByRole('img', { name: /تصویر واقعیِ صحنهٔ چهار جزیره/ });
     const image = scene.locator('img');
     await expect(image).toBeVisible();

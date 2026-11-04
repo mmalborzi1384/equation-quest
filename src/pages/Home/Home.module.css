@@ -394,7 +394,7 @@
 }
 @supports (animation-timeline: view()) {
   @media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
-    :global([data-motion='system']) .heroScene img[data-scroll-motion] {
+    :global([data-motion='system']) .heroScene picture[data-scroll-motion] {
       animation: hero-drift linear both;
       animation-timeline: view();
       animation-range: exit 0% exit 100%;

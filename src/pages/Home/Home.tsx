@@ -45,7 +45,7 @@ export default function Home() {
           role="img"
           aria-label="تصویر واقعیِ صحنهٔ چهار جزیره از بازی ماجراجویی معادله‌ها"
         >
-          <picture>
+          <picture data-scroll-motion>
             <source media="(max-width: 900px)" srcSet={mobileScene} type="image/webp" />
             <img
               src={desktopScene}
@@ -54,7 +54,6 @@ export default function Home() {
               alt=""
               fetchPriority="high"
               decoding="async"
-              data-scroll-motion
             />
           </picture>
           <span className={styles.sceneLabel}>
