@@ -56,7 +56,13 @@ test('ordered exact-rational workshop, progressive feedback and persisted one-ti
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth - innerWidth),
   ).toBeLessThanOrEqual(1);
+  // The route is a lazy chunk: wait for it to mount after a cold reload before
+  // asserting its content. A busy CI dev server can need more than the default
+  // 5s to serve the workshop module graph.
   await page.reload();
+  await expect(page.getByRole('region', { name: 'کارگاه سازوکار معادله' })).toBeVisible({
+    timeout: 15_000,
+  });
   await expect(page.getByText('در همین مرورگر می‌ماند؛ هر زمان می‌توانی پاکش کنی.')).toBeVisible();
   await expect(
     page.getByRole('region', { name: 'کارگاه سازوکار معادله' }).locator('strong').first(),
@@ -66,7 +72,13 @@ test('ordered exact-rational workshop, progressive feedback and persisted one-ti
     .getByRole('button', { name: 'ریست آزمایش‌های سازوکار' })
     .click();
   await page.getByRole('button', { name: 'بله، حذف شود' }).click();
+  // The route is a lazy chunk: wait for it to mount after a cold reload before
+  // asserting its content. A busy CI dev server can need more than the default
+  // 5s to serve the workshop module graph.
   await page.reload();
+  await expect(page.getByRole('region', { name: 'کارگاه سازوکار معادله' })).toBeVisible({
+    timeout: 15_000,
+  });
   await expect(page.getByText('در همین مرورگر می‌ماند؛ هر زمان می‌توانی پاکش کنی.')).toBeVisible();
   await expect(
     page.getByRole('region', { name: 'کارگاه سازوکار معادله' }).locator('strong').first(),
